@@ -64,10 +64,7 @@ function onSubmit(f){
 	//f.action ='./';
 	//return true;
 	return false;
-	
 
-	
-	
 	
 }
 </script>
