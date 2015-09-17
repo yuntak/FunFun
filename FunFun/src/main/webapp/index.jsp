@@ -12,6 +12,7 @@
 	</head> 
 	<body>
 		<c:url value="/showMessage.html" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a>
+		<a href="${messageUrl}">Click to enter</a><br>
+		<a href="<%=request.getContextPath() %>/yuntak/SignUp/EditUserForm.jsp"> Edit Form</a>
 	</body>
 </html>
