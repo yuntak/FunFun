@@ -11,8 +11,6 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-		<c:url value="/showMessage.html" var="messageUrl" />
-		<a href="${messageUrl}">Click to enter</a><br>
-		<a href="<%=request.getContextPath() %>/yuntak/SignUp/EditUserForm.jsp"> Edit Form</a>
+		<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	</body>
 </html>
