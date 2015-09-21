@@ -8,6 +8,7 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Map;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -30,6 +31,10 @@ public class ServiceTest {
 	@Autowired
 	UsersDao dao;
 	
+	/*@Before
+	public void cleanDB(){
+		dao.deleteAllUsers();
+	}*/
 	@Test
 	public void testServiceBean(){
 		logger.trace("service bean ok? {}",service);
@@ -38,7 +43,7 @@ public class ServiceTest {
 	@Test
 	public void testInsert(){
 		Users user = new Users();
-		user.setId("zxz");
+		user.setId("lol6");
 		String name="롤2";
 		user.setNickname(name);
 		user.setPass("123");
@@ -89,7 +94,7 @@ public class ServiceTest {
 	
 	@Test
 	public void testPassUpdate(){
-		String sId = dao.getUserIdById("zxz1265");
+		String sId = dao.getUserIdById("lol6");
 		Users user = new Users();
 		user.setId(sId);
 		user.setPass("9090");
@@ -97,6 +102,18 @@ public class ServiceTest {
 		service.updatePass(user);
 		System.out.println("2");
 		assertThat(user.getPass(), is("9090"));
+	}
+	
+	@Test
+	public void testRollUpdate(){
+		String sId = dao.getUserIdById("lol6");
+		Users user = new Users();
+		user.setId(sId);
+		user.setRoll("person");
+		System.out.println("1");
+		service.updateRoll(user);
+		System.out.println("2");
+		assertThat(user.getRoll(), is("person"));
 	}
 	
 	@Test

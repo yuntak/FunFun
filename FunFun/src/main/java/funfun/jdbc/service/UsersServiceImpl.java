@@ -137,4 +137,11 @@ public class UsersServiceImpl implements UsersService {
 		}
 	}
 
+	@Override
+	public void updateRoll(Users user) {
+		int updateResult = dao.updateRoll(user);
+		logger.trace("update over : {}", updateResult);
+		
+	}
+
 }
