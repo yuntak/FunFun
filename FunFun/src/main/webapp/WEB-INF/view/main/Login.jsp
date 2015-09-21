@@ -22,64 +22,68 @@
 	max-width: 400px;
 	margin: 0 auto;
 }
-.loginbody{
-background: #E8E8E8
-}
 
+.loginbody {
+	background: #E8E8E8
+}
 </style>
 </head>
 <body>
-<div class="loginbody">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<nav class="navbar">
-		<div class="container loginForm" >
+	<div class="loginbody">
+		<br> <br> <br> <br> <br>
+		<nav class="navbar">
+			<div class="container loginForm">
 
-			<form class="form-horizontal" name=fregisterform id=fregisterform
-				method=post onsubmit="return login(this);">
+				<form class="form-horizontal" name=fregisterform id=fregisterform
+					method=post onsubmit="return login(this);">
 
-				<div class="panel-body" id=login_form>
-					<div align="center">
-						<h1>Login</h1>
-						<%--  <img src="<%=request.getContextPath()%>/img/Jellyfish.jpg"
+					<div class="panel-body" id=login_form>
+						<div align="center">
+							<h1>Login</h1>
+							<%--  <img src="<%=request.getContextPath()%>/img/Jellyfish.jpg"
 					class="profile-img"> --%>
-						<br> <br> <br> <br> <br>
-						<div class="form-group">
-							<label class="control-label col-sm-3" for="id">ID:</label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" id="id" required
-									placeholder="Enter id" required>
+							<br> <br> <br> <br> <br>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="id">ID:</label>
+								<div class="col-sm-8">
+									<input type="text" class="form-control" id="id" name="id"
+										required placeholder="Enter id" required>
+								</div>
 							</div>
-						</div>
 
-						<div class="form-group">
-							<label class="control-label col-sm-3" for="pwd">Password:</label>
-							<div class="col-sm-8">
-								<input type="password" class="form-control" id="pwd" required
-									placeholder="Enter password">
-							</div>
-						</div>
+							<div class="form-group">
+								<label class="control-label col-sm-3" for="pwd">Password:</label>
+								<div class="col-sm-8">
+									<input type="password" class="form-control" id="pass"
+										name="pass" required placeholder="Enter password">
+								</div>
 
-						<br>
 
-						<div class="form-group">
-							<label for="log" class="control-label col-sm-3"></label>
-							<div class="col-sm-8">
-								<input type="submit" id="log"
-									class="form-control btn btn-success" value="login"></input>
+								<br>
+								<div id="msg_box" style="display: none">
+									<label for="log" class="control-label col-sm-3"></label>
+									<div class="col-sm-8">
+										<div id="wrap" 
+											style="border: 1px solid; background:#FF8F8F; width: 235px; height: 30px; margin: 5px; position: relative">
+										<span id="result" style="font-size:15px;font-weight:bold;color:blakc;"></span></div>
+									</div>
+								</div>
+								<div class="form-group" style="margin-top:30px ">
+									<label for="log" class="control-label col-sm-3"></label>
+									<div class="col-sm-8">
+										<input type="submit" id="log"
+											class="form-control btn btn-success" value="Login"></input>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</form>
-		</div>
+				</form>
+			</div>
 
 
 
-	</nav>
+		</nav>
 	</div>
 </body>
 <script>
@@ -89,4 +93,5 @@ background: #E8E8E8
 		return true;
 	}
 </script>
+
 </html>
