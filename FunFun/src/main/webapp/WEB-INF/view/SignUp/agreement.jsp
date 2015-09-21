@@ -24,7 +24,7 @@
 <body>
 	<form name="fregister" method="POST" onsubmit="return reg(this)"
 		class="form-horizontal">
-		<div class="bs-example tooltip-demo">
+		<!-- <div class="bs-example tooltip-demo">
 			<div class="bs-example-tooltips">
 
 				<div class="form-horizontal">
@@ -63,7 +63,47 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
+		<div class="panel panel-info">
+    <div class="panel-heading"><h4><strong>약관동의</strong></h4>
+    </div>
+
+<div class="panel-body">
+						<label for="provision" class="col-lg-2 control-label">회원가입약관</label>
+						
+						<div class="col-lg-10" id="provision">
+							<textarea class="form-control" rows="8" style="resize: none" readonly="readonly">
+약관동의
+               </textarea>
+							<div class="checkbox">
+								<label> <input type="checkbox" id="agree1" name="agree1">
+									동의합니다.
+								</label>
+							</div>
+						</div>
+					</div>
+		<div class="panel-body">			
+					<div class="form-group">
+						<label for="memberInfo" class="col-lg-2 control-label">개인정보취급방침</label>
+						<div class="col-lg-10" id="memberInfo">
+							<textarea class="form-control" rows="8" style="resize: none"
+								readonly="readonly">
+개인정보의 항목 및 수집방법
+               </textarea>
+							<div class="checkbox">
+								<label> <input type="checkbox" id="agree2" name="agree2">
+									동의합니다.
+								</label>
+							</div>
+							</div>
+                            </div>   
+							</div>
+                         
+                        <div class="panel-footer">
+            <button class="btn btn-success">동의합니다 </button>
+    		 <a href="main" class="btn btn-default">동의하지 않습니다.</a>
+     </div>
+    </div>
 	</form>
 </body>
 <script type="text/javascript">
@@ -72,13 +112,13 @@
 		var agr1 = document.getElementsByName("agree1");
 		console.log(agr1[0]);
 		if (!agr1[0].checked) {
-			alert("동의1을 하지 않았습니다");
+			alert("회원가입약관에 동의 하지 않았습니다");
 			return false;
 		}
 		var agr2 = document.getElementsByName("agree2");
 		console.log(agr2[0]);
 		if (!agr2[0].checked) {
-			alert("동의2를 하지 않았습니다");
+			alert("개인정보취급방침에 동의 하지 않았습니다");
 			return false;
 		}
 
