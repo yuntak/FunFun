@@ -15,9 +15,15 @@ public class MainController {
 	public String SignUpAgree(){		
 		return "SignUp/agreement";
 	}
-	@RequestMapping("SignUp")
+	@RequestMapping("/SignUp")
 	public String SignUpForm(){
 		return "SignUp/usersForm";
+	}
+
+	@RequestMapping("/Login")
+	public String LoginForm(){
+		
+		return "main/Login";
 	}
 
 }

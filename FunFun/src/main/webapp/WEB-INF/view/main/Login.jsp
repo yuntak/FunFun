@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	#login_form{
-		background: ;
-		border: 1px solid;
-  		border-color: ;
+		#login_form{
+		background: #EEF4FF;
+		border: 1px solid #BCBC9A;
+		
+  		border-radius: 15px;
 	}
 	/* .profile-img
 {
@@ -82,7 +83,7 @@
 <script>
 function login(f){
 	
-	f.action = './main';
+	f.action = './Login';
 	return true;
 }
 
