@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/headerfoot"></jsp:include>
+<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	자유게시판
 </body>
 </html>

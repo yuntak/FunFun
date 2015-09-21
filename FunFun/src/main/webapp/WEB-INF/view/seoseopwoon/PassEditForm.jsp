@@ -21,7 +21,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/headerfoot"></jsp:include>
+<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 
 <form class="form-horizontal" onsubmit="return editSubmit(this)">
 <div class="panel panel-success">

@@ -23,7 +23,7 @@
 
 </head>
 <body>
-	<jsp:include page="/headerfoot"></jsp:include>
+	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 <nav>
 	<form class="form-horizontal" onsubmit="return onSubmit(this)"
 		method="post">

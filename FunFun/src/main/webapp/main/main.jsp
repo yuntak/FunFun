@@ -30,6 +30,9 @@
 <body>
 
 <jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
+
+
+
 <%  %>
 
 <%  %>
