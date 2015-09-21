@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
@@ -41,7 +41,7 @@
         <div class="form-group">
             <label for="mb_id" class="col-sm-2 control-label">아이디</label>
             <div class="col-sm-6">
-                <input class="form-control" placeholder="User id"minlength=6 maxlength=20 size=20 id='mb_id' name="mb_id" required style="ime-mode:disabled" value="" 
+                <input class="form-control" placeholder="User id" minlength="6"  maxlength=20 size=20 id='mb_id' name="mb_id" required style="ime-mode:disabled" value="" 
                                 onblur='reg_mb_id_check()'>
                                     <p class="help-block">아아디는 최소6자 이상 20자 이하입니다.</p>
                                     
