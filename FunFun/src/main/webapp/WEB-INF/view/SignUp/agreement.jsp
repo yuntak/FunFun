@@ -58,7 +58,7 @@
 
 
 								<button class="btn btn-success">동의합니다.</button>
-								<a href="index.jsp" class="btn btn-default">동의하지 않습니다.</a>
+								<a href="main" class="btn btn-default">동의하지 않습니다.</a>
 							</div>
 
 						</div>
@@ -86,7 +86,7 @@
 
 		alert("회원가입으로 이동");
 
-		f.action = 'userform1';
+		f.action = 'SignUp';
 		return true;
 	}
 </script>

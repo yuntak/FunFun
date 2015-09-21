@@ -11,4 +11,12 @@ public class MainController {
 		
 		return "main/Template";
 	}
+	@RequestMapping("/agreement")
+	public String SignUpAgree(){		
+		return "SignUp/agreement";
+	}
+	@RequestMapping("SignUp")
+	public String SignUpForm(){
+		return "SignUp/usersForm";
+	}
 }
