@@ -24,12 +24,13 @@
 <body>
 	<form name="fregister" method="POST" onsubmit="return reg(this)"
 		class="form-horizontal">
-		<div class="bs-example tooltip-demo">
-			<div class="bs-example-tooltips">
+		<div class="panel panel-info">
+    <div class="panel-heading"><h4><strong>약관동의</strong></h4>
+    </div>
 
-				<div class="form-horizontal">
-					<div class="form-group">
+<div class="panel-body">
 						<label for="provision" class="col-lg-2 control-label">회원가입약관</label>
+						
 						<div class="col-lg-10" id="provision">
 							<textarea class="form-control" rows="8" style="resize: none" readonly="readonly">
 약관동의
@@ -53,19 +54,14 @@
 									동의합니다.
 								</label>
 							</div>
-
-							<div class="panel-footer">
-
-
-								<button class="btn btn-success">동의합니다.</button>
-								<a href="main" class="btn btn-default">동의하지 않습니다.</a>
+                            </div>   
 							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                         </div>
+                        <div class="panel-footer">
+            <button class="btn btn-success">동의합니다 </button>
+    		 <a href="main" class="btn btn-default">동의하지 않습니다.</a>
+     
+    </div>
 	</form>
 </body>
 <script type="text/javascript">
