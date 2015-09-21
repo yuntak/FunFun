@@ -25,7 +25,7 @@ public class MainController {
 	public String LoginForm(Model model){
 		String viewlocation="/WEB-INF/view/main/Login.jsp";
 		model.addAttribute("view",viewlocation);
-		return "main/Login";
+		return "main/Template";
 	}
 	
 	@RequestMapping("/LoginTry")
