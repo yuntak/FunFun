@@ -182,6 +182,13 @@ public class UsersDaoImpl implements UsersDao {
 		Map<String, Object> value = jt.queryForMap(sql,id,pass);
 		return value;
 	}
+	@Override
+	public int updateRoll(Users user) {
+		int result=-1;
+		String sql = "update users set roll=? where id=?";
+		result = jt.update(sql,user.getRoll(),user.getId());
+		return result;
+	}
 	
 		
 }

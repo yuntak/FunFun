@@ -24,5 +24,6 @@ public interface UsersDao {
 	public int getUsersIdCount(String id);
 	public int deleteUser(String id);
 	public int deleteAllUsers();
+	public int updateRoll(Users user);
 	
 }
