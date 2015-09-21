@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>   
     
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,7 +30,7 @@
 		<div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a href="http://localhost:9090/funding/main/main.jsp"><img src="<%=request.getContextPath()%>/img/Koala.jpg"
+				<a href="./"><img src="<%=request.getContextPath()%>/rsc/img/logo.jpg"
 					style="width: 100px; height: 100px">
 				</a>
 			</div>
@@ -48,7 +48,7 @@
 	
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="<%=request.getContextPath() %>/agreement">회원가입</a></li>
-				<li><a href="<%=request.getContextPath() %>/login">로그인</a></li>
+				<li><a href="<%=request.getContextPath() %>/Login">로그인</a></li>
 			</ul>
 		
 		</div>
@@ -57,10 +57,14 @@
   <div class="nav nav-pills">        
   
   <ul class="nav nav-justified">
-   <a href="<%=request.getContextPath() %>/freeboard">자유게시판</a>
-   <a href="#">자유연재게시판</a>
-   <a href="<%=request.getContextPath() %>/fundboard">펀드게시판</a>
-   <a href="#">QnA</a>
+  <li>
+   <a href="<%=request.getContextPath() %>Board?Board=FreeBoard">자유게시판</a></li>
+   <li>
+   <a href="<%=request.getContextPath() %>Board?Board=FreeContent">자유연재게시판</a></li>
+   <li>
+   <a href="<%=request.getContextPath() %>Board?Board=Funding">펀드게시판</a></li>
+   <li>
+   <a href="<%=request.getContextPath() %>Board?Board=FAQ">QnA</a></li>
    </ul>
 
 </div>
