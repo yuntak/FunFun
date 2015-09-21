@@ -19,9 +19,11 @@ public class MainController {
 	public String SignUpForm(){
 		return "SignUp/usersForm";
 	}
+
 	@RequestMapping("/Login")
 	public String LoginForm(){
 		
 		return "main/Login";
 	}
+
 }

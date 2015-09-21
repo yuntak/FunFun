@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 <!DOCTYPE >
+=======
+<!DOCTYPE html >
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	#login_form{
-		background: ;
-		border: 1px solid;
-  		border-color: ;
+		#login_form{
+		background: #EEF4FF;
+		border: 1px solid #BCBC9A;
+		
+  		border-radius: 15px;
 	}
 	/* .profile-img
 {
