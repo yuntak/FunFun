@@ -17,6 +17,7 @@
 	<mvc:resources location="/WEB-INF/view/image/" mapping="/img/**" cache-period="31536000"></mvc:resources>
 	<mvc:resources location="/Resources/img/" mapping="/rsc/img/**"/>
 	<mvc:resources location="/WEB-INF/fuckingimg/" mapping="/fuck/**"/>
+	<context:component-scan base-package="funfun.controller"></context:component-scan>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	        <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
 	        <property name="prefix" value="/WEB-INF/view/"/>

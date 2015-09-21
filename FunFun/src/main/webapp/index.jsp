@@ -11,6 +11,6 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-		<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
+		<jsp:include page="/WEB-INF/view/main/Template.jsp"></jsp:include>
 	</body>
 </html>

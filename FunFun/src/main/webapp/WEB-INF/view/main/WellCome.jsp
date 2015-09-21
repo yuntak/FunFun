@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<im
+<img  src="<%=request.getContextPath() %>/fuck/404.png">
 </body>
 </html>
