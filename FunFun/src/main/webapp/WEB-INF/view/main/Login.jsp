@@ -82,7 +82,7 @@
 <script>
 function login(f){
 	
-	f.action = './main';
+	f.action = './Login';
 	return true;
 }
 

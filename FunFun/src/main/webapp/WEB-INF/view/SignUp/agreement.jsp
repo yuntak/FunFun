@@ -72,13 +72,13 @@
 		var agr1 = document.getElementsByName("agree1");
 		console.log(agr1[0]);
 		if (!agr1[0].checked) {
-			alert("동의1을 하지 않았습니다");
+			alert("회원가입약관에 동의 하지 않았습니다");
 			return false;
 		}
 		var agr2 = document.getElementsByName("agree2");
 		console.log(agr2[0]);
 		if (!agr2[0].checked) {
-			alert("동의2를 하지 않았습니다");
+			alert("개인정보취급방침에 동의 하지 않았습니다");
 			return false;
 		}
 
