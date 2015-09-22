@@ -59,6 +59,7 @@ public class UsersServiceImpl implements UsersService {
 	public void insert(Users user) {
 		int insertResult = dao.insertUser(user);
 		logger.trace("insert over : {}",insertResult);
+		//Return 필요
 	}
 
 	@Override
@@ -71,6 +72,7 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public void delete(String id) {
 		int deleteId = dao.deleteUser(id);
+		//로깅 리턴 필요
 	}
 
 	@Override

@@ -28,6 +28,7 @@
 <body>
 
 	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
+	
 	<c:if test="${empty view}">
 	<c:set var="view" value="/WEB-INF/view/main/WellCome.jsp"></c:set>
 	</c:if>

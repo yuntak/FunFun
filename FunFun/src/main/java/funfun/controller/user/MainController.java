@@ -3,6 +3,8 @@ package funfun.controller.user;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
@@ -25,13 +27,20 @@ public class MainController {
 	public String LoginForm(Model model){
 		String viewlocation="/WEB-INF/view/main/Login.jsp";
 		model.addAttribute("view",viewlocation);
-		return "main/Login";
+		return "main/Template";
 	}
 	
 	@RequestMapping("/LoginTry")
 	public String LoginTry(){
 		
 		return "main/Template";
+	}
+	@RequestMapping(value="/login_ajax",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
+	public boolean loginAjax(@RequestParam String id,@RequestParam String pass){
+		if(id.equals("qwer")&&pass.equals("qwer")){
+			return true;
+		}
+		return false;
 	}
 
 }

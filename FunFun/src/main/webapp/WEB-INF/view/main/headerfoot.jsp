@@ -70,8 +70,8 @@
 </div>
 </div>     
 </nav>
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
 
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
 <form class="form-inline">
   <div class="panel-body">     
     <p style="color:white">회사이름</p>
