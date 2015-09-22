@@ -34,9 +34,10 @@
 	
 	<nav>
 	<jsp:include page="${view }"></jsp:include>
+	
 	</nav>
-
-
+	
+	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 
 </html>

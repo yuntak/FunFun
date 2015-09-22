@@ -20,13 +20,18 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<style type="text/css">
+
+</style>
+
+
 </head>
 <body>
 	<nav class="navbar navbar-default">
+	
 		<div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -70,17 +75,8 @@
 </div>
 </div>     
 </nav>
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
 
-<form class="form-inline">
-  <div class="panel-body">     
-    <p style="color:white">회사이름</p>
-    <p style="color:white">주소</p>
-    <p style="color:white">e-mail</p>
-    <p style="color:white">연락처</p>
-    </div>
-    </form>
-</nav>
+
 
 
 </body>

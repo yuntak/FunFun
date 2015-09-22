@@ -24,87 +24,53 @@
 <body>
 	<form name="fregister" method="POST" onsubmit="return reg(this)"
 		class="form-horizontal">
-		<!-- <div class="bs-example tooltip-demo">
-			<div class="bs-example-tooltips">
 
-				<div class="form-horizontal">
-					<div class="form-group">
-						<label for="provision" class="col-lg-2 control-label">회원가입약관</label>
-						<div class="col-lg-10" id="provision">
-							<textarea class="form-control" rows="8" style="resize: none"
-								readonly="readonly">약관동의</textarea>
-							<div class="checkbox">
-								<label> <input type="checkbox" id="agree1" name="agree1">
-									동의합니다.
-								</label>
-							</div>
-						</div>
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h4>
+					<strong>약관동의</strong>
+				</h4>
+			</div>
+
+			<div class="panel-body">
+				<label for="provision" class="col-lg-2 control-label">회원가입약관</label>
+
+				<div class="col-lg-10" id="provision">
+					<textarea class="form-control" rows="12" 
+						readonly="readonly">
+약관동의
+               </textarea>
+					<div class="checkbox">
+						<label> <input type="checkbox" id="agree1" name="agree1">
+							동의합니다.
+						</label>
 					</div>
-					<div class="form-group">
-						<label for="memberInfo" class="col-lg-2 control-label">개인정보취급방침</label>
-						<div class="col-lg-10" id="memberInfo">
-							<textarea class="form-control" rows="8" style="resize: none"
-								readonly="readonly">개인정보의 항목 및 수집방법</textarea>
-							<div class="checkbox">
-								<label> <input type="checkbox" id="agree2" name="agree2">
-									동의합니다.
-								</label>
-							</div>
-
-							
-					<div class="panel-footer">
-
-
-						<button class="btn btn-success">동의합니다.</button>
-						<a href="main" class="btn btn-default">동의하지 않습니다.</a>
-					</div>
-
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="memberInfo" class="col-lg-2 control-label">개인정보취급방침</label>
+					<div class="col-lg-10" id="memberInfo">
+						<textarea class="form-control" rows="12" 
+							readonly="readonly">
+개인정보의 항목 및 수집방법
+               </textarea>
+						<div class="checkbox">
+							<label> <input type="checkbox" id="agree2" name="agree2">
+								동의합니다.
+							</label>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div> -->
-		<div class="panel panel-info">
-    <div class="panel-heading"><h4><strong>약관동의</strong></h4>
-    </div>
 
-<div class="panel-body">
-						<label for="provision" class="col-lg-2 control-label">회원가입약관</label>
-						
-						<div class="col-lg-10" id="provision">
-							<textarea class="form-control" rows="8" style="resize: none" readonly="readonly">
-약관동의
-               </textarea>
-							<div class="checkbox">
-								<label> <input type="checkbox" id="agree1" name="agree1">
-									동의합니다.
-								</label>
-							</div>
-						</div>
-					</div>
-		<div class="panel-body">			
-					<div class="form-group">
-						<label for="memberInfo" class="col-lg-2 control-label">개인정보취급방침</label>
-						<div class="col-lg-10" id="memberInfo">
-							<textarea class="form-control" rows="8" style="resize: none"
-								readonly="readonly">
-개인정보의 항목 및 수집방법
-               </textarea>
-							<div class="checkbox">
-								<label> <input type="checkbox" id="agree2" name="agree2">
-									동의합니다.
-								</label>
-							</div>
-							</div>
-                            </div>   
-							</div>
-                         
-                        <div class="panel-footer">
-            <button class="btn btn-success">동의합니다 </button>
-    		 <a href="main" class="btn btn-default">동의하지 않습니다.</a>
-     </div>
-    </div>
+			<div class="panel-footer">
+				<button class="btn btn-success">동의합니다</button>
+				<a href="main" class="btn btn-default">동의하지 않습니다.</a>
+			</div>
+		</div>
 	</form>
+	    
 </body>
 <script type="text/javascript">
 	function reg(f) {

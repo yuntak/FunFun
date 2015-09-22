@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html >
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,26 +21,25 @@
 
 .form-horizontal
 {
-    max-width: 400px;
-
+    width: 400px;
     margin: 0 auto;
+}
+#loginbody{
+	height: 70%;
 }
 </style>
 </head>
+
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	
+	<div id="loginbody">
 	 <nav class="navbar" >
-<div class="container">
+<div class="container-fluid">
 
   <form class="form-horizontal" name=fregisterform id=fregisterform method=post onsubmit="return login(this);">
   		
   	<div class="panel-body" id=login_form>
+  
   		<div align="center">
   		<h1>Login</h1>
    	   <%--  <img src="<%=request.getContextPath()%>/img/Jellyfish.jpg"
@@ -73,12 +72,17 @@
       </div>
     </div>   
     </div>
+   
     </div>
+     </form>
     </div>
-  </form>
+    
+     <div class="table-responsive">
+     </div>
 
-</div>
-        </nav>
+       </nav>
+       </div>
+
 </body>
 <script>
 function login(f){
