@@ -29,19 +29,19 @@
 </style>
 </head>
 <body>
+<input type="hidden" value="none" id="logCheckVal" >
 	<div class="loginbody">
 		<br> <br> <br> <br> <br>
 		<nav class="navbar">
 			<div class="container loginForm">
 
 				<form class="form-horizontal" name=fregisterform id=fregisterform
-					method=post onsubmit="return login(this);">
+					method=post >
 
 					<div class="panel-body" id=login_form>
 						<div align="center">
 							<h1>Login</h1>
-							<%--  <img src="<%=request.getContextPath()%>/img/Jellyfish.jpg"
-					class="profile-img"> --%>
+						
 							<br> <br> <br> <br> <br>
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="id">ID:</label>
@@ -85,13 +85,24 @@
 
 		</nav>
 	</div>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="<%=request.getContextPath() %>/js/test.js"></script>
 </body>
 <script>
-	function login(f) {
-
-		f.action = './LoginTry';
-		return true;
-	}
+/* 	function loginCheck(f) {
+		if(logCheck=="true"){
+			console.log(logCheck);
+			alert("1");
+			f.action='./main';
+			return true;
+			
+		}
+		else{
+		console.log(logCheck);
+		alert("1");
+		return false;
+		}
+	} */
 </script>
 
 </html>

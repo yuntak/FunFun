@@ -185,7 +185,7 @@
 		}
 
 		alert("수정");
-		//f.action ='./';
+		f.action ='./main';
 		//return true;
 		return false;
 
