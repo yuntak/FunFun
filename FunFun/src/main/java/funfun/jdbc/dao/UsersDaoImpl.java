@@ -72,7 +72,7 @@ public class UsersDaoImpl implements UsersDao {
 				return user;
 			}};
 	}
-	private RowMapper<Board> getBoardRowMapper(){
+	/*private RowMapper<Board> getBoardRowMapper(){
 		return new RowMapper<Board>(){
 
 			@Override
@@ -107,7 +107,7 @@ public class UsersDaoImpl implements UsersDao {
 			}},id);
 		
 		return user;
-	}
+	}*/
 	@Override
 	public int insertUser(Users user) {
 		int result=-1;

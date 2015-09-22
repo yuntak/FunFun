@@ -8,7 +8,6 @@ import static org.junit.Assert.assertThat;
 
 import java.util.Map;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -16,10 +15,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
 
+import funfun.jdbc.dao.BoardDao;
 import funfun.jdbc.dao.UsersDao;
+import funfun.jdbc.dto.Board;
 import funfun.jdbc.dto.Users;
+import funfun.jdbc.service.BoardService;
 import funfun.jdbc.service.UsersService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,10 +32,11 @@ public class ServiceTest {
 	@Autowired
 	UsersDao dao;
 	
-	/*@Before
-	public void cleanDB(){
-		dao.deleteAllUsers();
-	}*/
+	@Autowired
+	BoardService bservice;
+	@Autowired
+	BoardDao bdao;
+	
 	@Test
 	public void testServiceBean(){
 		logger.trace("service bean ok? {}",service);
@@ -43,7 +45,7 @@ public class ServiceTest {
 	@Test
 	public void testInsert(){
 		Users user = new Users();
-		user.setId("lol6");
+		user.setId("zxz222");
 		String name="롤2";
 		user.setNickname(name);
 		user.setPass("123");
@@ -56,6 +58,7 @@ public class ServiceTest {
 		Users retrieved = dao.selectUser(user.getId());
 		assertThat(retrieved.getNickname(), is(name));
 	}
+	
 	
 	@Test
 	public void testUpdate(){
@@ -74,6 +77,31 @@ public class ServiceTest {
 		assertThat(user.getNickname(), is("정준하"));
 	}
 	
+	@Test
+	public void testUsersDelete(){
+		Users retrieved = dao.selectUser("lol7");
+		service.delete("lol7");
+		assertThat(retrieved.getId(),is(nullValue()));
+	}
+	
+	@Test
+	public void testBoardInsert(){
+		Board board = new Board();
+		board.setNo(3);		
+		board.setCode("11");
+		board.setUserId("whdgh1265");
+		
+		bservice.insertBoard(board);
+		Board retrieved = bdao.selectBoard(board.getNo());
+		assertThat(retrieved.getCode(), is("11"));
+	}
+	
+	@Test
+	public void testBoardDelete(){
+		Board retrieved = bdao.selectBoard(2);
+		bservice.delete(2);
+		assertThat(retrieved.getNo(),is(not(nullValue())));
+	}
 
 	@Test
 	public void testPassById(){
@@ -94,7 +122,7 @@ public class ServiceTest {
 	
 	@Test
 	public void testPassUpdate(){
-		String sId = dao.getUserIdById("lol6");
+		String sId = dao.getUserIdById("zxz1265");
 		Users user = new Users();
 		user.setId(sId);
 		user.setPass("9090");
@@ -102,18 +130,6 @@ public class ServiceTest {
 		service.updatePass(user);
 		System.out.println("2");
 		assertThat(user.getPass(), is("9090"));
-	}
-	
-	@Test
-	public void testRollUpdate(){
-		String sId = dao.getUserIdById("lol6");
-		Users user = new Users();
-		user.setId(sId);
-		user.setRoll("person");
-		System.out.println("1");
-		service.updateRoll(user);
-		System.out.println("2");
-		assertThat(user.getRoll(), is("person"));
 	}
 	
 	@Test
@@ -161,12 +177,6 @@ public class ServiceTest {
 		assertThat(retrieved, is(not(nullValue())));
 	}
 	
-	@Test
-	public void testDelete(){
-		Users retrieved = dao.selectUser("lol7");
-		service.delete("lol7");
-		assertThat(retrieved.getId(),is(nullValue()));
-	}
 	
 	@Test
 	public void testIdConfirm(){
