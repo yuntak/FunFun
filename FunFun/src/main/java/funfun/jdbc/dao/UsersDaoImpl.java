@@ -72,7 +72,7 @@ public class UsersDaoImpl implements UsersDao {
 				return user;
 			}};
 	}
-	private RowMapper<Board> getBoardRowMapper(){
+	/*private RowMapper<Board> getBoardRowMapper(){
 		return new RowMapper<Board>(){
 
 			@Override
@@ -107,7 +107,7 @@ public class UsersDaoImpl implements UsersDao {
 			}},id);
 		
 		return user;
-	}
+	}*/
 	@Override
 	public int insertUser(Users user) {
 		int result=-1;
@@ -181,6 +181,13 @@ public class UsersDaoImpl implements UsersDao {
 		String sql = "select * from users where id=? and pass=?";
 		Map<String, Object> value = jt.queryForMap(sql,id,pass);
 		return value;
+	}
+	@Override
+	public int updateRoll(Users user) {
+		int result=-1;
+		String sql = "update users set roll=? where id=?";
+		result = jt.update(sql,user.getRoll(),user.getId());
+		return result;
 	}
 	
 		

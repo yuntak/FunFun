@@ -30,11 +30,11 @@
 
 $(function() {
 	
-$.validator.addMethod("numcheck", function(value, element) {
+/* $.validator.addMethod("numcheck", function(value, element) {
 	return this.optional(element)
 			|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
 
-});
+}); */
 
 $.validator.addMethod("idcheck", function(value, element) {
 	return this.optional(element)
@@ -71,7 +71,7 @@ $(document).ready(function () {
             },
 			mb_num : {
 				requited:true,
-				numcheck:true,
+				numcheck:true
 			},
             mb_adress2:{
             	requited:true
@@ -185,7 +185,7 @@ $(document).ready(function () {
 					<label for="mb_num" class="col-sm-2 control-label">연락처</label>
 					<div class="col-xs-5">
 						<input class="form-control" type="text" id='mb_num' name='mb_num'
-							required maxlength=13 value='' placeholder="번호입력">
+							required maxlength=13 placeholder="번호입력">
 
 					</div>
 

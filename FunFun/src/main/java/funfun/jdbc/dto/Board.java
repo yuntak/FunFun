@@ -3,39 +3,31 @@ package funfun.jdbc.dto;
 import java.util.Date;
 
 public class Board {
-	private int commentNo;
-	private String userId;
-	private Date regDate;
-	private String commentContent;
-	public int getCommentNo() {
-		return commentNo;
-	}
-	public void setCommentNo(int commentNo) {
-		this.commentNo = commentNo;
-	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	public Date getRegDate() {
-		return regDate;
-	}
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-	public String getCommentContent() {
-		return commentContent;
-	}
-	public void setCommentContent(String commentContent) {
-		this.commentContent = commentContent;
-	}
-	@Override
-	public String toString() {
-		return "Board [commentNo=" + commentNo + ", userId=" + userId + ", regDate=" + regDate + ", commentContent="
-				+ commentContent + "]";
-	}
+	   private int no;
+	   private String code;
+	   private String userId;
+	   
+	   public int getNo() {
+	      return no;
+	   }
+	   public void setNo(int no) {
+	      this.no = no;
+	   }
+	   public String getCode() {
+	      return code;
+	   }
+	   public void setCode(String code) {
+	      this.code = code;
+	   }
+	   public String getUserId() {
+	      return userId;
+	   }
+	   public void setUserId(String userId) {
+	      this.userId = userId;
+	   }
+	   @Override
+	   public String toString() {
+	      return "Board [no=" + no + ", code=" + code + ", userId=" + userId + "]";
+	   }
 	
-	
-}
+	}

@@ -17,12 +17,13 @@ public interface UsersDao {
 	public Users selectUser(String id);
 	public List<Users> getAllUsersList();
 	public Map<String, Object> loginUsers(String id, String pass);
-	public Users selectFullUser(String id);
+	//public Users selectFullUser(String id);
 	public int insertUser(Users user);
 	public int updateUser(Users user);
 	public int updatePass(Users user);
 	public int getUsersIdCount(String id);
 	public int deleteUser(String id);
 	public int deleteAllUsers();
+	public int updateRoll(Users user);
 	
 }

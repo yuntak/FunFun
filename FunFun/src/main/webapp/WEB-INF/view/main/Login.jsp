@@ -1,40 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<!DOCTYPE >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-		#login_form{
-		background: #EEF4FF;
-		border: 1px solid #BCBC9A;
-		
-  		border-radius: 15px;
-	}
-	/* .profile-img
-{
-    width: 96px;
-    height: 96px;   
-    border-radius: 50%;
-} */
-
-.form-horizontal
-{
-    width: 400px;
-    margin: 0 auto;
+#login_form {
+	background: #EEF4FF;
+	border: 1px solid #BCBC9A;
+	border-radius: 15px;
 }
-#loginbody{
+
+.form-horizontal {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.loginbody{
 	height: 70%;
+
+.loginbody {
+	background: #E8E8E8
+
 }
 </style>
 </head>
 
 <body>
+
 	
 	<div id="loginbody">
 	 <nav class="navbar" >
 <div class="container-fluid">
+
+<input type="hidden" value="none" id="logCheckVal" >
+	<div class="loginbody">
+		<br> <br> <br> <br> <br>
+		<nav class="navbar">
+			<div class="container loginForm">
 
   <form class="form-horizontal" name=fregisterform id=fregisterform method=post onsubmit="return login(this);">
   		
@@ -79,18 +84,28 @@
     
      <div class="table-responsive">
      </div>
-
-       </nav>
-       </div>
+		</div>
+		</nav>
+	</div>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="<%=request.getContextPath() %>/js/test.js"></script>
 
 </body>
 <script>
-function login(f){
-	
-	f.action = './Login';
-	return true;
-}
-
+/* 	function loginCheck(f) {
+		if(logCheck=="true"){
+			console.log(logCheck);
+			alert("1");
+			f.action='./main';
+			return true;
+			
+		}
+		else{
+		console.log(logCheck);
+		alert("1");
+		return false;
+		}
+	} */
 </script>
 
 </html>
