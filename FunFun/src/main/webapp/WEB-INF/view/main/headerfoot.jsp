@@ -6,7 +6,14 @@
     
 <!DOCTYPE html >
 <html>
+
 <head>
+<style type="text/css">
+.myinline{
+display: inline;
+}
+
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
@@ -20,13 +27,18 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<style type="text/css">
+
+</style>
+	
+
 </head>
 <body>
 	<nav class="navbar navbar-default">
+	
 		<div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
@@ -36,7 +48,7 @@
 			</div>
 
 
-			<div class="navbar-form" align="center">
+			<div class="navbar-form myinline" align="center">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
@@ -46,9 +58,9 @@
 				</button>
 			</div>
 	
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<%=request.getContextPath() %>/agreement">회원가입</a></li>
-				<li><a href="<%=request.getContextPath() %>/Login">로그인</a></li>
+			<ul class="nav navbar-nav navbar-right myinline">
+				<li><a class="a-button" href="<%=request.getContextPath() %>/agreement">회원가입</a></li>
+				<li><a class="a-button" href="<%=request.getContextPath() %>/Login">로그인</a></li>
 			</ul>
 		
 		</div>
@@ -71,16 +83,7 @@
 </div>     
 </nav>
 
-<nav class="navbar navbar-inverse navbar-fixed-bottom">
-<form class="form-inline">
-  <div class="panel-body">     
-    <p style="color:white">회사이름</p>
-    <p style="color:white">주소</p>
-    <p style="color:white">e-mail</p>
-    <p style="color:white">연락처</p>
-    </div>
-    </form>
-</nav>
+
 
 
 </body>

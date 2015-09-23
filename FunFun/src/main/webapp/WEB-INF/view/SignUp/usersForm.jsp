@@ -249,27 +249,6 @@ function sample4_execDaumPostcode() {
     }).open();
 }
 
-$(function(){
-    $("form").validate({
-      
-	rules: {
-		 mb_email: {
-             required : true,
-             minlength : 2,
-             email : true
-         }
-	},
-	message :{
-		 mb_email: {
-             required : "필수로입력하세요",
-             minlength : "최소 {0}글자이상이어야 합니다",
-             email : "메일규칙에 어긋납니다"
-         }
-	}
-    
-    
-    });
-});
 </script>
 
 </html>
