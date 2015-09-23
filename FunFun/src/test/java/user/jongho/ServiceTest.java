@@ -17,10 +17,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import funfun.jdbc.dao.BoardDao;
+import funfun.jdbc.dao.FBoardDao;
 import funfun.jdbc.dao.UsersDao;
 import funfun.jdbc.dto.Board;
+import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.BoardService;
+import funfun.jdbc.service.FBoardService;
 import funfun.jdbc.service.UsersService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -36,6 +39,11 @@ public class ServiceTest {
 	BoardService bservice;
 	@Autowired
 	BoardDao bdao;
+	
+	@Autowired
+	   FBoardDao fdao;
+	   @Autowired
+	   FBoardService fservice;
 	
 	@Test
 	public void testServiceBean(){
@@ -184,4 +192,26 @@ public class ServiceTest {
 		logger.trace("{}",retrieved);
 		assertThat(retrieved,is(1));
 	}
+	
+	@Test
+	   public void TestFBoardDelete(){
+	      FBoard fboard = fdao.selectFBoard(22);
+	      fservice.deleteFBoard("whdgh1265");
+	      assertThat(fboard.getFno(),is(not(nullValue())));
+	   }
+	   
+	   @Test
+	   public void TestFBoardInsert(){
+	      FBoard fboard = new FBoard();
+	      fboard.setTitle("줴훈줴훈");
+	      fboard.setFContext("저 사람 이솽훼");
+	      fboard.setFview(1);
+	      fboard.setBoardNo(1);
+	      fboard.setBoardCode("11");
+	      fboard.setUserId("whdgh1265");
+	      fservice.insertFBoard(fboard);
+	      logger.trace("{}",fboard);
+	      FBoard retrieved = fdao.selectFBoard(21);
+	      assertThat(retrieved.getTitle(),is("줴훈줴훈"));
+	   }
 }
