@@ -19,9 +19,8 @@
 }
 
 #loginbody {
-	margin-bottom:23%;
+	margin-bottom: 23%;
 	height: 70%
-
 }
 </style>
 </head>
@@ -40,7 +39,7 @@
 						<div class="container loginForm">
 
 							<form class="form-horizontal" name=fregisterform id=fregisterform
-								method=post onsubmit="return login(this);">
+								method=post>
 
 								<div class="panel-body" id=login_form>
 
@@ -59,13 +58,23 @@
 										<div class="form-group">
 											<label class="control-label col-sm-3" for="pwd">Password:</label>
 											<div class="col-sm-8">
-												<input type="password" class="form-control" id="pwd"
+												<input type="password" class="form-control" id="pass"
 													required placeholder="Enter password">
 											</div>
 										</div>
 
+										
+										<div class="form-group" id="msg_box" style="display: none">
+											<label for="log" class="control-label col-sm-3"></label>
+											<div class="col-sm-8">
+												<div id="wrap"
+											>
+													<span id="result"
+														style="font-size: 15px; font-weight: bold; color:#FF3030;"></span>
+												</div>
+											</div>
+										</div>
 										<br>
-
 										<div class="form-group">
 											<label for="log" class="control-label col-sm-3"></label>
 											<div class="col-sm-8">
