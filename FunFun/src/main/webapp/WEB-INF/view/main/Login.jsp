@@ -19,8 +19,8 @@
 }
 
 #loginbody {
-margin-bottom:20%;
-	height: 80%
+	margin-bottom:23%;
+	height: 70%
 
 }
 </style>

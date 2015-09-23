@@ -30,15 +30,15 @@
 
 $(function() {
 	
-/* $.validator.addMethod("numcheck", function(value, element) {
+$.validator.addMethod("numcheck", function(value, element) {
 	return this.optional(element)
 			|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
 
-}); */
+}); 
 
 $.validator.addMethod("idcheck", function(value, element) {
 	return this.optional(element)
-			|| /[a-z||A-Z]/.test(value);
+			|| /[a-z|A-Z]/.test(value);
 
 });
 
@@ -64,21 +64,23 @@ $(document).ready(function () {
                 minlength:8,
                 equalTo:'#mb_pass'
             },               
-
-            mb_email: {
-                required:true, 
-                email:true
-            },
+           
 			mb_num : {
 				requited:true,
 				numcheck:true
 			},
             mb_adress2:{
-            	requited:true
+            	requited:true,
             },
 			mb_nick:{
-				requited:true
-			}
+				requited:true,
+				minlength:6,
+			},
+			
+            mb_email: {
+                required:true, 
+                email:true
+            },
             
         },
         // 검사를 충족하지 못할 경우 표시될 메시지의 나열
@@ -96,32 +98,25 @@ $(document).ready(function () {
                 required: "암호확인를 입력하시오.",
                 minlength: "비밀번호는 {0}자 이상 입력해주세요!",            
                 equalTo:"암호를 다시 확인하세요" 
-            },
-
-            mb_email: {
-                required:"이메일을 입력하시오.",
-                email:"올바른 이메일을 입력하시오."
-            },
+            },  
             mb_num : {
-            	required:"번호를 입력하시오.",
+            	required:"번호를 입력하시오.",   
             	numcheck:"올바른 연락처를 입력해주십시오.",
             },
             mb_adress2 : {
             	required:"주소를 입력하시오."
             },
             mb_nick:{
-            	required:"닉네임을 입력하시오."
-			}
+            	required:"닉네임을 입력하시오.",
+            	minlength: "닉네임 {0}자 이상 입력해주세요!",
+			},
+            mb_email: {
+                required:"이메일을 입력하시오.",
+                email:"올바른 이메일을 입력하시오."
+            },
         },
 
-        /*alert 대화상자를 통한 에러메시지 표시를 위한 옵션설정*/
-        
-        //키보드에 의한 검사 해제
-        onkeyup : false,
 
-        // 포커스가 빠져나올 경우의 검사 해제
-        onfocusout : false, 
-        // 에러 발생시 이벤트를 가로 챔
    
 
                 
@@ -151,7 +146,7 @@ $(document).ready(function () {
 					<label for="mb_id" class="col-sm-2 control-label">아이디</label>
 					<div class="col-sm-6">
 						<input class="form-control" placeholder="User id"  size=20 id='mb_id' name="mb_id" required
-							style="ime-mode: disabled" value="" onblur='reg_mb_id_check()'>
+							 value="" >
 						<p class="help-block">아아디는 최소6자 이상 20자 이하입니다.</p>
 
 						<p class="help-block">
@@ -164,8 +159,8 @@ $(document).ready(function () {
 					<label for="mb_password" class="col-sm-2 control-label">패스워드</label>
 					<div class="col-sm-6">
 						<INPUT class="form-control" type="password" name="mb_pass"
-							id="mb_pass" style="ime-mode: disabled" size=20 minlength=8
-							maxlength=20 required itemname="패스워드" placeholder="Password">
+							id="mb_pass"  size=20 
+							maxlength=20 required placeholder="Password">
 					</div>
 				</div>
 
@@ -173,8 +168,8 @@ $(document).ready(function () {
 					<label for="mb_password_re" class="col-sm-2 control-label">패스워드확인</label>
 					<div class="col-xs-5">
 						<INPUT class="form-control" type="password" id="mb_pass_re"
-							name="mb_pass_re" style="ime-mode: disabled" size=20 minlength=8
-							maxlength=20 required itemname="패스워드 확인"
+							name="mb_pass_re"  size=20 
+							maxlength=20 required 
 							placeholder="Password를 한번 더 입력">
 						<p class="help-block">비밀번호는 8자 이상으로 입력하세요.</p>
 					</div>
@@ -185,7 +180,7 @@ $(document).ready(function () {
 					<label for="mb_num" class="col-sm-2 control-label">연락처</label>
 					<div class="col-xs-5">
 						<input class="form-control" type="text" id='mb_num' name='mb_num'
-							required maxlength=13 placeholder="번호입력">
+							required maxlength=13 placeholder="번호입력" value="">
 
 					</div>
 
@@ -239,26 +234,20 @@ $(document).ready(function () {
 			</div>
 
 
-			<input type=hidden name=mb_nick_default value=''>
 			<div class="form-group">
 				<label for="mb_nick" class="col-sm-2 control-label">닉네임</label>
 				<div class="col-sm-6">
 					<input class="form-control" type="text" id='mb_nick' name='mb_nick'
-						required hangulalphanumeric maxlength=20 value=''
-						placeholder="Nick name" onblur="reg_mb_nick_check();">
+						required  maxlength=20 value=''
+						placeholder="Nick name" >
 					<p class="help-block">
-						공백없이 한글,영문,숫자만 입력 가능 (한글2자, 영문4자 이상)<br> 별명을 바꾸시면 앞으로 60일
-						이내에는 변경 할 수 없습니다.
+						
 					</p>
 					<p class="help-block">
 						<span id="msg_mb_nick"></span>
 					</p>
 				</div>
 			</div>
-
-
-
-			<input type=hidden name='old_email' value=''>
 
 
 			<div class="form-group" id="form">
@@ -310,7 +299,7 @@ $(document).ready(function () {
 
 		</div>
 
-		</div>
+	
 
 	</form>
 
