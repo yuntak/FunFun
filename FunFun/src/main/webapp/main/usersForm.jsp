@@ -33,15 +33,18 @@ $(function() {
 $.validator.addMethod("numcheck", function(value, element) {
 	return this.optional(element)
 			|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
-
 }); 
 
 $.validator.addMethod("idcheck", function(value, element) {
 	return this.optional(element)
 			|| /[a-z|A-Z]/.test(value);
-
 });
-
+$.validator.addMethod("id_dupl_check",function(value,element){
+	
+	
+	
+	return false;
+});
 $(document).ready(function () {          
     //확장옵션
     $('#fregisterform').validate({
