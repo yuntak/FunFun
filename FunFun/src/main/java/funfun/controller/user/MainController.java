@@ -93,7 +93,7 @@ public class MainController {
 	//로그인을 처리 AJax
 	@RequestMapping(value="/login_ajax",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
 	public@ResponseBody String loginAjax(@RequestParam String id,@RequestParam String pass){
-		
+
 		
 		if(id.equals("qwer")&&pass.equals("qwer")){
 			return "true";
