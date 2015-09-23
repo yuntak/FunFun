@@ -180,7 +180,7 @@ public class ServiceTest {
 	
 	@Test
 	public void testLmb_idogin(){
-		Map<String, Object> retrieved = service.loginUsers("whdgh1265", "dhkdn");
+		Users retrieved = service.loginUsers("whdgh1265", "dhkdn");
 		logger.trace("{}",retrieved);
 		assertThat(retrieved, is(not(nullValue())));
 	}

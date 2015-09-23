@@ -124,8 +124,8 @@ public class UsersServiceImpl implements UsersService {
 	}
 	
 	@Override
-	public Map<String, Object> loginUsers(String id, String pass){
-		Map<String,Object> users = null;
+	public Users loginUsers(String id, String pass){
+		Users users = null;
 		try {
 			users = dao.loginUsers(id, pass);
 		} catch (EmptyResultDataAccessException e) {

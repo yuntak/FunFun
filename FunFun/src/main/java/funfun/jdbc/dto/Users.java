@@ -12,7 +12,7 @@ public class Users {
 	private String mail_no;
 	private String roll;
 	
-	private List<Board> boards;
+	private List<FBoard> fboards;
 
 	
 	
@@ -33,7 +33,7 @@ public class Users {
 		this.address = address;
 		this.mail_no = mail_no;
 		this.roll = roll;
-		this.boards = boards;
+		this.fboards = fboards;
 	}
 
 	
@@ -101,18 +101,18 @@ public class Users {
 		this.roll = roll;
 	}
 
-	public List<Board> getBoards() {
-		return boards;
+	public List<FBoard> getFBoards() {
+		return fboards;
 	}
 
-	public void setBoards(List<Board> boards) {
-		this.boards = boards;
+	public void setFBoards(List<FBoard> fboards) {
+		this.fboards = fboards;
 	}
 
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", nickname=" + nickname + ", pass=" + pass + ", email=" + email + ", cellphone="
-				+ cellphone + ", address=" + address + ", mail_no=" + mail_no + ", roll=" + roll + ", boards=" + boards
+				+ cellphone + ", address=" + address + ", mail_no=" + mail_no + ", roll=" + roll + ", fboards=" + fboards
 				+ "]";
 	}
 
