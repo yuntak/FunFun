@@ -214,6 +214,10 @@ public class UsersDaoImpl implements UsersDao {
 	      }},id,pass);
 	   
 	   return user;
+	   
+	   
+	   
+	   
 	}
 	@Override
 	public int updateRoll(Users user) {
