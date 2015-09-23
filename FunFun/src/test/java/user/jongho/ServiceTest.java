@@ -171,7 +171,7 @@ public class ServiceTest {
 	}
 	
 	@Test
-	public void testLogin(){
+	public void testLmb_idogin(){
 		Map<String, Object> retrieved = service.loginUsers("whdgh1265", "dhkdn");
 		logger.trace("{}",retrieved);
 		assertThat(retrieved, is(not(nullValue())));

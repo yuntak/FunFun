@@ -6,7 +6,14 @@
     
 <!DOCTYPE html >
 <html>
+
 <head>
+<style type="text/css">
+.myinline{
+display: inline;
+}
+
+</style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
@@ -41,7 +48,7 @@
 			</div>
 
 
-			<div class="navbar-form" align="center">
+			<div class="navbar-form myinline" align="center">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
@@ -51,9 +58,9 @@
 				</button>
 			</div>
 	
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="<%=request.getContextPath() %>/agreement">회원가입</a></li>
-				<li><a href="<%=request.getContextPath() %>/Login">로그인</a></li>
+			<ul class="nav navbar-nav navbar-right myinline">
+				<li><a class="a-button" href="<%=request.getContextPath() %>/agreement">회원가입</a></li>
+				<li><a class="a-button" href="<%=request.getContextPath() %>/Login">로그인</a></li>
 			</ul>
 		
 		</div>
