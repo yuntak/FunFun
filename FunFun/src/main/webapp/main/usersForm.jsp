@@ -25,7 +25,7 @@
 <!-- jQuery.validate 플러그인 삽입 -->
 <script
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-
+	
 <script>
 
 $(function() {
@@ -66,14 +66,14 @@ $(document).ready(function () {
             },               
            
 			mb_num : {
-				requited:true,
+				required:true,
 				numcheck:true
 			},
             mb_adress2:{
-            	requited:true,
+            	required:true,
             },
 			mb_nick:{
-				requited:true,
+				required:true,
 				minlength:6,
 			},
 			
@@ -107,19 +107,15 @@ $(document).ready(function () {
             	required:"주소를 입력하시오."
             },
             mb_nick:{
-            	required:"닉네임을 입력하시오.",
-            	minlength: "닉네임 {0}자 이상 입력해주세요!",
+            	required:"닉네임을 입력하시오."
+            	
 			},
             mb_email: {
                 required:"이메일을 입력하시오.",
                 email:"올바른 이메일을 입력하시오."
             },
         },
-
-
-   
-
-                
+              
     });
   }); //end ready()
 });
