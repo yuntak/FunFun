@@ -87,7 +87,7 @@ public class ServiceTest {
 	@Test
 	public void testBoardInsert(){
 		Board board = new Board();
-		board.setNo(3);		
+		board.setNo(4);		
 		board.setCode("11");
 		board.setUserId("whdgh1265");
 		
@@ -98,8 +98,8 @@ public class ServiceTest {
 	
 	@Test
 	public void testBoardDelete(){
-		Board retrieved = bdao.selectBoard(2);
-		bservice.delete(2);
+		Board retrieved = bdao.selectBoard(4);
+		bservice.delete(4);
 		assertThat(retrieved.getNo(),is(not(nullValue())));
 	}
 
