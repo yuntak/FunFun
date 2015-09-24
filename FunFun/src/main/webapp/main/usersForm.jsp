@@ -25,104 +25,158 @@
 <!-- jQuery.validate 플러그인 삽입 -->
 <script
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-	
+
 <script>
+	$(function() {
 
-$(function() {
-	
-$.validator.addMethod("numcheck", function(value, element) {
-	return this.optional(element)
-			|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
-}); 
+		$.validator.addMethod("numcheck", function(value, element) {
+			return this.optional(element)
+					|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
+		});
 
-$.validator.addMethod("idcheck", function(value, element) {
-	return this.optional(element)
-			|| /[a-z|A-Z]/.test(value);
-});
-$.validator.addMethod("id_dupl_check",function(value,element){
-	
-	
-	
-	return false;
-});
-$(document).ready(function () {          
-    //확장옵션
-    $('#fregisterform').validate({
-        // 테스트를 위하여 유효성 검사가 완료되어 submit을 처리하지 않음.(값이 true일경우)
-        debug : true,
-        //검사할 필드와 검사 항목의 나열
-        rules: {
-            mb_id:{
-                required:true, 
-                minlength:6,
-                maxlength:20,
-                idcheck:true
-            } ,
-            mb_pass: {
-            	required:true,
-            	minlength:8,
-            },
-            mb_pass_re: {
-                required:true, 
-                minlength:8,
-                equalTo:'#mb_pass'
-            },               
-           
-			mb_num : {
-				required:true,
-				numcheck:true
-			},
-            mb_adress2:{
-            	required:true,
-            },
-			mb_nick:{
-				required:true,
-				minlength:6,
-			},
-			
-            mb_email: {
-                required:true, 
-                email:true
-            },
-            
-        },
-        // 검사를 충족하지 못할 경우 표시될 메시지의 나열
-        messages: {
-            mb_id: {
-                 required:"아이디를 입력하시오.",
-                 minlength: "아이디는 {0}자 이상 입력해주세요!",
-                 idcheck:"영어만 입력가능합니다"
-            },
-            mb_pass: {
-            	required:"암호를 입력하시오.",
-            	minlength: "비밀번호는 {0}자 이상 입력해주세요!",             
-            },
-            mb_pass_re: {
-                required: "암호확인를 입력하시오.",
-                minlength: "비밀번호는 {0}자 이상 입력해주세요!",            
-                equalTo:"암호를 다시 확인하세요" 
-            },  
-            mb_num : {
-            	required:"번호를 입력하시오.",   
-            	numcheck:"올바른 연락처를 입력해주십시오.",
-            },
-            mb_adress2 : {
-            	required:"주소를 입력하시오."
-            },
-            mb_nick:{
-            	required:"닉네임을 입력하시오."
-            	
-			},
-            mb_email: {
-                required:"이메일을 입력하시오.",
-                email:"올바른 이메일을 입력하시오."
-            },
-        },
-              
-    });
-  }); //end ready()
-});
+		$.validator.addMethod("idcheck", function(value, element) {
+			return this.optional(element) || /[a-z|A-Z|0-9]/.test(value);
+		});
+		/* $.validator.addMethod("id_dupl_check",function(value){
+		 console.log(value);
+		 var myid=value;
+		 console.log(myid);
+		 var url="./Id_dupl_ajax";
+		 result=false;
+		 $.ajax({
+		 type:"post",
+		 url:url,
+		 data:{myid:id},
+		 success:function(response){
+		 if(response=="true"){
+		 result=true;
+		 }else{
+		 result=false;
+		 }
+		
+		 },
+		 error:function(request,status,error){
+		 console.log("ajax fail");
+		 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		 }
+		 });
+		 return result;*/
+		$.validator.addMethod("EMail_dupl_ajax", function(value) {
+			console.log(value);
+			var mb_mailling = value;
+			console.log(mb_mailing);
+			var url = "./EMail_dupl_ajax";
+			result = false;
+			$.ajax({
+				type : "post",
+				url : url,
+				data : {
+					mb_mailling : mb_mailling
+				},
+				success : function(response) {
+					if (response == "true") {
+						console.log("not dupl");
+						result = true;
 
+					} else {
+
+						console.log("dupl");
+						result = false;
+
+					}
+
+				},
+				error : function(request, status, error) {
+					console.log("ajax fail");
+					alert("code:" + request.status + "\n" + "message:"
+							+ request.responseText + "\n" + "error:" + error);
+				}
+			});
+			return result;
+		});
+
+		$(document).ready(function() {
+			//확장옵션
+			$('#fregisterform').validate({
+				// 테스트를 위하여 유효성 검사가 완료되어 submit을 처리하지 않음.(값이 true일경우)
+				debug : true,
+				//검사할 필드와 검사 항목의 나열
+				rules : {
+					mb_id : {
+						required : true,
+						minlength : 4,
+						maxlength : 20,
+						idcheck : true,
+					/*  id_dupl_check:true */
+					},
+					mb_pass : {
+						required : true,
+						minlength : 8,
+					},
+					mb_pass_re : {
+						required : true,
+						minlength : 8,
+						equalTo : '#mb_pass'
+					},
+
+					mb_num : {
+						required : true,
+						numcheck : true
+					},
+					mb_adress2 : {
+						required : true,
+					},
+					mb_nick : {
+						required : true,
+						minlength : 6,
+					},
+
+					mb_email : {
+						required : true,
+						email : true,
+						EMail_dupl_ajax : true
+					},
+
+				},
+				// 검사를 충족하지 못할 경우 표시될 메시지의 나열
+				messages : {
+					mb_id : {
+						required : "아이디를 입력하시오.",
+						minlength : "아이디는 {0}자 이상 입력해주세요!",
+						idcheck : "영어만 입력가능합니다",
+					//id_dupl_check:"아이디가 중복 되었습니다."
+
+					},
+					mb_pass : {
+						required : "암호를 입력하시오.",
+						minlength : "비밀번호는 {0}자 이상 입력해주세요!",
+					},
+					mb_pass_re : {
+						required : "암호확인를 입력하시오.",
+						minlength : "비밀번호는 {0}자 이상 입력해주세요!",
+						equalTo : "암호를 다시 확인하세요"
+					},
+					mb_num : {
+						required : "번호를 입력하시오.",
+						numcheck : "올바른 연락처를 입력해주십시오.",
+					},
+					mb_adress2 : {
+						required : "주소를 입력하시오."
+					},
+					mb_nick : {
+						required : "닉네임을 입력하시오."
+
+					},
+					mb_email : {
+						required : "이메일을 입력하시오.",
+						email : "올바른 이메일을 입력하시오.",
+						EMail_dupl_ajax : "이메일이 중복 되었습니다"
+					},
+				},
+
+			});
+		}); //end ready()
+	});
 </script>
 
 </head>
@@ -144,8 +198,8 @@ $(document).ready(function () {
 				<div class="form-group">
 					<label for="mb_id" class="col-sm-2 control-label">아이디</label>
 					<div class="col-sm-6">
-						<input class="form-control" placeholder="User id"  size=20 id='mb_id' name="mb_id" required
-							 value="" >
+						<input class="form-control" placeholder="User id" size=20
+							id='mb_id' name="mb_id" required value="">
 						<p class="help-block">아아디는 최소6자 이상 20자 이하입니다.</p>
 
 						<p class="help-block">
@@ -158,8 +212,7 @@ $(document).ready(function () {
 					<label for="mb_password" class="col-sm-2 control-label">패스워드</label>
 					<div class="col-sm-6">
 						<INPUT class="form-control" type="password" name="mb_pass"
-							id="mb_pass"  size=20 
-							maxlength=20 required placeholder="Password">
+							id="mb_pass" size=20 maxlength=20 required placeholder="Password">
 					</div>
 				</div>
 
@@ -167,8 +220,7 @@ $(document).ready(function () {
 					<label for="mb_password_re" class="col-sm-2 control-label">패스워드확인</label>
 					<div class="col-xs-5">
 						<INPUT class="form-control" type="password" id="mb_pass_re"
-							name="mb_pass_re"  size=20 
-							maxlength=20 required 
+							name="mb_pass_re" size=20 maxlength=20 required
 							placeholder="Password를 한번 더 입력">
 						<p class="help-block">비밀번호는 8자 이상으로 입력하세요.</p>
 					</div>
@@ -237,11 +289,8 @@ $(document).ready(function () {
 				<label for="mb_nick" class="col-sm-2 control-label">닉네임</label>
 				<div class="col-sm-6">
 					<input class="form-control" type="text" id='mb_nick' name='mb_nick'
-						required  maxlength=20 value=''
-						placeholder="Nick name" >
-					<p class="help-block">
-						
-					</p>
+						required maxlength=20 value='' placeholder="Nick name">
+					<p class="help-block"></p>
 					<p class="help-block">
 						<span id="msg_mb_nick"></span>
 					</p>
@@ -270,8 +319,8 @@ $(document).ready(function () {
 				<label for="mb_mailling" class="col-sm-2 control-label">메일링서비스</label>
 				<div class="col-sm-6">
 					<div class="checkbox">
-						<label> <input type="checkbox" name="mb_mailling"
-							id="mb_mailling" value='1' checked> 정보 메일을 받겠습니다.
+						<label> <input type="checkbox" name="mb_mailing"
+							id="mb_mailing" value='1' checked> 정보 메일을 받겠습니다.
 						</label>
 					</div>
 				</div>
@@ -298,7 +347,7 @@ $(document).ready(function () {
 
 		</div>
 
-	
+
 
 	</form>
 
