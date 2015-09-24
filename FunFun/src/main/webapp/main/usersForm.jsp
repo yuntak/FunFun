@@ -34,6 +34,97 @@
 					|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
 		});
 
+<<<<<<< HEAD
+$.validator.addMethod("idcheck", function(value, element) {
+	return this.optional(element)
+			|| /[a-z|A-Z]/.test(value);
+});
+$.validator.addMethod("id_dupl_check",function(value,element){
+	
+	
+	
+	return false;
+});
+$(document).ready(function () {          
+    //확장옵션
+    $('#fregisterform').validate({
+        // 테스트를 위하여 유효성 검사가 완료되어 submit을 처리하지 않음.(값이 true일경우)
+        debug : true,
+        //검사할 필드와 검사 항목의 나열
+        rules: {
+            mb_id:{
+                required:true, 
+                minlength:6,
+                maxlength:20,
+                idcheck:true
+            } ,
+            mb_pass: {
+            	required:true,
+            	minlength:8,
+            },
+            mb_pass_re: {
+                required:true, 
+                minlength:8,
+                equalTo:'#mb_pass'
+            },               
+           
+			mb_num : {
+				required:true,
+				numcheck:true
+			},
+            mb_adress2:{
+            	required:true,
+            },
+			mb_nick:{
+				required:true,
+				minlength:6,
+			},
+			
+            mb_email: {
+                required:true, 
+                email:true
+            },
+            
+        },
+        // 검사를 충족하지 못할 경우 표시될 메시지의 나열
+        messages: {
+            mb_id: {
+                 required:"아이디를 입력하시오.",
+                 minlength: "아이디는 {0}자 이상 입력해주세요!",
+                 maxlength:"아이디는 {0}자 이하 입력해주세요!",
+                 idcheck:"영어만 입력가능합니다"
+            },
+            mb_pass: {
+            	required:"암호를 입력하시오.",
+            	minlength: "비밀번호는 {0}자 이상 입력해주세요!",             
+            },
+            mb_pass_re: {
+                required: "암호확인를 입력하시오.",
+                minlength: "비밀번호는 {0}자 이상 입력해주세요!",            
+                equalTo:"암호를 다시 확인하세요" 
+            },  
+            mb_num : {
+            	required:"번호를 입력하시오.",   
+            	numcheck:"000-0000-0000 형태로 입력해주세요.",
+            	
+            },
+            mb_adress2 : {
+            	required:"주소를 입력하시오."
+            },
+            mb_nick:{
+            	required:"닉네임을 입력하시오."
+            	
+			},
+            mb_email: {
+                required:"이메일을 입력하시오.",
+                email:"올바른 이메일을 입력하시오."
+            },
+        },
+              
+    });
+  }); //end ready()
+});
+=======
 		$.validator.addMethod("idcheck", function(value, element) {
 			return this.optional(element) || /[a-z|A-Z|0-9]/.test(value);
 		});
@@ -77,6 +168,7 @@
 					if (response == "true") {
 						console.log("not dupl");
 						result = true;
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 
 					} else {
 

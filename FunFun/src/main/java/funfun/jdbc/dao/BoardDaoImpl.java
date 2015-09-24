@@ -49,8 +49,8 @@ public class BoardDaoImpl implements BoardDao {
    @Override
    public int insertBoard(Board board) {
       int result;
-      String sql = "insert into Board values(?,?,?)";
-      result = jt.update(sql,board.getNo(),board.getCode(),board.getUserId());
+      String sql = "insert into Board values(seq_board.nextval,?,?)";
+      result = jt.update(sql,board.getCode(),board.getUserId());
       return result;
    }
 

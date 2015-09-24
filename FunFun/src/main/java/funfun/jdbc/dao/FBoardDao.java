@@ -21,4 +21,6 @@ public interface FBoardDao {
 	public List<FBoard> selectFBoardByCode(int board_no, String board_code);
 	
 	public List<FBoard> selectFBoardById(String userId);
+	
+	public List<FBoard> selectFBoardByTitle(String title);
 }

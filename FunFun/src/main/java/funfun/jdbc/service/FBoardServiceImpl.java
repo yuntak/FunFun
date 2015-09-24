@@ -52,8 +52,15 @@ public class FBoardServiceImpl implements FBoardService {
 	@Override
 	   public List<FBoard> selectFBoardById(String userId) {
 	      List<FBoard> selectresult = fdao.selectFBoardById(userId);
-	      logger.trace("select over : {}",selectresult);
+	      logger.trace("select id over : {}",selectresult);
 	      return selectresult;
 	   }
+
+	@Override
+	public List<FBoard> selectFBoardByTitle(String title) {
+		 List<FBoard> selectresult = fdao.selectFBoardByTitle(title);
+	      logger.trace("select title over : {}",selectresult);
+	      return selectresult;
+	}
 
 }

@@ -1,6 +1,5 @@
 package user.jongho;
 
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -208,7 +207,7 @@ public class ServiceTest {
 	@Test
 	public void TestFBoardInsert() {
 		Board board = new Board();
-		board.setNo(6);
+		
 		board.setCode("11");
 		board.setUserId("whdgh1265");
 		bservice.insertBoard(board);
@@ -216,8 +215,8 @@ public class ServiceTest {
 		FBoard fboard = new FBoard();
 		fboard.setTitle("줴훈줴훈");
 		fboard.setFContext("저 사람 이솽훼");
-		fboard.setFview(1);
-		fboard.setBoardNo(1);
+		fboard.setFview(3);
+		fboard.setBoardNo(3);
 		fboard.setBoardCode("11");
 		fboard.setUserId("whdgh1265");
 		fservice.insertFBoard(fboard);
@@ -249,6 +248,14 @@ public class ServiceTest {
 	   public void TestFBoardselectById(){
 	      List<FBoard> fboard = fdao.selectFBoardById("loll333");
 	      fservice.selectFBoardById("loll333");
+	      assertThat(fboard,is(not(nullValue())));
+	   }
+	
+	@Test
+	   public void TestFBoardselectByTitle(){
+	      List<FBoard> fboard = fdao.selectFBoardByTitle("재");
+	      fservice.selectFBoardByTitle("재");
+	      logger.trace("{}",fboard);
 	      assertThat(fboard,is(not(nullValue())));
 	   }
 }
