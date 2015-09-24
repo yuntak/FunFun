@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import funfun.jdbc.dao.UsersDao;
+import funfun.jdbc.dto.Board;
 import funfun.jdbc.dto.Users;
 
 @Service
@@ -59,7 +60,6 @@ public class UsersServiceImpl implements UsersService {
 	public void insert(Users user) {
 		int insertResult = dao.insertUser(user);
 		logger.trace("insert over : {}",insertResult);
-		//Return 필요
 	}
 
 	@Override
@@ -72,7 +72,6 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public void delete(String id) {
 		int deleteId = dao.deleteUser(id);
-		//로깅 리턴 필요
 	}
 
 	@Override
@@ -124,8 +123,8 @@ public class UsersServiceImpl implements UsersService {
 	}
 	
 	@Override
-	public Users loginUsers(String id, String pass){
-		Users users = null;
+	public Map<String, Object> loginUsers(String id, String pass){
+		Map<String,Object> users = null;
 		try {
 			users = dao.loginUsers(id, pass);
 		} catch (EmptyResultDataAccessException e) {
@@ -139,11 +138,7 @@ public class UsersServiceImpl implements UsersService {
 		}
 	}
 
-	@Override
-	public void updateRoll(Users user) {
-		int updateResult = dao.updateRoll(user);
-		logger.trace("update over : {}", updateResult);
-		
-	}
+
+	
 
 }
