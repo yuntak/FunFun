@@ -89,4 +89,11 @@ public class FBoardDaoImpl implements FBoardDao {
 	      List<FBoard> result = jt.query(sql,new BeanPropertyRowMapper<FBoard>(FBoard.class), board_no,board_code);
 	      return result;
 	   }
+	
+	@Override
+	   public List<FBoard> selectFBoardById(String userId) {
+	      String sql = "select * from free_board where user_id=?";
+	      List<FBoard> result = jt.query(sql,new BeanPropertyRowMapper<FBoard>(FBoard.class),userId);
+	      return result;
+	   }
 }

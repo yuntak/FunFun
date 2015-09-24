@@ -48,5 +48,12 @@ public class FBoardServiceImpl implements FBoardService {
 		logger.trace("delete over : {}", deleteresult);
 		
 	}
+	
+	@Override
+	   public List<FBoard> selectFBoardById(String userId) {
+	      List<FBoard> selectresult = fdao.selectFBoardById(userId);
+	      logger.trace("select over : {}",selectresult);
+	      return selectresult;
+	   }
 
 }

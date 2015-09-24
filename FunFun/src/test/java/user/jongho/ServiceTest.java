@@ -244,4 +244,11 @@ public class ServiceTest {
 		fservice.selectFBoardByCode(1, "11");
 		assertThat(fboard, is(not(nullValue())));
 	}
+	
+	@Test
+	   public void TestFBoardselectById(){
+	      List<FBoard> fboard = fdao.selectFBoardById("loll333");
+	      fservice.selectFBoardById("loll333");
+	      assertThat(fboard,is(not(nullValue())));
+	   }
 }

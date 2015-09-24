@@ -19,4 +19,6 @@ public interface FBoardDao {
 	public FBoard selectFBoard(int no);
 
 	public List<FBoard> selectFBoardByCode(int board_no, String board_code);
+	
+	public List<FBoard> selectFBoardById(String userId);
 }
