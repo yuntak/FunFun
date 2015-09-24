@@ -70,7 +70,7 @@ public class MainController {
 		user.setEmail(mb_mailing);//이메일 설정
 		user.setRoll("BASIC");//권한 설정
 		int result= -1;
-		//UserSvc.insert(user);
+		result=UserSvc.insert(user);
 		if(result==1){
 			session.setAttribute("FunFunSignUpId",mb_id);
 		}

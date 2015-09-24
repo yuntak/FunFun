@@ -193,6 +193,7 @@
 <body>
 	<form class="form-horizontal" name=fregisterform id=fregisterform
 		method=post 
+		onsubmit="SignUpTry(this);"
 		enctype="multipart/form-data" autocomplete="off">
 
 		<div class="panel panel-info">
@@ -209,7 +210,7 @@
 					<div class="col-sm-6">
 						<input class="form-control" placeholder="User id" size=20
 							id='mb_id' name="mb_id" required value="">
-						<p class="help-block">아아디는 최소6자 이상 20자 이하입니다.</p>
+						<p class="help-block">아아디는 최소4자 이상 20자 이하입니다.</p>
 
 						<p class="help-block">
 							<span id="msg_mb_id"></span>
@@ -350,7 +351,7 @@
 
 		</div>
 		<div class="panel-footer">
-			<button class="btn btn-success">가 입</button>
+			<button class="btn btn-success" >가 입</button>
 			<a href="javascript:" class="btn btn-danger"
 				onClick="history.go(-1);">취소</a>
 
@@ -415,6 +416,12 @@ function sample4_execDaumPostcode() {
         }
     }).open();
 }
+
+</script>
+<script type="text/javascript">
+function SignUpTry(f){
+	f.action='SignUpResult';
+	};
 
 </script>
 

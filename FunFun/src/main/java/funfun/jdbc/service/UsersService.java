@@ -13,7 +13,7 @@ public interface UsersService {
     String checkEmail(String id);
     
 	 int IdConfirm(String id);
-	void insert(Users user);
+	int insert(Users user);
 	void delete(String id);
 	void updatePass(Users user);
 	Map<String, Object> loginUsers(String id, String pass);

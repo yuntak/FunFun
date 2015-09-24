@@ -57,9 +57,10 @@ public class UsersServiceImpl implements UsersService {
 	
 	
 	@Override
-	public void insert(Users user) {
+	public int insert(Users user) {
 		int insertResult = dao.insertUser(user);
 		logger.trace("insert over : {}",insertResult);
+		return insertResult;
 	}
 
 	@Override
