@@ -16,7 +16,7 @@ public interface UsersDao {
 	public List<Map<String,Object>> getAllUsersMap();
 	public Users selectUser(String id);
 	public List<Users> getAllUsersList();
-	public Users loginUsers(String id, String pass);
+	public Map<String, Object> loginUsers(String id, String pass);
 	//public Users selectFullUser(String id);
 	public int insertUser(Users user);
 	public int updateUser(Users user);
@@ -24,6 +24,5 @@ public interface UsersDao {
 	public int getUsersIdCount(String id);
 	public int deleteUser(String id);
 	public int deleteAllUsers();
-	public int updateRoll(Users user);
 	
 }

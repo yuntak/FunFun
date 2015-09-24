@@ -6,6 +6,7 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -34,27 +35,28 @@ public class ServiceTest {
 	UsersService service;
 	@Autowired
 	UsersDao dao;
-	
+
 	@Autowired
 	BoardService bservice;
 	@Autowired
 	BoardDao bdao;
-	
+
 	@Autowired
-	   FBoardDao fdao;
-	   @Autowired
-	   FBoardService fservice;
-	
+	FBoardDao fdao;
+	@Autowired
+	FBoardService fservice;
+
 	@Test
-	public void testServiceBean(){
-		logger.trace("service bean ok? {}",service);
+	public void testServiceBean() {
+		logger.trace("service bean ok? {}", service);
 		assertThat(service, is(not(nullValue())));
 	}
+
 	@Test
-	public void testInsert(){
+	public void testInsert() {
 		Users user = new Users();
 		user.setId("zxz222");
-		String name="롤2";
+		String name = "롤2";
 		user.setNickname(name);
 		user.setPass("123");
 		user.setEmail("every9168@naver.com");
@@ -66,10 +68,9 @@ public class ServiceTest {
 		Users retrieved = dao.selectUser(user.getId());
 		assertThat(retrieved.getNickname(), is(name));
 	}
-	
-	
+
 	@Test
-	public void testUpdate(){
+	public void testUpdate() {
 		String sId = dao.getUserIdById("zxz1265");
 		Users user = new Users();
 		user.setId(sId);
@@ -80,39 +81,39 @@ public class ServiceTest {
 		System.out.println("1");
 		service.update(user);
 		System.out.println("2");
-		
+
 		System.out.println("3");
 		assertThat(user.getNickname(), is("정준하"));
 	}
-	
+
 	@Test
-	public void testUsersDelete(){
+	public void testUsersDelete() {
 		Users retrieved = dao.selectUser("lol7");
 		service.delete("lol7");
-		assertThat(retrieved.getId(),is(nullValue()));
+		assertThat(retrieved.getId(), is(nullValue()));
 	}
-	
+
 	@Test
-	public void testBoardInsert(){
+	public void testBoardInsert() {
 		Board board = new Board();
-		board.setNo(4);		
+		board.setNo(3);
 		board.setCode("11");
 		board.setUserId("whdgh1265");
-		
+
 		bservice.insertBoard(board);
 		Board retrieved = bdao.selectBoard(board.getNo());
 		assertThat(retrieved.getCode(), is("11"));
 	}
-	
+
 	@Test
-	public void testBoardDelete(){
-		Board retrieved = bdao.selectBoard(4);
-		bservice.delete(4);
-		assertThat(retrieved.getNo(),is(not(nullValue())));
+	public void testBoardDelete() {
+		Board retrieved = bdao.selectBoard(2);
+		bservice.delete(2);
+		assertThat(retrieved.getNo(), is(not(nullValue())));
 	}
 
 	@Test
-	public void testPassById(){
+	public void testPassById() {
 		Users user = new Users();
 		user.setId("lolllll1");
 		user.setNickname("lol");
@@ -127,9 +128,9 @@ public class ServiceTest {
 		String retrieved = dao.getUserPasswordById(user.getId());
 		assertThat(retrieved, is("1234"));
 	}
-	
+
 	@Test
-	public void testPassUpdate(){
+	public void testPassUpdate() {
 		String sId = dao.getUserIdById("zxz1265");
 		Users user = new Users();
 		user.setId(sId);
@@ -139,9 +140,9 @@ public class ServiceTest {
 		System.out.println("2");
 		assertThat(user.getPass(), is("9090"));
 	}
-	
+
 	@Test
-	public void testIdById(){
+	public void testIdById() {
 		Users user = new Users();
 		user.setId("loll333");
 		user.setNickname("lol");
@@ -156,62 +157,91 @@ public class ServiceTest {
 		String retrieved = dao.getUserIdById(user.getId());
 		assertThat(retrieved, is("loll333"));
 	}
-	
+
 	@Test
-	public void testIdCheck(){
+	public void testIdCheck() {
 		String retrieved = service.checkId("whdgh1265");
-		logger.trace("{}",retrieved);
+		logger.trace("{}", retrieved);
 		assertThat(retrieved, is("0"));
 	}
-	
+
 	@Test
-	public void testNickNameCheck(){
+	public void testNickNameCheck() {
 		String retrieved = service.checkNickname("심슨");
-		logger.trace("{}",retrieved);
+		logger.trace("{}", retrieved);
 		assertThat(retrieved, is("0"));
 	}
-	
+
 	@Test
-	public void testEmailCheck(){
+	public void testEmailCheck() {
 		String retrieved = service.checkEmail("whdgh1265@naver.com");
-		logger.trace("{}",retrieved);
+		logger.trace("{}", retrieved);
 		assertThat(retrieved, is("0"));
 	}
-	
+
 	@Test
-	public void testLmb_idogin(){
-		Users retrieved = service.loginUsers("whdgh1265", "dhkdn");
-		logger.trace("{}",retrieved);
+	public void testLogin() {
+		Map<String, Object> retrieved = service.loginUsers("whdgh1265", "dhkdn");
+		logger.trace("{}", retrieved);
 		assertThat(retrieved, is(not(nullValue())));
 	}
-	
-	
+
 	@Test
-	public void testIdConfirm(){
+	public void testIdConfirm() {
 		int retrieved = service.IdConfirm("lol6");
-		logger.trace("{}",retrieved);
-		assertThat(retrieved,is(1));
+		logger.trace("{}", retrieved);
+		assertThat(retrieved, is(1));
 	}
-	
+
 	@Test
-	   public void TestFBoardDelete(){
-	      FBoard fboard = fdao.selectFBoard(22);
-	      fservice.deleteFBoard("whdgh1265");
-	      assertThat(fboard.getFno(),is(not(nullValue())));
-	   }
-	   
-	   @Test
-	   public void TestFBoardInsert(){
-	      FBoard fboard = new FBoard();
-	      fboard.setTitle("줴훈줴훈");
-	      fboard.setFContext("저 사람 이솽훼");
-	      fboard.setFview(1);
-	      fboard.setBoardNo(1);
-	      fboard.setBoardCode("11");
-	      fboard.setUserId("whdgh1265");
-	      fservice.insertFBoard(fboard);
-	      logger.trace("{}",fboard);
-	      FBoard retrieved = fdao.selectFBoard(21);
-	      assertThat(retrieved.getTitle(),is("줴훈줴훈"));
-	   }
+	public void TestFBoardDelete() {
+		FBoard fboard = fdao.selectFBoard(4);
+		fservice.deleteFBoardByFno(4);
+		assertThat(fboard.getFno(), is(not(nullValue())));
+		
+		Board retrieved = bdao.selectBoard(4);
+		bservice.delete(4);
+		assertThat(retrieved.getNo(), is(not(nullValue())));
+		
+	}
+
+	@Test
+	public void TestFBoardInsert() {
+		Board board = new Board();
+		board.setNo(6);
+		board.setCode("11");
+		board.setUserId("whdgh1265");
+		bservice.insertBoard(board);
+		
+		FBoard fboard = new FBoard();
+		fboard.setTitle("줴훈줴훈");
+		fboard.setFContext("저 사람 이솽훼");
+		fboard.setFview(1);
+		fboard.setBoardNo(1);
+		fboard.setBoardCode("11");
+		fboard.setUserId("whdgh1265");
+		fservice.insertFBoard(fboard);
+		logger.trace("{}", fboard);
+		
+		
+	}
+
+	@Test
+	public void TestFBoardUpdate() {
+		FBoard fboard = new FBoard();
+		fboard.setFno(5);
+		fboard.setTitle("재훈재훈재훈");
+		fboard.setFContext("저 사람 이상하다고");
+		fservice.updateFBoard(fboard);
+		logger.trace("{}", fboard);
+		FBoard retrieved = fdao.selectFBoard(5);
+		assertThat(retrieved.getTitle(), is("재훈재훈재훈"));
+	}
+
+	@Test
+	public void TestFBoardselect() {
+		List<FBoard> fboard = fdao.selectFBoardByCode(1, "11");
+		fservice.selectFBoardByCode(1, "11");
+		assertThat(fboard, is(not(nullValue())));
+	}
 }

@@ -2,8 +2,10 @@ package funfun.jdbc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -28,9 +30,8 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public int insertFBoard(FBoard fboard) {
-		String sql = "insert into free_board(fno,title,fcontext,fview,board_no,board_code,user_id) values(seq_board_comment_no.nextval,?,?,?,?,?,?)";
-		int result = jt.update(sql, fboard.getTitle(), fboard.getFContext(), fboard.getFview(), fboard.getBoardNo(),
-				fboard.getBoardCode(), fboard.getUserId());
+		String sql = "insert into free_board(fno,title,fcontext,fview,board_no,board_code,user_id) values(seq_free_board.nextval,?,?,?,seq_board.currval,?,?)";
+		int result = jt.update(sql, fboard.getTitle(), fboard.getFContext(), fboard.getFview(),fboard.getBoardCode(), fboard.getUserId());
 		return result;
 	}
 
@@ -38,6 +39,12 @@ public class FBoardDaoImpl implements FBoardDao {
 	public int deleteFBoard(String userId) {
 		String sql = "delete from free_board where user_id=?";
 		int result = jt.update(sql, userId);
+		return result;
+	}
+	@Override
+	public int deleteFBoardByFno(int fno) {
+		String sql = "delete from free_board where fno=?";
+		int result = jt.update(sql, fno);
 		return result;
 	}
 
@@ -67,4 +74,19 @@ public class FBoardDaoImpl implements FBoardDao {
 		};
 	}
 
+	
+	@Override
+	public int updateFBoard(FBoard fboard) {
+		int result=-1;
+		String sql = "update free_board set title=?, fcontext=? where fno=?";
+		result = jt.update(sql,fboard.getTitle(),fboard.getFContext(),fboard.getFno());
+		return result;
+	}
+
+	@Override
+	   public List<FBoard> selectFBoardByCode(int board_no,String board_code) {
+	      String sql = "select * from free_board where board_no=? and board_code=?";
+	      List<FBoard> result = jt.query(sql,new BeanPropertyRowMapper<FBoard>(FBoard.class), board_no,board_code);
+	      return result;
+	   }
 }

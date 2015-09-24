@@ -2,20 +2,16 @@ package funfun.jdbc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Users;
 
 @Repository
@@ -84,8 +80,8 @@ public class UsersDaoImpl implements UsersDao {
 				board.setUserId(rs.getString("user_id"));
 				return board;
 			}};
-	}
-	@Override
+	}*/
+	/*@Override
 	public Users selectFullUser(String id) {
 		String sql = "select u.*,b.* from users u,board b where u.id=b.id and u.id=?";
 		Users user = jt.query(sql, new ResultSetExtractor<Users>(){
@@ -111,16 +107,16 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public int insertUser(Users user) {
 		int result=-1;
-		String sql = "insert into users values(?,?,?,?,?,?,?,?)";
-		result = jt.update(sql,user.getId(),user.getNickname(),user.getPass(),user.getEmail(),user.getCellphone(),user.getAddress(),user.getMail_no(),user.getRoll());
+		String sql = "insert into users values(?,?,?,?,?,?,?,?,?,?)";
+		result = jt.update(sql,user.getId(),user.getNickname(),user.getPass(),user.getEmail(),user.getCellphone(),user.getAddress(),user.getMail_no(),user.getRoll(),user.getRoad_addr(),user.getLoca_addr());
 		return result;
 	}
 	
 	@Override
 	public int updateUser(Users user) {
 		int result=-1;
-		String sql = "update users set nickname=?, cellphone=?, address=?, email=? where id=?";
-		result = jt.update(sql,user.getNickname(),user.getCellphone(), user.getAddress(),user.getEmail(),user.getId());
+		String sql = "update users set nickname=?, cellphone=?, address=?, email=?, road_addr=?, loca_addr=? where id=?";
+		result = jt.update(sql,user.getNickname(),user.getCellphone(), user.getAddress(),user.getEmail(),user.getId(),user.getRoad_addr(),user.getLoca_addr());
 		return result;
 	}
 	
@@ -176,55 +172,11 @@ public class UsersDaoImpl implements UsersDao {
 		String cEmail = jt.queryForObject(sql, String.class,id);
 		return cEmail;
 	}
-	private RowMapper<FBoard> getFBoardRowMapper(){
-	      return new RowMapper<FBoard>(){
-
-	         @Override
-	         public FBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
-	            FBoard fboard = new FBoard();
-	            fboard.setFno(rs.getInt("fno"));
-	            fboard.setTitle(rs.getString("title"));
-	            fboard.setFContext(rs.getString("fcontext"));
-	            fboard.setFdate(rs.getDate("fdate"));
-	            fboard.setFview(rs.getInt("fview"));
-	            fboard.setBoardNo(rs.getInt("board_no"));
-	            fboard.setBoardCode(rs.getString("board_code"));
-	            fboard.setUserId(rs.getString("user_id"));
-	            return fboard;
-	         }};
-	   }
-	   @Override
-	   public Users loginUsers(String id, String pass) {
-	      String sql = "select u.*,f.* from users u,free_board f where u.id=f.user_id and id=? and pass=?";
-	      Users user = jt.query(sql, new ResultSetExtractor<Users>(){
-	      @Override
-	      public Users extractData(ResultSet rs) throws SQLException, DataAccessException {
-	         Users user = null;
-	         List<FBoard> fboards=null;
-	         if(rs.next()){
-	            user = getUsersRowMapper().mapRow(rs, 0);
-	            fboards = new ArrayList<>();
-	            user.setFBoards(fboards);
-	            do{
-	               FBoard fboard = getFBoardRowMapper().mapRow(rs, 0);
-	               fboards.add(fboard);
-	            }while(rs.next());
-	         }
-	         return user;
-	      }},id,pass);
-	   
-	   return user;
-	   
-	   
-	   
-	   
-	}
 	@Override
-	public int updateRoll(Users user) {
-		int result=-1;
-		String sql = "update users set roll=? where id=?";
-		result = jt.update(sql,user.getRoll(),user.getId());
-		return result;
+	public Map<String, Object> loginUsers(String id, String pass) {
+		String sql = "select * from users where id=? and pass=?";
+		Map<String, Object> value = jt.queryForMap(sql,id,pass);
+		return value;
 	}
 	
 		
