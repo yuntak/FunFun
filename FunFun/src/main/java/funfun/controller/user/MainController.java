@@ -20,9 +20,6 @@ import funfun.jdbc.service.UsersService;
 public class MainController {
 	@Autowired
 	UsersService UserSvc;
-	
-	
-	
 	@RequestMapping(value="/main")
 	public  String Tepmlate(){
 		
@@ -48,7 +45,7 @@ public class MainController {
 	//주소{sample4_postcode(우편번호),sample4_roadAddress(도로명주소)}
 	//sample4_jibunAddress(지번주소),mb_adress2(상세주소)
 	//mb_mailling
-	@RequestMapping("/SignUpTry")
+	@RequestMapping("/SignUpResult")
 	public String SingUpTry(//
 			@RequestParam String mb_id,
 			@RequestParam String mb_pass,
@@ -58,8 +55,8 @@ public class MainController {
 			@RequestParam String sample4_roadAddress,
 			@RequestParam String sample4_jibunAddress,
 			@RequestParam String mb_adress2,
-			@RequestParam String mb_mailling,
-			Model model
+			@RequestParam String mb_mailing,
+			HttpSession session
  ){
 		Users user=new Users();
 		user.setId(mb_id);//id 설정
@@ -67,18 +64,17 @@ public class MainController {
 		user.setCellphone(mb_num);//연락처 설정
 		user.setNickname(mb_nick);//닉네임 설정
 		user.setMail_no(sample4_postcode);//우편번호 설정
-		//도로명 주소 설정-추가?
-		//지번 주소 설정-추가?
+		user.setRoad_addr(sample4_roadAddress);//도로 주소
+		user.setLoca_addr(sample4_jibunAddress);
 	    user.setAddress(mb_adress2);//상세 주소 설정
-		user.setEmail(mb_mailling);//이메일 설정
+		user.setEmail(mb_mailing);//이메일 설정
 		user.setRoll("BASIC");//권한 설정
 		int result= -1;
 		//UserSvc.insert(user);
 		if(result==1){
-			model.addAttribute("FunFunSignUpId", mb_id);
-			
+			session.setAttribute("FunFunSignUpId",mb_id);
 		}
-		return null;//회원가입 완료 Page로 이동
+		return "SignUp/SignUpResult";//회원가입 완료 Page로 이동
 		
 	}
 	//로그아웃
@@ -164,6 +160,4 @@ public class MainController {
 		return "false";
 		}
 	}
-	
-
 }
