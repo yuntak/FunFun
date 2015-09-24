@@ -91,6 +91,7 @@ $(document).ready(function () {
             mb_id: {
                  required:"아이디를 입력하시오.",
                  minlength: "아이디는 {0}자 이상 입력해주세요!",
+                 maxlength:"아이디는 {0}자 이하 입력해주세요!",
                  idcheck:"영어만 입력가능합니다"
             },
             mb_pass: {
@@ -104,7 +105,8 @@ $(document).ready(function () {
             },  
             mb_num : {
             	required:"번호를 입력하시오.",   
-            	numcheck:"올바른 연락처를 입력해주십시오.",
+            	numcheck:"000-0000-0000 형태로 입력해주세요.",
+            	
             },
             mb_adress2 : {
             	required:"주소를 입력하시오."

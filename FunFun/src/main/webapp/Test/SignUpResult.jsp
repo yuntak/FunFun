@@ -32,11 +32,11 @@
 </head>
 <body>
 
-<form class="form-horizontal">
-  <div class="container">
+<form class="form-horizontal" >
+  <div class="container-fluid">
   
 		
-<c:set value="df" var="id"></c:set>
+<c:set value="" var="id"></c:set>
 
 <c:choose>
 	
@@ -62,13 +62,15 @@
 	<c:otherwise>
 	<div class="panel panel-success">
 			<div class="panel-heading">
-					<div class="body">
+					
 					<strong>회원가입 실패.</strong>
-					</div>			
+							
 			</div>
 	
 	</div>
+	<div class="body">
 	회원가입 실패.
+	</div>	
 	</c:otherwise>
 	
 </c:choose>
@@ -78,10 +80,9 @@
 <br>
 
 <div class="panel-footer">
-<div>
+
 	<button class="btn btn-info">확인</button>
-	
-</div>
+
 
 </div>
 
