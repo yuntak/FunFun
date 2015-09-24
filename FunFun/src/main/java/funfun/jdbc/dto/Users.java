@@ -11,19 +11,18 @@ public class Users {
 	private String address;
 	private String mail_no;
 	private String roll;
+	private String road_addr;
+	private String loca_addr;
 	
-	private List<FBoard> fboards;
+	private List<Board> boards;
 
-	
-	
-	
 	
 	public Users() {
 		super();
 	}
 
 	public Users(String id, String nickname, String pass, String email, String cellphone, String address,
-			String mail_no, String roll, List<Board> boards) {
+			String mail_no, String roll, String road_addr, String loca_addr, List<Board> boards) {
 		super();
 		this.id = id;
 		this.nickname = nickname;
@@ -33,10 +32,11 @@ public class Users {
 		this.address = address;
 		this.mail_no = mail_no;
 		this.roll = roll;
-		this.fboards = fboards;
+		this.road_addr = road_addr;
+		this.loca_addr = loca_addr;
+		this.boards = boards;
 	}
 
-	
 	public String getId() {
 		return id;
 	}
@@ -101,20 +101,38 @@ public class Users {
 		this.roll = roll;
 	}
 
-	public List<FBoard> getFBoards() {
-		return fboards;
+	public String getRoad_addr() {
+		return road_addr;
 	}
 
-	public void setFBoards(List<FBoard> fboards) {
-		this.fboards = fboards;
+	public void setRoad_addr(String road_addr) {
+		this.road_addr = road_addr;
+	}
+
+	public String getLoca_addr() {
+		return loca_addr;
+	}
+
+	public void setLoca_addr(String loca_addr) {
+		this.loca_addr = loca_addr;
+	}
+
+	public List<Board> getBoards() {
+		return boards;
+	}
+
+	public void setBoards(List<Board> boards) {
+		this.boards = boards;
 	}
 
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", nickname=" + nickname + ", pass=" + pass + ", email=" + email + ", cellphone="
-				+ cellphone + ", address=" + address + ", mail_no=" + mail_no + ", roll=" + roll + ", fboards=" + fboards
-				+ "]";
+				+ cellphone + ", address=" + address + ", mail_no=" + mail_no + ", roll=" + roll + ", road_addr="
+				+ road_addr + ", loca_addr=" + loca_addr + ", boards=" + boards + "]";
 	}
 
+	
+	
 	
 }

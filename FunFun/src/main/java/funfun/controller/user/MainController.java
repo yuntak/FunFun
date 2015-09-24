@@ -109,14 +109,14 @@ public class MainController {
 	
 	//ID 중복 체크 AJax
 	@RequestMapping(value="/Id_dupl_ajax",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
-	public@ResponseBody String IdDuplAjax(@RequestParam String mb_id){
+	public@ResponseBody String IdDuplAjax(@RequestParam String id){
 		//String result=UserSvc.checkId(mb_id);
 		//Test
 		String result;
-		if(mb_id.equalsIgnoreCase("qwer")){
-			result="1";
+		if(id.equalsIgnoreCase("qwer")){
+			result="false";
 		}else{
-			result="0";
+			result="true";
 		}
 		//Test
 		if(result.equals("0")){
@@ -147,14 +147,14 @@ public class MainController {
 	}
 	
 	//E-Mail 중복 체크 AJax
-	@RequestMapping(value="/EMail_dupl_ajax",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
-	public@ResponseBody String EMailDuplAjax(@RequestParam String mb_mailling){
+	@RequestMapping(value="/EMail_dupl_ajax",/*method=RequestMethod.POST,*/produces="text/plain;charset=UTF-8")
+	public@ResponseBody String EMailDuplAjax(@RequestParam String mb_mailing){
 		//String result=UserSvc.checkEmail(mb_mailling);
 		String result;
 		if(mb_mailling.equalsIgnoreCase("qwer@naver.com")){
-			result="1";
+			result="false";
 		}else{
-			result="0";
+			result="true";
 		}
 		if(result.equals("0")){
 			return "true";

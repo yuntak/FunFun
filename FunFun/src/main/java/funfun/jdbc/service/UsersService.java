@@ -11,10 +11,10 @@ public interface UsersService {
     String checkId(String id);
     String checkNickname(String id);
     String checkEmail(String id);
-    void updateRoll(Users user);
+    
 	 int IdConfirm(String id);
 	void insert(Users user);
 	void delete(String id);
 	void updatePass(Users user);
-	Users loginUsers(String id, String pass);
+	Map<String, Object> loginUsers(String id, String pass);
 }
