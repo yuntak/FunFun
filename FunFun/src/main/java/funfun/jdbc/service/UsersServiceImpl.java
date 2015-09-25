@@ -140,6 +140,26 @@ public class UsersServiceImpl implements UsersService {
 		}
 	}
 
+	@Override
+	public Users mylogin(String id, String pass) {
+		// TODO Auto-generated method stub
+		Users user=null;
+		logger.trace("Login Try ID : {}  PASS : {}",id,pass );
+		try{
+			user=dao.selectUser(id);
+			if(!user.getPass().equals(pass)){
+				user=null;
+			}
+		}
+		catch(Exception e){
+			logger.error("Login Error : {}",e);
+			user=null;
+		}
+		
+		
+		return user;
+	}
+
 
 	
 

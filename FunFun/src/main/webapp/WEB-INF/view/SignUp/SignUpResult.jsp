@@ -26,6 +26,7 @@
 
 .body{
 	font-size: 20px;
+	height: 70%;
 }
 
 </style>
@@ -42,7 +43,7 @@
 	
 	
 	
-	<c:when test="${!empty id }">	
+	<c:when test="${!empty FunFunSignUpId }">	
 	
 
 	<div class="panel panel-success">
@@ -53,9 +54,9 @@
 			</div>
 	
 	</div>
-	<div class="body">
-	ID : ${id }<br>
-	회원가입 하셨습니다.
+	<div  class="body ">
+	ID : ${FunFunSignUpId }<br>
+	회원가입 하였습니다.
 	</div>
 	</c:when>
 	
@@ -69,7 +70,7 @@
 	
 	</div>
 	<div class="body">
-	회원가입 실패.
+	회원가입에 실패하였습니다.
 	</div>	
 	</c:otherwise>
 	
@@ -81,12 +82,27 @@
 
 <div class="panel-footer">
 
-	<button class="btn btn-info">확인</button>
-
+	<input type="button" id="check" class="btn btn-info" value="확인">
 
 </div>
 
 </div>
 </form>
+
+
 </body>
+<script type="text/javascript">
+$(function(){
+	console.log("JQuery Start")
+	
+	$("#check").click(function(){
+	
+		<% session.invalidate(); %>
+		
+		location.replace("./main");
+	});
+	
+});
+
+</script>
 </html>

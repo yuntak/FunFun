@@ -1,14 +1,19 @@
 package funfun.controller.user;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.support.RequestContext;
 
 import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.UsersService;
@@ -47,11 +52,13 @@ public class MainController {
 	// sample4_jibunAddress(지번주소),mb_adress2(상세주소)
 	// mb_mailling
 	@RequestMapping("/SignUpResult")
-	public String SingUpTry(//
+	public void SingUpTry (//
 			@RequestParam String mb_id, @RequestParam String mb_pass, @RequestParam String mb_num,
 			@RequestParam String mb_nick, @RequestParam String sample4_postcode,
 			@RequestParam String sample4_roadAddress, @RequestParam String sample4_jibunAddress,
-			@RequestParam String mb_adress2, @RequestParam String mb_mailing, HttpSession session) {
+			@RequestParam String mb_adress2, @RequestParam String mb_mailing, 
+			HttpSession session,RequestContext ctxt,HttpServletRequest request,HttpServletResponse response)
+	throws Exception{
 		Users user = new Users();
 		user.setId(mb_id);// id 설정
 		user.setPass(mb_pass);// pass 설정
@@ -68,8 +75,14 @@ public class MainController {
 		if (result == 1) {
 			session.setAttribute("FunFunSignUpId", mb_id);
 		}
-		return "SignUp/SignUpResult";// 회원가입 완료 Page로 이동
+		String path=request.getContextPath()+"/Result";
+		response.sendRedirect(path);
+		//return "SignUp/SignUpResult";// 회원가입 완료 Page로 이동
 
+	}
+	@RequestMapping("/Result")
+	public String Result(){
+		return "SignUp/SignUpResult";
 	}
 
 	// 로그아웃
@@ -82,10 +95,10 @@ public class MainController {
 	// 로그인을 처리 AJax
 	@RequestMapping(value = "/login_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String loginAjax(@RequestParam String id, @RequestParam String pass, HttpSession session) {
-		// Users User=UserSvc.loginUsers(id, pass);
-		// if(Users!=null){
-		if (id.equals("qwer") && pass.equals("qwer")) {
-			// session.setAttribute("FunFunUser", User);
+		Users User=UserSvc.mylogin(id, pass);
+		 if(User!=null){
+		//if (id.equals("qwer") && pass.equals("qwer")) {
+			session.setAttribute("FunFunUser", User);
 			return "true";
 		} else {
 			return "false";

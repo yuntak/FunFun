@@ -17,4 +17,5 @@ public interface UsersService {
 	void delete(String id);
 	void updatePass(Users user);
 	Map<String, Object> loginUsers(String id, String pass);
+	public Users mylogin(String id,String pass);
 }
