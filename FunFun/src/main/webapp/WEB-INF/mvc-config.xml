@@ -18,6 +18,7 @@
 	<mvc:resources location="/Resources/img/" mapping="/rsc/img/**"/>
 	<mvc:resources location="/WEB-INF/fuckingimg/" mapping="/fuck/**"/>
 	<mvc:resources location="/WEB-INF/view/js/" mapping="/js/**"></mvc:resources>
+	<mvc:resources location="/WEB-INF/view/UserEdit/" mapping="/UserEdit/**"></mvc:resources>
 	<context:component-scan base-package="funfun.controller"></context:component-scan>
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	        <!-- Example: a logical view name of 'showMessage' is mapped to '/WEB-INF/jsp/showMessage.jsp' -->
