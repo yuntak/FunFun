@@ -23,6 +23,15 @@
 p{
 	font-size: 20px;
 }
+#infoedit{
+
+}
+#passedit{
+background: white;
+}
+#deledit{
+
+}
 </style>
 
 </head>
@@ -35,11 +44,11 @@ p{
 				<div class="nav nav-pills">        
   
   <ul class="nav nav-justified">
-  <li>
+  <li id="infoedit">
    <a href="">회원정보수정</a></li>
-   <li>
+   <li id="passedit">
    <a href="">비밀번호수정</a></li>
-   <li>
+   <li id="deledit">
    <a href="">회원탈퇴</a></li>
    </ul>
 

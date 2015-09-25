@@ -58,6 +58,7 @@ public class UsersServiceImpl implements UsersService {
 	
 	@Override
 	public int insert(Users user) {
+		logger.trace("SignUp Try : {}",user);
 		int insertResult = dao.insertUser(user);
 		logger.trace("insert over : {}",insertResult);
 		return insertResult;

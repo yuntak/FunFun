@@ -174,7 +174,7 @@
 				<div class="col-sm-6">
 					<input class="form-control" placeholder="User id" size=20
 						id='mb_id' name="mb_id" required value="">
-					<p class="help-block">아아디는 최소6자 이상 20자 이하입니다.</p>
+					<p class="help-block">아아디는 최소4자 이상 20자 이하입니다.</p>
 
 					<p class="help-block">
 						<span id="msg_mb_id"></span>
