@@ -12,7 +12,20 @@
 .myinline{
 display: inline;
 }
-
+#myNickName{
+color: #0066FF;
+font-weight: bold;
+font-size: 15 px;
+}
+.login-after-btn{
+margin-left: 10px;
+margin-right: 0px;
+}
+#login-after-msg{
+margin-right: 15px;
+margin-left: 15px;
+margin-bottom: 10px;
+}
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -39,10 +52,12 @@ display: inline;
 <body>
 	<nav class="navbar navbar-default">
 	
+	<c:choose>
+	<c:when test="${empty FunFunUser }">
 		<div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a href="./"><img src="<%=request.getContextPath()%>/rsc/img/logo.jpg"
+				<a href="./"><img src="<%=request.getContextPath() %>/rsc/img/logo.jpg"
 					style="width: 100px; height: 100px">
 				</a>
 			</div>
@@ -64,7 +79,38 @@ display: inline;
 			</ul>
 		
 		</div>
-	 
+		</c:when>
+		
+		
+		<c:otherwise>
+		  <div class="navbar navbar-default ">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a href="./"><img src="<%=request.getContextPath()%>/rsc/img/logo.jpg"
+					style="width: 100px; height: 100px">
+				</a>
+			</div>
+
+
+			<div class="navbar-form " align="center">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+
+				<button type="submit" class="btn btn-info">
+					<span class="glyphicon glyphicon-search"></span> Search
+				</button>
+			</div>
+	
+			<div align="right" class="userlogin">
+				<p id="login-after-msg"><span id="myNickName"> ${FunFunUser.nickname }</span>님 반갑습니다.</p>
+			    <a class="btn btn-success login-after-btn" href="../Logout">로그아웃</a><a class="btn btn-info login-after-btn" href="../myinfo">회원정보</a>
+			</div>	
+			
+		
+		</div>
+		</c:otherwise>
+	 </c:choose>
 <div class="container">
   <div class="nav nav-pills">        
   

@@ -87,18 +87,24 @@ public class MainController {
 
 	// 로그아웃
 	@RequestMapping("/Logout")
-	public String Logout(HttpSession session) {
+	public void Logout(HttpSession session,HttpServletResponse response) throws Exception{
 		session.invalidate();
-		return "main/Template";
+		String path ="./main";
+		response.sendRedirect(path);
+		
 	}
 
 	// 로그인을 처리 AJax
 	@RequestMapping(value = "/login_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String loginAjax(@RequestParam String id, @RequestParam String pass, HttpSession session) {
-		Users User=UserSvc.mylogin(id, pass);
-		 if(User!=null){
-		//if (id.equals("qwer") && pass.equals("qwer")) {
-			session.setAttribute("FunFunUser", User);
+		//Users User=UserSvc.mylogin(id, pass);
+		 //if(User!=null){
+		
+		Users user= new Users();
+		user.setNickname("hoseo");
+		user.setId("qwer");
+		if (id.equals("qwer") && pass.equals("qwer")) {
+			session.setAttribute("FunFunUser", user);
 			return "true";
 		} else {
 			return "false";
@@ -179,4 +185,6 @@ public class MainController {
 		}
 
 	}
+	
+
 }
