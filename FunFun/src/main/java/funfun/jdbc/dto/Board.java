@@ -1,7 +1,5 @@
 package funfun.jdbc.dto;
 
-import java.util.Date;
-
 public class Board {
 	   private int no;
 	   private String code;

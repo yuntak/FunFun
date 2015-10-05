@@ -17,13 +17,19 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import funfun.jdbc.dao.BoardDao;
+import funfun.jdbc.dao.CBoardDao;
 import funfun.jdbc.dao.FBoardDao;
+import funfun.jdbc.dao.ReplyDao;
 import funfun.jdbc.dao.UsersDao;
 import funfun.jdbc.dto.Board;
+import funfun.jdbc.dto.CBoard;
 import funfun.jdbc.dto.FBoard;
+import funfun.jdbc.dto.Reply;
 import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.BoardService;
+import funfun.jdbc.service.CBoardService;
 import funfun.jdbc.service.FBoardService;
+import funfun.jdbc.service.ReplyService;
 import funfun.jdbc.service.UsersService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -45,6 +51,114 @@ public class ServiceTest {
 	@Autowired
 	FBoardService fservice;
 
+	@Autowired
+	CBoardDao cdao;
+	@Autowired
+	CBoardService cservice;
+	@Autowired
+	ReplyDao rdao;
+	@Autowired
+	ReplyService rservice;
+	/*@Before
+	public void cleanDB(){
+		dao.deleteAllUsers();
+	}*/
+	@Test
+	public void TestinsertCBoard(){
+		Board board = new Board();
+		board.setCode("66");
+		board.setUserId("loll333");
+		bservice.insertBoard(board);
+		CBoard cboard = new CBoard();
+		cboard.setTitle("만화");
+		cboard.setContent("호롤롤로로롤로로로로롤로로로로롤로ㅗ로");
+		cboard.setCview(8);
+		cboard.setGood(4);
+		cboard.setCategory("webtoon");
+		cboard.setBoard_code("66");
+		cboard.setUserId("loll333");
+		cservice.insertCBoard(cboard);
+		CBoard result = cdao.selectCBoard(7);
+		logger.trace("{}",result);
+		assertThat(result.getCategory(),is("webtoon"));
+		
+	}
+	@Test
+	public void TestCBoardUpdate(){
+		CBoard cboard = new CBoard();
+		cboard.setTitle("추석 끝");
+		cboard.setContent("다시 시작인가???");
+		cboard.setCno(10);
+		cservice.updateCBoard(cboard);
+		logger.trace("{}",cboard);
+		assertThat(cboard.getTitle(),is("추석 끝"));
+	}
+	@Test
+	public void TestCBoardDelete(){
+		cservice.deleteCBoard("loll333");
+	}
+	@Test
+	public void TestFullFBoard(){
+		FBoard fboard = fdao.selectFullFBoard(7);
+		fservice.selectFullFBoard(7);
+		logger.trace("{}",fboard);
+		assertThat(fboard,is(not(nullValue())));
+	}
+	
+	@Test
+	public void TestselectBoardReply(){
+		Reply reply = rdao.selectBoardReply(25, "22");
+		rservice.selectBoardReply(25, "22");
+		logger.trace("{}",reply);
+		assertThat(reply,is(not(nullValue())));
+	}
+	
+	@Test
+	public void TestReplyInsert(){
+		Reply reply = new Reply();
+		reply.setRno(1);
+		reply.setContext("재미없어");
+		reply.setBoardNo(25);
+		reply.setBoardCode("22");
+		reply.setUserId("loll333");
+		rdao.insertReply(reply);
+		logger.trace("{}",reply);
+		assertThat(reply.getContext(),is("재미없어"));
+	}
+	
+	@Test
+	public void TestFBoardCount(){
+		int fboard = fdao.selectCount(0, 20);
+		fservice.selectCount(0, 20);
+		logger.trace("{}",fboard);
+		assertThat(fboard,is(11));
+	}
+	
+	@Test
+	public void TestFBoardselectUserIdByPage(){
+		List<FBoard> fboard = fdao.selectFBoardByPage("loll333", "22", 1);
+		fservice.selectFBoardByPage("loll333", "22", 1);
+		logger.trace("{}",fboard);
+		assertThat(fboard,is(not(nullValue())));
+	}
+	
+	@Test
+	public void TestFBoardselectCodeByPage(){
+		List<FBoard> fboard = fdao.selectFBoardByPage("", "22", 1);
+		fservice.selectFBoardByPage("", "22", 1);
+		logger.trace("{}",fboard);
+		assertThat(fboard,is(not(nullValue())));
+	}
+	
+	@Test
+	public void TestFBoardselectByPage(){
+		List<FBoard> fboard = fdao.selectFBoardByPage("", "22", 3);
+		fservice.selectFBoardByPage("", "22", 3);
+		logger.trace("{}",fboard);
+		assertThat(fboard,is(not(nullValue())));
+	}
+	
+	
 	@Test
 	public void testServiceBean() {
 		logger.trace("service bean ok? {}", service);
@@ -214,7 +328,7 @@ public class ServiceTest {
 		
 		FBoard fboard = new FBoard();
 		fboard.setTitle("줴훈줴훈");
-		fboard.setFContext("저 사람 이솽훼");
+		fboard.setFcontext("저 사람 이솽훼");
 		fboard.setFview(3);
 		fboard.setBoardNo(3);
 		fboard.setBoardCode("11");
@@ -230,7 +344,7 @@ public class ServiceTest {
 		FBoard fboard = new FBoard();
 		fboard.setFno(5);
 		fboard.setTitle("재훈재훈재훈");
-		fboard.setFContext("저 사람 이상하다고");
+		fboard.setFcontext("저 사람 이상하다고");
 		fservice.updateFBoard(fboard);
 		logger.trace("{}", fboard);
 		FBoard retrieved = fdao.selectFBoard(5);
