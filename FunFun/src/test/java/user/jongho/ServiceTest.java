@@ -165,6 +165,11 @@ public class ServiceTest {
 	}
 	
 	@Test
+	public void TestSelectReply(){
+		rservice.selectReply(6);
+	}
+	
+	@Test
 	public void TestFBoardCount(){
 		int fboard = fdao.selectCount(0, 20);
 		fservice.selectCount(0, 20);

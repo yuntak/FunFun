@@ -5,4 +5,5 @@ import funfun.jdbc.dto.Reply;
 public interface ReplyService {
 	void insertReply(Reply reply);
 	Reply selectBoardReply(int board_no,String board_code);
+	Reply selectReply(int rno);
 }
