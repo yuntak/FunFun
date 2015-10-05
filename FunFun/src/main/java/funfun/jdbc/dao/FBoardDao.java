@@ -5,8 +5,14 @@ import java.util.List;
 import funfun.jdbc.dto.FBoard;
 
 public interface FBoardDao {
+	
+	int BOARD_PER_PAGE = 10;
 
 	public int getBoardCount();
+	
+	public int selectCount(int to, int from);
+	
+	public int getBoardPageCount();
 
 	public int insertFBoard(FBoard fboard);
 
@@ -17,6 +23,14 @@ public interface FBoardDao {
 	public int updateFBoard(FBoard fboard);
 
 	public FBoard selectFBoard(int no);
+	
+	public FBoard selectFullFBoard(int no);
+	
+	public List<FBoard> selectFBoardByPage(String title,String code,int page_no);
+	
+	public List<FBoard> selectFBoardBySelectUserIdPage(String userId, String code, int page_no);
+	
+	public List<FBoard> selectFBoardBySelectCodePage(String title,String code, int page_no);
 
 	public List<FBoard> selectFBoardByCode(int board_no, String board_code);
 	
