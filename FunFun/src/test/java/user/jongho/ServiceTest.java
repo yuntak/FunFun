@@ -19,16 +19,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import funfun.jdbc.dao.BoardDao;
 import funfun.jdbc.dao.CBoardDao;
 import funfun.jdbc.dao.FBoardDao;
+import funfun.jdbc.dao.FundingFormDao;
 import funfun.jdbc.dao.ReplyDao;
 import funfun.jdbc.dao.UsersDao;
 import funfun.jdbc.dto.Board;
 import funfun.jdbc.dto.CBoard;
 import funfun.jdbc.dto.FBoard;
+import funfun.jdbc.dto.Funding_form;
 import funfun.jdbc.dto.Reply;
 import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.BoardService;
 import funfun.jdbc.service.CBoardService;
 import funfun.jdbc.service.FBoardService;
+import funfun.jdbc.service.FundingFormService;
 import funfun.jdbc.service.ReplyService;
 import funfun.jdbc.service.UsersService;
 
@@ -59,10 +62,45 @@ public class ServiceTest {
 	ReplyDao rdao;
 	@Autowired
 	ReplyService rservice;
+	
+	@Autowired
+	FundingFormDao ffdao;
+	@Autowired
+	FundingFormService ffservice;
 	/*@Before
 	public void cleanDB(){
 		dao.deleteAllUsers();
 	}*/
+	
+	@Test
+	public void TestInsertFForm(){
+		Funding_form form = new Funding_form();
+		form.setSubject("webtoon");
+		form.setFfContext("만화");
+		form.setCategory("만화");
+		form.setTel("010-7747-9168");
+		form.setMoney("5000000");
+		form.setUserId("loll333");
+		ffservice.insertForm(form);
+		assertThat(form.getSubject(),is("만화"));
+	}
+	
+	@Test
+	public void TestDeleteFForm(){
+		ffservice.deleteForm(1);
+	}
+	
+	@Test
+	public void TestSelectFForm(){
+		ffservice.selectForm();
+	}
+	@Test
+	public void TestSelectByFFnoForm(){
+		Funding_form form = ffdao.selectFundingFormByFfno(1);
+		ffservice.selectFormByFfno(1);
+		logger.trace("{}",form);
+		assertThat(form,is(not(nullValue())));
+	}
 	@Test
 	public void TestinsertCBoard(){
 		Board board = new Board();
@@ -127,6 +165,11 @@ public class ServiceTest {
 	}
 	
 	@Test
+	public void TestSelectReply(){
+		rservice.selectReply(6);
+	}
+	
+	@Test
 	public void TestFBoardCount(){
 		int fboard = fdao.selectCount(0, 20);
 		fservice.selectCount(0, 20);
@@ -169,7 +212,7 @@ public class ServiceTest {
 	public void testInsert() {
 		Users user = new Users();
 		user.setId("zxz222");
-		String name = "롤2";
+		String name = "롤6";
 		user.setNickname(name);
 		user.setPass("123");
 		user.setEmail("every9168@naver.com");

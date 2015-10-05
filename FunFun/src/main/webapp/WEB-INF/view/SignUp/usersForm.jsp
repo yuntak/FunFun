@@ -298,7 +298,7 @@
 			<div class="col-sm-6">
 				<div class="checkbox">
 					<label> <input type="checkbox" name="mb_mailing"
-						id="mb_mailing" value='1' checked> 정보 메일을 받겠습니다.
+						id="mb_mailing" value='' checked> 정보 메일을 받겠습니다.
 					</label>
 				</div>
 			</div>

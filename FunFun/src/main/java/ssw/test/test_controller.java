@@ -9,7 +9,7 @@ public class test_controller {
 
 	@RequestMapping("/freeWrite")
 	public String freeWrite() {
-		return "seoseopwoon/freeWrite";
+		return "freeboard/freeWrite";
 	}
 	
 	

@@ -19,7 +19,9 @@
 <script type="text/javascript" src ="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 
 <style>
-	
+	.panel-body{
+		height:560px;
+	}
 </style>
 </head>
 
@@ -34,14 +36,14 @@
 	
 	<div class="panel-body">
 	<div class="form-group">
-		<label for="title" class="col-sm-1">제목</label>
+		<label for="title" class="col-sm-1" >제목</label>
 		<div class="col-xs-9">
 		<input type="text" class=" form-control" id="title" required placeholder="제목입력란">
 		</div>
 	</div>
 	<br>
 	<br>
-	<textarea name="" id="editor" rows="10" cols="100">editor</textarea>
+	<textarea name="" id="editor" rows="40" cols="100">editor</textarea>
 	</div>
 	<br>
 	

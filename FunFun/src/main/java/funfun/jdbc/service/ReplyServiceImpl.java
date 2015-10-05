@@ -26,4 +26,11 @@ public class ReplyServiceImpl implements ReplyService {
 		return selectresult;
 	}
 
+	@Override
+	public Reply selectReply(int rno) {
+		Reply selectresult = rdao.selectReply(rno);
+		logger.trace("select over : {}",selectresult);
+		return selectresult;
+	}
+
 }

@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -22,7 +23,12 @@ public class ReplyDaoImpl implements ReplyDao{
 	@Override
 	public Reply selectReply(int rno) {
 		String sql = "select * from reply where rno=?";
-		Reply result = jt.queryForObject(sql,getReplyRowMapper(), rno);
+		Reply result=null;
+		try{
+		result = jt.queryForObject(sql,getReplyRowMapper(), rno);
+		}catch(EmptyResultDataAccessException e){
+			result=null;
+		}
 		return result;
 	}
 	
