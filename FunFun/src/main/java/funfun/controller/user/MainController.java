@@ -15,18 +15,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.support.RequestContext;
 
 import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.UsersService;
 
 @Controller
+@SessionAttributes({"Users"})
 public class MainController {
 	private static Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@Autowired
 	UsersService UserSvc;
 
+	
 	@RequestMapping(value = "/main")
 	public String Tepmlate() {
 
@@ -55,12 +58,12 @@ public class MainController {
 	// 주소{sample4_postcode(우편번호),sample4_roadAddress(도로명주소)}
 	// sample4_jibunAddress(지번주소),mb_adress2(상세주소)
 	// mb_mailling
-	@RequestMapping("/SignUpResult")
+	@RequestMapping(value="/SignUpResult",method=RequestMethod.POST)
 	public void SingUpTry (//
 			@RequestParam String mb_id, @RequestParam String mb_pass, @RequestParam String mb_num,
 			@RequestParam String mb_nick, @RequestParam String sample4_postcode,
 			@RequestParam String sample4_roadAddress, @RequestParam String sample4_jibunAddress,
-			@RequestParam String mb_adress2, @RequestParam String mb_mailing, 
+			@RequestParam String mb_adress2, @RequestParam String mb_email, 
 			HttpSession session,RequestContext ctxt,HttpServletRequest request,HttpServletResponse response)
 	throws Exception{
 		Users user = new Users();
@@ -72,7 +75,7 @@ public class MainController {
 		user.setRoad_addr(sample4_roadAddress);// 도로 주소
 		user.setLoca_addr(sample4_jibunAddress);
 		user.setAddress(mb_adress2);// 상세 주소 설정
-		user.setEmail(mb_mailing);// 이메일 설정
+		user.setEmail(mb_email);// 이메일 설정
 		user.setRoll("BASIC");// 권한 설정
 		int result = -1;
 		result = UserSvc.insert(user);
@@ -95,11 +98,12 @@ public class MainController {
 
 	// 로그아웃
 	@RequestMapping("/Logout")
-	public void Logout(HttpSession session,HttpServletResponse response) throws Exception{
+	public String Logout(HttpSession session,HttpServletResponse response) throws Exception{
 		session.invalidate();
-		String path ="./main";
-		response.sendRedirect(path);
+		//String path ="./main";
+		//response.sendRedirect(path);
 		
+		return "redirect:main";
 	}
 
 	// 로그인을 처리 AJax
@@ -195,12 +199,8 @@ public class MainController {
 	}
 	@RequestMapping(value="/myinfo")
 	public String infoBefore(HttpServletRequest request){
-		Object info=null;
-		info =request.getAttribute("info");
-		if(info==null){
-		return null;
-		}
-		return null;
+		
+		 return "";
 	}
 /*	@RequestMapping(value="/myinfo/infoEdit")
 	public String infoEdit(){ 
