@@ -21,6 +21,7 @@
 	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	
 	
+	<jsp:include page="/WEB-INF/view/freeboard/freeboard.jsp"></jsp:include>
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 
 </body>
