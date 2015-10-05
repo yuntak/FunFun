@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,8 @@ import funfun.jdbc.service.UsersService;
 
 @Controller
 public class MainController {
+	private static Logger logger = LoggerFactory.getLogger(MainController.class);
+	
 	@Autowired
 	UsersService UserSvc;
 
@@ -81,8 +85,12 @@ public class MainController {
 
 	}
 	@RequestMapping("/Result")
-	public String Result(){
+	public String Result(HttpServletRequest request){
+		HttpSession session=request.getSession();
+		String mb_id=(String)session.getAttribute("FunFunSignUpId");
+	    logger.trace(session+" : "+mb_id);
 		return "SignUp/SignUpResult";
+		
 	}
 
 	// 로그아웃
@@ -97,13 +105,13 @@ public class MainController {
 	// 로그인을 처리 AJax
 	@RequestMapping(value = "/login_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String loginAjax(@RequestParam String id, @RequestParam String pass, HttpSession session) {
-		//Users User=UserSvc.mylogin(id, pass);
-		 //if(User!=null){
+		Users user=UserSvc.mylogin(id, pass);
+		 if(user!=null){
 		
-		Users user= new Users();
-		user.setNickname("hoseo");
-		user.setId("qwer");
-		if (id.equals("qwer") && pass.equals("qwer")) {
+		//Users user= new Users();
+		//user.setNickname("hoseo");
+		//user.setId("qwer");
+		//if (id.equals("qwer") && pass.equals("qwer")) {
 			session.setAttribute("FunFunUser", user);
 			return "true";
 		} else {
@@ -116,14 +124,14 @@ public class MainController {
 	// ID 중복 체크 AJax
 	@RequestMapping(value = "/Id_dupl_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String IdDuplAjax(@RequestParam String mb_id) {
-		// String result=UserSvc.checkId(mb_id);
+		String result=UserSvc.checkId(mb_id);
 		// Test
-		String result;
+		/*String result;
 		if (mb_id.equalsIgnoreCase("qwer")) {
 			result = "1";
 		} else {
 			result = "0";
-		}
+		}*/
 		// Test
 		if (result.equals("0")) {
 			return "true";
@@ -135,14 +143,14 @@ public class MainController {
 	// 닉네임 중복 체크 AJax
 	@RequestMapping(value = "/Nick_dupl_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String NickDuplAjax(@RequestParam String mb_nick) {
-		// String result=UserSvc.checkNickname(mb_nick);
+		 String result=UserSvc.checkNickname(mb_nick);
 		// Test
-		String result;
-		if (mb_nick.equalsIgnoreCase("qwer")) {
+		//String result;
+		/*if (mb_nick.equalsIgnoreCase("qwer")) {
 			result = "1";
 		} else {
 			result = "0";
-		}
+		}*/
 		// Test
 		if (result.equals("0")) {
 			return "true";
@@ -154,14 +162,14 @@ public class MainController {
 	// E-Mail 중복 체크 AJax
 	@RequestMapping(value = "/EMail_dupl_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String EMailDuplAjax(@RequestParam String mb_email) {
-		// String result=UserSvc.checkEmail(mb_mailling);
-		String result;
+		 String result=UserSvc.checkEmail(mb_email);
+		/*String result;
 		System.out.println(mb_email);
 		if (mb_email.equals("qwer@naver.com")) {
 			result = "1";
 		} else {
 			result = "0";
-		}
+		}*/
 		if (result.equals("0")) {
 			return "true";
 		} else {
@@ -185,6 +193,29 @@ public class MainController {
 		}
 
 	}
-	
+	@RequestMapping(value="/myinfo")
+	public String infoBefore(HttpServletRequest request){
+		Object info=null;
+		info =request.getAttribute("info");
+		if(info==null){
+		return null;
+		}
+		return null;
+	}
+/*	@RequestMapping(value="/myinfo/infoEdit")
+	public String infoEdit(){ 
+		
+		return null;
+	}
+	@RequestMapping(value="/myinfo/infoEdit")
+	public String infoEdit(){ 
+		
+		return null;
+	}
+	@RequestMapping(value="/myinfo/infoEdit")
+	public String infoEdit(){ 
+		
+		return null;
+	}*/
 
 }
