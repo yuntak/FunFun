@@ -1,6 +1,5 @@
 package funfun.controller.user;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -42,7 +41,10 @@ public class MainController {
 	}
 
 	@RequestMapping("/SignUp")
-	public String SignUpForm() {
+	public String SignUpForm(Model model) {
+		Users user =new Users();
+		model.addAttribute("user", user);
+		
 		return "SignUp/usersForm";
 	}
 
@@ -60,13 +62,14 @@ public class MainController {
 	// mb_mailling
 	@RequestMapping(value="/SignUpResult",method=RequestMethod.POST)
 	public void SingUpTry (//
-			@RequestParam String mb_id, @RequestParam String mb_pass, @RequestParam String mb_num,
+			/*@RequestParam String mb_id, @RequestParam String mb_pass, @RequestParam String mb_num,
 			@RequestParam String mb_nick, @RequestParam String sample4_postcode,
 			@RequestParam String sample4_roadAddress, @RequestParam String sample4_jibunAddress,
-			@RequestParam String mb_adress2, @RequestParam String mb_email, 
+			@RequestParam String mb_adress2, @RequestParam String mb_email, */
+			Users user,
 			HttpSession session,RequestContext ctxt,HttpServletRequest request,HttpServletResponse response)
 	throws Exception{
-		Users user = new Users();
+	/*	Users user = new Users();
 		user.setId(mb_id);// id 설정
 		user.setPass(mb_pass);// pass 설정
 		user.setCellphone(mb_num);// 연락처 설정
@@ -77,10 +80,13 @@ public class MainController {
 		user.setAddress(mb_adress2);// 상세 주소 설정
 		user.setEmail(mb_email);// 이메일 설정
 		user.setRoll("BASIC");// 권한 설정
+*/	
 		int result = -1;
+		logger.trace("SignUp Try User: {}",user);
 		result = UserSvc.insert(user);
+		logger.trace("SignUp Result : {}",result==1?"Sucess":"Fail");
 		if (result == 1) {
-			session.setAttribute("FunFunSignUpId", mb_id);
+			session.setAttribute("FunFunSignUpId", user.getId());
 		}
 		String path=request.getContextPath()+"/Result";
 		response.sendRedirect(path);
@@ -127,8 +133,10 @@ public class MainController {
 
 	// ID 중복 체크 AJax
 	@RequestMapping(value = "/Id_dupl_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public @ResponseBody String IdDuplAjax(@RequestParam String mb_id) {
-		String result=UserSvc.checkId(mb_id);
+	public @ResponseBody String IdDuplAjax(@RequestParam String id) {
+		//logger.trace(id);
+		String result=UserSvc.checkId(id);
+		
 		// Test
 		/*String result;
 		if (mb_id.equalsIgnoreCase("qwer")) {
@@ -146,8 +154,8 @@ public class MainController {
 
 	// 닉네임 중복 체크 AJax
 	@RequestMapping(value = "/Nick_dupl_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public @ResponseBody String NickDuplAjax(@RequestParam String mb_nick) {
-		 String result=UserSvc.checkNickname(mb_nick);
+	public @ResponseBody String NickDuplAjax(@RequestParam String nickname) {
+		 String result=UserSvc.checkNickname(nickname);
 		// Test
 		//String result;
 		/*if (mb_nick.equalsIgnoreCase("qwer")) {
@@ -165,8 +173,8 @@ public class MainController {
 
 	// E-Mail 중복 체크 AJax
 	@RequestMapping(value = "/EMail_dupl_ajax", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public @ResponseBody String EMailDuplAjax(@RequestParam String mb_email) {
-		 String result=UserSvc.checkEmail(mb_email);
+	public @ResponseBody String EMailDuplAjax(@RequestParam String email) {
+		 String result=UserSvc.checkEmail(email);
 		/*String result;
 		System.out.println(mb_email);
 		if (mb_email.equals("qwer@naver.com")) {
