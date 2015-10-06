@@ -3,12 +3,12 @@ package funfun.jdbc.dto;
 import java.util.List;
 
 public class Users {
-	private String id;
-	private String nickname;
-	private String pass;
-	private String email;
-	private String cellphone;
-	private String address;
+	private String id;//
+	private String nickname;//
+	private String pass;//
+	private String email;//
+	private String cellphone;//
+	private String address;//
 	private String mail_no;
 	private String roll;
 	private String road_addr;
