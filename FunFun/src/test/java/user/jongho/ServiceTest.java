@@ -84,6 +84,11 @@ public class ServiceTest {
 	}*/
 	
 	@Test
+	public void TestFundingByPage(){
+		fdservice.selectFundingByPage(1);
+	}
+	
+	@Test
 	public void TestAllPageFunding(){
 		fdservice.countFundingPage();
 	}

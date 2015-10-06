@@ -1,11 +1,15 @@
 package funfun.jdbc.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import funfun.jdbc.dao.FundingDao;
+import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
 @Service
 public class FundingServiceImpl implements FundingService {
@@ -50,6 +54,18 @@ public class FundingServiceImpl implements FundingService {
 		int pageresult = fddao.selectCountAllPage();
 		logger.trace("page over : {}",pageresult);
 		return pageresult;
+	}
+
+	@Override
+	public List<Funding> selectFundingByPage(int page_no) {
+		List<Funding> selectresult = null;
+		try {
+			selectresult = fddao.selectFundingByPage(page_no);
+		} catch (EmptyResultDataAccessException e) {
+			selectresult = null;
+		}
+		logger.trace("select over : {}", selectresult);
+		return selectresult;
 	}
 
 }
