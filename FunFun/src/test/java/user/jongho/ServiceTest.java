@@ -144,6 +144,11 @@ public class ServiceTest {
 	}
 	
 	@Test
+	public void TestSelectBoardAllPage(){
+		fservice.selectCountAllPage();
+	}
+	
+	@Test
 	public void TestselectBoardReply(){
 		Reply reply = rdao.selectBoardReply(25, "22");
 		rservice.selectBoardReply(25, "22");
@@ -351,12 +356,12 @@ public class ServiceTest {
 
 	@Test
 	public void TestFBoardDelete() {
-		FBoard fboard = fdao.selectFBoard(4);
-		fservice.deleteFBoardByFno(4);
+		FBoard fboard = fdao.selectFBoard(22);
+		fservice.deleteFBoardByFno(22);
 		assertThat(fboard.getFno(), is(not(nullValue())));
 		
-		Board retrieved = bdao.selectBoard(4);
-		bservice.delete(4);
+		Board retrieved = bdao.selectBoard(52);
+		bservice.delete(52);
 		assertThat(retrieved.getNo(), is(not(nullValue())));
 		
 	}
@@ -366,16 +371,15 @@ public class ServiceTest {
 		Board board = new Board();
 		
 		board.setCode("11");
-		board.setUserId("whdgh1265");
+		board.setUserId("every9168");
 		bservice.insertBoard(board);
 		
 		FBoard fboard = new FBoard();
 		fboard.setTitle("줴훈줴훈");
 		fboard.setFcontext("저 사람 이솽훼");
 		fboard.setFview(3);
-		fboard.setBoardNo(3);
 		fboard.setBoardCode("11");
-		fboard.setUserId("whdgh1265");
+		fboard.setUserId("every9168");
 		fservice.insertFBoard(fboard);
 		logger.trace("{}", fboard);
 		

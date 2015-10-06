@@ -41,7 +41,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void delete(int no) {
 		int deleteNo = dao.deleteBoard(no);
-
+		logger.trace("delete over :{}",deleteNo);
 	}
 
 }

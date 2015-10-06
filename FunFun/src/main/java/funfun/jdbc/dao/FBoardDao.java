@@ -37,4 +37,6 @@ public interface FBoardDao {
 	public List<FBoard> selectFBoardById(String userId);
 	
 	public List<FBoard> selectFBoardByTitle(String title);
+	
+	public int selectCountAllPage();
 }
