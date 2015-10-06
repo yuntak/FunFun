@@ -133,4 +133,11 @@ public class FBoardServiceImpl implements FBoardService {
 		logger.trace("select over : {}", selectCount);
 		return selectCount;
 	}
+
+	@Override
+	public int selectCountAllPage() {
+		int selectCountPage = fdao.selectCountAllPage();
+		logger.trace("select page over : {}",selectCountPage);
+		return selectCountPage;
+	}
 }

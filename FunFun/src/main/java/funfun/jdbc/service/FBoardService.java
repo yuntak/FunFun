@@ -28,4 +28,6 @@ public interface FBoardService {
 	FBoard selectFullFBoard(int no);
 	
 	int selectCount(int to, int from);
+	
+	int selectCountAllPage();
 }

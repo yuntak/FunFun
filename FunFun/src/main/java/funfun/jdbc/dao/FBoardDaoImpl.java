@@ -187,4 +187,12 @@ public class FBoardDaoImpl implements FBoardDao {
 		int result = jt.queryForObject(sql, Integer.class, to, from);
 		return result;
 	}
+
+	@Override
+	public int selectCountAllPage() {
+		String sql = "select count(*) from free_board";
+		int countresult = jt.queryForObject(sql, Integer.class);
+		int result = (int)Math.ceil(countresult/(double)10);
+		return result;
+	}
 }
