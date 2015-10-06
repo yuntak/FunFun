@@ -9,10 +9,10 @@ public class Users {
 	private String email;//
 	private String cellphone;//
 	private String address;//
-	private String mail_no;
-	private String roll;
-	private String road_addr;
-	private String loca_addr;
+	private String mail_no;//
+	private String roll;//
+	private String road_addr;//
+	private String loca_addr;//
 	
 	private List<FBoard> fboards;
 

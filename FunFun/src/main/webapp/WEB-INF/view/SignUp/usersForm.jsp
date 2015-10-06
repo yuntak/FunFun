@@ -53,7 +53,7 @@
 				debug : true,
 				//검사할 필드와 검사 항목의 나열
 				rules : {
-					mb_id : {
+					id : {
 						required : true,
 						minlength : 4,
 						maxlength : 20,
@@ -65,7 +65,7 @@
 
 					},
 
-					mb_pass : {
+					pass : {
 						required : true,
 						minlength : 8,
 					},
@@ -75,14 +75,14 @@
 						equalTo : '#mb_pass'
 					},
 
-					mb_num : {
+					cellphone : {
 						required : true,
 						numcheck : true
 					},
-					mb_adress2 : {
+					address : {
 						required : true,
 					},
-					mb_nick : {
+					nickname : {
 						required : true,
 						minlength : 4,
 						maxlength : 10,
@@ -92,7 +92,7 @@
 						}
 					},
 
-					mb_email : {
+					email : {
 						required : true,
 						email : true,
 						remote : {
@@ -100,12 +100,22 @@
 							url : "./EMail_dupl_ajax"
 						}
 
-					}
+					},
+					mail_no :{
+						required : true
+					},
+					road_addr:{
+						required : true
+					},
+					
+					loca_addr:{
+						required : true
+					},
 
 				},
 				// 검사를 충족하지 못할 경우 표시될 메시지의 나열
 				messages : {
-					mb_id : {
+					id : {
 						required : "아이디를 입력하시오.",
 						minlength : "아이디 {0}자 이상 입력해주세요!",
 						maxlength : "아이디 {0}자 이하로 입력해주세요 ",
@@ -113,7 +123,7 @@
 						remote : "ID가 중복 되었습니다."
 
 					},
-					mb_pass : {
+					pass : {
 						required : "암호를 입력하시오.",
 						minlength : "비밀번호는 {0}자 이상 입력해주세요!",
 					},
@@ -122,14 +132,14 @@
 						minlength : "비밀번호는 {0}자 이상 입력해주세요!",
 						equalTo : "암호를 다시 확인하세요"
 					},
-					mb_num : {
+					cellphone : {
 						required : "번호를 입력하시오.",
 						numcheck : "올바른 연락처를 입력해주십시오.",
 					},
-					mb_adress2 : {
+					address : {
 						required : "주소를 입력하시오."
 					},
-					mb_nick : {
+					nickname : {
 
 						required : "닉네임을 입력하시오.",
 						minlength : "닉네임 {0}자 이상 입력해주세요!",
@@ -137,10 +147,20 @@
 						remote : "닉네임이 중복 되었습니다."
 
 					},
-					mb_email : {
+					email : {
 						required : "이메일을 입력하시오.",
 						email : "올바른 이메일을 입력하시오.",
 						remote : "이메일이 중복 되었습니다"
+					},
+					mail_no :{
+						required : "우편번호를 입력하세요."
+					},
+					road_addr:{
+						required : "도로명 주소를 입력하세요."
+					},
+					
+					loca_addr:{
+						required : "지번 주소를 입력하세요."
 					},
 				}, submitHandler: function(form) {
 				    form.submit();
@@ -161,7 +181,7 @@
 
 
 
-	<sform:form class="form-horizontal" name=fregisterform id=fregisterform	method="post" action="SignUpResult"
+	<sform:form class="form-horizontal" name="fregisterform" id="fregisterform"	method="post" action="SignUpResult"
 		enctype="multipart/form-data" modelAttribute="user">
 
 		<div class="panel panel-info">
@@ -176,8 +196,8 @@
 			<div class="form-group">
 				<sform:label for="mb_id" class="col-sm-2 control-label" path="id">아이디</sform:label>
 				<div class="col-sm-6">
-					<sform:input class="form-control" placeholder="User id" size=20
-						id='mb_id' name="mb_id" required value="" path="id" />
+					<sform:input class="form-control" placeholder="User id" size="20"
+						id="mb_id" name="mb_id"   path="id" />
 					<p class="help-block">아아디는 최소4자 이상 20자 이하입니다.</p>
 
 					<p class="help-block">
@@ -190,7 +210,7 @@
 				<sform:label for="mb_password" class="col-sm-2 control-label" path="pass">패스워드</sform:label>
 				<div class="col-sm-6">
 					<sform:input class="form-control" type="password" name="mb_pass"
-						id="mb_pass" size=20 maxlength=20 required placeholder="Password" path="pass" />
+						id="mb_pass" size="20" maxlength="20"   placeholder="Password" path="pass" />
 				</div>
 			</div>
 
@@ -198,7 +218,7 @@
 				<label for="mb_password_re" class="col-sm-2 control-label">패스워드확인</label>
 				<div class="col-xs-5">
 					<INPUT class="form-control" type="password" id="mb_pass_re"
-						name="mb_pass_re" size=20 maxlength=20 required
+						name="mb_pass_re" size="20" maxlength="20" 
 						placeholder="Password를 한번 더 입력">
 					<p class="help-block">비밀번호는 8자 이상으로 입력하세요.</p>
 				</div>
@@ -208,8 +228,8 @@
 			<div class="form-group">
 				<sform:label for="mb_num" class="col-sm-2 control-label" path="cellphone">연락처</sform:label>
 				<div class="col-xs-5">
-					<sform:input class="form-control" type="text" id='mb_num' name='mb_num'
-						required maxlength=13 placeholder="번호입력" value="" path="cellphone"/>
+					<sform:input class="form-control" type="text" id="mb_num" name="mb_num"
+						 maxlength="13" placeholder="번호입력" value="" path="cellphone"/>
 					<p class="help-block">ex)010-1234-5678</p>
 				</div>
 
@@ -257,7 +277,7 @@
 				<sform:label for="mb_adress2" class="col-sm-2 control-label" path="address"> </sform:label>
 				<div class="col-sm-5">
 					<sform:input class="form-control" type="text" id='mb_adress2'
-						name='mb_adress2' required maxlength=30 value=''
+						name='mb_adress2' maxlength="30" value=''
 						placeholder="상세주소" path="address" />
 				</div>
 			</div>
@@ -268,7 +288,7 @@
 			<sform:label for="mb_nick" class="col-sm-2 control-label" path="nickname">닉네임</sform:label>
 			<div class="col-sm-6">
 				<sform:input class="form-control" type="text" id='mb_nick' name='mb_nick'
-					required maxlength=20 value='' placeholder="Nick name" path="nickname"/>
+				maxlength="20" value="" placeholder="Nick name" path="nickname"/>
 				<p class="help-block"></p>
 				<p class="help-block">
 					<span id="msg_mb_nick"></span>
@@ -281,8 +301,8 @@
 			<sform:label for="mb_email" class="col-sm-2 control-label" path="email">E-mail</sform:label>
 			<div class="col-sm-6">
 				<sform:input class="form-control" type="text" id='mb_email'
-					name='mb_email' required style="ime-mode: disabled" size=38
-					maxlength=100 value='' placeholder="E-mail" onblur="" path="email" />
+					name='mb_email'  style="ime-mode: disabled" size="38"
+					maxlength="50" value='' placeholder="E-mail" onblur="" path="email" />
 				<p class="help-block">
 					아이디, 비밀번호 분실 시 본인확인용으로 사용되므로<br>유효한 이메일 계정으로 입력하시기 바랍니다.
 				</p>
@@ -303,22 +323,15 @@
 				</div>
 			</div>
 		</div>
-		<br> <br> <sform:input type=hidden name="roll" value="BASIC" path="roll" />
+		<br> <br> <sform:input type="hidden"  value="BASIC" path="roll" />
 
 
 		<div class="panel-footer">
 			<button class="btn btn-success">가 입</button>
 			<a href="javascript:" class="btn btn-danger"
 				onClick="history.go(-1);">취소</a>
-
 		</div>
-
-
-
 	</sform:form>
-
-
-
 </body>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
