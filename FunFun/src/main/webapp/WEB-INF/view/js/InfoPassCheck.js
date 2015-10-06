@@ -20,7 +20,7 @@ $(function(){
 			success:function(response){
 				if(response=="true"){
 					console.log("Login Sucess");
-					 location.href="";
+					
 				}
 				else{
 					console.log("Login Fail");

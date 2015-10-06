@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet"
@@ -22,25 +23,35 @@
 <style>
 p{
 	font-size: 20px;
+}#infoedit {
+	background: white;
+}
+
+#passedit {
+	
+}
+
+#deledit {
+	
 }
 </style>
 
 </head>
 <body>
 
-	<form class="form-horizontal" id="editForm" name="editForm" >
+	<sform:form class="form-horizontal" id="editForm" name="editForm" modelAttribute="userEdit" action="../myinfo/info">
 
-		<div class="panel panel-success">
+		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="nav nav-pills">        
   
   <ul class="nav nav-justified">
   <li>
-   <a href="">회원정보수정</a></li>
+   <a id="infoedit" href="../myinfo/info">회원정보수정</a></li>
    <li>
-   <a href="">비밀번호수정</a></li>
+   <a href="../myinfo/pass">비밀번호수정</a></li>
    <li>
-   <a href="">회원탈퇴</a></li>
+   <a href="../myinfo/delete">회원탈퇴</a></li>
    </ul>
 
 </div>
@@ -52,18 +63,18 @@ p{
 			
 			
 				<div class="form-group">
-					<label for="id" class="col-sm-2 control-label">아이디</label>
+					<sform:label for="id" class="col-sm-2 control-label" path="id">아이디</sform:label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" value="${User_id }"
-							 id="id" readonly="readonly">
+						<sform:input type="text" class="form-control" value="${FunFunUser.id }"
+							 id="id" readonly="true" path="id"/>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="pass" class="col-sm-2 control-label">비밀번호</label>
+					<sform:label for="pass" class="col-sm-2 control-label" path="pass">비밀번호</sform:label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" name="pass"
-							id="pass">
+						<sform:input type="password" class="form-control" name="pass"
+							id="pass" path="pass"/>
 					</div>
 				</div>
 				<div class="form-group" id="msg_box" style="display: block">
@@ -81,9 +92,9 @@ p{
 				<div class="form-group">
 					<button class="btn btn-success">확인</button>
 
-					<a href=".main" class="btn btn-danger">취소</a>
+					<a href="../main" class="btn btn-danger">취소</a>
 				</div>
 			</div>
-	</form>
+	</sform:form>
 </body>
 </html>

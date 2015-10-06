@@ -63,8 +63,16 @@ public class UsersDaoImpl implements UsersDao {
 			@Override
 			public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Users user = new Users();
+				user.setId(rs.getString("id"));
 				user.setNickname(rs.getString("nickname"));
 				user.setPass(rs.getString("pass"));
+				user.setEmail(rs.getString("email"));
+				user.setCellphone(rs.getString("cellphone"));
+				user.setAddress(rs.getString("address"));
+				user.setMail_no(rs.getString("mail_no"));
+				user.setRoad_addr(rs.getString("road_addr"));
+				user.setLoca_addr(rs.getString("loca_addr"));
+				user.setRoll(rs.getString("roll"));
 				return user;
 			}};
 	}

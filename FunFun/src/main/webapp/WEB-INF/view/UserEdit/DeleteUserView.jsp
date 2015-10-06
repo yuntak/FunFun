@@ -24,39 +24,47 @@ p {
 	font-size: 20px;
 }
 
+}
 #infoedit {
 	
 }
 
 #passedit {
-	background: white;
+	
 }
 
 #deledit {
-	
+	background: white;
 }
 </style>
 
 </head>
 <body>
+
 	<form class="form-horizontal" id="editForm" name="editForm">
+
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="nav nav-pills">
+
 					<ul class="nav nav-justified">
-						<li id="infoedit"><a href="">회원정보수정</a></li>
-						<li id="passedit"><a href="">비밀번호수정</a></li>
-						<li id="deledit"><a href="">회원탈퇴</a></li>
+						<li><a href="">회원정보수정</a></li>
+						<li><a href="">비밀번호수정</a></li>
+						<li><a id="deledit" href="">회원탈퇴</a></li>
 					</ul>
 
 				</div>
 			</div>
 		</div>
+
 		<div class="panel-body">
+
+
+
 			<div class="form-group">
 				<label for="id" class="col-sm-2 control-label">아이디</label>
 				<div class="col-sm-4">
-					<input type="text" class="form-control" value="${FunFunUser.id }" id="id"
+					<input type="text" class="form-control" value="${User_id }" id="id"
 						readonly="readonly">
 				</div>
 			</div>
@@ -81,11 +89,10 @@ p {
 		<div class="panel-footer">
 			<div class="form-group">
 				<button class="btn btn-success">확인</button>
+
 				<a href=".main" class="btn btn-danger">취소</a>
 			</div>
 		</div>
 	</form>
 </body>
-<script type="text/javascript" src="./js/PassEditPassCheck.js"></script>
-<script type="text/javascript" src"<%=request.getContextPath() %>"></script>
 </html>

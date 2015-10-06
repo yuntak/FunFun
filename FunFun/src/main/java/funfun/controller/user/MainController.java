@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.support.RequestContext;
 
 import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.UsersService;
@@ -61,26 +59,10 @@ public class MainController {
 	// sample4_jibunAddress(지번주소),mb_adress2(상세주소)
 	// mb_mailling
 	@RequestMapping(value="/SignUpResult",method=RequestMethod.POST)
-	public void SingUpTry (//
-			/*@RequestParam String mb_id, @RequestParam String mb_pass, @RequestParam String mb_num,
-			@RequestParam String mb_nick, @RequestParam String sample4_postcode,
-			@RequestParam String sample4_roadAddress, @RequestParam String sample4_jibunAddress,
-			@RequestParam String mb_adress2, @RequestParam String mb_email, */
+	public String SingUpTry (//
 			Users user,
-			HttpSession session,RequestContext ctxt,HttpServletRequest request,HttpServletResponse response)
+			HttpSession session)
 	throws Exception{
-	/*	Users user = new Users();
-		user.setId(mb_id);// id 설정
-		user.setPass(mb_pass);// pass 설정
-		user.setCellphone(mb_num);// 연락처 설정
-		user.setNickname(mb_nick);// 닉네임 설정
-		user.setMail_no(sample4_postcode);// 우편번호 설정
-		user.setRoad_addr(sample4_roadAddress);// 도로 주소
-		user.setLoca_addr(sample4_jibunAddress);
-		user.setAddress(mb_adress2);// 상세 주소 설정
-		user.setEmail(mb_email);// 이메일 설정
-		user.setRoll("BASIC");// 권한 설정
-*/	
 		int result = -1;
 		logger.trace("SignUp Try User: {}",user);
 		result = UserSvc.insert(user);
@@ -88,8 +70,7 @@ public class MainController {
 		if (result == 1) {
 			session.setAttribute("FunFunSignUpId", user.getId());
 		}
-		String path=request.getContextPath()+"/Result";
-		response.sendRedirect(path);
+		return "redirect:Result";
 		//return "SignUp/SignUpResult";// 회원가입 완료 Page로 이동
 
 	}
@@ -117,7 +98,7 @@ public class MainController {
 	public @ResponseBody String loginAjax(@RequestParam String id, @RequestParam String pass, HttpSession session) {
 		Users user=UserSvc.mylogin(id, pass);
 		 if(user!=null){
-		
+		logger.trace("Login Sucess: {}",user);
 		//Users user= new Users();
 		//user.setNickname("hoseo");
 		//user.setId("qwer");
@@ -192,38 +173,53 @@ public class MainController {
 	// IdPassCheck
 	@RequestMapping(value = "/IdPassCheck", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
 	public @ResponseBody String IdPassCheck(@RequestParam String id, @RequestParam String pass) {
-
-		// Users User=UserSvc.loginUsers(id, pass);
-
-		/*
-		 * if(Users!=null){ return "true; }
-		 */
-		if (id.equals("qwer") && pass.equals("qwer")) {
+		logger.trace("Check ID : {}, PSSS : {}",id,pass);
+		
+		if (UserSvc.mylogin(id, pass)!=null) {
 			return "true";
 		} else {
 			return "false";
 		}
-
 	}
 	@RequestMapping(value="/myinfo")
 	public String infoBefore(HttpServletRequest request){
-		
 		 return "";
 	}
-/*	@RequestMapping(value="/myinfo/infoEdit")
-	public String infoEdit(){ 
-		
-		return null;
+	//로그인 필요
+	@RequestMapping(value="/myinfo/info",method=RequestMethod.GET)
+	public String infoEdit(Model model){
+		Users user=new Users();
+		String viewlocation = "/WEB-INF/view/UserEdit/UserEditView.jsp";
+		model.addAttribute("view", viewlocation);
+		model.addAttribute("userEdit", user);
+		return "main/Template";
 	}
-	@RequestMapping(value="/myinfo/infoEdit")
-	public String infoEdit(){ 
-		
-		return null;
+	@RequestMapping(value="/myinfo/info",method=RequestMethod.POST)
+	public String infoEditForm(Users userEdit,Model model){ 
+		if(UserSvc.mylogin(userEdit.getId(), userEdit.getPass())==null){
+			return "redirect:../myinfo/info";
+		}else{
+		String viewlocation = "/WEB-INF/view/UserEdit/InfoEditForm.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+		}
 	}
-	@RequestMapping(value="/myinfo/infoEdit")
-	public String infoEdit(){ 
+	
+	//로그인 필요
+	@RequestMapping(value="/myinfo/pass")
+	public String passEdit(){ 
+		return "UserEdit/PassEditView";
+	}
+	//로그인 필요
+	@RequestMapping(value="/myinfo/delete")
+	public String deleteEdit(){ 
 		
-		return null;
-	}*/
+		return "UserEdit/DeleteUserView";
+	}
+	@RequestMapping(value="/session/invalate")
+	public String  sessionDelete(HttpSession session){
+		session.invalidate();
+		return "redirect:../main";
+	}
 
 }

@@ -57,7 +57,7 @@ margin-bottom: 10px;
 		<div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a href="./"><img src="<%=request.getContextPath() %>/rsc/img/logo.jpg"
+				<a href="../main"><img src="<%=request.getContextPath() %>/rsc/img/logo.jpg"
 					style="width: 100px; height: 100px">
 				</a>
 			</div>
@@ -86,7 +86,7 @@ margin-bottom: 10px;
 		  <div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a href="./"><img src="<%=request.getContextPath()%>/rsc/img/logo.jpg"
+				<a href="../main"><img src="<%=request.getContextPath()%>/rsc/img/logo.jpg"
 					style="width: 100px; height: 100px">
 				</a>
 			</div>
@@ -104,7 +104,8 @@ margin-bottom: 10px;
 	
 			<div align="right" class="userlogin">
 				<p id="login-after-msg"><span id="myNickName"> ${FunFunUser.nickname }</span>님 반갑습니다.</p>
-			    <a class="btn btn-success login-after-btn" href="../Logout">로그아웃</a><a class="btn btn-info login-after-btn" href="../myinfo">회원정보</a>
+			    <a class="btn btn-success login-after-btn" href="../Logout">로그아웃</a>
+			    <a class="btn btn-info login-after-btn" href="../myinfo/info">회원정보</a>
 			</div>	
 			
 		

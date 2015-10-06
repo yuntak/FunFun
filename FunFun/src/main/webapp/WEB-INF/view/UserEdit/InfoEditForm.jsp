@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
@@ -19,18 +19,46 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+
+#infoedit {
+	background: white;
+}
+
+#passedit {
+	
+}
+
+#deledit {
+	
+}
+#head_line{
+font-size: 35px;
+}
+</style>
 
 
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 <nav>
+
 	<form class="form-horizontal" onsubmit="return onSubmit(this)"
-		method="post">
-		<div class="panel panel-success">
-		<div class="panel-heading"><h2>
-					<strong>정보수정</strong>
-				</h2></div>	
+		method="post"><div class="panel panel-info">
+			<div class="panel-heading">
+				<div class="nav nav-pills">
+					<ul class="nav nav-justified">
+						<li ><a id="infoedit" href="">회원정보수정</a></li>
+						<li id="passedit"><a href="">비밀번호수정</a></li>
+						<li id="deledit"><a href="">회원탈퇴</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-info">
+		<div class="panel-heading">
+					<strong id="head_line">정보수정</strong>
+				</div></div>	
 				<div class="panel-body">
 
 					<br>
@@ -73,7 +101,7 @@
         
         <div class="col-xs-3">
         
-        <input class="form-control"type="text" id="sample4_postcode" placeholder="우편번호">
+        <input class="form-control"type="text" id="sample4_postcode" name="sample4_postcode" placeholder="우편번호">
 		</div>
 		
 		<input class="btn btn-info" type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>

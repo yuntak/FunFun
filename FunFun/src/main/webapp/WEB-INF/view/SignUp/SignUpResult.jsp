@@ -96,10 +96,7 @@ $(function(){
 	console.log("JQuery Start")
 	
 	$("#check").click(function(){
-	
-		<% session.invalidate(); %>
-		
-		location.replace("./main");
+		location.replace("./session/invalate");
 	});
 	
 });
