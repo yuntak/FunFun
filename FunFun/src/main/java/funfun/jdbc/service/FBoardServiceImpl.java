@@ -80,10 +80,10 @@ public class FBoardServiceImpl implements FBoardService {
 	}
 
 	@Override
-	public List<FBoard> selectFBoardByPage(String title, String board_code, int page_no) {
+	public List<FBoard> selectFBoardByPage(String board_code, int page_no) {
 		List<FBoard> selectresult = null;
 		try {
-			selectresult = fdao.selectFBoardByPage(title,board_code,page_no);
+			selectresult = fdao.selectFBoardByPage(board_code,page_no);
 		} catch (EmptyResultDataAccessException e) {
 			selectresult = null;
 		}
@@ -92,10 +92,10 @@ public class FBoardServiceImpl implements FBoardService {
 	}
 
 	@Override
-	public List<FBoard> selectCodeFBoardByPage(String title, String code, int page_no) {
+	public List<FBoard> selectTitleFBoardByPage(String title, String code, int page_no) {
 		List<FBoard> selectresult = null;
 		try {
-			selectresult = fdao.selectFBoardByPage(title,code,page_no);
+			selectresult = fdao.selectFBoardBySelectTitlePage(title,code,page_no);
 		} catch (EmptyResultDataAccessException e) {
 			selectresult = null;
 		}
@@ -107,7 +107,7 @@ public class FBoardServiceImpl implements FBoardService {
 	public List<FBoard> selectUserIdFBoardByPage(String userId, String code, int page_no) {
 		List<FBoard> selectresult = null;
 		try {
-			selectresult = fdao.selectFBoardByPage(userId,code,page_no);
+			selectresult = fdao.selectFBoardByPage(code,page_no);
 		} catch (EmptyResultDataAccessException e) {
 			selectresult = null;
 		}

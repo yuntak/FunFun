@@ -26,11 +26,11 @@ public interface FBoardDao {
 	
 	public FBoard selectFullFBoard(int no);
 	
-	public List<FBoard> selectFBoardByPage(String title,String code,int page_no);
+	public List<FBoard> selectFBoardByPage(String code,int page_no);
 	
 	public List<FBoard> selectFBoardBySelectUserIdPage(String userId, String code, int page_no);
 	
-	public List<FBoard> selectFBoardBySelectCodePage(String title,String code, int page_no);
+	public List<FBoard> selectFBoardBySelectTitlePage(String title,String code, int page_no);
 
 	public List<FBoard> selectFBoardByCode(int board_no, String board_code);
 	

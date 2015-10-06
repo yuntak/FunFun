@@ -19,9 +19,9 @@ public interface FBoardService {
 
 	List<FBoard> selectFBoardByTitle(String title);
 
-	List<FBoard> selectFBoardByPage(String title, String board_code, int page_no);
+	List<FBoard> selectFBoardByPage(String board_code, int page_no);
 
-	List<FBoard> selectCodeFBoardByPage(String title, String code, int page_no);
+	List<FBoard> selectTitleFBoardByPage(String title, String code, int page_no);
 
 	List<FBoard> selectUserIdFBoardByPage(String userId, String code, int page_no);
 

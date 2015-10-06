@@ -5,6 +5,9 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -19,12 +22,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import funfun.jdbc.dao.BoardDao;
 import funfun.jdbc.dao.CBoardDao;
 import funfun.jdbc.dao.FBoardDao;
+import funfun.jdbc.dao.FundingDao;
 import funfun.jdbc.dao.FundingFormDao;
 import funfun.jdbc.dao.ReplyDao;
 import funfun.jdbc.dao.UsersDao;
 import funfun.jdbc.dto.Board;
 import funfun.jdbc.dto.CBoard;
 import funfun.jdbc.dto.FBoard;
+import funfun.jdbc.dto.Funding;
 import funfun.jdbc.dto.Funding_form;
 import funfun.jdbc.dto.Reply;
 import funfun.jdbc.dto.Users;
@@ -32,6 +37,7 @@ import funfun.jdbc.service.BoardService;
 import funfun.jdbc.service.CBoardService;
 import funfun.jdbc.service.FBoardService;
 import funfun.jdbc.service.FundingFormService;
+import funfun.jdbc.service.FundingService;
 import funfun.jdbc.service.ReplyService;
 import funfun.jdbc.service.UsersService;
 
@@ -67,10 +73,80 @@ public class ServiceTest {
 	FundingFormDao ffdao;
 	@Autowired
 	FundingFormService ffservice;
+	
+	@Autowired
+	FundingDao fddao;
+	@Autowired
+	FundingService fdservice;
 	/*@Before
 	public void cleanDB(){
 		dao.deleteAllUsers();
 	}*/
+	
+	@Test
+	public void TestAllPageFunding(){
+		fdservice.countFundingPage();
+	}
+	
+	@Test
+	public void TestUpdateDateFunding() throws Exception{
+		Funding funding = new Funding();
+		funding.setFno(4);
+		Date date = DatePase("2011-11-01");
+		funding.setStartDate(date);
+		Date date2 = DatePase("2011-12-31");
+		funding.setEndDate(date2);
+		fdservice.updateFundingDate(funding);
+	}
+	public Date DatePase(String strdate) throws Exception{
+		DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+		Date date2;
+		date2=date.parse(strdate);
+		return date2;
+	}
+	
+	@Test
+	public void TestUpdateMoneyFunding(){
+		Funding funding = new Funding();
+		funding.setFno(4);
+		funding.setMoney(20000);
+		fdservice.updateFundingMoney(funding);
+	}
+	
+	@Test
+	public void TestUpdateFunding(){
+		Funding funding = new Funding();
+		funding.setFno(4);
+		funding.setTitle("원피스");
+		funding.setFContent("c:\\program files\\funding\\onpice.jpg");
+		funding.setFContext("c:\\program files\\funding\\onpice main.jpg");
+		funding.setGoal(5000000);
+		funding.setMoney(250000);
+		funding.setContext("원피스 연재 시작합니다.");
+		fdservice.updateFunding(funding);
+	}
+	
+	@Test
+	public void TestDeleteFunding(){
+		fdservice.deleteFunding(1);
+	}
+	
+	@Test
+	public void TestInsertFunding(){
+		Funding funding = new Funding();
+		funding.setTitle("웹툰 통");
+		funding.setGoal(1000000);
+		funding.setFContent("c:\\program files\\funding\\title.jpg");
+		funding.setFContext("c:\\program files\\funding\\titlemain.jpg");
+		funding.setMoney(0);
+		funding.setContext("웹툰 통에 대한 이야기 입니다.");
+		Date date= new Date();
+		funding.setStartDate(date);
+		Date date2 = new Date(13-01-01);
+		funding.setEndDate(date2);
+		funding.setUserId("every9168");
+		fdservice.insertFunding(funding);
+	}
 	
 	@Test
 	public void TestInsertFForm(){
@@ -184,24 +260,24 @@ public class ServiceTest {
 	
 	@Test
 	public void TestFBoardselectUserIdByPage(){
-		List<FBoard> fboard = fdao.selectFBoardByPage("loll333", "22", 1);
-		fservice.selectFBoardByPage("loll333", "22", 1);
+		List<FBoard> fboard = fdao.selectFBoardBySelectUserIdPage("loll333", "22", 1);
+		fservice.selectUserIdFBoardByPage("loll333", "22", 1);
 		logger.trace("{}",fboard);
 		assertThat(fboard,is(not(nullValue())));
 	}
 	
 	@Test
-	public void TestFBoardselectCodeByPage(){
-		List<FBoard> fboard = fdao.selectFBoardByPage("", "22", 1);
-		fservice.selectFBoardByPage("", "22", 1);
+	public void TestFBoardselectTitleByPage(){
+		List<FBoard> fboard = fdao.selectFBoardBySelectTitlePage("","22", 1);
+		fservice.selectTitleFBoardByPage("","22", 1);
 		logger.trace("{}",fboard);
 		assertThat(fboard,is(not(nullValue())));
 	}
 	
 	@Test
 	public void TestFBoardselectByPage(){
-		List<FBoard> fboard = fdao.selectFBoardByPage("", "22", 3);
-		fservice.selectFBoardByPage("", "22", 3);
+		List<FBoard> fboard = fdao.selectFBoardByPage("22", 1);
+		fservice.selectFBoardByPage("22", 1);
 		logger.trace("{}",fboard);
 		assertThat(fboard,is(not(nullValue())));
 	}
