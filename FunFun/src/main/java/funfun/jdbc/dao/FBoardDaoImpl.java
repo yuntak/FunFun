@@ -159,7 +159,7 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public List<FBoard> selectFBoardByPage(String code, int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board order by board_no) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board order by board_no desc) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
 		List<FBoard> result = jt.query(sql, new BeanPropertyRowMapper<FBoard>(FBoard.class),
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE,code);
 		return result;
