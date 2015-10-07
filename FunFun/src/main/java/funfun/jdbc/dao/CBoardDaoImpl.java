@@ -27,7 +27,7 @@ public class CBoardDaoImpl implements CBoardDao {
 	NamedParameterJdbcTemplate namedjt;
 	@Override
 	public int insertCBoard(CBoard cboard) {
-		String sql = "insert into content_board(cno,title,content,cview,good,category,board_no,board_code,user_id,imgdata) values(seq_content_board.nextval,?,?,?,?,?,seq_board.currval,?,?,?,?)";
+		String sql = "insert into content_board(cno,title,content,cview,good,category,board_no,board_code,user_id,imgdata) values(seq_content_board.nextval,?,?,?,?,?,seq_board.currval,?,?,?)";
 		int result = jt.update(sql,cboard.getTitle(),cboard.getContent(),cboard.getCview(),cboard.getGood(),cboard.getCategory(),cboard.getBoard_code(),cboard.getUserId(),cboard.getImgData());
 		return result;
 	}
@@ -64,6 +64,7 @@ public class CBoardDaoImpl implements CBoardDao {
 				cboard.setCview(rs.getInt("fview"));
 				cboard.setGood(rs.getInt("good"));
 				cboard.setCategory(rs.getString("category"));
+				cboard.setImgData(rs.getString("imgdata"));
 				cboard.setBoard_no(rs.getInt("board_no"));
 				cboard.setBoard_code(rs.getString("board_code"));
 				cboard.setUserId(rs.getString("user_id"));
