@@ -52,7 +52,7 @@
   <div class="btn-group-vertical">
   
   <div class="jumbo">
-    <a id="all" href="freePublish.jsp" type="button" class="">전체</a>
+    <a id="all" href="freePublish.jsp" type="button" class="">작품</a>
     <hr>
     <a href="freePublish.jsp?novel" type="button" class="">소설</a>
     <hr>
@@ -69,9 +69,24 @@
   <br>
   </div>
   
-  
+  <div align="right">
+  <div class="panel panel-default" style="width: 700px;  position:absolute; left:300px; top:200px;">
+  	 <div class="panel" style="height: 100px; 
+  	 text-align: left; border: solid 1px; margin: auto;">게시물</div>
   
   </div>
+  </div>
+  
+    <div align="right">
+  	<div class="panel panel-default" style="width: 700px;" >
+  	 <div class="panel" style="height: 100px; 
+  	 text-align: left; border: solid 1px;" >게시물</div>
+  
+  </div>
+  </div>
+  
+  </div>
+  
 </div>
 
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>

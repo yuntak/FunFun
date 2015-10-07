@@ -6,6 +6,7 @@ import funfun.jdbc.dto.FBoard;
 
 public interface FBoardDao {
 	
+
 	int BOARD_PER_PAGE = 26;
 
 	public int getBoardCount();
