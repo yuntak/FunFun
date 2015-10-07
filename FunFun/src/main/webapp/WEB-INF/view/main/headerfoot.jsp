@@ -117,13 +117,13 @@ margin-bottom: 10px;
   
   <ul class="nav nav-justified">
   <li>
-   <a href="<%=request.getContextPath() %>Board?Board=FreeBoard">자유게시판</a></li>
+   <a href="<%=request.getContextPath() %>/FreeBoard">자유게시판</a></li>
    <li>
-   <a href="<%=request.getContextPath() %>Board?Board=FreeContent">자유연재게시판</a></li>
+   <a href="<%=request.getContextPath() %>/ContentBoard">자유연재게시판</a></li>
    <li>
-   <a href="<%=request.getContextPath() %>Board?Board=Funding">펀드게시판</a></li>
+   <a href="<%=request.getContextPath() %>/FundingBoard">펀드게시판</a></li>
    <li>
-   <a href="<%=request.getContextPath() %>Board?Board=FAQ">QnA</a></li>
+   <a href="<%=request.getContextPath() %>/QnABoard">QnA</a></li>
    </ul>
 
 </div>
