@@ -34,8 +34,8 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public int insertFBoard(FBoard fboard) {
-		String sql = "insert into free_board(fno,title,fcontext,fview,board_no,board_code,user_id) values(seq_free_board.nextval,?,?,?,seq_board.currval,?,?)";
-		int result = jt.update(sql, fboard.getTitle(), fboard.getFcontext(), fboard.getFview(),fboard.getBoardCode(), fboard.getUserId());
+		String sql = "insert into free_board(fno,title,fcontext,fview,board_no,board_code,user_id) values(seq_free_board.nextval,?,?,?,seq_board.currval,11,?)";
+		int result = jt.update(sql, fboard.getTitle(), fboard.getFcontext(), fboard.getFview(), fboard.getUserId());
 		return result;
 	}
 
@@ -159,7 +159,7 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public List<FBoard> selectFBoardByPage(String code, int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board order by board_no) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
 		List<FBoard> result = jt.query(sql, new BeanPropertyRowMapper<FBoard>(FBoard.class),
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE,code);
 		return result;
@@ -167,7 +167,7 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public List<FBoard> selectFBoardBySelectUserIdPage(String userId, String code, int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board where user_id like '%'||?||'%' and board_code=? order by board_no) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board where user_id like '%'||?||'%' and board_code=? order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		List<FBoard> result = jt.query(sql, new BeanPropertyRowMapper<FBoard>(FBoard.class), userId, code,
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
 		return result;
@@ -175,7 +175,7 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public List<FBoard> selectFBoardBySelectTitlePage(String title, String code, int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board where title like '%'||?||'%' and board_code=? order by board_no) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board where title like '%'||?||'%' and board_code=? order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		List<FBoard> result = jt.query(sql, new BeanPropertyRowMapper<FBoard>(FBoard.class), title, code,
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
 		return result;
@@ -183,7 +183,7 @@ public class FBoardDaoImpl implements FBoardDao {
 	
 	@Override
 	public int selectCount(int to, int from) {
-		String sql = "SELECT count(*) FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board order by board_no) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		String sql = "SELECT count(*) FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		int result = jt.queryForObject(sql, Integer.class, to, from);
 		return result;
 	}

@@ -8,12 +8,14 @@ public class CBoard {
 	private String title;
 	private String content;
 	private Date cdate;
+	private Date subdate;
 	private int cview;
 	private int good;
 	private String category;
 	private int board_no;
 	private String board_code;
 	private String userId;
+	private String imgData;
 	
 	private List<Reply> replys;
 
@@ -47,6 +49,14 @@ public class CBoard {
 
 	public void setCdate(Date cdate) {
 		this.cdate = cdate;
+	}
+
+	public Date getSubdate() {
+		return subdate;
+	}
+
+	public void setSubdate(Date subdate) {
+		this.subdate = subdate;
 	}
 
 	public int getCview() {
@@ -97,6 +107,14 @@ public class CBoard {
 		this.userId = userId;
 	}
 
+	public String getImgData() {
+		return imgData;
+	}
+
+	public void setImgData(String imgData) {
+		this.imgData = imgData;
+	}
+
 	public List<Reply> getReplys() {
 		return replys;
 	}
@@ -107,10 +125,10 @@ public class CBoard {
 
 	@Override
 	public String toString() {
-		return "CBoard [cno=" + cno + ", title=" + title + ", content=" + content + ", cdate=" + cdate + ", cview="
-				+ cview + ", good=" + good + ", category=" + category + ", board_no=" + board_no + ", board_code="
-				+ board_code + ", userId=" + userId + ", replys=" + replys + "]";
+		return "CBoard [cno=" + cno + ", title=" + title + ", content=" + content + ", cdate=" + cdate + ", subdate="
+				+ subdate + ", cview=" + cview + ", good=" + good + ", category=" + category + ", board_no=" + board_no
+				+ ", board_code=" + board_code + ", userId=" + userId + ", imgData=" + imgData + ", replys=" + replys
+				+ "]";
 	}
-	
-	
+
 }

@@ -68,4 +68,16 @@ public class FundingServiceImpl implements FundingService {
 		return selectresult;
 	}
 
+	@Override
+	public List<Funding> selectFundingTitleByPage(String title, int page_no) {
+		List<Funding> selectresult = null;
+		try{
+			selectresult = fddao.selectFundingTitleByPage(title, page_no);
+		}catch(EmptyResultDataAccessException e){
+			selectresult = null;
+		}
+		logger.trace("select over : {}",selectresult);
+		return selectresult;
+	}
+
 }

@@ -44,7 +44,8 @@ public class FBoardServiceImpl implements FBoardService {
 		} catch (EmptyResultDataAccessException e) {
 			selectresult = null;
 		}
-		logger.trace("select over : {}", selectresult);
+		logger.trace("select over : {}  size : {}", selectresult,selectresult.size());
+		
 		return selectresult;
 	}
 
@@ -87,7 +88,7 @@ public class FBoardServiceImpl implements FBoardService {
 		} catch (EmptyResultDataAccessException e) {
 			selectresult = null;
 		}
-		logger.trace("select over : {}", selectresult);
+		logger.trace("select over : {}  size : {}", selectresult,selectresult.size());
 		return selectresult;
 	}
 

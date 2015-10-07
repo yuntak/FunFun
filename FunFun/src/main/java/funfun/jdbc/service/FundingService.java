@@ -12,4 +12,5 @@ public interface FundingService {
 	void updateFundingDate(Funding funding);
 	int countFundingPage();
 	List<Funding> selectFundingByPage(int page_no);
+	List<Funding> selectFundingTitleByPage(String title, int page_no);
 }
