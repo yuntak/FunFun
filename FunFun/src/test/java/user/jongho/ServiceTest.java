@@ -84,6 +84,26 @@ public class ServiceTest {
 	}*/
 	
 	@Test
+	public void TestSelectCategoryByPage(){
+		cservice.selectCBoardByCategoryPage("webtoon", "77", 1);
+	}
+	
+	@Test
+	public void TestCBoardGood(){
+		cservice.updateCBoardGood(10);
+	}
+	
+	@Test
+	public void TestCBoardView(){
+		cservice.updateCBoardVeiw(10);
+	}
+	
+	@Test
+	public void TestCBoardByPage(){
+		cservice.selectCBoardByPage("66", 1);
+	}
+	
+	@Test
 	public void TestFundingTitleByPage(){
 		fdservice.selectFundingTitleByPage("웹",1);
 	}
@@ -219,7 +239,7 @@ public class ServiceTest {
 	}
 	@Test
 	public void TestCBoardDelete(){
-		cservice.deleteCBoard("loll333");
+		cservice.deleteCBoard(10);
 	}
 	@Test
 	public void TestFullFBoard(){
@@ -286,8 +306,8 @@ public class ServiceTest {
 	
 	@Test
 	public void TestFBoardselectByPage(){
-		List<FBoard> fboard = fdao.selectFBoardByPage("22", 1);
-		fservice.selectFBoardByPage("22", 1);
+		List<FBoard> fboard = fdao.selectFBoardByPage("11", 2);
+		fservice.selectFBoardByPage("11", 2);
 		logger.trace("{}",fboard);
 		assertThat(fboard,is(not(nullValue())));
 	}
@@ -461,8 +481,8 @@ public class ServiceTest {
 		bservice.insertBoard(board);
 		
 		FBoard fboard = new FBoard();
-		fboard.setTitle("줴훈줴훈");
-		fboard.setFcontext("저 사람 이솽훼");
+		fboard.setTitle("zxcvzxcv");
+		fboard.setFcontext("저zxcvzxcv");
 		fboard.setFview(3);
 		fboard.setUserId("every9168");
 		fservice.insertFBoard(fboard);
