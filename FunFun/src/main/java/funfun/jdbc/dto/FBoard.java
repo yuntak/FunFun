@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 public class FBoard {
+	final public static String FREEBOARD_CODE="11";
+	
 	private int fno;
 	private String title;
 	private String fcontext;
