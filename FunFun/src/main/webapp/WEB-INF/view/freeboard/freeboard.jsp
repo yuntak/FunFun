@@ -7,7 +7,7 @@
 <%@page import="funfun.jdbc.dto.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -80,8 +80,7 @@ style>#name:link {
 
 		<br>
 		<p align="center">자유게시판</p>
-		<br>
-		<br>
+		<br> <br>
 		<div class="form-inline" align="right">
 			<input type="text" class="form-control" placeholder="검색"> <a
 				href=""><span class="btn btn-success">검색</span></a>
@@ -100,9 +99,11 @@ style>#name:link {
 			</thead>
 			<tbody>
 				<%
-					
-					List<FBoard> list=(List)request.getAttribute("fboardlist");
-					
+					Object FlistObj=request.getAttribute("FBoardList");
+				    List<FBoard> list=null;
+					if(FlistObj!=null&&FlistObj instanceof List){
+				 	list = (List<FBoard>)FlistObj;
+					}
 				%>
 				<%
 					FBoard fdto = null;
@@ -112,15 +113,15 @@ style>#name:link {
 				<tr>
 					<td><%=fdto.getFno()%></td>
 
-					<td id="name" style="cursor: pointer" onclick=location.href="<%=request.getContextPath()%>/freeContents?num=<%=fdto.getFno()%>">
+					<td id="name" style="cursor: pointer" onclick=location.href="<%=request.getContextPath()%>/FreeBoard/View?BoardNo=<%=fdto.getFno()%>">
 						<%=fdto.getTitle()%>
 					</td>
 
 					<td><%=fdto.getUserId()%></td>
 
-					<td><%=fdto.getFdate() %></td>
+					<td><%=fdto.getFdate()%></td>
 
-					<td><%=fdto.getFview() %></td>
+					<td><%=fdto.getFview()%></td>
 				</tr>
 
 				<%
@@ -136,7 +137,7 @@ style>#name:link {
 
 		<%
 			final int ROWSIZE = 25; // 한페이지에 보일 게시물 수
-			final int BLOCK = 3; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
+			final int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
 
 			int pg = 1; //기본 페이지값
 
@@ -152,7 +153,8 @@ style>#name:link {
 			int startPage = ((pg - 1) / BLOCK * BLOCK) + 1; // 시작블럭숫자 (1~5페이지일경우 1, 6~10일경우 6)
 			int endPage = ((pg - 1) / BLOCK * BLOCK) + BLOCK; // 끝 블럭 숫자 (1~5일 경우 5, 6~10일경우 10)
 		%>
-		
+
+		<table>
 		<tr>
 			<td align="center">
 				<%
@@ -164,16 +166,16 @@ style>#name:link {
 				<div align="center">
 					<%
 						for (int i = startPage; i <= endPage; i++) {
-							if (i == pg) {
+							if (i ==Integer.parseInt(request.getParameter("page"))) {
 					%>
 					<ul class="pagination ">
-						<li class="active"><a href="list?page_no=<%=i%>&code=11"><%=i%></a></li>
+						<li class="active"><a href="FreeBoard/List?page=<%=i%>"><%=i%></a></li>
 					</ul>
 					<%
 						} else {
 					%>
 					<ul class="pagination">
-						<li><a href="list?page_no=<%=i%>&code=11"><%=i%></a></li>
+						<li><a href="FreeBoard/List?page=<%=i%>"><%=i%></a></li>
 					</ul>
 					<%
 						}
@@ -186,7 +188,8 @@ style>#name:link {
  	}
  %>
 			</td>
-		</tr>
+			</tr>
+		</table>
 
 
 	</div>

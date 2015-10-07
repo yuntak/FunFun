@@ -108,19 +108,23 @@
 
 
 
-	<div class="panel panel-default">
-		<div for="reply" id="wrwr" style="width: 50px">
-			작성자</label>
+	
 
-			<form class="form-inline" role="form">
-				<div class="form-group">
-
-					<textarea rows="4" cols="200" id="user">sdf</textarea>
-					<a href="#"><button class="btn btn-default btn-lg">등록</button></a>
-				</div>
-			</form>
-		</div>
-	</div>
+			<div class="panel panel-danger">
+			<div class="row">
+					<div class="col-lg-1">
+					<label for="user">닉네임</label>
+					</div>
+					<div class="col-lg-7">
+					<textarea rows="4" cols="100" id="user">sdf</textarea>
+					</div>
+					<div class="col-lg-3">
+					<a href="#"><button class="btn btn-default btn-lg" >등록</button></a>
+					</div>
+			
+			</div>
+			</div>
+	
 
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 
