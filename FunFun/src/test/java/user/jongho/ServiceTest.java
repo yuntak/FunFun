@@ -84,6 +84,11 @@ public class ServiceTest {
 	}*/
 	
 	@Test
+	public void TestFundingTitleByPage(){
+		fdservice.selectFundingTitleByPage("웹",1);
+	}
+	
+	@Test
 	public void TestFundingByPage(){
 		fdservice.selectFundingByPage(1);
 	}
@@ -459,7 +464,6 @@ public class ServiceTest {
 		fboard.setTitle("줴훈줴훈");
 		fboard.setFcontext("저 사람 이솽훼");
 		fboard.setFview(3);
-		fboard.setBoardCode("11");
 		fboard.setUserId("every9168");
 		fservice.insertFBoard(fboard);
 		logger.trace("{}", fboard);

@@ -34,8 +34,8 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public int insertFBoard(FBoard fboard) {
-		String sql = "insert into free_board(fno,title,fcontext,fview,board_no,board_code,user_id) values(seq_free_board.nextval,?,?,?,seq_board.currval,?,?)";
-		int result = jt.update(sql, fboard.getTitle(), fboard.getFcontext(), fboard.getFview(),fboard.getBoardCode(), fboard.getUserId());
+		String sql = "insert into free_board(fno,title,fcontext,fview,board_no,board_code,user_id) values(seq_free_board.nextval,?,?,?,seq_board.currval,11,?)";
+		int result = jt.update(sql, fboard.getTitle(), fboard.getFcontext(), fboard.getFview(), fboard.getUserId());
 		return result;
 	}
 
