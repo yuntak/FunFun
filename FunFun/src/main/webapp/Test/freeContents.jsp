@@ -124,6 +124,8 @@
 			
 			</div>
 			</div>
+			
+		
 	
 
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
