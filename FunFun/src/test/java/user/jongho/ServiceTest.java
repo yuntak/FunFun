@@ -306,8 +306,8 @@ public class ServiceTest {
 	
 	@Test
 	public void TestFBoardselectByPage(){
-		List<FBoard> fboard = fdao.selectFBoardByPage("11", 2);
-		fservice.selectFBoardByPage("11", 2);
+		List<FBoard> fboard = fdao.selectFBoardByPage("11", 1);
+		fservice.selectFBoardByPage("11", 1);
 		logger.trace("{}",fboard);
 		assertThat(fboard,is(not(nullValue())));
 	}

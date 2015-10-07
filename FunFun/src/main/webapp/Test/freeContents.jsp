@@ -21,6 +21,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
+
 /*  .top {
 	border-top: solid; color: #DEDEE9;
 	border-bottom: solid; color: #DEDEE9;;
@@ -39,7 +40,7 @@
 	text-align: center; 
 	font-size: 27px;
 } */
-#wrwr{
+#wrwr {
 	
 }
 </style>
@@ -55,51 +56,72 @@
 		fb.setTitle("안녕");
 		list.add(fb);
 	%>
-		<div class="panel-body">
-	<%
-					FBoard fdto = null;
-					for (int i = 0; i < list.size(); i++) {
-						fdto = (FBoard) list.get(i);
-	%>
+	<div class="panel-body">
+		<%
+			FBoard fdto = null;
+			for (int i = 0; i < list.size(); i++) {
+				fdto = (FBoard) list.get(i);
+		%>
 
-	
+
 		<div class="top">
-			<p><%fdto.getFno();%></p>
-			<%fdto.getUserId();%>
+			<p>
+				<%
+					fdto.getFno();
+				%>
+			</p>
+			<%
+				fdto.getUserId();
+			%>
 		</div>
 
-<% } %>
-	
- 	<div id="toppanel" class="panel panel-default">
-					<ul class="nav nav-justified">
-						<li>
-							<div align="left" class="panel-body" style="width: 200px">게시물제목란</div>
-						</li>
-						<li>
-							<div align="center" class="panel-body" style="width: 200px">날짜</div>
-						</li>
-						<li>
-							<div align="right" class="panel-body" style="width: 200px">작성자</div>
-						</li>
-					</ul>
+		<%
+			}
+		%>
+
+		<div id="toppanel" class="panel panel-default">
+			<ul class="nav nav-justified">
+				<li>
+					<div align="left" class="panel-body" style="width: 200px">게시물제목란</div>
+				</li>
+				<li>
+					<div align="center" class="panel-body" style="width: 200px">날짜</div>
+				</li>
+				<li>
+					<div align="right" class="panel-body" style="width: 200px">작성자</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+
+
+	<div class="panel panel-default">
+		<div class="panel-body" style="height: 400px">게시물 내용</div>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">코멘트</div>
+		<div class="panel-body">코멘트 내용</div>
+	</div>
+
+
+
+	<div class="panel panel-default">
+		<div for="reply" id="wrwr" style="width: 50px">
+			작성자</label>
+
+			<form class="form-inline" role="form">
+				<div class="form-group">
+
+					<textarea rows="4" cols="200" id="user">sdf</textarea>
+					<a href="#"><button class="btn btn-default btn-lg">등록</button></a>
 				</div>
-			</div>
+			</form>
 		</div>
+	</div>
 
-
-
-		<div class="panel panel-default">
-			<div class="panel-body" style="height: 400px">게시물 내용</div>
-		</div>
-  
-  <div class="panel panel-default" >
-  	<label for="user" id="wrwr" >작성자</label>
-
-  	<textarea rows="4" cols="100" id="user">sdf</textarea>
-  	<a href="#"><button class="btn btn-default btn-lg">등록</button></a>
-  </div>
-
-</div>		
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 
 </body>
