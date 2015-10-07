@@ -131,8 +131,7 @@ style>#name:link {
 		</table>
 		<hr>
 		<div align="right">
-			<a href="<%=request.getContextPath()%>/freeWrite"
-				class="btn btn-info">글쓰기</a>
+			<a href="<%=request.getContextPath()%>/freeWrite"class="btn btn-info">글쓰기</a>
 		</div>
 
 		<%
