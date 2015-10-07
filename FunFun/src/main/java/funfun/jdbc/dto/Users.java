@@ -1,5 +1,6 @@
 package funfun.jdbc.dto;
 
+import java.util.Date;
 import java.util.List;
 
 public class Users {
@@ -13,6 +14,7 @@ public class Users {
 	private String roll;//
 	private String road_addr;//
 	private String loca_addr;//
+	private Date uDate;
 	
 	private List<FBoard> fboards;
 
@@ -22,7 +24,7 @@ public class Users {
 	}
 
 	public Users(String id, String nickname, String pass, String email, String cellphone, String address,
-			String mail_no, String roll, String road_addr, String loca_addr, List<FBoard> fboards) {
+			String mail_no, String roll, String road_addr, String loca_addr, List<FBoard> fboards,Date udate) {
 		super();
 		this.id = id;
 		this.nickname = nickname;
@@ -35,6 +37,7 @@ public class Users {
 		this.road_addr = road_addr;
 		this.loca_addr = loca_addr;
 		this.fboards = fboards;
+		this.uDate = udate;
 	}
 
 	public String getId() {
@@ -117,11 +120,19 @@ public class Users {
 		this.loca_addr = loca_addr;
 	}
 
-	public List<FBoard> getBoards() {
+	public Date getuDate() {
+		return uDate;
+	}
+
+	public void setuDate(Date uDate) {
+		this.uDate = uDate;
+	}
+
+	public List<FBoard> getFboards() {
 		return fboards;
 	}
 
-	public void setBoards(List<FBoard> fboards) {
+	public void setFboards(List<FBoard> fboards) {
 		this.fboards = fboards;
 	}
 
@@ -129,10 +140,8 @@ public class Users {
 	public String toString() {
 		return "Users [id=" + id + ", nickname=" + nickname + ", pass=" + pass + ", email=" + email + ", cellphone="
 				+ cellphone + ", address=" + address + ", mail_no=" + mail_no + ", roll=" + roll + ", road_addr="
-				+ road_addr + ", loca_addr=" + loca_addr + ", boards=" + fboards + "]";
+				+ road_addr + ", loca_addr=" + loca_addr + ", uDate=" + uDate + ", fboards=" + fboards + "]";
 	}
 
-	
-	
 	
 }

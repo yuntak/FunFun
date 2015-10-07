@@ -407,6 +407,15 @@ public class ServiceTest {
 		System.out.println("2");
 		assertThat(user.getPass(), is("9090"));
 	}
+	
+	@Test
+	public void TestUpdateUdate(){
+		Users user = new Users();
+		Date date = new Date();
+		user.setuDate(date);
+		user.setId("every9168");
+		service.updateUDate(user);
+	}
 
 	@Test
 	public void testIdById() {
@@ -471,21 +480,23 @@ public class ServiceTest {
 		assertThat(retrieved.getNo(), is(not(nullValue())));
 		
 	}
-
+	
 	@Test
 	public void TestFBoardInsert() {
 		Board board = new Board();
-		
+		FBoard fboard=null;
+		for(int i=0;i<25;i++){
 		board.setCode("11");
 		board.setUserId("every9168");
 		bservice.insertBoard(board);
 		
-		FBoard fboard = new FBoard();
-		fboard.setTitle("zxcvzxcv");
-		fboard.setFcontext("저zxcvzxcv");
+		fboard = new FBoard();
+		fboard.setTitle("zxcvzxcv"+i);
+		fboard.setFcontext("저zxcvzxcv"+i);
 		fboard.setFview(3);
 		fboard.setUserId("every9168");
 		fservice.insertFBoard(fboard);
+		}
 		logger.trace("{}", fboard);
 		
 		

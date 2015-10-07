@@ -115,8 +115,8 @@ public class UsersDaoImpl implements UsersDao {
 	@Override
 	public int insertUser(Users user) {
 		int result=-1;
-		String sql = "insert into users values(?,?,?,?,?,?,?,?,?,?)";
-		result = jt.update(sql,user.getId(),user.getNickname(),user.getPass(),user.getEmail(),user.getCellphone(),user.getAddress(),user.getMail_no(),user.getRoll(),user.getRoad_addr(),user.getLoca_addr());
+		String sql = "insert into users values(?,?,?,?,?,?,?,?,?,?,?)";
+		result = jt.update(sql,user.getId(),user.getNickname(),user.getPass(),user.getEmail(),user.getCellphone(),user.getAddress(),user.getMail_no(),user.getRoll(),user.getRoad_addr(),user.getLoca_addr(),user.getuDate());
 		return result;
 	}
 	
@@ -125,6 +125,13 @@ public class UsersDaoImpl implements UsersDao {
 		int result=-1;
 		String sql = "update users set nickname=?, cellphone=?, address=?, email=?, road_addr=?, loca_addr=? where id=?";
 		result = jt.update(sql,user.getNickname(),user.getCellphone(), user.getAddress(),user.getEmail(),user.getId(),user.getRoad_addr(),user.getLoca_addr());
+		return result;
+	}
+	
+	@Override
+	public int updateUserDate(Users user) {
+		String sql = "update users set udate=? where id=?";
+		int result = jt.update(sql,user.getuDate(),user.getId());
 		return result;
 	}
 	
@@ -186,6 +193,7 @@ public class UsersDaoImpl implements UsersDao {
 		Map<String, Object> value = jt.queryForMap(sql,id,pass);
 		return value;
 	}
+	
 	
 		
 }
