@@ -106,7 +106,7 @@ style>#name:link {
 				%>
 				<%
 					FBoard fdto = null;
-					for (int i = 0; i <= list.size(); i++) {
+					for (int i = 0; i < list.size(); i++) {
 						fdto = (FBoard) list.get(i);
 				%>
 				<tr>
@@ -136,7 +136,7 @@ style>#name:link {
 		</div>
 
 		<%
-			final int ROWSIZE = 10; // 한페이지에 보일 게시물 수
+			final int ROWSIZE = 25; // 한페이지에 보일 게시물 수
 			final int BLOCK = 3; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
 
 			int pg = 1; //기본 페이지값

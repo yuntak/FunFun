@@ -52,8 +52,7 @@
   <div class="btn-group-vertical">
   
   <div class="jumbo">
-    <a id="all" href="freePublish.jsp" type="button" class=""><img src="<%=request.getContextPath()%>/rsc/img/jakfoom.jpg"
-					style="width: 100px; height: 100px"></a>
+    <a id="all" href="freePublish.jsp" type="button" class="">작품</a>
     <hr>
     <a href="freePublish.jsp?novel" type="button" class="">소설</a>
     <hr>
