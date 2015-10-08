@@ -65,4 +65,11 @@ public class CBoardServiceImpl implements CBoardService {
 		return selectresult;
 	}
 
+	@Override
+	public List<CBoard> selectCBoardBySelectTitlePage(String title, String code, int page_no) {
+		List<CBoard> selectresult = cdao.selectCBoardBySelectTitlePage(title, code, page_no);
+		logger.trace("select over : {}",selectresult);
+		return selectresult;
+	}
+
 }

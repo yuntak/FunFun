@@ -9,7 +9,8 @@ public interface CBoardService {
 	void deleteCBoard(int cno);
 	void updateCBoard(CBoard cboard);
 	void updateCBoardVeiw(int cno);
-	void  updateCBoardGood(int cno);
+	void updateCBoardGood(int cno);
 	List<CBoard> selectCBoardByPage(String code,int page_no);
 	List<CBoard> selectCBoardByCategoryPage(String category,String code,int page_no);
+	List<CBoard> selectCBoardBySelectTitlePage(String title,String code, int page_no);
 }

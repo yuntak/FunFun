@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
 
 @Repository
@@ -85,7 +84,7 @@ public class FundingDaoImpl implements FundingDao {
 	public List<Funding> selectFundingTitleByPage(String title, int page_no) {
 		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from funding where title like '%'||?||'%' order by fno) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		List<Funding> result = jt.query(sql, new BeanPropertyRowMapper<Funding>(Funding.class), title,
-				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
+				(page_no - 1) * FundingDao.BOARD_PER_PAGE + 1, page_no * FundingDao.BOARD_PER_PAGE);
 		return result;
 	}
 
