@@ -192,7 +192,7 @@ public class FBoardDaoImpl implements FBoardDao {
 	public int selectCountAllPage() {
 		String sql = "select count(*) from free_board";
 		int countresult = jt.queryForObject(sql, Integer.class);
-		int result = (int)Math.ceil(countresult/(double)10);
+		int result = (int)Math.ceil(countresult/(double)FBoardDao.BOARD_PER_PAGE);
 		return result;
 	}
 }
