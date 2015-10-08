@@ -8,7 +8,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -40,7 +39,9 @@
 	text-align: center; 
 	font-size: 27px;
 } */
-textarea { resize: none; }
+#wrwr {
+	
+}
 </style>
 </head>
 <body>
@@ -116,16 +117,12 @@ textarea { resize: none; }
 					<div class="col-lg-7">
 					<textarea rows="4" cols="100" id="user">sdf</textarea>
 					</div>
-					<div class="col-lg-3" >
-					<a href="#"><img  src="<%=request.getContextPath()%>/img/ok.PNG"
-					style="width: 90px; height: 90px">
-				</a>
+					<div class="col-lg-3">
+					<a href="#"><button class="btn btn-default btn-lg" >등록</button></a>
 					</div>
 			
 			</div>
 			</div>
-			
-		
 	
 
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
