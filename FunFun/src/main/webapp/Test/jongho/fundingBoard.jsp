@@ -26,7 +26,7 @@
 			</div>
 			
 				<button type="button" class="btn btn-info">
-					<span class="social social-facebook"></span> facebook
+					<span class="glyphicon glyphicon-thumbs-up"></span> like
 					
 				</button>
 			
