@@ -132,7 +132,8 @@ style>#name:link {
 		</table>
 		<hr>
 		<div align="right">
-			<a href="<%=request.getContextPath()%>/freeWrite"class="btn btn-info">글쓰기</a>
+			<a href="<%=request.getContextPath()%>/FreeBoard/Write"
+				class="btn btn-info">글쓰기</a>
 		</div>
 
 		<%
@@ -166,16 +167,16 @@ style>#name:link {
 				<div align="center">
 					<%
 						for (int i = startPage; i <= endPage; i++) {
-							if (i ==Integer.parseInt(request.getParameter("page"))) {
+							if (null!=request.getParameter("page")&&i ==Integer.parseInt(request.getParameter("page"))) {
 					%>
 					<ul class="pagination ">
-						<li class="active"><a href="FreeBoard/List?page=<%=i%>"><%=i%></a></li>
+						<li class="active"><a href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
 					</ul>
 					<%
 						} else {
 					%>
 					<ul class="pagination">
-						<li><a href="FreeBoard/List?page=<%=i%>"><%=i%></a></li>
+						<li><a href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
 					</ul>
 					<%
 						}
