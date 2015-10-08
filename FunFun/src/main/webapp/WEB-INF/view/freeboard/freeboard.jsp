@@ -138,26 +138,28 @@ style>#name:link {
 
 		<%
 			final int ROWSIZE = 25; // 한페이지에 보일 게시물 수
-			final int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
+			int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
 
 			int pg = 1; //기본 페이지값
-
-			if (request.getParameter("pg") != null) { //받아온 pg값이 있을때, 다른페이지일때
-				pg = Integer.parseInt(request.getParameter("pg")); // pg값을 저장
+			
+			if (request.getParameter("page") != null) { //받아온 pg값이 있을때, 다른페이지일때
+				pg = Integer.parseInt(request.getParameter("page")); // pg값을 저장
 			}
 
 			int start = (pg * ROWSIZE) - (ROWSIZE - 1); // 해당페이지에서 시작번호(step2)
 			int end = (pg * ROWSIZE); // 해당페이지에서 끝번호(step2)
 
-			int allPage = 0; // 전체 페이지수
+			int allPage = (int)request.getAttribute("allPage"); // 전체 페이지수
 
+			if(allPage < BLOCK) {
+				BLOCK=allPage;
+			}
+			
 			int startPage = ((pg - 1) / BLOCK * BLOCK) + 1; // 시작블럭숫자 (1~5페이지일경우 1, 6~10일경우 6)
 			int endPage = ((pg - 1) / BLOCK * BLOCK) + BLOCK; // 끝 블럭 숫자 (1~5일 경우 5, 6~10일경우 10)
-			
-			
-			
-			if(end < BLOCK) {
-				endPage=end;
+		
+			if(endPage>allPage){
+				endPage=allPage;
 			}
 		%>
 

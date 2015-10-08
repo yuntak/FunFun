@@ -525,7 +525,9 @@ public class ServiceTest {
 	@Test
 	public void TestFBoardDelete() {
 		FBoard fboard = fdao.selectFBoard(22);
-		fservice.deleteFBoardByFno(22);
+		for(int i=0;i<100;i++){
+		fservice.deleteFBoardByFno(i);
+		}
 		assertThat(fboard.getFno(), is(not(nullValue())));
 		
 		Board retrieved = bdao.selectBoard(52);
@@ -538,7 +540,7 @@ public class ServiceTest {
 	public void TestFBoardInsert() {
 		Board board = new Board();
 		FBoard fboard=null;
-		for(int i=0;i<25;i++){
+		for(int i=0;i<30;i++){
 		board.setCode("11");
 		board.setUserId("every9168");
 		bservice.insertBoard(board);
