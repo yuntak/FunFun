@@ -33,6 +33,8 @@ public class FreeBoardController {
 	@RequestMapping(value="/FreeBoard/List",method=RequestMethod.GET)
 	public String freeBoardList(@RequestParam int page,Model model){
 		List<FBoard> FBoardList=FreeBoardSvc.selectFBoardByPage(FBoard.FREEBOARD_CODE,page);
+		int allPage= FreeBoardSvc.selectCountAllPage();
+		model.addAttribute("allPage", allPage);
 		model.addAttribute("FBoardList", FBoardList);
 		String viewlocation = "/WEB-INF/view/freeboard/freeboard.jsp";
 		model.addAttribute("view", viewlocation);
