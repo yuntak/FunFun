@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
-<%@page import="funfun.jdbc.dto.FBoard"%>
-<%@page import="funfun.jdbc.dto.Board"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,54 +42,32 @@ textarea { resize: none; }
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
-
-	<%
-		List list = new ArrayList();
-		FBoard fb = new FBoard();
-		fb.setFno(1);
-		fb.setUserId("ssw");
-		fb.setTitle("안녕");
-		list.add(fb);
-	%>
 	<div class="panel-body">
-		<%
-			FBoard fdto = null;
-			for (int i = 0; i < list.size(); i++) {
-				fdto = (FBoard) list.get(i);
-		%>
+		
 
-
-		<div class="top">
-			<p>
-				<%
-					fdto.getFno();
-				%>
-			</p>
-			<%
-				fdto.getUserId();
-			%>
-		</div>
-
-		<%
-			}
-		%>
+		
 
 		<div id="toppanel" class="panel panel-default">
 			<ul class="nav nav-justified">
 				<li>
-					<div align="left" class="panel-body" style="width: 200px">게시물제목란</div>
+					<div align="left" class="panel-body" style="width: 200px">
+					닉넴</div>
 				</li>
 				<li>
-					<div align="center" class="panel-body" style="width: 200px">날짜</div>
+					<div align="center" class="panel-body" style="width: 200px">
+					날짜</div>
 				</li>
 				<li>
-					<div align="right" class="panel-body" style="width: 200px">작성자</div>
+					<div align="right" class="panel-body" style="width: 200px">
+					조회</div>
 				</li>
 			</ul>
 		</div>
+	
+
+	<div class="panel panel-default">
+		<div class="panel-body" align="center" >제목</div>
 	</div>
-
-
 
 
 	<div class="panel panel-default">
@@ -101,12 +76,12 @@ textarea { resize: none; }
 
 	<div class="panel panel-default">
 		<div class="panel-heading">코멘트</div>
-		<div class="panel-body">코멘트 내용</div>
+		<div class="panel-body">코멘트 내용
+		
+		
+		</div>
 	</div>
 
-
-
-	
 
 			<div class="panel panel-danger">
 			<div class="row">
@@ -114,7 +89,7 @@ textarea { resize: none; }
 					<label for="user">닉네임</label>
 					</div>
 					<div class="col-lg-7">
-					<textarea rows="4" cols="100" id="user">sdf</textarea>
+					<textarea rows="4" cols="100" id="user">내용</textarea>
 					</div>
 					<div class="col-lg-3" >
 					<a href="#"><img  src="<%=request.getContextPath()%>/img/ok.PNG"
@@ -125,9 +100,9 @@ textarea { resize: none; }
 			</div>
 			</div>
 			
-		
+		</div>
 	
-
+	
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 
 </body>
