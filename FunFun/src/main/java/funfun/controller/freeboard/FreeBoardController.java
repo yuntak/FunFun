@@ -25,15 +25,15 @@ public class FreeBoardController {
 	@RequestMapping(value="/FreeBoard")
 	public String freeBoardMain(Model model){
 		List<FBoard> FBoardList=FreeBoardSvc.selectFBoardByPage(FBoard.FREEBOARD_CODE, 1);
-		model.addAttribute("FboardList", FBoardList);
+		model.addAttribute("FBoardList", FBoardList);
 		String viewlocation = "/WEB-INF/view/freeboard/freeboard.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
-	@RequestMapping(value="/FreeBoard/list",method=RequestMethod.GET)
+	@RequestMapping(value="/FreeBoard/List",method=RequestMethod.GET)
 	public String freeBoardList(@RequestParam int page,Model model){
 		List<FBoard> FBoardList=FreeBoardSvc.selectFBoardByPage(FBoard.FREEBOARD_CODE,page);
-		model.addAttribute("FboardList", FBoardList);
+		model.addAttribute("FBoardList", FBoardList);
 		String viewlocation = "/WEB-INF/view/freeboard/freeboard.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";

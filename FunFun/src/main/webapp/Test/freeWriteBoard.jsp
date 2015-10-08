@@ -28,7 +28,7 @@
 	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 
 
-	<div class="form-horizontal">
+	<div class="category">
 		<ul class="nav nav-pills nav-stacked">
 			<li class="active"><a href="#">카테고리</a></li>
 			<li class="dropdown"><a class="dropdown-toggle"
@@ -48,7 +48,7 @@
 
 
 
-	<div class="form-horizontal">
+	<div class="freeWriteBoard-List">
 
 		<h2 align="center">게시글</h2>
 		<table class="table table-bordered">
