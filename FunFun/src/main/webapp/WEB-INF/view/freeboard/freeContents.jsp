@@ -96,7 +96,9 @@
   	<label for="user" id="wrwr" >작성자</label>
 
   	<textarea rows="4" cols="100" id="user">sdf</textarea>
-  	<a href="#"><button class="btn btn-default btn-lg">등록</button></a>
+  	<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/img/ok.PNG"
+					style="width: 100px; height: 100px">
+				</a>
   </div>
 
 </div>		

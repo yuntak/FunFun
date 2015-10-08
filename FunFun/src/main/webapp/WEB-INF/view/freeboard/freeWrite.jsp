@@ -22,7 +22,10 @@
 	.panel-body{
 		height:560px;
 	}
+	
+ textarea { resize: none; }
 </style>
+
 </head>
 
 <body>
@@ -42,7 +45,7 @@
 	</div>
 	<br>
 	<br>
-	<textarea name="" id="editor" rows="40" cols="100">editor</textarea>
+	<textarea name="" id="editor" rows="40" cols="100" >editor</textarea>
 	</div>
 	<br>
 	
