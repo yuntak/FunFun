@@ -5,6 +5,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+.progress {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.btn {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.container {
+	margin-right: auto;
+	margin-left: auto;
+}
+</style>
+
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
@@ -15,7 +32,7 @@
 	<div class="panel panel-danger">
 		<div class="row">
 			<div class="col-lg-8">
-				<div class="jumbotron">
+				<div class="jumbotron" align="center">
 					<div class="container">
 						<div class="embed-responsive embed-responsive-16by9">
 							<iframe style="width: 850px; height: 400px"
@@ -29,8 +46,8 @@
 
 			<div class="col-lg-4">
 				<div class="jumbotron">
-					
-					
+
+
 					<table class="table table-default">
 						<tr>
 							<td>
@@ -48,11 +65,26 @@
 							</td>
 						</tr>
 						<tr>
-						<td>
-						<h2>1<small>명 참여</small></h2>
-						</td>
+							<td>
+								<h2>
+									1<small>명 참여</small>
+								</h2>
+							</td>
 						</tr>
-
+						<tr>
+							<td><select class="form-control" id="sel">
+									<option>금액선택</option>
+									<option>30,000원--치킨</option>
+									<option>20,000원--짜장면</option>
+									<option>10,000원--라면</option>
+							</select></td>
+						</tr>
+						<tr align="right">
+							<td>
+								<button type="button" class="btn btn-success" name="succes">프로젝트
+									후원하기</button>
+							</td>
+						</tr>
 
 					</table>
 
