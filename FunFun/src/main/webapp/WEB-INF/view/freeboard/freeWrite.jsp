@@ -26,7 +26,6 @@
 </head>
 
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	<div class="writebody">
 	<div class="panel panel-info">
 	<div class="panel-heading">
@@ -52,7 +51,6 @@
 	<a href="/main" class="btn btn-info">취소</a>
 	</div>
 	
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 	</div>
 
 <script>CKEDITOR.replace('editor');</script>

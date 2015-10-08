@@ -77,16 +77,13 @@ margin-bottom: 10px;
 				<li><a class="a-button" href="<%=request.getContextPath() %>/agreement">회원가입</a></li>
 				<li><a class="a-button" href="<%=request.getContextPath() %>/Login">로그인</a></li>
 			</ul>
-		
 		</div>
 		</c:when>
-		
-		
 		<c:otherwise>
 		  <div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a href="../main"><img src="<%=request.getContextPath()%>/rsc/img/logo.jpg"
+				<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/rsc/img/logo.jpg"
 					style="width: 100px; height: 100px">
 				</a>
 			</div>

@@ -38,10 +38,14 @@ public class FreeBoardController {
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 		
-		
+	}
+	@RequestMapping(value="/FreeBoard/Write")
+	public String freeBoardWrite(Model model){
+		String viewlocation = "/WEB-INF/view/freeboard/freeWrite.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
 		
 	}
-	
 	
 	
 }
