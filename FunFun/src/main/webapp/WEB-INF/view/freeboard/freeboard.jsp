@@ -172,8 +172,8 @@ style>#name:link {
 			
 				<%
 					if (pg > BLOCK) {
-				%> [<a href="<%=request.getContextPath() %>/FreeBoard/List?page=1">◀◀</a>] [<a
-				href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=startPage - 1%>">◀</a>] <%
+				%> <a href="<%=request.getContextPath() %>/FreeBoard/List?page=1">◀◀</a> <a
+				href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=startPage - 1%>">◀</a> <%
 					}
 				%>
 				<div align="center">
