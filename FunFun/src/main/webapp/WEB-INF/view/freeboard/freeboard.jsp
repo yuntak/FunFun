@@ -172,8 +172,8 @@ style>#name:link {
 			
 				<%
 					if (pg > BLOCK) {
-				%> [<a href="freeboard.jsp?pg=1">◀◀</a>] [<a
-				href="freeboard.jsp?pg=<%=startPage - 1%>">◀</a>] <%
+				%> [<a href="<%=request.getContextPath() %>/FreeBoard/List?page=1">◀◀</a>] [<a
+				href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=startPage - 1%>">◀</a>] <%
 					}
 				%>
 				<div align="center">
@@ -196,8 +196,8 @@ style>#name:link {
 					%>
 				</div> <%
  	if (endPage < allPage) {
- %> [<a href="freeboard.jsp?pg=<%=endPage + 1%>">▶</a>] [<a
-				href="freeboard.jsp?pg=<%=allPage%>">▶▶</a>] <%
+ %> <a href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=endPage + 1%>">▶</a> <a
+				href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=allPage%>">▶▶</a> <%
  	}
  %>
 			</td>
