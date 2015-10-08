@@ -7,18 +7,38 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 
-	<div class="panel panel-default" style="position:relative;">
+	<div class="panel panel-default" style="position: relative;">
 		<div class="panel-heading">코멘트</div>
-		<div class="container">
-			<div class="embed-responsive embed-responsive-16by9">
-				<iframe class="embed-responsive-item"
-					src="http://www.youtube.com/embed/XGSy3_Czz8k"></iframe>
+
+		<div class="panel panel" style="height: 80px;"></div>
+
+		<div class="panel panel-danger" style="width: 900px;">
+			
+			
+			<div class="jumbotron">
+			<div class="container">
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe style="width: 850px; height: 400px"
+						src="https://www.youtube.com/embed/4OrCA1OInoo" frameborder="0"></iframe>
+				</div>
 			</div>
+			
+				<button type="button" class="btn btn-info">
+					<span class="glyphicon glyphicon-thumbs-up"></span> like
+					
+				</button>
+			
 		</div>
+		
+		</div>
+
+		
+
+
 	</div>
-	
+
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 </html>

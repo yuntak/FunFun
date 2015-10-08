@@ -2,7 +2,6 @@ package funfun.jdbc.dao;
 
 import java.util.List;
 
-import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
 
 public interface FundingDao {

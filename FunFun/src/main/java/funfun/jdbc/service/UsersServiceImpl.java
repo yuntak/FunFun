@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import funfun.jdbc.dao.UsersDao;
-import funfun.jdbc.dto.Board;
 import funfun.jdbc.dto.Users;
 
 @Service

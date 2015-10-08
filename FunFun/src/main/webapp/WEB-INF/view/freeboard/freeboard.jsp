@@ -153,11 +153,21 @@ style>#name:link {
 
 			int startPage = ((pg - 1) / BLOCK * BLOCK) + 1; // 시작블럭숫자 (1~5페이지일경우 1, 6~10일경우 6)
 			int endPage = ((pg - 1) / BLOCK * BLOCK) + BLOCK; // 끝 블럭 숫자 (1~5일 경우 5, 6~10일경우 10)
+			
+			
+			
+			if(end < BLOCK) {
+				endPage=end;
+			}
 		%>
 
 		<table>
 		<tr>
 			<td align="center">
+			<% 
+				
+			%>
+			
 				<%
 					if (pg > BLOCK) {
 				%> [<a href="freeboard.jsp?pg=1">◀◀</a>] [<a

@@ -21,6 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import funfun.jdbc.dao.BoardDao;
 import funfun.jdbc.dao.CBoardDao;
+import funfun.jdbc.dao.CBoard_subDao;
 import funfun.jdbc.dao.FBoardDao;
 import funfun.jdbc.dao.FundingDao;
 import funfun.jdbc.dao.FundingFormDao;
@@ -28,6 +29,7 @@ import funfun.jdbc.dao.ReplyDao;
 import funfun.jdbc.dao.UsersDao;
 import funfun.jdbc.dto.Board;
 import funfun.jdbc.dto.CBoard;
+import funfun.jdbc.dto.CBoard_sub;
 import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
 import funfun.jdbc.dto.Funding_form;
@@ -35,6 +37,7 @@ import funfun.jdbc.dto.Reply;
 import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.BoardService;
 import funfun.jdbc.service.CBoardService;
+import funfun.jdbc.service.CBoard_subService;
 import funfun.jdbc.service.FBoardService;
 import funfun.jdbc.service.FundingFormService;
 import funfun.jdbc.service.FundingService;
@@ -78,10 +81,59 @@ public class ServiceTest {
 	FundingDao fddao;
 	@Autowired
 	FundingService fdservice;
+	
+	@Autowired
+	CBoard_subDao csdao;
+	@Autowired
+	CBoard_subService csservice;
 	/*@Before
 	public void cleanDB(){
 		dao.deleteAllUsers();
 	}*/
+	
+	@Test
+	public void TestSelectCBoardSubByCno(){
+		csservice.selectCBoardBycno(3,11);
+	}
+	
+	@Test
+	public void TestSelectCBoardSubByPage(){
+		csservice.selectCBoardSubByPage(11, 1);
+	}
+	
+	@Test
+	public void TestSelectCboardSubCount(){
+		csservice.selectCountCno(22);
+	}
+	
+	@Test
+	public void TestUpdateCBoardSub(){
+		CBoard_sub sub = new CBoard_sub();
+		sub.setSubtitle("블리치");
+		sub.setContext("c:\\program files\\image\\블리치.jpg");
+		sub.setNo(3);
+		sub.setContentBoardCno(22);
+		csservice.updateCBoardSub(sub);
+	}
+	
+	@Test
+	public void TestDeleteCBoardSub(){
+		csservice.deleteCBoardSub(1, 12);
+	}
+	
+	@Test
+	public void TestInsertCBoardSub(){
+		CBoard_sub sub = new CBoard_sub();
+		sub.setContentBoardCno(22);
+		sub.setSubtitle("나루토 3화");
+		sub.setContext("C:\\program files\\image\\webtoon.jpg");
+		csservice.insertCBoardSub(sub);
+	}
+	
+	@Test
+	public void TestSelectTitleByPage(){
+		cservice.selectCBoardBySelectTitlePage("추석", "66", 1);
+	}
 	
 	@Test
 	public void TestSelectCategoryByPage(){
@@ -210,16 +262,16 @@ public class ServiceTest {
 	@Test
 	public void TestinsertCBoard(){
 		Board board = new Board();
-		board.setCode("66");
+		board.setCode("33");
 		board.setUserId("loll333");
 		bservice.insertBoard(board);
 		CBoard cboard = new CBoard();
 		cboard.setTitle("만화");
-		cboard.setContent("호롤롤로로롤로로로로롤로로로로롤로ㅗ로");
+		cboard.setContent("qewrwerqwer");
 		cboard.setCview(8);
 		cboard.setGood(4);
 		cboard.setCategory("webtoon");
-		cboard.setBoard_code("66");
+		cboard.setBoard_code("33");
 		cboard.setUserId("loll333");
 		cboard.setImgData("c:\\program files\\server\\img1.jpg");
 		cservice.insertCBoard(cboard);

@@ -9,7 +9,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import funfun.jdbc.dao.FundingDao;
-import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
 @Service
 public class FundingServiceImpl implements FundingService {

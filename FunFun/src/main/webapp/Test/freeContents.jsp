@@ -40,9 +40,7 @@
 	text-align: center; 
 	font-size: 27px;
 } */
-#wrwr {
-	
-}
+textarea { resize: none; }
 </style>
 </head>
 <body>
@@ -118,12 +116,16 @@
 					<div class="col-lg-7">
 					<textarea rows="4" cols="100" id="user">sdf</textarea>
 					</div>
-					<div class="col-lg-3">
-					<a href="#"><button class="btn btn-default btn-lg" >등록</button></a>
+					<div class="col-lg-3" >
+					<a href="#"><img  src="<%=request.getContextPath()%>/img/ok.PNG"
+					style="width: 90px; height: 90px">
+				</a>
 					</div>
 			
 			</div>
 			</div>
+			
+		
 	
 
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>

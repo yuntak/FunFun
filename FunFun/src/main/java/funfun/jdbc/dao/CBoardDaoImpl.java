@@ -15,7 +15,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import funfun.jdbc.dto.CBoard;
-import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Reply;
 
 @Repository
@@ -27,8 +26,8 @@ public class CBoardDaoImpl implements CBoardDao {
 	NamedParameterJdbcTemplate namedjt;
 	@Override
 	public int insertCBoard(CBoard cboard) {
-		String sql = "insert into content_board(cno,title,content,cview,good,category,board_no,board_code,user_id,imgdata) values(seq_content_board.nextval,?,?,?,?,?,seq_board.currval,?,?,?)";
-		int result = jt.update(sql,cboard.getTitle(),cboard.getContent(),cboard.getCview(),cboard.getGood(),cboard.getCategory(),cboard.getBoard_code(),cboard.getUserId(),cboard.getImgData());
+		String sql = "insert into content_board(cno,title,content,cview,good,category,board_no,board_code,user_id,imgdata) values(seq_content_board.nextval,?,?,?,?,?,seq_board.currval,22,?,?)";
+		int result = jt.update(sql,cboard.getTitle(),cboard.getContent(),cboard.getCview(),cboard.getGood(),cboard.getCategory(),cboard.getUserId(),cboard.getImgData());
 		return result;
 	}
 	@Override
@@ -98,7 +97,7 @@ public class CBoardDaoImpl implements CBoardDao {
 	public List<CBoard> selectCBoardByCategoryPage(String category, String code, int page_no) {
 		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board where category=? order by cdate) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
 		List<CBoard> result = jt.query(sql, new BeanPropertyRowMapper<CBoard>(CBoard.class),
-				category,(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE,code);
+				category,(page_no - 1) * CBoardDao.BOARD_PER_PAGE + 1, page_no * CBoardDao.BOARD_PER_PAGE,code);
 		return result;
 	}
 	private RowMapper<Reply> getReplyRowMapper() {
@@ -141,6 +140,13 @@ public class CBoardDaoImpl implements CBoardDao {
 		}, cno);
 
 		return cboard;
+	}
+	@Override
+	public List<CBoard> selectCBoardBySelectTitlePage(String title, String code, int page_no) {
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board where title like '%'||?||'%' and board_code=? order by cno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		List<CBoard> result = jt.query(sql, new BeanPropertyRowMapper<CBoard>(CBoard.class), title, code,
+				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
+		return result;
 	}
 	
 	
