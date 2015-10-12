@@ -148,6 +148,12 @@ public class CBoardDaoImpl implements CBoardDao {
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
 		return result;
 	}
-	
+	@Override
+	public int selectCountAllPage() {
+		String sql = "select count(*) from content_board";
+		int countresult = jt.queryForObject(sql, Integer.class);
+		int result = (int)Math.ceil(countresult/(double)CBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
 	
 }

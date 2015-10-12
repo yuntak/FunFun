@@ -9,7 +9,7 @@ public class FundingBoardController {
 
 	@RequestMapping(value="/FundingBoard")
 	public String fundingBoardMain(Model model){
-		String viewlocation = "/WEB-INF/view/fundingboard/fundingBoard.jsp";
+		String viewlocation = "/WEB-INF/view/fundingboard/fundListBoard.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
