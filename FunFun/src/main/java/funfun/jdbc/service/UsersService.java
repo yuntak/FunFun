@@ -29,5 +29,7 @@ public interface UsersService {
 
 	Map<String, Object> loginUsers(String id, String pass);
 
-	public Users mylogin(String id, String pass);
+	Users mylogin(String id, String pass);
+	
+	String getNickname(String id);
 }

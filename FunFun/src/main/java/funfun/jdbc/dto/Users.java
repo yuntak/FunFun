@@ -16,6 +16,7 @@ public class Users {
 	private String loca_addr;//
 	private Date uDate;
 	
+	
 	private List<FBoard> fboards;
 
 	

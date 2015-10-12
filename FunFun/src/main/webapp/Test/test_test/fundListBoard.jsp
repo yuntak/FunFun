@@ -1,7 +1,5 @@
-<%@page import="funfun.jdbc.dto.Users"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,43 +9,29 @@
 	margin-right: auto;
 	margin-left: auto;
 }
-
-.btn {
-	margin-right: auto;
-	margin-left: auto;
-	width: 300px;
-	height: 60px;
-}
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
-	<%
-		Users user = new Users();
-
-		user.setRoll("REGULAR");
-	%>
-	<c:set value="<%=user%>" var="FunFunUser"></c:set>
 
 	<table class="table">
 
 		<tr>
-			<td class="col-lg-1"></td>
+			<td class="col-lg-2"></td>
 			<td class="col-lg-2"><table class="table">
 					<tr>
-						<td align="center">여자</td>
+						<td align="center">만화</td>
 					</tr>
 					<tr>
 						<td><a href=""><img
-								src="<%=request.getContextPath()%>/img/tae.jpg"
+								src="<%=request.getContextPath()%>/img/Koala.jpg"
 								class="img-thumbnail" alt="Cinque Terre"
 								style="width: 200px; height: 250px"></a></td>
 					</tr>
 					<tr>
-						<td><a href="">태연 i</a></td>
+						<td><a href="<%=request.getContextPath()%>/fundBoard">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="<%=request.getContextPath()%>/fundingBoard/fundBoard">태연이다!!!!!!!!!!!!!!!</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -87,8 +71,7 @@
 						<td><a href="">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가
-								고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -128,8 +111,7 @@
 						<td><a href="">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가
-								고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -154,46 +136,12 @@
 							</table></td>
 					</tr>
 				</table></td>
-			<td class="col-lg-3">
-				<table>
-					<tr>
-						<td></td>
-					</tr>
-					<tr>
-						<td class="col-lg-3"></td>
-						<td class="col-lg-6">${FunFunUser.roll }<c:choose>
-								<c:when test="${FunFunUser.roll=='BASIC' }">
-
-									<button type="submit" class="btn btn-info"
-										style="font-size: 30px;">
-										<span class="glyphicon glyphicon-pencil"
-											style="font-size: 25px;"></span> 펀딩 신청
-									</button>
-								</c:when>
-								<c:when test="${FunFunUser.roll=='REGULAR' }">
-									<button type="submit" class="btn btn-info"
-										style="font-size: 30px;">
-										펀딩 시작 <span class="glyphicon glyphicon-heart-empty"
-											style="font-size: 25px;"></span>
-									</button>
-
-
-
-								</c:when>
-
-
-							</c:choose>
-
-
-						</td>
-						<td class="col-lg-3"></td>
-					</tr>
-				</table>
-			</td>
+			<td class="col-lg-2"></td>
 		</tr>
-		<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		
 		<tr>
-			<td class="col-lg-1"></td>
+			<td class="col-lg-2"></td>
 			<td class="col-lg-2"><table class="table">
 					<tr>
 						<td align="center">만화</td>
@@ -208,8 +156,7 @@
 						<td><a href="">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가
-								고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -249,8 +196,7 @@
 						<td><a href="">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가
-								고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -290,8 +236,7 @@
 						<td><a href="">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가
-								고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -316,11 +261,12 @@
 							</table></td>
 					</tr>
 				</table></td>
-			<td class="col-lg-3"></td>
+			<td class="col-lg-2"></td>
 		</tr>
-		<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+		
 		<tr>
-			<td class="col-lg-1"></td>
+			<td class="col-lg-2"></td>
 			<td class="col-lg-2"><table class="table">
 					<tr>
 						<td align="center">만화</td>
@@ -335,8 +281,7 @@
 						<td><a href="">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가
-								고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -376,8 +321,7 @@
 						<td><a href="">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가
-								고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -417,8 +361,7 @@
 						<td><a href="">코알라의 일상</a></td>
 					</tr>
 					<tr>
-						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가
-								고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
+						<td><a href="">코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다코알라는 지금 배가 고프다</a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
@@ -443,10 +386,11 @@
 							</table></td>
 					</tr>
 				</table></td>
-			<td class="col-lg-3"></td>
+			<td class="col-lg-2"></td>
 		</tr>
+<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
 	</table>
 
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -19,7 +21,7 @@ import funfun.jdbc.dto.Reply;
 
 @Repository
 public class FBoardDaoImpl implements FBoardDao {
-
+	private static Logger logger = LoggerFactory.getLogger(FBoardDaoImpl.class);
 	@Autowired
 	JdbcTemplate jt;
 	@Autowired
@@ -34,8 +36,8 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public int insertFBoard(FBoard fboard) {
-		String sql = "insert into free_board(fno,title,fcontext,fview,board_no,board_code,user_id) values(seq_free_board.nextval,?,?,?,seq_board.currval,11,?)";
-		int result = jt.update(sql, fboard.getTitle(), fboard.getFcontext(), fboard.getFview(), fboard.getUserId());
+		String sql = "insert into free_board(fno,title,fcontext,fview,board_no,board_code,user_id,nickname) values(seq_free_board.nextval,?,?,?,seq_board.currval,11,?,?)";
+		int result = jt.update(sql, fboard.getTitle(), fboard.getFcontext(), fboard.getFview(), fboard.getUserId(),fboard.getNickName());
 		return result;
 	}
 
@@ -73,6 +75,7 @@ public class FBoardDaoImpl implements FBoardDao {
 				fboard.setBoardNo(rs.getInt("board_no"));
 				fboard.setBoardCode(rs.getString("board_code"));
 				fboard.setUserId(rs.getString("user_id"));
+				fboard.setNickName(rs.getString("nickname"));
 				return fboard;
 			}
 		};
@@ -134,26 +137,9 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public FBoard selectFullFBoard(int no) {
-		String sql = "select f.*,r.* from free_board f,reply r where r.user_id=f.user_id and f.fno=?";
-		FBoard fboard = jt.query(sql, new ResultSetExtractor<FBoard>() {
-
-			@Override
-			public FBoard extractData(ResultSet rs) throws SQLException, DataAccessException {
-				FBoard fboard = null;
-				List<Reply> replys = null;
-				if (rs.next()) {
-					fboard = getFBoardRowMapper().mapRow(rs, 0);
-					replys = new ArrayList<>();
-					fboard.setReplys(replys);
-					do {
-						Reply board = getReplyRowMapper().mapRow(rs, 0);
-						replys.add(board);
-					} while (rs.next());
-				}
-				return fboard;
-			}
-		}, no);
-
+		String sql = "select * from free_board where fno=?";
+		FBoard fboard = jt.queryForObject(sql, getFBoardRowMapper(), no); 
+		logger.trace("Dao : {}",fboard);
 		return fboard;
 	}
 
@@ -195,4 +181,12 @@ public class FBoardDaoImpl implements FBoardDao {
 		int result = (int)Math.ceil(countresult/(double)FBoardDao.BOARD_PER_PAGE);
 		return result;
 	}
+
+	@Override
+	public String selectNickname(int no) {
+		String sql = "select nickname from free_board where fno=?";
+		String result = jt.queryForObject(sql, String.class,no);
+		return result;
+	}
+	
 }

@@ -9,13 +9,17 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import funfun.jdbc.dao.FBoardDao;
+import funfun.jdbc.dao.ReplyDao;
 import funfun.jdbc.dto.FBoard;
+import funfun.jdbc.dto.Reply;
 
 @Service
 public class FBoardServiceImpl implements FBoardService {
 	private static Logger logger = LoggerFactory.getLogger(FBoardServiceImpl.class);
 	@Autowired
 	FBoardDao fdao;
+	@Autowired
+	ReplyDao rdao;
 
 	@Override
 	public void insertFBoard(FBoard fboard) {
@@ -119,12 +123,16 @@ public class FBoardServiceImpl implements FBoardService {
 	@Override
 	public FBoard selectFullFBoard(int no) {
 		FBoard selectresult=null;
+		List<Reply> replyList=null;
 		try{
 		selectresult = fdao.selectFullFBoard(no);
+		replyList = rdao.selectBoardReply(selectresult.getBoardNo(), selectresult.getBoardCode());
+		selectresult.setReplys(replyList);
 		}catch(EmptyResultDataAccessException e){
 			selectresult = null;
+			
 		}
-		logger.trace("select over : {}", selectresult);
+		logger.trace("select freeBoard Service : {}", selectresult);
 		return selectresult;
 	}
 
@@ -140,5 +148,12 @@ public class FBoardServiceImpl implements FBoardService {
 		int selectCountPage = fdao.selectCountAllPage();
 		logger.trace("select page over : {}",selectCountPage);
 		return selectCountPage;
+	}
+
+	@Override
+	public String selectnickname(int no) {
+		String selectresult = fdao.selectNickname(no);
+		logger.trace("select over : {}",selectresult);
+		return selectresult;
 	}
 }
