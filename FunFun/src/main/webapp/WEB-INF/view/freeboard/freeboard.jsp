@@ -132,9 +132,9 @@ style>#name:link {
 			</tbody>
 		</table>
 		<hr>
-
-		<div align="" class="row">
-
+<div align="center">
+		<table>
+		
 
 			<%
 				final int ROWSIZE = 25; // 한페이지에 보일 게시물 수
@@ -164,63 +164,74 @@ style>#name:link {
 			%>
 
 
-			<div class="col-sm-3 col-xs-4 col-md-3 col-lg-3">
-				<%
-					if (pg > BLOCK) {
-				%>
-				<ul class="pager">
-					<li><a href="freeboard.jsp?pg=1">◀◀</a></li>
-					<li><a href="freeboard.jsp?pg=<%=startPage - 1%>">◀</a></li>
-				</ul>
-				<%
-					}
-				%>
-			</div>
-			<div class="col-sm-3 col-xs-4 col-md-3 col-lg-3">
-				<%
-					for (int i = startPage; i <= endPage; i++) {
-						if (null != request.getParameter("page") && i == Integer.parseInt(request.getParameter("page"))) {
-				%>
-				<ul class="pagination ">
-					<li class="active"><a
-						href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
-				</ul>
-				<%
-					} else {
-				%>
-				<ul class="pagination">
-					<li><a
-						href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
-				</ul>
-				<%
-					}
-					}
-				%>
-			</div>
-			<div class="col-sm-3 col-xs-4 col-md-3 col-lg-3">
+
+			<%
+				if (pg > BLOCK) {
+			%>
+			<tr>
+			<th>
+			<ul class="pager">
+				<li><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=1">◀◀</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=startPage - 1%>">◀</a></li>
+			</ul>
+			<%
+				}
+			%>
+			</th>
+			<th align="">
+			<%
+				for (int i = startPage; i <= endPage; i++) {
+					if (null != request.getParameter("page") && i == Integer.parseInt(request.getParameter("page"))) {
+			%>
+			<ul class="pagination ">
+				<li class="active"><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
+			</ul>
+			<%
+				} else {
+			%>
+			<ul class="pagination">
+				<li><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
+			</ul>
+			<%
+				}
+				}
+			%>
+			</th>
+			<%
+				if (endPage < allPage) {
+			%>
+			<th>
+			<ul class="pager">
+
 				<%
 					if (endPage < allPage) {
 				%>
-				<ul class="pager">
-					<li><a href="freeboard.jsp?pg=<%=endPage + 1%>">▶</a></li>
-
-					<a
-				 href="freeboard.jsp?pg=<%=allPage%>">▶▶</a>
-					</li>
-					</ul>
+				<a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=endPage + 1%>">▶</a>
+				<a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=allPage%>">▶▶</a>
 				<%
 					}
 				%>
-			</div>
 
-			<div align="right" class="col-sm-3 col-xs-4 col-md-3 col-lg-3">
-				<a href="<%=request.getContextPath()%>/FreeBoard/Write"
-					class="btn btn-info">글쓰기</a>
-			</div>
+			</ul>
+			</th>
+			<th>
+			<a href="<%=request.getContextPath()%>/FreeBoard/Write"
+				class="btn btn-info">글쓰기</a>
 
-		</div>
-
-	</div>
+			<%
+				}
+			%>
+			</th>
+			</tr>
+			
+	</table>
+</div>
 
 
 

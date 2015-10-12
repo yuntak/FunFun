@@ -27,7 +27,6 @@ public class FreeBoardController {
 		List<FBoard> FBoardList=FreeBoardSvc.selectFBoardByPage(FBoard.FREEBOARD_CODE, 1);
 		model.addAttribute("FBoardList", FBoardList);
 		int allPage= FreeBoardSvc.selectCountAllPage();
-		logger.trace("{}",allPage);
 		model.addAttribute("allPage", allPage);
 		String viewlocation = "/WEB-INF/view/freeboard/freeboard.jsp";
 		model.addAttribute("view", viewlocation);
@@ -37,7 +36,6 @@ public class FreeBoardController {
 	public String freeBoardList(@RequestParam int page,Model model){
 		List<FBoard> FBoardList=FreeBoardSvc.selectFBoardByPage(FBoard.FREEBOARD_CODE,page);
 		int allPage= FreeBoardSvc.selectCountAllPage();
-		logger.trace("{}",allPage);
 		model.addAttribute("allPage", allPage);
 		model.addAttribute("FBoardList", FBoardList);
 		String viewlocation = "/WEB-INF/view/freeboard/freeboard.jsp";
@@ -51,6 +49,14 @@ public class FreeBoardController {
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 		
+	}
+	@RequestMapping(value="FreeBoard/View")
+	public String freeBoardView(Model model){
+		
+		
+		String viewlocation = "/WEB-INF/view/freeboard/freeWrite.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
 	}
 	
 	

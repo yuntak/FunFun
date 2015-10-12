@@ -39,7 +39,7 @@
 	text-align: center; 
 	font-size: 27px;
 } */
-#wrwr{
+#wrwr {
 	
 }
 </style>
@@ -47,61 +47,57 @@
 <body>
 	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 
-	<%
-		List list = new ArrayList();
-		FBoard fb = new FBoard();
-		fb.setFno(1);
-		fb.setUserId("ssw");
-		fb.setTitle("안녕");
-		list.add(fb);
-	%>
-		<div class="panel-body">
-	<%
-					FBoard fdto = null;
-					for (int i = 0; i < list.size(); i++) {
-						fdto = (FBoard) list.get(i);
-	%>
-
 	
-		<div class="top">
-			<p><%fdto.getFno();%></p>
-			<%fdto.getUserId();%>
+	<%
+		Object FlistObj = request.getAttribute("FBoardList");
+		List<FBoard> list = null;
+		if (FlistObj != null && FlistObj instanceof List) {
+			list = (List<FBoard>) FlistObj;
+		}
+	%>
+	<div class="panel-body">
+		<%
+			FBoard fdto = null;
+			for (int i = 0; i < list.size(); i++) {
+				fdto = (FBoard) list.get(i);
+		%>
+
+		<%
+			}
+		%>
+
+		<div id="toppanel" class="panel panel-default">
+			<ul class="nav nav-justified">
+				<li>
+					<div align="left" class="panel-body" style="width: 200px">게시물제목란</div>
+				</li>
+				<li>
+					<div align="center" class="panel-body" style="width: 200px">날짜</div>
+				</li>
+				<li>
+					<div align="right" class="panel-body" style="width: 200px">작성자</div>
+				</li>
+			</ul>
 		</div>
-
-<% } %>
-	
- 	<div id="toppanel" class="panel panel-default">
-					<ul class="nav nav-justified">
-						<li>
-							<div align="left" class="panel-body" style="width: 200px">게시물제목란</div>
-						</li>
-						<li>
-							<div align="center" class="panel-body" style="width: 200px">날짜</div>
-						</li>
-						<li>
-							<div align="right" class="panel-body" style="width: 200px">작성자</div>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+	</div>
+	</div>
 
 
 
-		<div class="panel panel-default">
-			<div class="panel-body" style="height: 400px">게시물 내용</div>
-		</div>
-  
-  <div class="panel panel-default" >
-  	<label for="user" id="wrwr" >작성자</label>
+	<div class="panel panel-default">
+		<div class="panel-body" style="height: 400px">게시물 내용</div>
+	</div>
 
-  	<textarea rows="4" cols="100" id="user">sdf</textarea>
-  	<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/img/ok.PNG"
-					style="width: 100px; height: 100px">
-				</a>
-  </div>
+	<div class="panel panel-default">
+		<label for="user" id="wrwr">작성자</label>
 
-</div>		
+		<textarea rows="4" cols="100" id="user">sdf</textarea>
+		<a href="<%=request.getContextPath()%>/main"><img
+			src="<%=request.getContextPath()%>/img/ok.PNG"
+			style="width: 100px; height: 100px"> </a>
+	</div>
+
+	</div>
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 
 </body>
