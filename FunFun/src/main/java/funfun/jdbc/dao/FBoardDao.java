@@ -40,4 +40,7 @@ public interface FBoardDao {
 	public List<FBoard> selectFBoardByTitle(String title);
 	
 	public int selectCountAllPage();
+	
+	public String selectNickname(int no);
+	
 }

@@ -30,4 +30,7 @@ public interface FBoardService {
 	int selectCount(int to, int from);
 	
 	int selectCountAllPage();
+	
+	String selectnickname(int no);
+	
 }

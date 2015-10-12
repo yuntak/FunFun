@@ -1,5 +1,7 @@
+<%@page import="funfun.jdbc.dto.Reply"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.ArrayList"%>
@@ -48,7 +50,6 @@ textarea {
 </style>
 </head>
 <body>
-${FBoard }
    <div class="panel-body" align="center">
 
 
@@ -78,25 +79,30 @@ ${FBoard }
       <div class="panel panel-default" style="width: 900px;">
          <div class="panel-body" style="height: 400px">${FBoard.fcontext }</div>
       </div>
-
+		
       <div class="panel panel-default" style="width: 900px;">
          <div class="panel-heading">코멘트</div>
 
          <div class="panel-body">
 
             <table class="table">
-               <thead>
+             
+                  <c:forEach  items="${FBoard.replys }" var="reply">
+                    <thead>
+                  
                   <tr>
-                     <th class="ttr"><strong>닉네임</strong></th>
+                     <th class="ttr"><strong>${reply.userId }</strong></th>
 
                   </tr>
                </thead>
                <tbody>
 
                   <tr>
-                     <td>내용</td>
+                     <td>${reply.context }</td>
 
                   </tr>
+                  
+                  </c:forEach>
 
                </tbody>
             </table>
@@ -108,8 +114,9 @@ ${FBoard }
 
       <div class="panel panel-danger" style="width: 900px;">
          <div class="row">
+         <c:if test="${FunFunUser!=null }">
             <div class="col-lg-1 col-sm-1 col-xs-1 col-md-1" align="center">
-               <label for="user">닉네임</label>
+               <label for="user">${FunFunUser.nickname }</label>
             </div>
             <div class="col-lg-7 col-sm-7 col-xs-7 col-md-7">
                <textarea rows="4" cols="80" id="user">내용</textarea>
@@ -118,6 +125,7 @@ ${FBoard }
                <a href="#"><img src="<%=request.getContextPath()%>/img/ok.PNG"
                   style="width: 90px; height: 90px"> </a>
             </div>
+            </c:if>
 
          </div>
       </div>
