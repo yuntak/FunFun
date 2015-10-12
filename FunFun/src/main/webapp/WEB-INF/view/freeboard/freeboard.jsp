@@ -113,8 +113,7 @@ style>#name:link {
 				<tr>
 					<td><%=fdto.getFno()%></td>
 
-					<td id="name" style="cursor: pointer" onclick=location.href=
-						"<%=request.getContextPath()%>/FreeBoard/View?BoardNo=<%=fdto.getFno()%>">
+					<td id="name" style="cursor: pointer" onclick=location.href="<%=request.getContextPath()%>/FreeBoard/View?BoardNo=<%=fdto.getFno()%>">
 						<%=fdto.getTitle()%>
 					</td>
 
