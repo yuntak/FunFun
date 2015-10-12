@@ -46,14 +46,15 @@ public class ReplyDaoImpl implements ReplyDao{
 				reply.setBoardNo(rs.getInt("board_no"));
 				reply.setBoardCode(rs.getString("board_code"));
 				reply.setUserId(rs.getString("user_id"));
+				reply.setNickname(rs.getString("nickname"));
 				return reply;
 			}};
 	}
 
 	@Override
 	public int insertReply(Reply reply) {
-		String sql = "insert into reply(rno,context,board_no,board_code,user_id) values(seq_reply.nextval,?,?,?,?)";
-		int result = jt.update(sql,reply.getContext(),reply.getBoardNo(),reply.getBoardCode(),reply.getUserId());
+		String sql = "insert into reply(rno,context,board_no,board_code,user_id,nickname) values(seq_reply.nextval,?,?,?,?,?)";
+		int result = jt.update(sql,reply.getContext(),reply.getBoardNo(),reply.getBoardCode(),reply.getUserId(),reply.getNickname());
 		return result;
 	}
 

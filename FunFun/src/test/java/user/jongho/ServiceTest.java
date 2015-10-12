@@ -322,6 +322,7 @@ public class ServiceTest {
 		reply.setBoardNo(640);
 		reply.setBoardCode("11");
 		reply.setUserId("loll333");
+		reply.setNickname("every");
 		rdao.insertReply(reply);
 		logger.trace("{}",reply);
 		assertThat(reply.getContext(),is("재미없어"));

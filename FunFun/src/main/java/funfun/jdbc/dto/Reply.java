@@ -10,6 +10,7 @@ public class Reply {
 	private int boardNo;
 	private String boardCode;
 	private String userId;
+	private String nickname;
 	
 	public int getRno() {
 		return rno;
@@ -47,9 +48,16 @@ public class Reply {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
 	@Override
 	public String toString() {
 		return "Reply [rno=" + rno + ", context=" + context + ", rdate=" + rdate + ", boardNo=" + boardNo
-				+ ", boardCode=" + boardCode + ", userId=" + userId + "]";
+				+ ", boardCode=" + boardCode + ", userId=" + userId + ", nickname=" + nickname + "]";
 	}
 }
