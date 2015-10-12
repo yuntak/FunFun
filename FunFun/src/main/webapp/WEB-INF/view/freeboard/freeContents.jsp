@@ -82,6 +82,7 @@ ${FBoard }
       <div class="panel panel-default" style="width: 900px;">
          <div class="panel-heading">코멘트</div>
 
+		 <div class="">
          <div class="panel-body">
 
             <table class="table">
@@ -100,7 +101,7 @@ ${FBoard }
 
                </tbody>
             </table>
-
+			</div>
 
          </div>
       </div>

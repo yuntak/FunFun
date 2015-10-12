@@ -186,8 +186,7 @@ style>#name:link {
 			<%
 				}
 			%>
-			</th>
-			<th align="">
+			
 			<%
 				for (int i = startPage; i <= endPage; i++) {
 					if (null != request.getParameter("page") && i == Integer.parseInt(request.getParameter("page"))) {
@@ -207,20 +206,20 @@ style>#name:link {
 				}
 				}
 			%>
-			</th>
+			
 			<%
 				if (endPage < allPage) {
 			%>
-			<th>
+			
 			<ul class="pager">
 
 				<%
 					if (endPage < allPage) {
 				%>
-				<a
-					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=endPage + 1%>">▶</a>
-				<a
-					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=allPage%>">▶▶</a>
+				<li><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=endPage + 1%>">▶</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=allPage%>">▶▶</a></li>
 				<%
 					}
 				%>
@@ -229,7 +228,7 @@ style>#name:link {
 			</th>
 			<th>
 			<a href="<%=request.getContextPath()%>/FreeBoard/Write"
-				class="btn btn-info">글쓰기</a>
+			><img src="<%=request.getContextPath()%>/img/write.PNG"></a>
 
 			<%
 				}
