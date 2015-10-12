@@ -77,16 +77,24 @@ style>#name:link {
 
 
 	<div class="container">
-
+		<form action="freeBoardSearch.jsp">
 		<br>
 		<p align="center">자유게시판</p>
 		<br> <br>
 		<div class="form-inline" align="right">
-			<input type="text" class="form-control" placeholder="검색"> <a
-				href=""><span class="btn btn-success">검색</span></a>
-		</div>
+			<select name="name">
+				<option value="subject">제목</option>
+				<option value="contents">내용</option>
+				<option value="nickname">작성자</option>
+			</select>
+			<input name="keyword"  type="text" class="form-control" placeholder="검색">
+			
+			<input type="hidden" value="1" name="page">
+			<input type="submit" value="검색" class="btn btn-success">
+		</div>	
+		</form>
 		<br>
-
+	
 		<table class="table">
 			<thead>
 				<tr class="success">
