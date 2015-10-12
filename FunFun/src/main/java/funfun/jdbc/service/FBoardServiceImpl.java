@@ -149,4 +149,11 @@ public class FBoardServiceImpl implements FBoardService {
 		logger.trace("select page over : {}",selectCountPage);
 		return selectCountPage;
 	}
+
+	@Override
+	public String selectnickname(int no) {
+		String selectresult = fdao.selectNickname(no);
+		logger.trace("select over : {}",selectresult);
+		return selectresult;
+	}
 }
