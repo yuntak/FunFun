@@ -29,7 +29,7 @@
 	<%
 		Users user = new Users();
 
-		user.setRoll("BASIC");
+		user.setRoll("REGULAR");
 	%>
 	<c:set value="<%=user %>" var="FunFunUser"></c:set>
 
@@ -163,8 +163,9 @@
 				<table>
 					<tr>
 						<td class="col-lg-3"></td>
-						<td class="col-lg-6">${FunFunUser.roll } <c:choose>
-								<c:when test="${FunFunUser.roll }=="BASIC">
+						<td class="col-lg-6">${FunFunUser.roll }
+						 <c:choose>
+						 <c:when test="${FunFunUser.roll=='BASIC' }">
 									<div id="img_container">
 										<img style="background-color: #E69316;"
 											src="<%=request.getContextPath()%>/img/button.png"
@@ -173,9 +174,19 @@
 
 										<button
 											style="width: 200px; height: 50px; background-color: #E69316; color: white"
-											type="button" class="btn">프로젝트 신청하기</button>
+											type="button" class="btn">펀딩 신청</button>
 									</div>
-								</c:when>
+									</c:when>
+									<c:when test="${FunFunUser.roll=='REGULAR' }">
+									<button
+											style="width: 200px; height: 50px; background-color: #E69316; color: white"
+											type="button" class="btn">펀딩 시작</button>
+									
+									
+									
+									</c:when>
+									
+									
 							</c:choose>
 
 
