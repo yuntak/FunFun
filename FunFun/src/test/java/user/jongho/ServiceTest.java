@@ -318,10 +318,9 @@ public class ServiceTest {
 	@Test
 	public void TestReplyInsert(){
 		Reply reply = new Reply();
-		reply.setRno(1);
 		reply.setContext("재미없어");
-		reply.setBoardNo(25);
-		reply.setBoardCode("22");
+		reply.setBoardNo(640);
+		reply.setBoardCode("11");
 		reply.setUserId("loll333");
 		rdao.insertReply(reply);
 		logger.trace("{}",reply);
@@ -540,7 +539,7 @@ public class ServiceTest {
 	public void TestFBoardInsert() {
 		Board board = new Board();
 		FBoard fboard=null;
-		for(int i=0;i<30;i++){
+		for(int i=0;i<300;i++){
 		board.setCode("11");
 		board.setUserId("every9168");
 		bservice.insertBoard(board);
@@ -550,6 +549,7 @@ public class ServiceTest {
 		fboard.setFcontext("저zxcvzxcv"+i);
 		fboard.setFview(3);
 		fboard.setUserId("every9168");
+		fboard.setNickName("every");
 		fservice.insertFBoard(fboard);
 		}
 		logger.trace("{}", fboard);

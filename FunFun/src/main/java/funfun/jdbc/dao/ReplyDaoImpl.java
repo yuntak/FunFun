@@ -52,8 +52,8 @@ public class ReplyDaoImpl implements ReplyDao{
 
 	@Override
 	public int insertReply(Reply reply) {
-		String sql = "insert into reply(rno,context,board_no,board_code,user_id) values(?,?,?,?,?)";
-		int result = jt.update(sql, reply.getRno(),reply.getContext(),reply.getBoardNo(),reply.getBoardCode(),reply.getUserId());
+		String sql = "insert into reply(rno,context,board_no,board_code,user_id) values(seq_reply.nextval,?,?,?,?)";
+		int result = jt.update(sql,reply.getContext(),reply.getBoardNo(),reply.getBoardCode(),reply.getUserId());
 		return result;
 	}
 
