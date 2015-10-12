@@ -296,8 +296,8 @@ public class ServiceTest {
 	}
 	@Test
 	public void TestFullFBoard(){
-		FBoard fboard = fdao.selectFullFBoard(7);
-		fservice.selectFullFBoard(7);
+		FBoard fboard = fdao.selectFullFBoard(31);
+		fservice.selectFullFBoard(31);
 		logger.trace("{}",fboard);
 		assertThat(fboard,is(not(nullValue())));
 	}
@@ -307,13 +307,13 @@ public class ServiceTest {
 		fservice.selectCountAllPage();
 	}
 	
-	@Test
+	/*@Test
 	public void TestselectBoardReply(){
 		Reply reply = rdao.selectBoardReply(25, "22");
 		rservice.selectBoardReply(25, "22");
 		logger.trace("{}",reply);
 		assertThat(reply,is(not(nullValue())));
-	}
+	}*/
 	
 	@Test
 	public void TestReplyInsert(){

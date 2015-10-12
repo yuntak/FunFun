@@ -193,6 +193,12 @@ public class UsersDaoImpl implements UsersDao {
 		Map<String, Object> value = jt.queryForMap(sql,id,pass);
 		return value;
 	}
+	@Override
+	public String getNickname(String id) {
+		String sql = "select nickname from users where id=?";
+		String nickname = jt.queryForObject(sql, String.class,id);
+		return nickname;
+	}
 	
 	
 		

@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -19,7 +21,7 @@ import funfun.jdbc.dto.Reply;
 
 @Repository
 public class FBoardDaoImpl implements FBoardDao {
-
+	private static Logger logger = LoggerFactory.getLogger(FBoardDaoImpl.class);
 	@Autowired
 	JdbcTemplate jt;
 	@Autowired
@@ -134,26 +136,9 @@ public class FBoardDaoImpl implements FBoardDao {
 
 	@Override
 	public FBoard selectFullFBoard(int no) {
-		String sql = "select f.*,r.* from free_board f,reply r where r.user_id=f.user_id and f.fno=?";
-		FBoard fboard = jt.query(sql, new ResultSetExtractor<FBoard>() {
-
-			@Override
-			public FBoard extractData(ResultSet rs) throws SQLException, DataAccessException {
-				FBoard fboard = null;
-				List<Reply> replys = null;
-				if (rs.next()) {
-					fboard = getFBoardRowMapper().mapRow(rs, 0);
-					replys = new ArrayList<>();
-					fboard.setReplys(replys);
-					do {
-						Reply board = getReplyRowMapper().mapRow(rs, 0);
-						replys.add(board);
-					} while (rs.next());
-				}
-				return fboard;
-			}
-		}, no);
-
+		String sql = "select * from free_board where fno=?";
+		FBoard fboard = jt.queryForObject(sql, getFBoardRowMapper(), no); 
+		logger.trace("Dao : {}",fboard);
 		return fboard;
 	}
 

@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -39,26 +40,23 @@
 	text-align: center; 
 	font-size: 27px;
 } */
-#wrwr {
-	
-}
+textarea { resize: none; }
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
+	<%-- <jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include> --%>
 
 	<%
 		List list = new ArrayList();
 		FBoard fb = new FBoard();
-		fb.setFno(1);
-		fb.setUserId("ssw");
-		fb.setTitle("안녕");
+		
 		list.add(fb);
 	%>
 	<div class="panel-body">
 		<%
 			FBoard fdto = null;
 			for (int i = 0; i < list.size(); i++) {
+				
 				fdto = (FBoard) list.get(i);
 		%>
 
@@ -81,13 +79,13 @@
 		<div id="toppanel" class="panel panel-default">
 			<ul class="nav nav-justified">
 				<li>
-					<div align="left" class="panel-body" style="width: 200px">게시물제목란</div>
+					<div align="left" class="panel-body" style="width: 200px"><%=fdto.getTitle() %></div>
 				</li>
 				<li>
-					<div align="center" class="panel-body" style="width: 200px">날짜</div>
+					<div align="center" class="panel-body" style="width: 200px"><%=fdto.getFdate() %></div>
 				</li>
 				<li>
-					<div align="right" class="panel-body" style="width: 200px">작성자</div>
+					<div align="right" class="panel-body" style="width: 200px"><%=fdto.getNickName() %></div>
 				</li>
 			</ul>
 		</div>
@@ -97,7 +95,7 @@
 
 
 	<div class="panel panel-default">
-		<div class="panel-body" style="height: 400px">게시물 내용</div>
+		<div class="panel-body" style="height: 400px"><%=fdto.getFcontext() %></div>
 	</div>
 
 	<div class="panel panel-default">
@@ -117,15 +115,19 @@
 					<div class="col-lg-7">
 					<textarea rows="4" cols="100" id="user">sdf</textarea>
 					</div>
-					<div class="col-lg-3">
-					<a href="#"><button class="btn btn-default btn-lg" >등록</button></a>
+					<div class="col-lg-3" >
+					<a href="#"><img  src="<%=request.getContextPath()%>/img/ok.PNG"
+					style="width: 90px; height: 90px">
+				</a>
 					</div>
 			
 			</div>
 			</div>
+			
+		
 	
 
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
-
+	<%-- <jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
+ --%>
 </body>
 </html>

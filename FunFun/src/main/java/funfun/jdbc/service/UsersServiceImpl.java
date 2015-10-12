@@ -165,6 +165,13 @@ public class UsersServiceImpl implements UsersService {
 		return updateresult;
 	}
 
+	@Override
+	public String getNickname(String id) {
+		String result = dao.getNickname(id);
+		logger.trace("select result :{}",result);
+		return result;
+	}
+
 
 	
 

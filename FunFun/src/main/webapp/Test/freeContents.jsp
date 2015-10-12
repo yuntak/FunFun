@@ -49,9 +49,7 @@ textarea { resize: none; }
 	<%
 		List list = new ArrayList();
 		FBoard fb = new FBoard();
-		fb.setFno(1);
-		fb.setUserId("ssw");
-		fb.setTitle("안녕");
+		
 		list.add(fb);
 	%>
 	<div class="panel-body">
@@ -80,7 +78,7 @@ textarea { resize: none; }
 		<div id="toppanel" class="panel panel-default">
 			<ul class="nav nav-justified">
 				<li>
-					<div align="left" class="panel-body" style="width: 200px">게시물제목란</div>
+					<div align="left" class="panel-body" style="width: 200px"><%=fdto.getTitle() %></div>
 				</li>
 				<li>
 					<div align="center" class="panel-body" style="width: 200px">날짜</div>

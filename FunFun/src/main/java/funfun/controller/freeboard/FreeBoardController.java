@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.jdbc.dto.FBoard;
+import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.FBoardService;
+import funfun.jdbc.service.UsersService;
 
 @Controller
 public class FreeBoardController {
@@ -21,6 +23,8 @@ public class FreeBoardController {
 	
 	@Autowired
 	FBoardService FreeBoardSvc;
+	@Autowired
+	UsersService UsersSvc;
 	
 	@RequestMapping(value="/FreeBoard")
 	public String freeBoardMain(Model model){
@@ -51,13 +55,18 @@ public class FreeBoardController {
 		
 	}
 	@RequestMapping(value="FreeBoard/View")
-	public String freeBoardView(Model model){
+	public String freeBoardView(@RequestParam int BoardNo,Model model){
+		FBoard FBoardcontent = FreeBoardSvc.selectFullFBoard(BoardNo);
+		String user = UsersSvc.getNickname(FBoardcontent.getUserId());
+		FBoardcontent.setNickName(user);
+		model.addAttribute("FBoard",FBoardcontent);
 		
-		
-		String viewlocation = "/WEB-INF/view/freeboard/freeWrite.jsp";
+		String viewlocation = "/WEB-INF/view/freeboard/freeContents.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
+	
+	
 	
 	
 }

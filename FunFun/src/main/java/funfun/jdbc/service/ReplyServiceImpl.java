@@ -1,5 +1,7 @@
 package funfun.jdbc.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public Reply selectBoardReply(int board_no, String board_code) {
-		Reply selectresult = rdao.selectBoardReply(board_no, board_code);
+	public List<Reply> selectBoardReply(int board_no, String board_code) {
+		List<Reply> selectresult = rdao.selectBoardReply(board_no, board_code);
 		return selectresult;
 	}
 

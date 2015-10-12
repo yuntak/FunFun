@@ -14,6 +14,7 @@ public class FBoard {
 	private int boardNo;
 	private String boardCode;
 	private String userId;
+	private String nickName;
 
 	private List<Reply> replys;
 
@@ -87,6 +88,14 @@ public class FBoard {
 
 	public void setReplys(List<Reply> replys) {
 		this.replys = replys;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
 	@Override

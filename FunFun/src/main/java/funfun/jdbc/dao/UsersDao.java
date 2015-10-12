@@ -25,5 +25,6 @@ public interface UsersDao {
 	public int deleteUser(String id);
 	public int deleteAllUsers();
 	public int updateUserDate(Users user);
+	public String getNickname(String id);
 	
 }
