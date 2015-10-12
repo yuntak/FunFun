@@ -101,8 +101,8 @@ public class FBoard {
 	@Override
 	public String toString() {
 		return "FBoard [fno=" + fno + ", title=" + title + ", fcontext=" + fcontext + ", fdate=" + fdate + ", fview="
-				+ fview + ", boardNo=" + boardNo + ", boardCode=" + boardCode + ", userId=" + userId + ", replys="
-				+ replys + "]";
+				+ fview + ", boardNo=" + boardNo + ", boardCode=" + boardCode + ", userId=" + userId + ", nickName="
+				+ nickName + ", replys=" + replys + "]";
 	}
 
 }

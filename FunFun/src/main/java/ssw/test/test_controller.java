@@ -32,6 +32,7 @@ public class test_controller {
 	@RequestMapping("/freeboard/list")
 	public String freeboardlist(@RequestParam int page_no, @RequestParam String code,Model model){
 		List<FBoard> FboardList=Fservice.selectFBoardByPage(code, page_no);
+		
 		model.addAttribute("fboardlist", FboardList);
 		
 		return "freeboard/freeboard";

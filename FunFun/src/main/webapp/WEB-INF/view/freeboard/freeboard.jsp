@@ -99,10 +99,10 @@ style>#name:link {
 			</thead>
 			<tbody>
 				<%
-					Object FlistObj=request.getAttribute("FBoardList");
-				    List<FBoard> list=null;
-					if(FlistObj!=null&&FlistObj instanceof List){
-				 	list = (List<FBoard>)FlistObj;
+					Object FlistObj = request.getAttribute("FBoardList");
+					List<FBoard> list = null;
+					if (FlistObj != null && FlistObj instanceof List) {
+						list = (List<FBoard>) FlistObj;
 					}
 				%>
 				<%
@@ -131,81 +131,106 @@ style>#name:link {
 			</tbody>
 		</table>
 		<hr>
-		<div align="right">
-			<a href="<%=request.getContextPath()%>/FreeBoard/Write"
-				class="btn btn-info">글쓰기</a>
-		</div>
-
-		<%
-			final int ROWSIZE = 25; // 한페이지에 보일 게시물 수
-			int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
-
-			int pg = 1; //기본 페이지값
-			
-			if (request.getParameter("page") != null) { //받아온 pg값이 있을때, 다른페이지일때
-				pg = Integer.parseInt(request.getParameter("page")); // pg값을 저장
-			}
-
-			int start = (pg * ROWSIZE) - (ROWSIZE - 1); // 해당페이지에서 시작번호(step2)
-			int end = (pg * ROWSIZE); // 해당페이지에서 끝번호(step2)
-
-			int allPage = (int)request.getAttribute("allPage"); // 전체 페이지수
-
-			if(allPage < BLOCK) {
-				BLOCK=allPage;
-			}
-			
-			int startPage = ((pg - 1) / BLOCK * BLOCK) + 1; // 시작블럭숫자 (1~5페이지일경우 1, 6~10일경우 6)
-			int endPage = ((pg - 1) / BLOCK * BLOCK) + BLOCK; // 끝 블럭 숫자 (1~5일 경우 5, 6~10일경우 10)
-		
-			if(endPage>allPage){
-				endPage=allPage;
-			}
-		%>
-
+<div align="center">
 		<table>
-		<tr>
-			<td align="center">
-			<% 
-				
+		
+
+			<%
+				final int ROWSIZE = 25; // 한페이지에 보일 게시물 수
+				int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
+
+				int pg = 1; //기본 페이지값
+
+				if (request.getParameter("page") != null) { //받아온 pg값이 있을때, 다른페이지일때
+					pg = Integer.parseInt(request.getParameter("page")); // pg값을 저장
+				}
+
+				int start = (pg * ROWSIZE) - (ROWSIZE - 1); // 해당페이지에서 시작번호(step2)
+				int end = (pg * ROWSIZE); // 해당페이지에서 끝번호(step2)
+
+				int allPage = (int) request.getAttribute("allPage"); // 전체 페이지수
+
+				if (allPage < BLOCK) {
+					BLOCK = allPage;
+				}
+
+				int startPage = ((pg - 1) / BLOCK * BLOCK) + 1; // 시작블럭숫자 (1~5페이지일경우 1, 6~10일경우 6)
+				int endPage = ((pg - 1) / BLOCK * BLOCK) + BLOCK; // 끝 블럭 숫자 (1~5일 경우 5, 6~10일경우 10)
+
+				if (endPage > allPage) {
+					endPage = allPage;
+				}
 			%>
-			
+
+
+
+			<%
+				if (pg > BLOCK) {
+			%>
+			<tr>
+			<th>
+			<ul class="pager">
+				<li><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=1">◀◀</a></li>
+				<li><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=startPage - 1%>">◀</a></li>
+			</ul>
+			<%
+				}
+			%>
+			</th>
+			<th align="">
+			<%
+				for (int i = startPage; i <= endPage; i++) {
+					if (null != request.getParameter("page") && i == Integer.parseInt(request.getParameter("page"))) {
+			%>
+			<ul class="pagination ">
+				<li class="active"><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
+			</ul>
+			<%
+				} else {
+			%>
+			<ul class="pagination">
+				<li><a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
+			</ul>
+			<%
+				}
+				}
+			%>
+			</th>
+			<%
+				if (endPage < allPage) {
+			%>
+			<th>
+			<ul class="pager">
+
 				<%
-					if (pg > BLOCK) {
-				%> <a href="<%=request.getContextPath() %>/FreeBoard/List?page=1">◀◀</a> <a
-				href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=startPage - 1%>">◀</a> <%
+					if (endPage < allPage) {
+				%>
+				<a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=endPage + 1%>">▶</a>
+				<a
+					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=allPage%>">▶▶</a>
+				<%
 					}
 				%>
-				<div align="center">
-					<%
-						for (int i = startPage; i <= endPage; i++) {
-							if (null!=request.getParameter("page")&&i ==Integer.parseInt(request.getParameter("page"))) {
-					%>
-					<ul class="pagination ">
-						<li class="active"><a href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
-					</ul>
-					<%
-						} else {
-					%>
-					<ul class="pagination">
-						<li><a href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
-					</ul>
-					<%
-						}
-						}
-					%>
-				</div> <%
- 	if (endPage < allPage) {
- %> <a href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=endPage + 1%>">▶</a> <a
-				href="<%=request.getContextPath() %>/FreeBoard/List?page=<%=allPage%>">▶▶</a> <%
- 	}
- %>
-			</td>
+
+			</ul>
+			</th>
+			<th>
+			<a href="<%=request.getContextPath()%>/FreeBoard/Write"
+				class="btn btn-info">글쓰기</a>
+
+			<%
+				}
+			%>
+			</th>
 			</tr>
-		</table>
-
-
-	</div>
+			
+	</table>
+</div>
 
 
 
