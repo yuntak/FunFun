@@ -56,7 +56,15 @@
 	
 	</div>
 
-<script>CKEDITOR.replace('editor');</script>
+<script>CKEDITOR.replace('editor',{
+	 width:'100%',
+     height:'350px',
+     filebrowserImageUploadUrl: '/community/imageUpload' 
+    
+} );
+
+
+</script>
 
 
 </body>
