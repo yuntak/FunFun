@@ -72,4 +72,11 @@ public class CBoardServiceImpl implements CBoardService {
 		return selectresult;
 	}
 
+	@Override
+	public int selectCountAllPage() {
+		int selectresult = cdao.selectCountAllPage();
+		logger.trace("select over : {}",selectresult);
+		return selectresult;
+	}
+
 }
