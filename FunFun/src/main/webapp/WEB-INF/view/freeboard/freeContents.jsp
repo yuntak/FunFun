@@ -75,7 +75,7 @@ ${FBoard }
       </div>
 
 
-      <div class="panel panel-default" style="width: 900px;">
+      <div align="left" class="panel panel-default" style="width: 900px;">
          <div class="panel-body" style="height: 400px">${FBoard.fcontext }</div>
       </div>
 
