@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class FundingBoardController {
 
-	@RequestMapping(value="/FundListBoard")
+	@RequestMapping(value="/FundingBoard")
 	public String fundingBoardMain(Model model){
 		String viewlocation = "/WEB-INF/view/fundingboard/fundListBoard.jsp";
 		model.addAttribute("view", viewlocation);
