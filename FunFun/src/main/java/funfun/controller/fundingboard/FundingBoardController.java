@@ -27,4 +27,8 @@ public class FundingBoardController {
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
+	@RequestMapping("/fundBoard")
+	public String fundingboard() {
+		return "fundingboard/fundBoard";
+	}
 }
