@@ -109,10 +109,22 @@ public class FBoardServiceImpl implements FBoardService {
 	}
 
 	@Override
-	public List<FBoard> selectUserIdFBoardByPage(String userId, String code, int page_no) {
+	public List<FBoard> selectNicknameFBoardByPage(String nickname, String code, int page_no) {
 		List<FBoard> selectresult = null;
 		try {
-			selectresult = fdao.selectFBoardByPage(code,page_no);
+			selectresult = fdao.selectFBoardBySelectNicknamePage(nickname, code, page_no);
+		} catch (EmptyResultDataAccessException e) {
+			selectresult = null;
+		}
+		logger.trace("select over : {}", selectresult);
+		return selectresult;
+	}
+	
+	@Override
+	public List<FBoard> selectFBoardBySelectContextPage(String context, String code, int page_no) {
+		List<FBoard> selectresult = null;
+		try {
+			selectresult = fdao.selectFBoardBySelectContextPage(context,code,page_no);
 		} catch (EmptyResultDataAccessException e) {
 			selectresult = null;
 		}
@@ -155,5 +167,26 @@ public class FBoardServiceImpl implements FBoardService {
 		String selectresult = fdao.selectNickname(no);
 		logger.trace("select over : {}",selectresult);
 		return selectresult;
+	}
+
+	@Override
+	public int selectFBoardByTitleAllPage(String title, String code) {
+		int selectCountPage = fdao.selectFBoardByTitleAllPage(title, code);
+		logger.trace("select page over : {}",selectCountPage);
+		return selectCountPage;
+	}
+	
+	@Override
+	public int selectFBoardByNicknameAllPage(String nickname, String code) {
+		int selectCountPage = fdao.selectFBoardByNicknameAllPage(nickname, code);
+		logger.trace("select page over : {}",selectCountPage);
+		return selectCountPage;
+	}
+	
+	@Override
+	public int selectFBoardByContextAllPage(String context, String code) {
+		int selectCountPage = fdao.selectFBoardByContextAllPage(context, code);
+		logger.trace("select page over : {}",selectCountPage);
+		return selectCountPage;
 	}
 }

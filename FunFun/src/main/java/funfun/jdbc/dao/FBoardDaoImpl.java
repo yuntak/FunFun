@@ -150,11 +150,12 @@ public class FBoardDaoImpl implements FBoardDao {
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE,code);
 		return result;
 	}
+	
 
 	@Override
-	public List<FBoard> selectFBoardBySelectUserIdPage(String userId, String code, int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board where user_id like '%'||?||'%' and board_code=? order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
-		List<FBoard> result = jt.query(sql, new BeanPropertyRowMapper<FBoard>(FBoard.class), userId, code,
+	public List<FBoard> selectFBoardBySelectNicknamePage(String nickname, String code, int page_no) {
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board where nickname like '%'||?||'%' and board_code=? order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		List<FBoard> result = jt.query(sql, new BeanPropertyRowMapper<FBoard>(FBoard.class), nickname, code,
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
 		return result;
 	}
@@ -164,6 +165,29 @@ public class FBoardDaoImpl implements FBoardDao {
 		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board where title like '%'||?||'%' and board_code=? order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		List<FBoard> result = jt.query(sql, new BeanPropertyRowMapper<FBoard>(FBoard.class), title, code,
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	
+	@Override
+	public List<FBoard> selectFBoardBySelectContextPage(String context, String code, int page_no) {
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board where fcontext like '%'||?||'%' and board_code=? order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		List<FBoard> result = jt.query(sql, new BeanPropertyRowMapper<FBoard>(FBoard.class), context, code,
+				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	@Override
+	public int selectFBoardByTitleAllPage(String title,String code) {
+		String sql = "select count(*) from free_board where title like '%'||?||'%' and board_code=? order by fno desc";
+		int countresult = jt.queryForObject(sql, Integer.class,title,code);
+		int result = (int)Math.ceil(countresult/(double)FBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	
+	@Override
+	public int selectFBoardByNicknameAllPage(String nickname,String code) {
+		String sql = "select count(*) from free_board where nickname like '%'||?||'%' and board_code=? order by fno desc";
+		int countresult = jt.queryForObject(sql, Integer.class,nickname,code);
+		int result = (int)Math.ceil(countresult/(double)FBoardDao.BOARD_PER_PAGE);
 		return result;
 	}
 	
@@ -188,5 +212,15 @@ public class FBoardDaoImpl implements FBoardDao {
 		String result = jt.queryForObject(sql, String.class,no);
 		return result;
 	}
+
+	@Override
+	public int selectFBoardByContextAllPage(String context, String code) {
+		String sql = "select count(*) from free_board where fcontext like '%'||?||'%' and board_code=? order by fno desc";
+		int countresult = jt.queryForObject(sql, Integer.class,context,code);
+		int result = (int)Math.ceil(countresult/(double)FBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+
+	
 	
 }
