@@ -45,7 +45,7 @@
 	</div>
 	<br>
 	<br>
-	<textarea name="" id="editor" rows="40" cols="100">editor</textarea>
+	<textarea name="" id="editor" rows="40" cols="100">내용</textarea>
 	</div>
 	<br>
 	
