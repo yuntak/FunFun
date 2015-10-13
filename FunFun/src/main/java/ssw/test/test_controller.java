@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import funfun.jdbc.dto.FBoard;
+import funfun.jdbc.dto.Funding;
 import funfun.jdbc.service.FBoardService;
 
 @Controller
@@ -36,7 +37,7 @@ public class test_controller {
 	public String freeContents() {
 		return "freeboard/freeContents";
 	}
-	
+
 
 	
 	@RequestMapping("/freeboard/list")
