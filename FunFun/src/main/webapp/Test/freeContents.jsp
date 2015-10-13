@@ -24,26 +24,12 @@
    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
 
-/*  .top {
-   border-top: solid; color: #DEDEE9;
-   border-bottom: solid; color: #DEDEE9;;
-   background-color:#F5F5F9;
-   height: 40px;
-   width: 900px;
-   position: absolute;
-   right: 530px;
-}  */
-
-/* .up{
-
-   border-color: black;
-   border: 1px solid;
-   display: inline-block; width:90px; height: 90px;
-   text-align: center; 
-   font-size: 27px;
-} */
 textarea {
    resize: none;
+}
+
+.panel-body{
+	
 }
 </style>
 </head>
@@ -75,11 +61,12 @@ textarea {
       <div class="panel panel-default" style="width: 900px;">
          <div class="panel-body" align="center" style="color: #8A0000; font-size: 40px;">제목</div>
       </div>
+	  <br>
+	  <br>
 
-
-      <div class="panel panel-default" style="width: 900px;">
-         <div class="panel-body" style="height: 400px">게시물 내용</div>
-      </div>
+          <img src="<%=request.getContextPath()%>/img/tae.jpg"> 
+         
+      
 
       <div class="panel panel-default" style="width: 900px;">
          <div class="panel-heading">코멘트</div>
