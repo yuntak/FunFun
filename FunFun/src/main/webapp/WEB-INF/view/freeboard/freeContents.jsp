@@ -44,6 +44,10 @@
    text-align: center; 
    font-size: 27px;
 } */
+.panel-body{
+	margin-bottom: 15%;
+	
+}
 textarea {
    resize: none;
 }
@@ -76,13 +80,15 @@ textarea {
       </div>
 
 
-      <div class="panel panel-default" style="width: 900px;">
-         <div class="panel-body" style="height: 400px">${FBoard.fcontext }</div>
+      <div align="left" class="panel-body" style="width: 900px; overflow: auto;">
+         ${FBoard.fcontext }
+        
       </div>
 		
       <div class="panel panel-default" style="width: 900px;">
          <div class="panel-heading">코멘트</div>
 
+		 <div class="">
          <div class="panel-body">
 
             <table class="table">
@@ -106,7 +112,7 @@ textarea {
 
                </tbody>
             </table>
-
+			</div>
 
          </div>
       </div>

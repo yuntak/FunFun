@@ -396,7 +396,7 @@ public class ServiceTest {
 	@Test
 	public void testInsert() {
 		Users user = new Users();
-		user.setId("zxz222");
+		user.setId("zxz212");
 		String name = "롤6";
 		user.setNickname(name);
 		user.setPass("123");
