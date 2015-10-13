@@ -92,6 +92,26 @@ public class ServiceTest {
 	}*/
 	
 	@Test
+	public void TestSelectFBoardContext(){
+		fservice.selectFBoardBySelectContextPage("하세여", "11", 1);
+	}
+	
+	@Test
+	public void TestSelectFBoardContextCountAllPage(){
+		fservice.selectFBoardByContextAllPage("하세여", "11");
+	}
+	
+	@Test
+	public void TestSelectFBoardNicknameCountAllPage(){
+		fservice.selectFBoardByNicknameAllPage("심슨", "11");
+	}
+	
+	@Test
+	public void TestSelectFBoardTitleCountAllPage(){
+		fservice.selectFBoardByTitleAllPage("zxc", "11");
+	}
+	
+	@Test
 	public void TestSelectCBoardSubByCno(){
 		csservice.selectCBoardBycno(3,11);
 	}
@@ -215,13 +235,14 @@ public class ServiceTest {
 	
 	@Test
 	public void TestInsertFunding(){
+		
 		Funding funding = new Funding();
-		funding.setTitle("웹툰 통");
+		funding.setTitle("태연");
 		funding.setGoal(1000000);
-		funding.setFContent("c:\\program files\\funding\\title.jpg");
-		funding.setFContext("c:\\program files\\funding\\titlemain.jpg");
+		funding.setFContent("/img/tae.jpg");//
+		funding.setFContext("/img/tae.jpg");//
 		funding.setMoney(0);
-		funding.setContext("웹툰 통에 대한 이야기 입니다.");
+		funding.setContext("태연.");
 		Date date= new Date();
 		funding.setStartDate(date);
 		Date date2 = new Date(13-01-01);
@@ -319,10 +340,10 @@ public class ServiceTest {
 	public void TestReplyInsert(){
 		Reply reply = new Reply();
 		reply.setContext("재미없어");
-		reply.setBoardNo(640);
+		reply.setBoardNo(302);
 		reply.setBoardCode("11");
-		reply.setUserId("loll333");
-		reply.setNickname("every");
+		reply.setUserId("whdgh1265");
+		reply.setNickname("심슨과족");
 		rdao.insertReply(reply);
 		logger.trace("{}",reply);
 		assertThat(reply.getContext(),is("재미없어"));
@@ -343,8 +364,8 @@ public class ServiceTest {
 	
 	@Test
 	public void TestFBoardselectUserIdByPage(){
-		List<FBoard> fboard = fdao.selectFBoardBySelectUserIdPage("loll333", "22", 1);
-		fservice.selectUserIdFBoardByPage("loll333", "22", 1);
+		List<FBoard> fboard = fdao.selectFBoardBySelectNicknamePage("동동", "11", 1);
+		fservice.selectNicknameFBoardByPage("동동", "11", 1);
 		logger.trace("{}",fboard);
 		assertThat(fboard,is(not(nullValue())));
 	}
@@ -416,9 +437,9 @@ public class ServiceTest {
 	@Test
 	public void testBoardInsert() {
 		Board board = new Board();
-		board.setNo(3);
+		
 		board.setCode("11");
-		board.setUserId("whdgh1265");
+		board.setUserId("every9168");
 
 		bservice.insertBoard(board);
 		Board retrieved = bdao.selectBoard(board.getNo());
@@ -540,17 +561,17 @@ public class ServiceTest {
 	public void TestFBoardInsert() {
 		Board board = new Board();
 		FBoard fboard=null;
-		for(int i=0;i<300;i++){
+		for(int i=0;i<3;i++){
 		board.setCode("11");
-		board.setUserId("every9168");
+		board.setUserId("whdgh1265");
 		bservice.insertBoard(board);
 		
 		fboard = new FBoard();
-		fboard.setTitle("zxcvzxcv"+i);
-		fboard.setFcontext("저zxcvzxcv"+i);
+		fboard.setTitle("안녕?"+i);
+		fboard.setFcontext("안녕하세여"+i);
 		fboard.setFview(3);
-		fboard.setUserId("every9168");
-		fboard.setNickName("every");
+		fboard.setUserId("whdgh1265");
+		fboard.setNickName("심슨과족");
 		fservice.insertFBoard(fboard);
 		}
 		logger.trace("{}", fboard);
