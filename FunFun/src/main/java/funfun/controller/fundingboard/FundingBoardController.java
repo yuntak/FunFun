@@ -20,7 +20,7 @@ public class FundingBoardController {
 	@RequestMapping(value="/FundingBoard")
 	public String fundingBoardMain(Model model){
 		List<Funding> FundingList=FundingSvc.selectFundingByPage(1);
-		model.addAttribute("FBoardList", FundingList);
+		model.addAttribute("FundingBoardList", FundingList);
 		int allPage= FundingSvc.countFundingPage();
 		model.addAttribute("allPage", allPage);
 		String viewlocation = "/WEB-INF/view/fundingboard/fundListBoard.jsp";
