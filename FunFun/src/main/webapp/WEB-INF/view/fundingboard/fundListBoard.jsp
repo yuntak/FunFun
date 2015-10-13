@@ -40,16 +40,16 @@
 			<td class="col-lg-1"></td>
 			<td class="col-lg-2"><table class="table">
 					<%
-						Object FlistObj = request.getAttribute("FundingBoardList");
-						List<Funding> list = null;
-						if (FlistObj != null && FlistObj instanceof List) {
-							list = (List<Funding>) FlistObj;
+						Object FunlistObj = request.getAttribute("FundingBoardList");
+						List<Funding> flist = null;
+						if (FunlistObj != null && FunlistObj instanceof List) {
+							flist = (List<Funding>) FunlistObj;
 						}
 					%>
 					<%
-						Funding fdto = null;
-						for (int i = 0; i < list.size(); i++) {
-							fdto = (Funding) list.get(i);
+						Funding fundto = null;
+						for (int i = 0; i < flist.size(); i++) {
+							fundto = (Funding) flist.get(i);
 					%>
 
 					<tr>
@@ -57,34 +57,34 @@
 					</tr>
 					<tr>
 						<td><a href="<%=request.getContextPath()%>/fundBoard"><img
-								src="<%=request.getContextPath()%><%=fdto.getFContent() %>"
+								src="<%=request.getContextPath()%><%=fundto.getFContent() %>"
 								class="img-thumbnail" alt="Cinque Terre"
 								style="width: 200px; height: 250px"></a></td>
 								
 					</tr>
 					<tr>
-						<td><a href="<%=request.getContextPath()%>/fundBoard"><%=fdto.getTitle() %></a></td>
+						<td><a href="<%=request.getContextPath()%>/fundBoard"><%=fundto.getTitle() %></a></td>
 					</tr>
 					<tr>
-						<td><a href="<%=request.getContextPath()%>/fundBoard"><%=fdto.getFContext() %></a></td>
+						<td><a href="<%=request.getContextPath()%>/fundBoard"><%=fundto.getFContext() %></a></td>
 					</tr>
 					<tr>
 						<td><div class="progress" style="width: 200px;">
 								<div class="progress-bar progress-bar-success"
 									role="progressbar" aria-valuenow="10" aria-valuemin="0"
-									aria-valuemax="100" style="width: 10%"><%=fdto.getMoney()/fdto.getGoal()*10 %>% Complete</div>
+									aria-valuemax="100" style="width: 10%"><%-- <%=fdto.getMoney()/fdto.getGoal()*10 %> --%>% Complete</div>
 							</div>
 							<table>
 								<tr>
 									<td class="col-lg-4">
 										<h6 align="left">
-											<strong><% fdto.getEndDate(); %>-<%fdto.getStartDate(); %></strong>일 남음
+											<strong><% fundto.getEndDate(); %>-<%fundto.getStartDate(); %></strong>일 남음
 										</h6>
 									</td>
 									<td class="col-lg-1"></td>
 									<td class="col-lg-4">
 										<h6 align="right">
-											<strong><%=fdto.getMoney() %></strong>원
+											<strong><%=fundto.getMoney() %></strong>원
 										</h6>
 									</td>
 								</tr>
