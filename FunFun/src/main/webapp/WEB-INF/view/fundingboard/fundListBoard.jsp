@@ -71,19 +71,19 @@
 						<td><div class="progress" style="width: 200px;">
 								<div class="progress-bar progress-bar-success"
 									role="progressbar" aria-valuenow="10" aria-valuemin="0"
-									aria-valuemax="100" style="width: 10%">10% Complete</div>
+									aria-valuemax="100" style="width: 10%"><%=fdto.getMoney()/fdto.getGoal()*10 %>% Complete</div>
 							</div>
 							<table>
 								<tr>
 									<td class="col-lg-4">
 										<h6 align="left">
-											<strong>20</strong>일 남음
+											<strong><% fdto.getEndDate(); %>-<%fdto.getStartDate(); %></strong>일 남음
 										</h6>
 									</td>
 									<td class="col-lg-1"></td>
 									<td class="col-lg-4">
 										<h6 align="right">
-											<strong>20,000,000</strong>원
+											<strong><%=fdto.getMoney() %></strong>원
 										</h6>
 									</td>
 								</tr>
