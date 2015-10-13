@@ -53,8 +53,12 @@
 				%>
 				<%
 					Funding fdto = null;
+					double per = 0.0;
+					int per1=0;
 					for (int i = 0; i < list.size(); i++) {
 						fdto = (Funding) list.get(i);
+						per = fdto.getMoney()/fdto.getGoal()*100;
+						per1 = (int)per;
 				%>
 				<div class="col-sm-4" style="background-color: lavenderblush;">
 					<table>
@@ -74,19 +78,19 @@
 						<tr>
 							<td><div class="progress" style="width: 200px;">
 									<div class="progress-bar progress-bar-success"
-										role="progressbar" aria-valuenow="10" aria-valuemin="0"
-										aria-valuemax="100" style="width: 10%">
+										role="progressbar" aria-valuenow="<%=per %>" aria-valuemin="0"
+										aria-valuemax="100" style="width: <%=per%>%">
 										<%-- <%=fdto.getMoney()/fdto.getGoal()*10 %> --%>
-										% Complete
+										<%=per1%>% Complete
 									</div>
 								</div>
 								<table>
 									<tr>
 										<td class="col-lg-4">
 											<h6 align="left">
-												<strong> <%	fdto.getEndDate();%>
+												<%-- <strong> <%=fdto.getEndDate()%>
 													<% fdto.getStartDate(); %>
-												</strong>일 남음
+												</strong>일 남음 --%>
 											</h6>
 										</td>
 										<td class="col-lg-1"></td>

@@ -6,13 +6,13 @@ import java.util.List;
 public class Funding {
 	private int fno;
 	private String title;
-	private int goal;
+	private double goal;
 	//목표금액
 	private String FContent;
 	//펀딩 리스트 이미지
 	private String FContext;
 	//펀딩 리스트 내용
-	private int money;
+	private double money;
 	private String context;
 	//펀딩 내용
 	private String userId;
@@ -37,11 +37,11 @@ public class Funding {
 		this.title = title;
 	}
 
-	public int getGoal() {
+	public double getGoal() {
 		return goal;
 	}
 
-	public void setGoal(int goal) {
+	public void setGoal(double goal) {
 		this.goal = goal;
 	}
 
@@ -61,11 +61,11 @@ public class Funding {
 		FContext = fContext;
 	}
 
-	public int getMoney() {
+	public double getMoney() {
 		return money;
 	}
 
-	public void setMoney(int money) {
+	public void setMoney(double money) {
 		this.money = money;
 	}
 

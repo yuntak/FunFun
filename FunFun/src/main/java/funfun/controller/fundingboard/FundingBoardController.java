@@ -19,7 +19,7 @@ public class FundingBoardController {
 
 	@RequestMapping(value="/FundingBoard")
 	public String fundingBoardMain(Model model){
-		List<Funding> FundingList=FundingSvc.selectFundingByPage(1);
+		List<Funding> FundingList=FundingSvc.selectFundingByPage(2);
 		model.addAttribute("FundingBoardList", FundingList);
 		int allPage= FundingSvc.countFundingPage();
 		model.addAttribute("allPage", allPage);

@@ -53,8 +53,12 @@
 				%>
 				<%
 					Funding fdto = null;
+					double per = 0.0;
+					int per1 = 0;
 					for (int i = 0; i < list.size(); i++) {
 						fdto = (Funding) list.get(i);
+						per = fdto.getMoney() / fdto.getGoal() * 100;
+						per1 = (int) per;
 				%>
 				<div class="col-sm-4" style="background-color: lavenderblush;">
 					<table>
@@ -74,24 +78,25 @@
 						<tr>
 							<td><div class="progress" style="width: 200px;">
 									<div class="progress-bar progress-bar-success"
-										role="progressbar" aria-valuenow="10" aria-valuemin="0"
-										aria-valuemax="100" style="width: 10%">
+										role="progressbar" aria-valuenow="<%=per1%>"
+										aria-valuemin="0" aria-valuemax="100" style="width: <%=per%>%">
 										<%-- <%=fdto.getMoney()/fdto.getGoal()*10 %> --%>
-										% Complete
+										<%=per1%>% Complete
 									</div>
 								</div>
 								<table>
 									<tr>
 										<td class="col-lg-4">
 											<h6 align="left">
-												<strong>10
-												</strong>일 남음
+												<%-- <strong> <%=fdto.getEndDate()%>
+													<% fdto.getStartDate(); %>
+												</strong>일 남음 --%>
 											</h6>
 										</td>
 										<td class="col-lg-1"></td>
 										<td class="col-lg-4">
 											<h6 align="right">
-												<strong><%=fdto.getMoney()%></strong>원
+												<strong><%=(int) fdto.getMoney()%></strong>원
 											</h6>
 										</td>
 									</tr>
@@ -136,44 +141,69 @@
 						<tr>
 							<th>
 								<ul class="nav nav-justified pagination">
+
+
 									<%
 										if (pg > BLOCK) {
 									%>
 
-									<li><a href="">◀◀</a></li>
-									<li><a href="">◀</a></li>
+									<!-- <th> -->
+									<!-- <ul class="pager"> -->
+									<li><a
+										href="<%=request.getContextPath()%>/FundingBoard/List?page=1">◀◀</a></li>
+									<li><a
+										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=startPage - 1%>">◀</a></li>
+									<!-- </ul> -->
 									<%
 										}
 									%>
+									<!-- </th>
+         <th > -->
 									<%
 										for (int i = startPage; i <= endPage; i++) {
 											if (null != request.getParameter("page") && i == Integer.parseInt(request.getParameter("page"))) {
 									%>
-									<li class="active"><a href=""></a></li>
+									<!-- <ul class="pagination "> -->
+									<li class="active"><a
+										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=i%>"><%=i%></a></li>
+									<!-- </ul> -->
 									<%
 										} else {
 									%>
-									<li><a href=""></a></li>
+									<!-- <ul class="pagination"> -->
+									<li><a
+										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=i%>"><%=i%></a></li>
+									<!-- </ul> -->
 									<%
 										}
 										}
 									%>
+									<!-- </th> -->
 									<%
 										if (endPage < allPage) {
 									%>
+									<!-- <th>
+          <ul class="pager"> -->
 
 									<%
 										if (endPage < allPage) {
 									%>
-									<li><a href="">▶</a></li>
-									<li><a href="">▶▶</a></li>
+									<li><a
+										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=endPage + 1%>">▶</a></li>
+									<li><a
+										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=allPage%>">▶▶</a></li>
 
 									<%
 										}
 									%>
+									<!--          </ul> 
+         </th> -->
+									<!-- <th> -->
 									<%
 										}
 									%>
+
+
 
 								</ul>
 							</th>
