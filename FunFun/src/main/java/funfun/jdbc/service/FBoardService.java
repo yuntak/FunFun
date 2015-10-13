@@ -23,7 +23,9 @@ public interface FBoardService {
 
 	List<FBoard> selectTitleFBoardByPage(String title, String code, int page_no);
 
-	List<FBoard> selectUserIdFBoardByPage(String userId, String code, int page_no);
+	List<FBoard> selectNicknameFBoardByPage(String nickname, String code, int page_no);
+	
+	List<FBoard> selectFBoardBySelectContextPage(String context,String code, int page_no);
 
 	FBoard selectFullFBoard(int no);
 	
@@ -33,4 +35,9 @@ public interface FBoardService {
 	
 	String selectnickname(int no);
 	
+	int selectFBoardByTitleAllPage(String title,String code);
+	
+	int selectFBoardByNicknameAllPage(String nickname, String code);
+	
+	int selectFBoardByContextAllPage(String context, String code);
 }

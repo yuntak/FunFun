@@ -29,9 +29,17 @@ public interface FBoardDao {
 	
 	public List<FBoard> selectFBoardByPage(String code,int page_no);
 	
-	public List<FBoard> selectFBoardBySelectUserIdPage(String userId, String code, int page_no);
+	public List<FBoard> selectFBoardBySelectNicknamePage(String nickname, String code, int page_no);
 	
 	public List<FBoard> selectFBoardBySelectTitlePage(String title,String code, int page_no);
+	
+	public List<FBoard> selectFBoardBySelectContextPage(String context,String code, int page_no);
+	
+	public int selectFBoardByTitleAllPage(String title,String code);
+	
+	public int selectFBoardByNicknameAllPage(String nickname,String code);
+	
+	public int selectFBoardByContextAllPage(String context,String code);
 
 	public List<FBoard> selectFBoardByCode(int board_no, String board_code);
 	

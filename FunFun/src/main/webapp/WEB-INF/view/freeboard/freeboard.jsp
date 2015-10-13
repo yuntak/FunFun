@@ -80,8 +80,14 @@ style>#name:link {
       <p align="center">자유게시판</p>
       <br> <br>
       <div class="form-inline" align="right">
-         <input type="text" class="form-control" placeholder="검색"> <a
+      <select class="form-control" name="name"><option value="nickname">닉네임</option>
+     		   <option value="title">제목</option>
+     		   <option value="contents">내용</option></select>
+     		   
+     	 <input type="hidden" value="page=1">   
+         <input type="text"  name="keyword" class="form-control" placeholder="검색"><a
             href=""><span class="btn btn-success">검색</span></a>
+     	
       </div>
       <br>
       </div>
@@ -101,6 +107,7 @@ style>#name:link {
             @SuppressWarnings("unchecked")
             List<FBoard> list = (List<FBoard>)request.getAttribute("FBoardList");
             %>
+            
             <%
                FBoard fdto = null;
                for (int i = 0; i < list.size(); i++) {
@@ -132,7 +139,7 @@ style>#name:link {
       
 
          <%
-            final int ROWSIZE = 25; // 한페이지에 보일 게시물 수
+            final int ROWSIZE =0 ; // 한페이지에 보일 게시물 수
             int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
 
             int pg = 1; //기본 페이지값
