@@ -1,3 +1,4 @@
+
 jdbc.url=jdbc:oracle:thin:@localhost:1521:xe
 
 
@@ -5,3 +6,8 @@ jdbc.url=jdbc:oracle:thin:@localhost:1521:xe
 
 jdbc.url=jdbc:oracle:thin:@210.119.105.185:1521:xe  동희 
 jdbc.url=jdbc:oracle:thin:@210.119.105.190:1521:xe  섭운
+
+
+
+jdbc.url=jdbc:oracle:thin:@210.119.105.185:1521:xe
+
