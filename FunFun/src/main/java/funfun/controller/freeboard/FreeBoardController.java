@@ -37,9 +37,22 @@ public class FreeBoardController {
 		return "main/Template";
 	}
 	@RequestMapping(value="/FreeBoard/List",method=RequestMethod.GET)
-	public String freeBoardList(@RequestParam int page,Model model){
-		List<FBoard> FBoardList=FreeBoardSvc.selectFBoardByPage(FBoard.FREEBOARD_CODE,page);
-		int allPage= FreeBoardSvc.selectCountAllPage();
+	public String freeBoardList(@RequestParam String name,@RequestParam String keyword, @RequestParam int page,Model model){
+		List<FBoard> FBoardList=null;
+		int allPage=0;
+		if(name.equals("subject")){
+			
+		}
+		else if(name.equals("content")){
+			
+		}
+		else if(name.equals("nickname")){
+			
+		}
+		else{
+			allPage= FreeBoardSvc.selectCountAllPage();
+			FBoardList=		FreeBoardSvc.selectFBoardByPage(FBoard.FREEBOARD_CODE,page);
+		}
 		model.addAttribute("allPage", allPage);
 		model.addAttribute("FBoardList", FBoardList);
 		String viewlocation = "/WEB-INF/view/freeboard/freeboard.jsp";
@@ -66,7 +79,10 @@ public class FreeBoardController {
 		return "main/Template";
 	}
 	
-	
+	@RequestMapping(value="FreeBoard/ReplyWrite")
+	public String freeBoardReplyWrite(){
+		return null;
+	}
 	
 	
 }

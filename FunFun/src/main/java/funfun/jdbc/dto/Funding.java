@@ -7,10 +7,14 @@ public class Funding {
 	private int fno;
 	private String title;
 	private int goal;
+	//목표금액
 	private String FContent;
+	//펀딩 리스트 이미지
 	private String FContext;
+	//펀딩 리스트 내용
 	private int money;
 	private String context;
+	//펀딩 내용
 	private String userId;
 	private Date startDate;
 	private Date endDate;

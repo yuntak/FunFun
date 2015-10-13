@@ -37,10 +37,7 @@ public class test_controller {
 		return "freeboard/freeContents";
 	}
 	
-	@RequestMapping("/fundBoard")
-	public String fundingboard() {
-		return "fundingboard/fundBoard";
-	}
+
 	
 	@RequestMapping("/freeboard/list")
 	public String freeboardlist(@RequestParam int page_no, @RequestParam String code,Model model){

@@ -57,7 +57,7 @@ margin-bottom: 10px;
 		<div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a href="../main"><img src="<%=request.getContextPath() %>/rsc/img/logo.jpg"
+				<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath() %>/rsc/img/logo.jpg"
 					style="width: 100px; height: 100px">
 				</a>
 			</div>

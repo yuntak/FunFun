@@ -1,4 +1,3 @@
-
 <%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.ArrayList"%>
@@ -75,7 +74,6 @@ style>#name:link {
 
 <body>
 
-
 	<div class="container">
 
 		<br>
@@ -86,6 +84,7 @@ style>#name:link {
 				href=""><span class="btn btn-success">검색</span></a>
 		</div>
 		<br>
+		</div>
 
 		<table class="table">
 			<thead>
@@ -99,11 +98,8 @@ style>#name:link {
 			</thead>
 			<tbody>
 				<%
-					Object FlistObj = request.getAttribute("FBoardList");
-					List<FBoard> list = null;
-					if (FlistObj != null && FlistObj instanceof List) {
-						list = (List<FBoard>) FlistObj;
-					}
+				@SuppressWarnings("unchecked")
+				List<FBoard> list = (List<FBoard>)request.getAttribute("FBoardList");
 				%>
 				<%
 					FBoard fdto = null;
@@ -113,7 +109,7 @@ style>#name:link {
 				<tr>
 					<td><%=fdto.getFno()%></td>
 
-					<td id="name" style="cursor: pointer" onclick=location.href="<%=request.getContextPath()%>/FreeBoard/View?BoardNo=<%=fdto.getFno()%>">
+					<td id="name" style="cursor: pointer" onclick="location.href='<%=request.getContextPath()%>/FreeBoard/View?BoardNo=<%=fdto.getFno()%>'" >
 						<%=fdto.getTitle()%>
 					</td>
 
@@ -161,72 +157,73 @@ style>#name:link {
 					endPage = allPage;
 				}
 			%>
-
+<tr>
+<th>
+<ul>
 
 
 			<%
 				if (pg > BLOCK) {
 			%>
-			<tr>
-			<th>
-			<ul class="pager">
+			
+			<!-- <th> -->
+			<!-- <ul class="pager"> -->
 				<li><a
-					href="<%=request.getContextPath()%>/FreeBoard/List?page=1">◀◀</a></li>
+					href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=1">◀◀</a></li>
 				<li><a
-					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=startPage - 1%>">◀</a></li>
-			</ul>
+					href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=startPage - 1%>">◀</a></li>
+			<!-- </ul> -->
 			<%
 				}
 			%>
-			</th>
-			<th align="">
+			<!-- </th>
+			<th > -->
 			<%
 				for (int i = startPage; i <= endPage; i++) {
 					if (null != request.getParameter("page") && i == Integer.parseInt(request.getParameter("page"))) {
 			%>
-			<ul class="pagination ">
+			<!-- <ul class="pagination "> -->
 				<li class="active"><a
-					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
-			</ul>
+					href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=i%>"><%=i%></a></li>
+			<!-- </ul> -->
 			<%
 				} else {
 			%>
-			<ul class="pagination">
+			<!-- <ul class="pagination"> -->
 				<li><a
-					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=i%>"><%=i%></a></li>
-			</ul>
+					href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=i%>"><%=i%></a></li>
+			<!-- </ul> -->
 			<%
 				}
 				}
 			%>
-			</th>
+			<!-- </th> -->
 			<%
 				if (endPage < allPage) {
 			%>
-			<th>
-			<ul class="pager">
+			<!-- <th>
+			 <ul class="pager"> -->
 
 				<%
 					if (endPage < allPage) {
 				%>
-				<a
-					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=endPage + 1%>">▶</a>
-				<a
-					href="<%=request.getContextPath()%>/FreeBoard/List?page=<%=allPage%>">▶▶</a>
+				<li> <a href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=endPage + 1%>">▶</a></li>
+				<li> <a href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=allPage%>">▶▶</a></li>
 				<%
-					}
+				}
 				%>
-
-			</ul>
-			</th>
-			<th>
-			<a href="<%=request.getContextPath()%>/FreeBoard/Write"
-				class="btn btn-info">글쓰기</a>
-
+ <!-- 			</ul> 
+			</th> -->
+			<!-- <th> -->
+			<li><a href="<%=request.getContextPath()%>/FreeBoard/Write"
+				class="btn btn-info">글쓰기</a></li>
+			
 			<%
 				}
 			%>
+			</ul>
 			</th>
+			<!-- </th> -->
 			</tr>
 			
 	</table>
