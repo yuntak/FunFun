@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+
 <%@page import="funfun.jdbc.dto.Users"%>
 <%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
 <%@page import="org.springframework.ui.Model"%>
@@ -55,10 +57,15 @@
 					Funding fdto = null;
 					double per = 0.0;
 					int per1 = 0;
+					long date1;
+					long date3;
+					Date date2 = new Date();
 					for (int i = 0; i < list.size(); i++) {
 						fdto = (Funding) list.get(i);
 						per = fdto.getMoney() / fdto.getGoal() * 100;
 						per1 = (int) per;
+						date1 = fdto.getEndDate().getTime()-date2.getTime();
+						date3 = date1/(24*60*60*1000);
 				%>
 				<div class="col-sm-4" style="background-color: lavenderblush;">
 					<table>
@@ -87,9 +94,8 @@
 									<tr>
 										<td class="col-lg-4">
 											<h6 align="left">
-												<%-- <strong> <%=fdto.getEndDate()%>
-													<% fdto.getStartDate(); %>
-												</strong>일 남음 --%>
+												 <strong> <%=date3 %>
+												</strong>일 남음 
 											</h6>
 										</td>
 										<td class="col-lg-1"></td>
