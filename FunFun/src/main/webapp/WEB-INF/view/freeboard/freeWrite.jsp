@@ -30,7 +30,7 @@
 </head>
 
 <body>
-<sform:form  method="post" action="return freeBoardWrite(this)" >
+<sform:form  method="post" onsubmit="return freeBoardWrite(this) " modelAttribute="Fboard" >
    <div class="writebody">
    <div class="panel panel-info">
    <div class="panel-heading">
@@ -40,29 +40,34 @@
    
    <div class="panel-body">
    <div class="form-group">
-      <sform:label for="title" class="col-sm-1" path="" >제목</sform:label>
+      <sform:label for="title" class="col-sm-1" path="title" >제목</sform:label>
       <div class="col-xs-9">
-      <sform:input  type="text" class=" form-control" id="title"  required placeholder="제목입력란" path="" ></sform:input>
+      <sform:input class=" form-control" id="title"  placeholder="제목입력란" value="" path="title" />
       </div>
    </div>
    <br>
    <br>
-   <sform:textarea name="" id="content" rows="40" cols="100" placeholder="내용" path="" ></sform:textarea>
+   
+   <sform:textarea name="mycontent" id="content" rows="40" cols="100" placeholder="내용" path="fcontext" value=""></sform:textarea>
    </div>
    <br>
-   
+   <sform:hidden value="${FunFunUser.id }" path="userId"/>
+   <sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
    <div class="panel-footer">
    <sform:button class="btn btn-info">확인</sform:button>
 <%--    <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
-   <a href="/main" class="btn btn-info">취소</a>
+   <a href="/main"><button class="btn btn-info">취소</button></a>
    </div>
    
    </div>
 
 <script>CKEDITOR.replace('content',{
     width:'100%',
-     height:'350px'
-
+     height:'350px',
+     'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
+     +'realUrl=http://localhost/main'
+     +'&realDir=/main'
+    
 } );
 
 
@@ -72,10 +77,23 @@
 <script type="text/javascript">
 function freeBoardWrite(f){
    console.log("FreeBoard Write");
-   var title=document.getElementById("title");
-   var content=document.getElementById("editor");
+   var title=document.getElementById("title").value;
+   var content=document.getElementById("content").value;
    console.log(title);
    console.log(content);
+   if(title==""){
+      alert("제목을 입력하세요.");
+      
+      return false;
+   }
+   if(content==""){
+      alert("내용을 입력하세요.");
+      
+      return false;
+   }
+   
+   //f.action("");
+   return false;
    
 }
 

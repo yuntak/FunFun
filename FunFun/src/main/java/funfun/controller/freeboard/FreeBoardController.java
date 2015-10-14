@@ -64,7 +64,9 @@ public class FreeBoardController {
 	}
 	@RequestMapping(value="/FreeBoard/Write")
 	public String freeBoardWrite(Model model){
+		FBoard fboard= new FBoard();
 		String viewlocation = "/WEB-INF/view/freeboard/freeWrite.jsp";
+		model.addAttribute("Fboard", fboard);
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 		

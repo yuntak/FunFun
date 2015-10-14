@@ -72,7 +72,7 @@ public class FundingDaoImpl implements FundingDao {
 	public int selectCountAllPage() {
 		String sql = "select count(*) from funding where ok=11";
 		int countresult = jt.queryForObject(sql, Integer.class);
-		int result = (int)Math.ceil(countresult/(double)10);
+		int result = (int)Math.ceil(countresult/(double)9);
 		return result;
 	}
 

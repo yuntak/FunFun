@@ -87,7 +87,7 @@
 									현재금액 :
 									<%=(int) fdto.getMoney()%><small>원</small>
 								</h2>
-								<div class="progress" style="width: 300px;">
+								<div class="progress" style="width: 450px;">
 									<div class="progress-bar progress-bar-success"
 										role="progressbar" aria-valuenow="<%=per1%>" aria-valuemin="0"
 										aria-valuemax="100"
@@ -98,18 +98,18 @@
 
 								<table>
 									<tr>
-										<td class="col-lg-2"></td>
+										<td class="col-lg-1"></td>
 										<td class="col-lg-4">
-											<h6 align="left">
+											<h4 align="left">
 												<strong> <%=date3%>
 												</strong>일 남음
-											</h6>
+											</h4>
 										</td>
 
-										<td class="col-lg-6">
-											<h6 align="right">
+										<td class="col-lg-5">
+											<h4 align="right">
 													목표금액 : <strong><%=(int) fdto.getGoal()%></strong>원
-											</h6>
+											</h4>
 										</td>
 									</tr>
 								</table>

@@ -77,7 +77,7 @@
 
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 
-				<h2 align="center">펀딩 게시글</h2>
+				<h2 align="center">자유 연재 게시판</h2>
 
 
 				<table class="table table-bordered">
@@ -93,8 +93,8 @@
 					<tbody>
 						<tr>
 							
-							<td align="center" style="overflow:hidden;" rowspan="3"><a href="<%=request.getContextPath()%>/FreeBoard/=<%=fdto.getFno()%>'" >
-                  			<%=fdto.getTitle()%>"><img
+							<td align="center" style="overflow:hidden;" rowspan="3"><a href="<%=request.getContextPath()%>/FreeBoard/=<%=list.get(0).toString()%>'" >
+                  			<%=list.get(0).toString()%>"><img
 								 src="<%=request.getContextPath()%>/img/redBalloon.png"
 								class="img-thumbnail" alt="Cinque Terre" width="100"
 								height="150"></a></td>

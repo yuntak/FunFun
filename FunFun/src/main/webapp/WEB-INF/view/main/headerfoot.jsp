@@ -50,20 +50,20 @@ margin-bottom: 10px;
 
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<nav class="navbar-default" style="">
 	
 	<c:choose>
 	<c:when test="${empty FunFunUser }">
-		<div class="navbar navbar-default ">
+		<div class="navbar">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath() %>/rsc/img/logo.jpg"
-					style="width: 100px; height: 100px">
+			<div class="navbar-header ">
+				<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath() %>/img/funfun.PNG"
+					 style="width: 100px; height: 100px">
 				</a>
 			</div>
 
 
-			<div class="navbar-form myinline" align="center">
+			<div class="navbar-form myinline" align="">
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
@@ -83,7 +83,7 @@ margin-bottom: 10px;
 		  <div class="navbar navbar-default ">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
-				<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/rsc/img/logo.jpg"
+				<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/img/funfun.PNG"
 					style="width: 100px; height: 100px">
 				</a>
 			</div>
