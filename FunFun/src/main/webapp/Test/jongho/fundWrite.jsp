@@ -69,7 +69,8 @@ textarea {
 				width : '100%',
 				height : '350px',
 				'filebrowserUploadUrl' : '/ckeditor/upload.jsp?'
-						+ 'realUrl=http://localhost/main' + '&realDir=/main'
+						+ 'realUrl=http://localhost/FunFun/FreeBoard/Write' 
+						+ '&realDir=c:\\temp\\upload\\'
 
 			});
 		</script>
