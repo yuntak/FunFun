@@ -248,6 +248,7 @@ public class ServiceTest {
 		Date date2 = DatePase("2015-12-31");
 		funding.setEndDate(date2);
 		funding.setUserId("every9168");
+		funding.setOk(11);
 		fdservice.insertFunding(funding);
 		}
 	}
