@@ -65,8 +65,8 @@
     width:'100%',
      height:'350px',
      'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
-     +'realUrl=http://localhost/main'
-     +'&realDir=/main'
+     +'realUrl=http://localhost:9090/FunFun/FreeBoard/Write'
+     +'&realDir=C:\\Temp\\upload\\'
     
 } );
 
