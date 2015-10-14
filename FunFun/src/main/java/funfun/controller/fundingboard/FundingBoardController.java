@@ -31,22 +31,13 @@ public class FundingBoardController {
 	}
 	
 	@RequestMapping(value="/FundingBoard/List",method=RequestMethod.GET)
-	public String freeBoardList(@RequestParam String name,@RequestParam String keyword, @RequestParam int page,Model model){
+	public String freeBoardList(@RequestParam int page,Model model){
 		List<Funding> FundingList=null;
 		int allPage=0;
-		if(name.equals("subject")){
-			
-		}
-		else if(name.equals("content")){
-			
-		}
-		else if(name.equals("nickname")){
-			
-		}
-		else{
-			allPage= FundingSvc.countFundingPage();
-			FundingList=FundingSvc.selectFundingByPage(page);
-		}
+		
+		allPage= FundingSvc.countFundingPage();
+		FundingList=FundingSvc.selectFundingByPage(page);
+
 		model.addAttribute("allPage", allPage);
 		model.addAttribute("FundingList", FundingList);
 		String viewlocation = "/WEB-INF/view/fundingboard/fundListBoard.jsp";
