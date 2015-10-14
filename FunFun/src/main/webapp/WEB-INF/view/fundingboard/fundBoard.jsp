@@ -30,7 +30,6 @@
 	margin-left: auto;
 }
 
-
 .button {
 	position: absolute;
 	bottom: 10px;
@@ -55,12 +54,12 @@
 						<table class="table">
 							<%
 								Object FlistObj = request.getAttribute("FundingBoard");
-								Funding fdto = (Funding)FlistObj;
-								
+								Funding fdto = (Funding) FlistObj;
 							%>
 							<%
-									double per = fdto.getMoney() / fdto.getGoal() * 100;
-									int per1 = (int) per;
+								double per = 0.0;
+								per = fdto.getMoney() / fdto.getGoal() * 100;
+								int per1 = (int) per;
 							%>
 							<tr>
 								<td><%=fdto.getContext()%></td>
