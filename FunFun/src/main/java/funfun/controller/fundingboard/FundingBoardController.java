@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
@@ -26,6 +28,31 @@ public class FundingBoardController {
 		String viewlocation = "/WEB-INF/view/fundingboard/fundListBoard.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
+	}
+	
+	@RequestMapping(value="/FundingBoard/List",method=RequestMethod.GET)
+	public String freeBoardList(@RequestParam String name,@RequestParam String keyword, @RequestParam int page,Model model){
+		List<Funding> FundingList=null;
+		int allPage=0;
+		if(name.equals("subject")){
+			
+		}
+		else if(name.equals("content")){
+			
+		}
+		else if(name.equals("nickname")){
+			
+		}
+		else{
+			allPage= FundingSvc.countFundingPage();
+			FundingList=FundingSvc.selectFundingByPage(page);
+		}
+		model.addAttribute("allPage", allPage);
+		model.addAttribute("FundingList", FundingList);
+		String viewlocation = "/WEB-INF/view/fundingboard/fundListBoard.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+		
 	}
 	@RequestMapping("/fundBoard")
 	public String fundingboard() {
