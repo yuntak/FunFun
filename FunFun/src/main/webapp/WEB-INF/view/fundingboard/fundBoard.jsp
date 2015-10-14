@@ -54,26 +54,19 @@
 					<div class="container">
 						<table class="table">
 							<%
-								Object FlistObj = request.getAttribute("FundingBoardList");
-								List<Funding> list = null;
-								if (FlistObj != null && FlistObj instanceof List) {
-									list = (List<Funding>) FlistObj;
-								}
+								Object FlistObj = request.getAttribute("FundingBoard");
+								Funding fdto = (Funding)FlistObj;
+								
 							%>
 							<%
-								Funding fdto = null;
-								double per = 0.0;
-								int per1 = 0;
-								for (int i = 0; i < list.size(); i++) {
-									fdto = (Funding) list.get(i);
-									per = fdto.getMoney() / fdto.getGoal() * 100;
-									per1 = (int) per;
+									double per = fdto.getMoney() / fdto.getGoal() * 100;
+									int per1 = (int) per;
 							%>
 							<tr>
 								<td><%=fdto.getContext()%></td>
 							</tr>
 							<%
-								}
+								
 							%>
 						</table>
 					</div>

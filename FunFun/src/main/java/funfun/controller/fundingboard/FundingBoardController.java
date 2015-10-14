@@ -39,14 +39,18 @@ public class FundingBoardController {
 		FundingList=FundingSvc.selectFundingByPage(page);
 
 		model.addAttribute("allPage", allPage);
-		model.addAttribute("FundingList", FundingList);
+		model.addAttribute("FundingBoardList", FundingList);
 		String viewlocation = "/WEB-INF/view/fundingboard/fundListBoard.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 		
 	}
-	@RequestMapping("/fundBoard")
-	public String fundingboard() {
-		return "fundingboard/fundBoard";
+	@RequestMapping("/FundingBoard/view")
+	public String fundingboard(@RequestParam int FundingNo,Model model) {
+		Funding funding = FundingSvc.selectFunding(FundingNo);
+		model.addAttribute("FundingBoard",funding);
+		String viewlocation = "/WEB-INF/view/fundingboard/fundBoard.jsp";
+		model.addAttribute("view",viewlocation);
+		return "main/Template";
 	}
 }

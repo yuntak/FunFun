@@ -1,14 +1,18 @@
 package funfun.jdbc.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
 
 @Repository
@@ -86,6 +90,34 @@ public class FundingDaoImpl implements FundingDao {
 		List<Funding> result = jt.query(sql, new BeanPropertyRowMapper<Funding>(Funding.class), title,
 				(page_no - 1) * FundingDao.BOARD_PER_PAGE + 1, page_no * FundingDao.BOARD_PER_PAGE);
 		return result;
+	}
+
+	@Override
+	public Funding selectFunding(int fno) {
+		String sql = "select * from funding where fno=?";
+		Funding result = jt.queryForObject(sql,getFundingRowMapper(), fno);
+		return result;
+	}
+	
+	private RowMapper<Funding> getFundingRowMapper() {
+		return new RowMapper<Funding>() {
+
+			@Override
+			public Funding mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Funding funding = new Funding();
+				funding.setFno(rs.getInt("fno"));
+				funding.setTitle(rs.getString("title"));
+				funding.setGoal(rs.getDouble("goal"));
+				funding.setFContent(rs.getString("f_content"));
+				funding.setFContext(rs.getString("f_context"));
+				funding.setMoney(rs.getDouble("money"));
+				funding.setContext(rs.getString("context"));
+				funding.setStartDate(rs.getDate("startdate"));
+				funding.setEndDate(rs.getDate("enddate"));
+				funding.setUserId(rs.getString("user_id"));
+				return funding;
+			}
+		};
 	}
 
 }

@@ -63,17 +63,17 @@
 				<div class="col-sm-4" style="background-color: lavenderblush;">
 					<table>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/fundBoard"><img
+							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><img
 									src="<%=request.getContextPath()%><%=fdto.getFContent()%>"
 									class="img-thumbnail" alt="Cinque Terre"
 									style="width: 200px; height: 250px"></a></td>
 
 						</tr>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/fundBoard"><%=fdto.getTitle()%></a></td>
+							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><%=fdto.getTitle()%></a></td>
 						</tr>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/fundBoard"><%=fdto.getFContext()%></a></td>
+							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><%=fdto.getFContext()%></a></td>
 						</tr>
 						<tr>
 							<td><div class="progress" style="width: 200px;">
