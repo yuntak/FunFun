@@ -59,7 +59,9 @@
 <script>CKEDITOR.replace('editor',{
 	 width:'100%',
      height:'350px',
-     filebrowserImageUploadUrl: '/community/imageUpload' 
+     'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
+     +'realUrl=http://localhost/main'
+     +'&realDir=/main'
     
 } );
 

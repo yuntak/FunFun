@@ -74,7 +74,7 @@
 								class="img-thumbnail" alt="Cinque Terre" width="100"
 								height="150"></td>
 							<td>태그(카테고리) <%=list.get(0).toString()%></td>
-							<td style="width: 450px">제목  <%=list.get(1).toString()%></td>
+							<td style="width: 450px">제목 <%=list.get(0).toString()%> </td>
 							<td style="width: 100px">작성자 <%=list.get(1).toString()%></td>
 							<td><button style="width: 80px" type="button"
 									class="btn btn-xs">즐겨찾기 <%=list.get(2).toString()%></button></td>
