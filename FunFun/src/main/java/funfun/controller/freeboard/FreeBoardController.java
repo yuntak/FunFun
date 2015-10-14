@@ -75,8 +75,8 @@ public class FreeBoardController {
 	public String freeBoardWriteDataInsert(FBoard Fboard){
 		logger.trace("FreeBoard insert try");
 		logger.trace("Insert FreeBoard :{}",Fboard);
-		
-		return "redirect:FreeBoard";
+		FreeBoardSvc.insertFBoard(Fboard);
+		return "redirect:";
 		
 	}
 	
