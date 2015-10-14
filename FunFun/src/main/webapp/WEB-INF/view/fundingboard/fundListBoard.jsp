@@ -58,42 +58,45 @@
 						fdto = (Funding) list.get(i);
 						per = fdto.getMoney() / fdto.getGoal() * 100;
 						per1 = (int) per;
-						date1 = fdto.getEndDate().getTime()-date2.getTime();
-						date3 = date1/(24*60*60*1000);
+						date1 = fdto.getEndDate().getTime() - date2.getTime();
+						date3 = date1 / (24 * 60 * 60 * 1000);
 				%>
 				<div class="col-sm-4" style="background-color: lavenderblush;">
 					<table>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><img
+							<td><a
+								href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><img
 									src="<%=request.getContextPath()%><%=fdto.getFContent()%>"
 									class="img-thumbnail" alt="Cinque Terre"
 									style="width: 200px; height: 250px"></a></td>
 
 						</tr>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><%=fdto.getTitle()%></a></td>
+							<td><a
+								href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><%=fdto.getTitle()%></a></td>
 						</tr>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><%=fdto.getFContext()%></a></td>
+							<td><a
+								href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><%=fdto.getFContext()%></a></td>
 						</tr>
 						<tr>
 							<td><div class="progress" style="width: 200px;">
 									<div class="progress-bar progress-bar-success"
-										role="progressbar" aria-valuenow="<%=per1%>"
-										aria-valuemin="0" aria-valuemax="100" style="color: black; width: <%=per%>%">
+										role="progressbar" aria-valuenow="<%=per1%>" aria-valuemin="0"
+										aria-valuemax="100" style="color: black; width: <%=per%>%">
 										<strong><%=per1%>% Complete</strong>
 									</div>
 								</div>
 								<table>
 									<tr>
-									<td class="col-lg-1"></td>
+										<td class="col-lg-1"></td>
 										<td class="col-lg-7">
 											<h6 align="left">
-												 <strong> <%=date3 %>
-												</strong>일 남음 
+												<strong> <%=date3%>
+												</strong>일 남음
 											</h6>
 										</td>
-										
+
 										<td class="col-lg-4">
 											<h6 align="right">
 												<strong><%=(int) fdto.getMoney()%></strong>원
@@ -108,7 +111,7 @@
 					}
 				%>
 
-				
+
 
 
 			</div>
@@ -142,98 +145,100 @@
 		</div>
 	</div>
 
-<div align="center">
-					<table>
+	<div align="center">
+		<table>
+
+
+			<%
+				final int ROWSIZE = 9; // 한페이지에 보일 게시물 수
+				int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
+
+				int pg = 1; //기본 페이지값
+
+				if (request.getParameter("page") != null) { //받아온 pg값이 있을때, 다른페이지일때
+					pg = Integer.parseInt(request.getParameter("page")); // pg값을 저장
+				}
+
+				int start = (pg * ROWSIZE) - (ROWSIZE - 1); // 해당페이지에서 시작번호(step2)
+				int end = (pg * ROWSIZE); // 해당페이지에서 끝번호(step2)
+
+				int allPage = (int) request.getAttribute("allPage"); // 전체 페이지수
+
+				if (allPage < BLOCK) {
+					BLOCK = allPage;
+				}
+
+				int startPage = ((pg - 1) / BLOCK * BLOCK) + 1; // 시작블럭숫자 (1~5페이지일경우 1, 6~10일경우 6)
+				int endPage = ((pg - 1) / BLOCK * BLOCK) + BLOCK; // 끝 블럭 숫자 (1~5일 경우 5, 6~10일경우 10)
+
+				if (endPage > allPage) {
+					endPage = allPage;
+				}
+			%>
+			<tr>
+				<th>
+					<ul class="nav nav-justified pagination">
 
 
 						<%
-							final int ROWSIZE = 4; // 한페이지에 보일 게시물 수
-							int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
-
-							int pg = 1; //기본 페이지값
-
-							if (request.getParameter("page") != null) { //받아온 pg값이 있을때, 다른페이지일때
-								pg = Integer.parseInt(request.getParameter("page")); // pg값을 저장
-							}
-
-							int start = (pg * ROWSIZE) - (ROWSIZE - 1); // 해당페이지에서 시작번호(step2)
-							int end = (pg * ROWSIZE); // 해당페이지에서 끝번호(step2)
-
-							int allPage = (int) request.getAttribute("allPage"); // 전체 페이지수
-
-							if (allPage < BLOCK) {
-								BLOCK = allPage;
-							}
-
-							int startPage = ((pg - 1) / BLOCK * BLOCK) + 1; // 시작블럭숫자 (1~5페이지일경우 1, 6~10일경우 6)
-							int endPage = ((pg - 1) / BLOCK * BLOCK) + BLOCK; // 끝 블럭 숫자 (1~5일 경우 5, 6~10일경우 10)
-
-							if (endPage > allPage) {
-								endPage = allPage;
-							} 
+							if (pg > BLOCK) {
 						%>
-						<tr>
-							<th>
-								<ul class="nav nav-justified pagination">
 
-
-									<%
-										if (pg > BLOCK) {
-									%>
-
-									<!-- <th> -->
-									<!-- <ul class="pager"> -->
-									<li><a
-										href="<%=request.getContextPath()%>/FundingBoard/List?page=1">◀◀</a></li>
-									<li><a
-										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=startPage - 1%>">◀</a></li>
-									<!-- </ul> -->
-									<%
-										}
-									%>
-									<!-- </th>
+						<!-- <th> -->
+						<!-- <ul class="pager"> -->
+						<li><a
+							href="<%=request.getContextPath()%>/FundingBoard/List?page=1">◀◀</a></li>
+						<li><a
+							href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=startPage - 1%>">◀</a></li>
+						<!-- </ul> -->
+						<%
+							}
+						%>
+						<!-- </th>
          <th > -->
-									<%
-										for (int i = startPage; i <= endPage; i++) {
-											if (null != request.getParameter("page") && i == Integer.parseInt(request.getParameter("page"))) {
-									%>
-									<!-- <ul class="pagination "> -->
-									<li class="active"><a
-										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=i%>"><%=i%></a></li>
-									<!-- </ul> -->
-									<%
-										} else {
-									%>
-									<!-- <ul class="pagination"> -->
-									<li><a
-										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=i%>"><%=i%></a></li>
-									<!-- </ul> -->
-									<%
-										}
-										}
-									%>
-									<!-- </th> -->
-									<%
-               if (endPage < allPage) {
-            %>
-            <li> <a href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=endPage + 1%>">▶</a></li>
-            <li> <a href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=allPage%>">▶▶</a></li>
-            
-            <%
-            }
-            %>
-									<!--          </ul> 
+						<%
+							for (int i = startPage; i <= endPage; i++) {
+								if (null != request.getParameter("page") && i == Integer.parseInt(request.getParameter("page"))) {
+						%>
+						<!-- <ul class="pagination "> -->
+						<li class="active"><a
+							href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=i%>"><%=i%></a></li>
+						<!-- </ul> -->
+						<%
+							} else {
+						%>
+						<!-- <ul class="pagination"> -->
+						<li><a
+							href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=i%>"><%=i%></a></li>
+						<!-- </ul> -->
+						<%
+							}
+							}
+						%>
+						<!-- </th> -->
+						<%
+							if (endPage < allPage) {
+						%>
+						<li><a
+							href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=endPage + 1%>">▶</a></li>
+						<li><a
+							href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=allPage%>">▶▶</a></li>
+
+						<%
+							}
+						%>
+						<!--          </ul> 
          </th> -->
-									<!-- <th> -->
-									
+						<!-- <th> -->
 
 
 
-								</ul>
-							</th>
-						</tr>
-					</table>
-				</div>
+
+					</ul>
+				</th>
+			</tr>
+		</table>
+	</div>
 
 </body>
 </html>
