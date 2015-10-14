@@ -48,7 +48,7 @@
 	<br>
 	<br>
 	
-	<sform:textarea name="mycontent" id="content" rows="40" cols="100" placeholder="내용" path="fcontext" value=""></sform:textarea>
+	<sform:textarea name="ckEditor" id="ckEditor" rows="40" cols="100" placeholder="내용" path="fcontext" value=""></sform:textarea>
 	</div>
 	<br>
 	<sform:hidden value="${FunFunUser.id }" path="userId"/>
@@ -61,16 +61,8 @@
 	
 	</div>
 
-<script>CKEDITOR.replace('content',{
-	 width:'100%',
-     height:'350px',
-     'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
-     +'realUrl=http://localhost/main'
-     +'&realDir=/main'
-    
-} );
-
-
+<script type="text/javascript">
+	CKEDITOR.replace('ckEditor');
 </script>
 </sform:form>
 </body>

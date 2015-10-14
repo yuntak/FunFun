@@ -49,10 +49,10 @@ public class BoardDaoImpl implements BoardDao {
 	}
 
 	@Override
-	public int insertBoard(Board board) {
+	public int insertBoard(String code,String id) {
 		int result;
 		String sql = "insert into Board values(seq_board.nextval,?,?)";
-		result = jt.update(sql, board.getCode(), board.getUserId());
+		result = jt.update(sql, code, id);
 		return result;
 	}
 

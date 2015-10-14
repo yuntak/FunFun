@@ -51,6 +51,12 @@ public class FundingBoardController {
 		String viewlocation = "/WEB-INF/view/fundingboard/fundWrite.jsp";
 		model.addAttribute("Funding", funding);
 		model.addAttribute("view", viewlocation);
+		
+		//
+		FBoard fboard=new FBoard();
+		model.addAttribute("Fboard", fboard);
+		
+		//
 		return "main/Template";
 		
 	}
