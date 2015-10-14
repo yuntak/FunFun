@@ -82,8 +82,7 @@ style>#name:link {
       <div class="form-inline" align="right">
       <select class="form-control" name="name"><option value="nickname">닉네임</option>
      		   <option value="title">제목</option>
-     		   <option value="contents">내용</option></select>
-     		   
+     		   <option value="contents">내용</option></select>   
      	 <input type="hidden" value="page=1">   
          <input type="text"  name="keyword" class="form-control" placeholder="검색"><a
             href=""><span class="btn btn-success">검색</span></a>
