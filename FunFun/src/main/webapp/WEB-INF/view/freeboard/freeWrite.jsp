@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html >
 <html>
 <head>
@@ -29,6 +30,7 @@
 </head>
 
 <body>
+<sform:form  method="post" action="return freeBoardWrite(this)" >
 	<div class="writebody">
 	<div class="panel panel-info">
 	<div class="panel-heading">
@@ -38,25 +40,26 @@
 	
 	<div class="panel-body">
 	<div class="form-group">
-		<label for="title" class="col-sm-1" >제목</label>
+		<sform:label for="title" class="col-sm-1" path="" >제목</sform:label>
 		<div class="col-xs-9">
-		<input type="text" class=" form-control" id="title" required placeholder="제목입력란">
+		<sform:input  type="text" class=" form-control" id="title"  required placeholder="제목입력란" path="" ></sform:input>
 		</div>
 	</div>
 	<br>
 	<br>
-	<textarea name="" id="editor" rows="40" cols="100">내용</textarea>
+	<sform:textarea name="" id="content" rows="40" cols="100" placeholder="내용" path="" ></sform:textarea>
 	</div>
 	<br>
 	
 	<div class="panel-footer">
-	<a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a>
+	<sform:button class="btn btn-info">확인</sform:button>
+<%-- 	<a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
 	<a href="/main" class="btn btn-info">취소</a>
 	</div>
 	
 	</div>
 
-<script>CKEDITOR.replace('editor',{
+<script>CKEDITOR.replace('content',{
 	 width:'100%',
      height:'350px',
      'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
@@ -67,7 +70,17 @@
 
 
 </script>
-
-
+</sform:form>
 </body>
+<script type="text/javascript">
+function freeBoardWrite(f){
+	console.log("FreeBoard Write");
+	var title=document.getElementById("title");
+	var content=document.getElementById("editor");
+	console.log(title);
+	console.log(content);
+	
+}
+
+</script>
 </html>

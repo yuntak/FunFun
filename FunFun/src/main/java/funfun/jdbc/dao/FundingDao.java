@@ -5,7 +5,7 @@ import java.util.List;
 import funfun.jdbc.dto.Funding;
 
 public interface FundingDao {
-	int BOARD_PER_PAGE = 10;
+	int BOARD_PER_PAGE = 9;
 	public int insertFunding(Funding funding);
 	public int deleteFunding(int fno);
 	public int updateFunding(Funding funding);

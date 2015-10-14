@@ -54,54 +54,7 @@
 						<table class="table">
 							<tr>
 								<td>
-									<div class="embed-responsive embed-responsive-16by9">
-										<iframe style="width: 850px; height: 400px"
-											src="https://www.youtube.com/embed/4OrCA1OInoo"
-											frameborder="0"></iframe>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>빛을 쏟는 Sky 
-								그 아래 선 아이 I
-								 꿈꾸듯이 Fly
-								  My Life is a Beauty
-								  
-								  어디서 많이 들어본 이야기
-								  미운 오리와 백조
-								  또 날기 전의 나비
-								  사람들은 몰라
-								  너의 날개를 못 봐
-								  네가 만난 세계라는 건 잔인할지도 몰라
-								  
-								  But strong girl, you know you were born to fly 
-								  네가 흘린 눈물
-								  네가 느낀 고통은 다
-								  더 높이 날아오를 날을 위한 준비일 뿐 Butterfly
-								   
-								   * 빛을 쏟는 Sky
-								    그 아래 선 아이 I
-								     꿈꾸듯이 Fly
-								      잊었던 꿈 내 맘 또 그려내
-								      움츠렸던 시간 모두 모아 다 삼켜내
-								      작은 기억 하나 둘씩 날 깨워가
-								      세상 가득 채울 만큼 나를 펼쳐가
-								      길고 긴 밤을 지나
-								      다시 Trip 길을 떠나볼래
-								      이 세상에 내 맘을 깨워 주는 한마디
-								      혼자였던 Yesterday
-								       셀 수 없는 시선에
-								       떨어지는 눈물로
-								       하루를 또 견디고
-								       아슬했던 Yesterday
-								        쏟아지던 말들에
-								        흔들리는 나를 또 감싸고
-								</td>
-							</tr>
-							<tr>
-							<td><img
-								src="<%=request.getContextPath()%>/img/tae.jpg"
-								class="img-thumbnail" alt="Cinque Terre" width="850px"></td>
+									
 							</tr>
 						</table>
 					</div>
