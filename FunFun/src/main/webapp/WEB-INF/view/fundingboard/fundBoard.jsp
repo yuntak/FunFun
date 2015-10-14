@@ -5,6 +5,7 @@
 <%@page import="java.util.List"%>
 <%@page import="funfun.jdbc.dto.Funding"%>
 <%@page import="funfun.jdbc.dto.Board"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -30,7 +31,6 @@
 	margin-left: auto;
 }
 
-
 .button {
 	position: absolute;
 	bottom: 10px;
@@ -42,10 +42,7 @@
 
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	<div class="panel panel" style="height: 80px;"></div>
-
-
 
 	<div class="panel panel-danger">
 		<div class="row">
@@ -53,28 +50,27 @@
 				<div class="jumbotron" align="center">
 					<div class="container">
 						<table class="table">
-							<%
-								Object FlistObj = request.getAttribute("FundingBoardList");
-								List<Funding> list = null;
-								if (FlistObj != null && FlistObj instanceof List) {
-									list = (List<Funding>) FlistObj;
-								}
-							%>
-							<%
-								Funding fdto = null;
-								double per = 0.0;
-								int per1 = 0;
-								for (int i = 0; i < list.size(); i++) {
-									fdto = (Funding) list.get(i);
-									per = fdto.getMoney() / fdto.getGoal() * 100;
-									per1 = (int) per;
-							%>
+
 							<tr>
+								<%
+									Object FlistObj = request.getAttribute("FundingBoard");
+									Funding fdto = (Funding) FlistObj;
+								%>
+								<%
+									double per = 0.0;
+									per = fdto.getMoney() / fdto.getGoal() * 100;
+									int per1 = (int) per;
+									long date1;
+									long date3;
+									Date date2 = new Date();
+									date1 = fdto.getEndDate().getTime()-date2.getTime();
+									date3 = date1/(24*60*60*1000);
+								%>
 								<td><%=fdto.getContext()%></td>
 							</tr>
-							<%
-								}
-							%>
+							<tr>
+								<td></td>
+							</tr>
 						</table>
 					</div>
 				</div>
@@ -88,18 +84,39 @@
 						<tr>
 							<td>
 								<h2 align="center">
+									현재금액 :
 									<%=(int) fdto.getMoney()%><small>원</small>
 								</h2>
-								<div class="progress" style="width: 300px;">
+								<div class="progress" style="width: 450px;">
 									<div class="progress-bar progress-bar-success"
 										role="progressbar" aria-valuenow="<%=per1%>" aria-valuemin="0"
-										aria-valuemax="100" style="width: 10%;"><%=per1%>%
-										Complete
+										aria-valuemax="100"
+										style="width: 10%; color: black; width: <%=per%>%">
+										<strong><%=per1%>% Complete</strong>
 									</div>
 								</div>
-								<h4 align="right">
-									목표금액 : <strong><%=fdto.getGoal()%></strong>원
-								</h4>
+
+								<table>
+									<tr>
+										<td class="col-lg-1"></td>
+										<td class="col-lg-4">
+											<h4 align="left">
+												<strong> <%=date3%>
+												</strong>일 남음
+											</h4>
+										</td>
+
+										<td class="col-lg-5">
+											<h4 align="right">
+													목표금액 : <strong><%=(int) fdto.getGoal()%></strong>원
+											</h4>
+										</td>
+									</tr>
+								</table>
+
+
+
+
 							</td>
 						</tr>
 						<tr>
@@ -133,6 +150,5 @@
 		</div>
 
 	</div>
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 </html>

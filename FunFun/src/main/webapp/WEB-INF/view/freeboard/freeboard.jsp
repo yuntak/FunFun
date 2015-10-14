@@ -204,9 +204,7 @@ style>#name:link {
             }
          %>
          <!-- </th> -->
-         <%
-            if (endPage < allPage) {
-         %>
+        
          <!-- <th>
           <ul class="pager"> -->
 
@@ -222,9 +220,7 @@ style>#name:link {
  <!--          </ul> 
          </th> -->
          <!-- <th> -->
-                  <%
-            }
-         %>
+           
          
          
          <li><a href="<%=request.getContextPath()%>/FreeBoard/Write"

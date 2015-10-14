@@ -12,6 +12,7 @@ public interface FundingDao {
 	public int updateFundingMoney(Funding funding);
 	public int updateFundingDate(Funding funding);
 	public int selectCountAllPage();
+	public Funding selectFunding(int fno);
 	public List<Funding> selectFundingByPage(int page_no);
 	public List<Funding> selectFundingTitleByPage(String title, int page_no);
 }

@@ -18,7 +18,16 @@ public class Funding {
 	private String userId;
 	private Date startDate;
 	private Date endDate;
+	private int ok;
 	
+	public int getOk() {
+		return ok;
+	}
+
+	public void setOk(int ok) {
+		this.ok = ok;
+	}
+
 	private List<Reply> replys;
 
 	public int getFno() {
@@ -113,7 +122,7 @@ public class Funding {
 	public String toString() {
 		return "Funding [fno=" + fno + ", title=" + title + ", goal=" + goal + ", FContent=" + FContent + ", FContext="
 				+ FContext + ", money=" + money + ", context=" + context + ", userId=" + userId + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", replys=" + replys + "]";
+				+ startDate + ", endDate=" + endDate + ", ok=" + ok + ", replys=" + replys + "]";
 	}
 
 	

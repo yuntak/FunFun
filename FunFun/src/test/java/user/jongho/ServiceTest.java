@@ -234,20 +234,21 @@ public class ServiceTest {
 	}
 	
 	@Test
-	public void TestInsertFunding(){
+	public void TestInsertFunding() throws Exception{
 		for(int i=0;i<50;i++){
 		Funding funding = new Funding();
 		funding.setTitle("태연 "+i);
 		funding.setGoal(1000000);
 		funding.setFContent("/img/tae.jpg");//
 		funding.setFContext("/img/tae.jpg");//
-		funding.setMoney(0);
+		funding.setMoney(500000);
 		funding.setContext("태연."+i);
 		Date date= new Date();
 		funding.setStartDate(date);
-		Date date2 = new Date(13-01-01);
+		Date date2 = DatePase("2015-12-31");
 		funding.setEndDate(date2);
 		funding.setUserId("every9168");
+		funding.setOk(11);
 		fdservice.insertFunding(funding);
 		}
 	}
