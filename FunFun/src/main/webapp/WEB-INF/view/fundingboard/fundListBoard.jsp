@@ -79,9 +79,8 @@
 							<td><div class="progress" style="width: 200px;">
 									<div class="progress-bar progress-bar-success"
 										role="progressbar" aria-valuenow="<%=per1%>"
-										aria-valuemin="0" aria-valuemax="100" style="width: <%=per%>%">
-										<%-- <%=fdto.getMoney()/fdto.getGoal()*10 %> --%>
-										<%=per1%>% Complete
+										aria-valuemin="0" aria-valuemax="100" style="color: black; width: <%=per%>%">
+										<strong><%=per1%>% Complete</strong>
 									</div>
 								</div>
 								<table>
@@ -108,7 +107,41 @@
 					}
 				%>
 
-				<div align="center">
+				
+
+
+			</div>
+			<div class="col-sm-3">
+
+				${FunFunUser.roll }
+				<c:choose>
+					<c:when test="${FunFunUser.roll=='BASIC' }">
+
+						<button type="submit" class="btn btn-info"
+							style="font-size: 30px;">
+							<span class="glyphicon glyphicon-pencil" style="font-size: 25px;"></span>
+							펀딩 신청
+						</button>
+					</c:when>
+					<c:when test="${FunFunUser.roll=='REGULAR' }">
+						<button type="submit" class="btn btn-info"
+							style="font-size: 30px;">
+							펀딩 시작 <span class="glyphicon glyphicon-heart-empty"
+								style="font-size: 25px;"></span>
+						</button>
+
+
+
+					</c:when>
+
+
+				</c:choose>
+
+			</div>
+		</div>
+	</div>
+
+<div align="center">
 					<table>
 
 
@@ -152,7 +185,7 @@
 									<li><a
 										href="<%=request.getContextPath()%>/FundingBoard/List?page=1">◀◀</a></li>
 									<li><a
-										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=startPage - 1%>">◀</a></li>
+										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=startPage - 1%>">◀</a></li>
 									<!-- </ul> -->
 									<%
 										}
@@ -165,14 +198,14 @@
 									%>
 									<!-- <ul class="pagination "> -->
 									<li class="active"><a
-										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=i%>"><%=i%></a></li>
+										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=i%>"><%=i%></a></li>
 									<!-- </ul> -->
 									<%
 										} else {
 									%>
 									<!-- <ul class="pagination"> -->
 									<li><a
-										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=i%>"><%=i%></a></li>
+										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=i%>"><%=i%></a></li>
 									<!-- </ul> -->
 									<%
 										}
@@ -189,9 +222,9 @@
 										if (endPage < allPage) {
 									%>
 									<li><a
-										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=endPage + 1%>">▶</a></li>
+										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=endPage + 1%>">▶</a></li>
 									<li><a
-										href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name")%>&keyword=<%=request.getAttribute("keyword")%>&page=<%=allPage%>">▶▶</a></li>
+										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=allPage%>">▶▶</a></li>
 
 									<%
 										}
@@ -210,38 +243,6 @@
 						</tr>
 					</table>
 				</div>
-
-
-			</div>
-			<div class="col-sm-3">
-
-				${FunFunUser.roll }
-				<c:choose>
-					<c:when test="${FunFunUser.roll=='BASIC' }">
-
-						<button type="submit" class="btn btn-info"
-							style="font-size: 30px;">
-							<span class="glyphicon glyphicon-pencil" style="font-size: 25px;"></span>
-							펀딩 신청
-						</button>
-					</c:when>
-					<c:when test="${FunFunUser.roll=='REGULAR' }">
-						<button type="submit" class="btn btn-info"
-							style="font-size: 30px;">
-							펀딩 시작 <span class="glyphicon glyphicon-heart-empty"
-								style="font-size: 25px;"></span>
-						</button>
-
-
-
-					</c:when>
-
-
-				</c:choose>
-
-			</div>
-		</div>
-	</div>
 
 </body>
 </html>
