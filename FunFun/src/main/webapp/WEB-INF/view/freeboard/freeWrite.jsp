@@ -47,7 +47,16 @@
 	</div>
 	<br>
 	<br>
-	<sform:textarea name="mycontent" id="content" rows="40" cols="100" placeholder="내용" path="fcontext" value=""></sform:textarea>
+	<sform:textarea name="mycontent" id="content" rows="40" cols="100" placeholder="내용" path="fcontext" ></sform:textarea>
+	<script>CKEDITOR.replace('content',{
+	 width:'100%',
+     height:'350px',
+     'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
+     +'realUrl=http://localhost/main'
+     +'&realDir=/main'
+    
+} );
+	</script>
 	</div>
 	<br>
 	<sform:hidden value="${FunFunUser.id }" path="userId"/>
@@ -60,24 +69,18 @@
 	
 	</div>
 
-<script>CKEDITOR.replace('content',{
-	 width:'100%',
-     height:'350px',
-     'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
-     +'realUrl=http://localhost/main'
-     +'&realDir=/main'
-    
-} );
 
 
-</script>
+
+
 </sform:form>
 </body>
 <script type="text/javascript">
 function freeBoardWrite(f){
 	console.log("FreeBoard Write");
 	var title=document.getElementById("title").value;
-	var content=document.getElementById("content").value;
+	
+	var content = CKEDITOR.instances.content.getData();
 	console.log(title);
 	console.log(content);
 	if(title==""){
@@ -92,8 +95,8 @@ function freeBoardWrite(f){
 	}
 	
 	//f.action("");
-	return false;
-	
+	f.action = 'FreeBoardWrite';
+	return true;
 }
 
 </script>
