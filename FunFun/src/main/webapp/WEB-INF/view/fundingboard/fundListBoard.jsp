@@ -29,7 +29,7 @@
 	<%
 		Users user = new Users();
 
-		user.setRoll("REGULAR");
+		user.setRoll("BASIC");
 	%>
 	<c:set value="<%=user%>" var="FunFunUser"></c:set>
 
@@ -123,8 +123,8 @@
 
 						<button type="submit" class="btn btn-info"
 							style="font-size: 30px; margin-right: auto;	margin-left: auto;	width: 300px;	height: 60px;">
-							<span class="glyphicon glyphicon-pencil" style="font-size: 25px;"></span>
-							펀딩 신청
+							<span class="glyphicon glyphicon-pencil" style="font-size: 25px;"></span><a href="<%=request.getContextPath()%>/FundingBoard/Write">펀딩 신청</a>
+							
 						</button>
 					</c:when>
 					<c:when test="${FunFunUser.roll=='REGULAR' }">

@@ -45,6 +45,15 @@ public class FundingBoardController {
 		return "main/Template";
 		
 	}
+	@RequestMapping(value="/FundingBoard/Write")
+	public String freeBoardWrite(Model model){
+		Funding funding= new Funding();
+		String viewlocation = "/WEB-INF/view/fundingboard/fundWrite.jsp";
+		model.addAttribute("Funding", funding);
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+		
+	}
 	@RequestMapping("/FundingBoard/view")
 	public String fundingboard(@RequestParam int FundingNo,Model model) {
 		Funding funding = FundingSvc.selectFunding(FundingNo);
