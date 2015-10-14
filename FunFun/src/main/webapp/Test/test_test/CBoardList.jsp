@@ -30,6 +30,29 @@
 .panel-body{
 	margin-bottom: 23%;
 }
+<style>#name:link {
+   color: #A8A88E;
+   font-size: 10pt;
+   text-decoration: none;
+}
+
+#name:visited {
+   color: #B4FF6A;
+   font-size: 10pt;
+   text-decoration: none;
+}
+
+#name:active {
+   color: #A8A88E;
+   font-size: 10pt;
+   text-decoration: none;
+}
+
+#name:hover {
+   color: #A8A88E;
+   font-size: 10pt;
+   text-decoration: underline;
+}
 </style>
 </head>
 <body>
@@ -38,7 +61,7 @@
 
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-lg-2" align="center">
+			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
 				<ul class="nav nav-pills nav-stacked">
 					<li class="active"><a href="#"></a></li>
 					<li><a href="#">만화</a></li>
@@ -52,7 +75,7 @@
 
 
 
-			<div class="col-lg-9">
+			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 
 				<h2 align="center">펀딩 게시글</h2>
 
@@ -69,12 +92,20 @@
             
 					<tbody>
 						<tr>
-							<td rowspan="3"><img
-								src="<%=request.getContextPath()%>/img/redBalloon.png"
+							
+							<td align="center" style="overflow:hidden;" rowspan="3"><a href="<%=request.getContextPath()%>/FreeBoard/=<%=fdto.getFno()%>'" >
+                  			<%=fdto.getTitle()%>"><img
+								 src="<%=request.getContextPath()%>/img/redBalloon.png"
 								class="img-thumbnail" alt="Cinque Terre" width="100"
-								height="150"></td>
+								height="150"></a></td>
+							
+								
 							<td>태그(카테고리) <%=list.get(0).toString()%></td>
-							<td style="width: 450px">제목 <%=list.get(0).toString()%> </td>
+							
+							<td id="name" style="width: 450px; cursor: pointer;" 
+							onclick="location.href='<%=request.getContextPath()%>/ '" >
+							<strong>제목<%=list.get(0).toString()%> </strong></td>
+							
 							<td style="width: 100px">작성자 <%=list.get(1).toString()%></td>
 							<td><button style="width: 80px" type="button"
 									class="btn btn-xs">즐겨찾기 <%=list.get(2).toString()%></button></td>
@@ -85,7 +116,7 @@
 							<td colspan="2" rowspan="2">작품소개 <%=list.get(0).toString()%></td>
 							<td>
 							
-							<div class="col-lg-10" align="right">
+							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" align="right">
 							
 								<div class="btn-group">
 								<div class="row">

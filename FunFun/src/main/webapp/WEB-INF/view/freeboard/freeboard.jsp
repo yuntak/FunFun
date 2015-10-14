@@ -79,16 +79,20 @@ style>#name:link {
       <br>
       <p align="center">자유게시판</p>
       <br> <br>
+      
+      <form action="">
       <div class="form-inline" align="right">
       <select class="form-control" name="name"><option value="nickname">닉네임</option>
-     		   <option value="title">제목</option>
-     		   <option value="contents">내용</option></select>
-     		   
-     	 <input type="hidden" value="page=1">   
-         <input type="text"  name="keyword" class="form-control" placeholder="검색"><a
-            href=""><span class="btn btn-success">검색</span></a>
-     	
+              <option value="title">제목</option>
+              <option value="content">내용</option></select>
+              
+            
+         <input type="text" name="keyword" class="form-control" placeholder="검색">
+         <input type="hidden" name="page" value="1">
+         <input type="submit" value="검색" class="btn btn-success">
+        
       </div>
+      </form>
       <br>
       </div>
 
@@ -205,9 +209,7 @@ style>#name:link {
             }
          %>
          <!-- </th> -->
-         <%
-            if (endPage < allPage) {
-         %>
+        
          <!-- <th>
           <ul class="pager"> -->
 
@@ -223,9 +225,7 @@ style>#name:link {
  <!--          </ul> 
          </th> -->
          <!-- <th> -->
-                  <%
-            }
-         %>
+           
          
          
          <li><a href="<%=request.getContextPath()%>/FreeBoard/Write"

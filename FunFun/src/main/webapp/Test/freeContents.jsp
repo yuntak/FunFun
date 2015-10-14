@@ -63,9 +63,10 @@ textarea {
       </div>
 	  <br>
 	  <br>
-
-          <img src="<%=request.getContextPath()%>/img/tae.jpg"> 
+	  <div align="left" class="panel-body" style="width: 900px; overflow: auto;">
          
+                      
+      </div>   
       
 
       <div class="panel panel-default" style="width: 900px;">

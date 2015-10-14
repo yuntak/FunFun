@@ -7,23 +7,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+   src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script type="text/javascript" src ="<%=request.getContextPath()%>/ckeditor/ckeditor.js"></script>
 
 <style>
-	.panel-body{
-		height:560px;
-	}
-	
+   .panel-body{
+      height:560px;
+   }
+   
  textarea { resize: none; }
 </style>
 
@@ -31,41 +31,38 @@
 
 <body>
 <sform:form  method="post" action="return freeBoardWrite(this)" >
-	<div class="writebody">
-	<div class="panel panel-info">
-	<div class="panel-heading">
-	<p>글쓰기</p>
-	</div>
-	</div>
-	
-	<div class="panel-body">
-	<div class="form-group">
-		<sform:label for="title" class="col-sm-1" path="" >제목</sform:label>
-		<div class="col-xs-9">
-		<sform:input  type="text" class=" form-control" id="title"  required placeholder="제목입력란" path="" ></sform:input>
-		</div>
-	</div>
-	<br>
-	<br>
-	<sform:textarea name="" id="content" rows="40" cols="100" placeholder="내용" path="" ></sform:textarea>
-	</div>
-	<br>
-	
-	<div class="panel-footer">
-	<sform:button class="btn btn-info">확인</sform:button>
-<%-- 	<a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
-	<a href="/main" class="btn btn-info">취소</a>
-	</div>
-	
-	</div>
+   <div class="writebody">
+   <div class="panel panel-info">
+   <div class="panel-heading">
+   <p>글쓰기</p>
+   </div>
+   </div>
+   
+   <div class="panel-body">
+   <div class="form-group">
+      <sform:label for="title" class="col-sm-1" path="" >제목</sform:label>
+      <div class="col-xs-9">
+      <sform:input  type="text" class=" form-control" id="title"  required placeholder="제목입력란" path="" ></sform:input>
+      </div>
+   </div>
+   <br>
+   <br>
+   <sform:textarea name="" id="content" rows="40" cols="100" placeholder="내용" path="" ></sform:textarea>
+   </div>
+   <br>
+   
+   <div class="panel-footer">
+   <sform:button class="btn btn-info">확인</sform:button>
+<%--    <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
+   <a href="/main" class="btn btn-info">취소</a>
+   </div>
+   
+   </div>
 
 <script>CKEDITOR.replace('content',{
-	 width:'100%',
-     height:'350px',
-     'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
-     +'realUrl=http://localhost/main'
-     +'&realDir=/main'
-    
+    width:'100%',
+     height:'350px'
+
 } );
 
 
@@ -74,12 +71,12 @@
 </body>
 <script type="text/javascript">
 function freeBoardWrite(f){
-	console.log("FreeBoard Write");
-	var title=document.getElementById("title");
-	var content=document.getElementById("editor");
-	console.log(title);
-	console.log(content);
-	
+   console.log("FreeBoard Write");
+   var title=document.getElementById("title");
+   var content=document.getElementById("editor");
+   console.log(title);
+   console.log(content);
+   
 }
 
 </script>
