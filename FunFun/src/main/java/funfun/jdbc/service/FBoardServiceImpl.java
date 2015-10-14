@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import funfun.jdbc.dao.BoardDao;
 import funfun.jdbc.dao.FBoardDao;
 import funfun.jdbc.dao.ReplyDao;
 import funfun.jdbc.dto.FBoard;
@@ -20,9 +21,12 @@ public class FBoardServiceImpl implements FBoardService {
 	FBoardDao fdao;
 	@Autowired
 	ReplyDao rdao;
+	@Autowired
+	BoardDao dao;
 
 	@Override
 	public void insertFBoard(FBoard fboard) {
+		int result = dao.insertBoard(fboard.getBoardCode(),fboard.getUserId());
 		int insertresult = fdao.insertFBoard(fboard);
 		logger.trace("insert over : {}", insertresult);
 	}

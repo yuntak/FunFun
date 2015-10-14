@@ -32,8 +32,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void insertBoard(Board board) {
-		int insertResult = dao.insertBoard(board);
+	public void insertBoard(String code,String id) {
+		int insertResult = dao.insertBoard(code,id);
 		logger.trace("insert over : {}", insertResult);
 
 	}
