@@ -23,12 +23,6 @@
 	margin-left: auto;
 }
 
-.btn {
-	margin-right: auto;
-	margin-left: auto;
-	width: 300px;
-	height: 60px;
-}
 </style>
 </head>
 <body>
@@ -125,14 +119,14 @@
 					<c:when test="${FunFunUser.roll=='BASIC' }">
 
 						<button type="submit" class="btn btn-info"
-							style="font-size: 30px;">
+							style="font-size: 30px; margin-right: auto;	margin-left: auto;	width: 300px;	height: 60px;">
 							<span class="glyphicon glyphicon-pencil" style="font-size: 25px;"></span>
 							펀딩 신청
 						</button>
 					</c:when>
 					<c:when test="${FunFunUser.roll=='REGULAR' }">
 						<button type="submit" class="btn btn-info"
-							style="font-size: 30px;">
+							style="font-size: 30px; margin-right: auto;	margin-left: auto;	width: 300px;	height: 60px;">
 							펀딩 시작 <span class="glyphicon glyphicon-heart-empty"
 								style="font-size: 25px;"></span>
 						</button>
