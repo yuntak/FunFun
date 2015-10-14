@@ -1,5 +1,15 @@
+<%@page import="funfun.jdbc.dto.Users"%>
+<%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
+<%@page import="org.springframework.ui.Model"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="funfun.jdbc.dto.Funding"%>
+<%@page import="funfun.jdbc.dto.Board"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -21,15 +31,6 @@
 	margin-left: auto;
 }
 
-#img_container {
-	position: relative;
-	display: inline-block;
-	text-align: center;
-	background-color: #E69316;
-	color: #E69316;
-	border-style: outset;
-}
-
 .button {
 	position: absolute;
 	bottom: 10px;
@@ -41,10 +42,7 @@
 
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	<div class="panel panel" style="height: 80px;"></div>
-
-
 
 	<div class="panel panel-danger">
 		<div class="row">
@@ -52,9 +50,26 @@
 				<div class="jumbotron" align="center">
 					<div class="container">
 						<table class="table">
+
 							<tr>
-								<td>
-									
+								<%
+									Object FlistObj = request.getAttribute("FundingBoard");
+									Funding fdto = (Funding) FlistObj;
+								%>
+								<%
+									double per = 0.0;
+									per = fdto.getMoney() / fdto.getGoal() * 100;
+									int per1 = (int) per;
+									long date1;
+									long date3;
+									Date date2 = new Date();
+									date1 = fdto.getEndDate().getTime()-date2.getTime();
+									date3 = date1/(24*60*60*1000);
+								%>
+								<td><%=fdto.getContext()%></td>
+							</tr>
+							<tr>
+								<td></td>
 							</tr>
 						</table>
 					</div>
@@ -69,23 +84,39 @@
 						<tr>
 							<td>
 								<h2 align="center">
-									10,000,000 <small>원</small>
+									현재금액 :
+									<%=(int) fdto.getMoney()%><small>원</small>
 								</h2>
 								<div class="progress" style="width: 300px;">
 									<div class="progress-bar progress-bar-success"
-										role="progressbar" aria-valuenow="10" aria-valuemin="0"
-										aria-valuemax="100" style="width: 10%;">10% Complete</div>
+										role="progressbar" aria-valuenow="<%=per1%>" aria-valuemin="0"
+										aria-valuemax="100"
+										style="width: 10%; color: black; width: <%=per%>%">
+										<strong><%=per1%>% Complete</strong>
+									</div>
 								</div>
-								<h4 align="right">
-									목표금액 : <strong>100,000,000</strong>원
-								</h4>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<h2>
-									1<small>명 참여</small>
-								</h2>
+
+								<table>
+									<tr>
+										<td class="col-lg-2"></td>
+										<td class="col-lg-4">
+											<h6 align="left">
+												<strong> <%=date3%>
+												</strong>일 남음
+											</h6>
+										</td>
+
+										<td class="col-lg-6">
+											<h6 align="right">
+													목표금액 : <strong><%=(int) fdto.getGoal()%></strong>원
+											</h6>
+										</td>
+									</tr>
+								</table>
+
+
+
+
 							</td>
 						</tr>
 						<tr>
@@ -99,14 +130,12 @@
 						<tr align="right">
 							<td>
 
-								<div id="img_container">
-									<img style="background-color: #E69316;"
-										src="<%=request.getContextPath()%>/img/button.png"
-										class="img-rounded" alt="Cinque Terre" width="50" height="50">
-									<button
-										style="width: 200px; height: 50px; background-color: #E69316; color: white"
-										type="button" class="btn">프로젝트 후원하기</button>
-								</div>
+								<button type="submit" class="btn btn-info"
+									style="font-size: 30px;">
+									프로젝트 후원하기 <span class="glyphicon glyphicon-heart-empty"
+										style="font-size: 25px;"></span>
+								</button>
+
 							</td>
 						</tr>
 
@@ -121,6 +150,5 @@
 		</div>
 
 	</div>
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 </html>

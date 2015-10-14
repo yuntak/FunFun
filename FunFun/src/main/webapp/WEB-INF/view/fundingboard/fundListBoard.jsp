@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+
 <%@page import="funfun.jdbc.dto.Users"%>
 <%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
 <%@page import="org.springframework.ui.Model"%>
@@ -55,25 +57,30 @@
 					Funding fdto = null;
 					double per = 0.0;
 					int per1 = 0;
+					long date1;
+					long date3;
+					Date date2 = new Date();
 					for (int i = 0; i < list.size(); i++) {
 						fdto = (Funding) list.get(i);
 						per = fdto.getMoney() / fdto.getGoal() * 100;
 						per1 = (int) per;
+						date1 = fdto.getEndDate().getTime()-date2.getTime();
+						date3 = date1/(24*60*60*1000);
 				%>
 				<div class="col-sm-4" style="background-color: lavenderblush;">
 					<table>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/fundBoard"><img
+							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><img
 									src="<%=request.getContextPath()%><%=fdto.getFContent()%>"
 									class="img-thumbnail" alt="Cinque Terre"
 									style="width: 200px; height: 250px"></a></td>
 
 						</tr>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/fundBoard"><%=fdto.getTitle()%></a></td>
+							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><%=fdto.getTitle()%></a></td>
 						</tr>
 						<tr>
-							<td><a href="<%=request.getContextPath()%>/fundBoard"><%=fdto.getFContext()%></a></td>
+							<td><a href="<%=request.getContextPath()%>/FundingBoard/view?FundingNo=<%=fdto.getFno()%>"><%=fdto.getFContext()%></a></td>
 						</tr>
 						<tr>
 							<td><div class="progress" style="width: 200px;">
@@ -85,14 +92,14 @@
 								</div>
 								<table>
 									<tr>
-										<td class="col-lg-4">
+									<td class="col-lg-1"></td>
+										<td class="col-lg-7">
 											<h6 align="left">
-												<%-- <strong> <%=fdto.getEndDate()%>
-													<% fdto.getStartDate(); %>
-												</strong>일 남음 --%>
+												 <strong> <%=date3 %>
+												</strong>일 남음 
 											</h6>
 										</td>
-										<td class="col-lg-1"></td>
+										
 										<td class="col-lg-4">
 											<h6 align="right">
 												<strong><%=(int) fdto.getMoney()%></strong>원
@@ -146,7 +153,7 @@
 
 
 						<%
-							final int ROWSIZE = 9; // 한페이지에 보일 게시물 수
+							final int ROWSIZE = 4; // 한페이지에 보일 게시물 수
 							int BLOCK = 5; // 아래에 보일 페이지 최대개수 1~5 / 6~10 / 11~15 식으로 5개로 고정
 
 							int pg = 1; //기본 페이지값
@@ -169,7 +176,7 @@
 
 							if (endPage > allPage) {
 								endPage = allPage;
-							}
+							} 
 						%>
 						<tr>
 							<th>
@@ -213,28 +220,18 @@
 									%>
 									<!-- </th> -->
 									<%
-										if (endPage < allPage) {
-									%>
-									<!-- <th>
-          <ul class="pager"> -->
-
-									<%
-										if (endPage < allPage) {
-									%>
-									<li><a
-										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=endPage + 1%>">▶</a></li>
-									<li><a
-										href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=allPage%>">▶▶</a></li>
-
-									<%
-										}
-									%>
+               if (endPage < allPage) {
+            %>
+            <li> <a href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=endPage + 1%>">▶</a></li>
+            <li> <a href="<%=request.getContextPath()%>/FundingBoard/List?page=<%=allPage%>">▶▶</a></li>
+            
+            <%
+            }
+            %>
 									<!--          </ul> 
          </th> -->
 									<!-- <th> -->
-									<%
-										}
-									%>
+									
 
 
 

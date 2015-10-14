@@ -79,4 +79,11 @@ public class FundingServiceImpl implements FundingService {
 		return selectresult;
 	}
 
+	@Override
+	public Funding selectFunding(int fno) {
+		Funding selectresult = fddao.selectFunding(fno);
+		logger.trace("select over : {}",selectresult);
+		return selectresult;
+	}
+
 }
