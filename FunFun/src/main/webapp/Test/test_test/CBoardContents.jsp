@@ -14,6 +14,28 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<style>
+	.panel-body{
+		margin-bottom: 20%;
+	}
+#name:visited {
+   color: #B4FF6A;
+   font-size: 10pt;
+   text-decoration: none;
+}
+
+#name:active {
+   color: #A8A88E;
+   font-size: 10pt;
+   text-decoration: none;
+}
+
+#name:hover {
+   color: #A8A88E;
+   font-size: 10pt;
+   text-decoration: underline;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
@@ -127,19 +149,7 @@
 
 	<div style="width: 900px; height:200px; border: ; margin-left: 27%;">
 		<table class="table">
-		<%
-			   ArrayList<String> list = new ArrayList<String>();
-				/* list.add(0,"소제목");
-				list.add(1,"회차");
-				list.add(2,"날짜");
-				list.add(3,"조회");
-				list.add(4,"추천"); */
-				list.add(0,"power");
-				list.add(1,"over");
-				list.add(2,"whelming");
-               for (int i = 0; i < list.size(); i++) {
-                  
-            %>
+		
 			<tr>
 				<th>소제목</th>
 				<th>회차</th>
@@ -147,22 +157,35 @@
 				<th>조회</th>
 				<th>추천</th>
 			</tr>
+			<%
+			   ArrayList<String> list = new ArrayList<String>();
+				 list.add(0,"소제목");
+				list.add(1,"회차");
+				list.add(2,"날짜");
+				list.add(3,"조회");
+				list.add(4,"추천"); 
+				
+               for (int i = 0; i < list.size(); i++) {
+                  
+            %>
 			<tr>
-				<td>뒤바뀐운명,<%=list.get(0).toString()%></td>
-				<td>1회,<%=list.get(1).toString()%></td>
-				<td>날짜,<%=list.get(1).toString()%></td>
-				<td>조회,<%=list.get(1).toString()%></td>
-				<td>추천,<%=list.get(0).toString()%></td>
+				<td id="name" style="cursor: pointer">뒤바뀐운명,<%=list.get(0).toString()%></td>
+				<td id="name" style="cursor: pointer">1회,<%=list.get(1).toString()%></td>
+				<td>날짜,<%=list.get(2).toString()%></td>
+				<td>조회,<%=list.get(3).toString()%></td>
+				<td>추천,<%=list.get(4).toString()%></td>
 			</tr>
 			<%
                }
 			%>
 		</table>
-	</div>
 		<div align="center">
-		<button type="button" class="btn-lg btn-default">목록</button>
+		<a href="<%=request.getContextPath()%>/ContentBoard"><button type="button" class="btn-lg btn-default">목록</button></a>
 		</div>
 	</div>
+		
+	</div>
+	
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 </html>

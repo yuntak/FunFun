@@ -48,48 +48,45 @@
 	margin-bottom: 15%;
 	
 }
-textarea {
-   resize: none;
-}
 </style>
 </head>
 <body>
+
    <div class="panel-body" align="center">
 
 
 
 
-      <div id="toppanel" class="panel panel-default" 
-         style="width: 900px; background-color: #F3F3ED" >
+      <div id="toppanel"
+         style="width: 1000px; height:40px;;  background-color: #EFEFE7" >
          <ul class="nav nav-justified">
             <li>
-               <div align="left" class="panel-body" style="width: 200px">${FBoard.nickName }</div>
+               <div align="left"  style="width: 200px">${FBoard.nickName }</div>
             </li>
             <li>
-               <div align="center" class="panel-body" style="width: 200px">${FBoard.fdate }</div>
+               <div align="center" style="font-size:20pt; ; width: 200px">${FBoard.fdate }</div>
             </li>
             <li>
-               <div align="right" class="panel-body" style="width: 200px">${FBoard.fview }</div>
+               <div align="right"  style="width: 200px">${FBoard.fview }</div>
             </li>
          </ul>
       </div>
 
 
-      <div class="panel panel-default" style="width: 900px;">
+      <div style="width: 1000px;">
          <div class="panel-body" align="center" style="color: #8A0000; font-size: 40px;">${FBoard.title }</div>
       </div>
 
 
-      <div align="left" class="panel-body" style="width: 900px; overflow: auto;">
+      <div align="left" class="panel-body" style="width: 1000px; overflow: auto;">
          ${FBoard.fcontext }
         
       </div>
 		
-      <div class="panel panel-default" style="width: 900px;">
+      <div class=" panel-default" style=" width: 1000px; overflow: auto;">
          <div class="panel-heading">코멘트</div>
 
-		 <div class="">
-         <div class="panel-body">
+         
 
             <table class="table">
              
@@ -112,24 +109,25 @@ textarea {
 
                </tbody>
             </table>
-			</div>
+		
 
-         </div>
+        
       </div>
+<hr>
 
-
-      <div class="panel panel-danger" style="width: 900px;">
+      <div class=" " style="width: 1000px; height: 100px; background-color:#EFEFE7">
+      	 <div class="panel-default"></div>
          <div class="row">
          <c:if test="${FunFunUser!=null }">
-            <div class="col-lg-1 col-sm-1 col-xs-1 col-md-1" align="center">
+            <div class="col-lg-1 col-sm-1 col-xs-1 col-md-1" style="margin-top: 5mm;">
                <label for="user">${FunFunUser.nickname }</label>
             </div>
             <div class="col-lg-7 col-sm-7 col-xs-7 col-md-7">
-               <textarea rows="4" cols="80" id="user">내용</textarea>
+               <textarea rows="4" cols="80" id="user" style="margin-top:2mm; resize: none; height: 86px;">내용</textarea>
             </div>
-            <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" align="right">
-               <a href="#"><img src="<%=request.getContextPath()%>/img/ok.PNG"
-                  style="width: 90px; height: 90px"> </a>
+            <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3"  align="right">
+               <a href="#"><img  src="<%=request.getContextPath()%>/img/ok.PNG"
+                  style="width: 90px; height: 90px; margin-top:2mm"> </a>
             </div>
             </c:if>
 
