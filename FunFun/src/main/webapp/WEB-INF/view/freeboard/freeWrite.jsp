@@ -31,7 +31,7 @@
 
 <body>
 <sform:form  method="post" onsubmit="return freeBoardWrite(this) " modelAttribute="Fboard" >
-<<<<<<< HEAD
+
    
    <div class="panel panel-info">
    <div class="panel-heading">
@@ -52,36 +52,20 @@
    <sform:textarea name="mycontent" id="content" rows="40" cols="100" placeholder="내용" path="fcontext" value=""></sform:textarea>
    </div>
    <br>
+   <sform:hidden value="11" path="boardCode"/>
    <sform:hidden value="${FunFunUser.id }" path="userId"/>
    <sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
    <div class="panel-footer">
   <div>
    <sform:button class="btn btn-info">확인</sform:button>
-   <a href="/main" class="btn btn-info" style="margin-bottom:5mm;">취소</a>
+   <a href="<%=request.getContextPath() %>/FreeBoard" class="btn btn-info" style="margin-bottom:5mm;">취소</a>
  
 <%--    <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
   
    </div>
    
    </div>
-=======
-	<div class="writebody">
-	<div class="panel panel-info">
-	<div class="panel-heading">
-	<p>글쓰기</p>
-	</div>
-	</div>
-	
-	<div class="panel-body">
-	<div class="form-group">
-		<sform:label for="title" class="col-sm-1" path="title" >제목</sform:label>
-		<div class="col-xs-9">
-		<sform:input class=" form-control" id="title"  placeholder="제목입력란" value="" path="title" />
-		</div>
-	</div>
-	<br>
-	<br>
-	<sform:textarea name="mycontent" id="content" rows="40" cols="100" placeholder="내용" path="fcontext" ></sform:textarea>
+
 	<script>CKEDITOR.replace('content',{
 	 width:'100%',
      height:'350px',
@@ -91,32 +75,9 @@
     
 } );
 	</script>
-	</div>
-	<br>
-	<sform:hidden value="${FunFunUser.id }" path="userId"/>
-	<sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
-	<div class="panel-footer">
-	<sform:button class="btn btn-info">확인</sform:button>
-<%-- 	<a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
-	<a href="/main" class="btn btn-info">취소</a>
-	</div>
 	
-	</div>
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 
-<<<<<<< HEAD
-<script>CKEDITOR.replace('content',{
-    width:'100%',
-     height:'350px',
-     'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
-     +'realUrl=http://localhost:9090/FunFun/FreeBoard/Write'
-     +'&realDir=C:\\Temp\\upload\\'
-    
-} );
-=======
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
-
-
+	
 
 
 </sform:form>
@@ -124,27 +85,6 @@
 </body>
 <script type="text/javascript">
 function freeBoardWrite(f){
-<<<<<<< HEAD
-   console.log("FreeBoard Write");
-   var title=document.getElementById("title").value;
-   var content=document.getElementById("content").value;
-   console.log(title);
-   console.log(content);
-   if(title==""){
-      alert("제목을 입력하세요.");
-      
-      return false;
-   }
-   if(content==""){
-      alert("내용을 입력하세요.");
-      
-      return false;
-   }
-   
-   //f.action("");
-   return false;
-   
-=======
 	console.log("FreeBoard Write");
 	var title=document.getElementById("title").value;
 	
@@ -165,8 +105,9 @@ function freeBoardWrite(f){
 	//f.action("");
 	f.action = 'FreeBoardWrite';
 	return true;
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 }
+</script>
+<script type="text/javascript">
 
 </script>
 </html>
