@@ -81,7 +81,7 @@ style>#name:link {
       <br> <br>
       
       <form action="">
-      <div class="form-inline" align="right">
+      <div class="form-inline" style="margin-left: 60%;">
       <select class="form-control" name="name"><option value="nickname">닉네임</option>
 
               <option value="title">제목</option>
@@ -101,6 +101,7 @@ style>#name:link {
       <br>
       </div>
 
+<div style="width: 1000px; margin-left: 24%;">
       <table class="table">
          <thead>
             <tr class="success">
@@ -142,6 +143,8 @@ style>#name:link {
 
          </tbody>
       </table>
+</div>
+      
       <hr>
 <div align="center">
       <table>
