@@ -50,34 +50,37 @@ margin-bottom: 10px;
 
 </head>
 <body>
-	<nav class="navbar-default" style="">
+	<nav class="navbar" style="background-color: #C4FFB1; color: #FF9900;">
 	
 	<c:choose>
 	<c:when test="${empty FunFunUser }">
-		<div class="navbar">
+	
+		<div class="navbar" style="background-color: white; ">
 			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header ">
+			<div class="navbar-header">
 				<a href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath() %>/img/funfun.PNG"
-					 style="width: 100px; height: 100px">
+					 style="width: 100px; height: 100px;">
 				</a>
+			
 			</div>
 
 
-			<div class="navbar-form myinline" align="">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
-				</div>
+			
+				<div class="form-inline " style="">
+					<input type="text" style="width: 150px;" class="form-control" placeholder="Search">
+				
 
 				<button type="submit" class="btn btn-info">
 					<span class="glyphicon glyphicon-search"></span> Search
 				</button>
-			</div>
+				</div>
 	
 			<ul class="nav navbar-nav navbar-right myinline">
 				<li><a class="a-button" href="<%=request.getContextPath() %>/agreement">회원가입</a></li>
 				<li><a class="a-button" href="<%=request.getContextPath() %>/Login">로그인</a></li>
 			</ul>
 		</div>
+		
 		</c:when>
 		<c:otherwise>
 		  <div class="navbar navbar-default ">
@@ -89,7 +92,7 @@ margin-bottom: 10px;
 			</div>
 
 
-			<div class="navbar-form " align="center">
+			<div class="navbar-form " >
 				<div class="form-group">
 					<input type="text" class="form-control" placeholder="Search">
 				</div>
@@ -99,7 +102,7 @@ margin-bottom: 10px;
 				</button>
 			</div>
 	
-			<div align="right" class="userlogin">
+			<div align="right" class="userlogin" >
 				<p id="login-after-msg"><span id="myNickName"> ${FunFunUser.nickname }</span>님 반갑습니다.</p>
 			    <a class="btn btn-success login-after-btn" href="../Logout">로그아웃</a>
 			    <a class="btn btn-info login-after-btn" href="../myinfo/info">회원정보</a>
@@ -126,7 +129,7 @@ margin-bottom: 10px;
 </div>
 </div>     
 </nav>
-
+<hr>
 
 
 

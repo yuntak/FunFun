@@ -31,7 +31,7 @@
 
 <body>
 <sform:form  method="post" onsubmit="return freeBoardWrite(this) " modelAttribute="Fboard" >
-   <div class="writebody">
+   
    <div class="panel panel-info">
    <div class="panel-heading">
    <p>글쓰기</p>
@@ -54,9 +54,12 @@
    <sform:hidden value="${FunFunUser.id }" path="userId"/>
    <sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
    <div class="panel-footer">
+  <div>
    <sform:button class="btn btn-info">확인</sform:button>
+   <a href="/main" class="btn btn-info" style="margin-bottom:5mm;">취소</a>
+ 
 <%--    <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
-   <a href="/main"><button class="btn btn-info">취소</button></a>
+  
    </div>
    
    </div>
@@ -73,6 +76,7 @@
 
 </script>
 </sform:form>
+	 
 </body>
 <script type="text/javascript">
 function freeBoardWrite(f){
