@@ -287,7 +287,7 @@ public class ServiceTest {
 		Board board = new Board();
 		board.setCode("33");
 		board.setUserId("loll333");
-		bservice.insertBoard(board);
+		bservice.insertBoard(board.getCode(),board.getUserId());
 		CBoard cboard = new CBoard();
 		cboard.setTitle("만화");
 		cboard.setContent("qewrwerqwer");
@@ -443,7 +443,7 @@ public class ServiceTest {
 		board.setCode("11");
 		board.setUserId("every9168");
 
-		bservice.insertBoard(board);
+		bservice.insertBoard(board.getCode(),board.getUserId());
 		Board retrieved = bdao.selectBoard(board.getNo());
 		assertThat(retrieved.getCode(), is("11"));
 	}
@@ -566,7 +566,7 @@ public class ServiceTest {
 		for(int i=0;i<3;i++){
 		board.setCode("11");
 		board.setUserId("whdgh1265");
-		bservice.insertBoard(board);
+		bservice.insertBoard(board.getCode(),board.getUserId());
 		
 		fboard = new FBoard();
 		fboard.setTitle("안녕?"+i);

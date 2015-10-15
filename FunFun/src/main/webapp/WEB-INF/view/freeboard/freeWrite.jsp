@@ -52,12 +52,13 @@
    <sform:textarea name="mycontent" id="content" rows="40" cols="100" placeholder="내용" path="fcontext" value=""></sform:textarea>
    </div>
    <br>
+   <sform:hidden value="11" path="boardCode"/>
    <sform:hidden value="${FunFunUser.id }" path="userId"/>
    <sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
    <div class="panel-footer">
   <div>
    <sform:button class="btn btn-info">확인</sform:button>
-   <a href="/main" class="btn btn-info" style="margin-bottom:5mm;">취소</a>
+   <a href="<%=request.getContextPath() %>/FreeBoard" class="btn btn-info" style="margin-bottom:5mm;">취소</a>
  
 <%--    <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
   
@@ -65,10 +66,13 @@
    
    </div>
 
+<<<<<<< HEAD
 
 	<br>
 	<br>
 	
+=======
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 	<script>CKEDITOR.replace('content',{
 	 width:'100%',
      height:'350px',
@@ -78,12 +82,16 @@
     
 } );
 	</script>
+<<<<<<< HEAD
 
 	<br>
 	<sform:hidden value="${FunFunUser.id }" path="userId"/>
 	<sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
 	<div class="panel-footer">
+=======
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 	
+<<<<<<< HEAD
 	</div>
 	
 	
@@ -99,12 +107,17 @@
 
 
 
+=======
+
+	
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 
 
 </sform:form>
 	 
 </body>
 <script type="text/javascript">
+<<<<<<< HEAD
 function freeBoardWrite(f){
 
    console.log("FreeBoard Write");
@@ -126,6 +139,9 @@ function freeBoardWrite(f){
    //f.action("");
    return false;
 
+=======
+function freeBoardWrite(f){
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 	console.log("FreeBoard Write");
 	var title=document.getElementById("title").value;
 	
@@ -146,8 +162,13 @@ function freeBoardWrite(f){
 	//f.action("");
 	f.action = 'FreeBoardWrite';
 	return true;
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 }
+</script>
+<script type="text/javascript">
 
 </script>
 </html>

@@ -26,7 +26,11 @@
 	
  textarea { resize: none; }
 </style>
-
+<script type="text/JavaScript">
+	window.onload = function(){
+		CKEDITOR.replace('fcontext');
+	};
+</script>
 </head>
 
 <body>
@@ -37,7 +41,6 @@
 	<p>글쓰기</p>
 	</div>
 	</div>
-	
 	<div class="panel-body">
 	<div class="form-group">
 		<sform:label for="title" class="col-sm-1" path="title" >제목</sform:label>
@@ -48,7 +51,7 @@
 	<br>
 	<br>
 	
-	<sform:textarea name="ckEditor" id="ckEditor" rows="40" cols="100" placeholder="내용" path="fcontext" value=""></sform:textarea>
+	<sform:textarea  rows="40" cols="100" placeholder="내용" path="fcontext" value=""/>
 	</div>
 	<br>
 	<sform:hidden value="${FunFunUser.id }" path="userId"/>
@@ -61,9 +64,7 @@
 	
 	</div>
 
-<script type="text/javascript">
-	CKEDITOR.replace('ckEditor');
-</script>
+
 </sform:form>
 </body>
 <script type="text/javascript">

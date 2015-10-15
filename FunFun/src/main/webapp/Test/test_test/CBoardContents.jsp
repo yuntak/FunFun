@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -126,6 +127,19 @@
 
 	<div style="width: 900px; height:200px; border: ; margin-left: 27%;">
 		<table class="table">
+		<%
+			   ArrayList<String> list = new ArrayList<String>();
+				/* list.add(0,"소제목");
+				list.add(1,"회차");
+				list.add(2,"날짜");
+				list.add(3,"조회");
+				list.add(4,"추천"); */
+				list.add(0,"power");
+				list.add(1,"over");
+				list.add(2,"whelming");
+               for (int i = 0; i < list.size(); i++) {
+                  
+            %>
 			<tr>
 				<th>소제목</th>
 				<th>회차</th>
@@ -134,15 +148,20 @@
 				<th>추천</th>
 			</tr>
 			<tr>
-				<td>뒤바뀐운명</td>
-				<td>1회</td>
-				<td>날짜</td>
-				<td>조회</td>
-				<td>추천</td>
+				<td>뒤바뀐운명,<%=list.get(0).toString()%></td>
+				<td>1회,<%=list.get(1).toString()%></td>
+				<td>날짜,<%=list.get(1).toString()%></td>
+				<td>조회,<%=list.get(1).toString()%></td>
+				<td>추천,<%=list.get(0).toString()%></td>
 			</tr>
+			<%
+               }
+			%>
 		</table>
 	</div>
-		
+		<div align="center">
+		<button type="button" class="btn-lg btn-default">목록</button>
+		</div>
 	</div>
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>

@@ -27,36 +27,38 @@
 	top: 180px;
 	left: 250px;
 }
-.panel-body{
+
+.panel-body {
 	margin-bottom: 23%;
 }
-<style>#name:link {
-   color: #A8A88E;
-   font-size: 10pt;
-   text-decoration: none;
+
+<
+style>#name:link {
+	color: #A8A88E;
+	font-size: 10pt;
+	text-decoration: none;
 }
 
 #name:visited {
-   color: #B4FF6A;
-   font-size: 10pt;
-   text-decoration: none;
+	color: #B4FF6A;
+	font-size: 10pt;
+	text-decoration: none;
 }
 
 #name:active {
-   color: #A8A88E;
-   font-size: 10pt;
-   text-decoration: none;
+	color: #A8A88E;
+	font-size: 10pt;
+	text-decoration: none;
 }
 
 #name:hover {
-   color: #A8A88E;
-   font-size: 10pt;
-   text-decoration: underline;
+	color: #A8A88E;
+	font-size: 10pt;
+	text-decoration: underline;
 }
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 
 
 	<div class="panel-body">
@@ -81,89 +83,104 @@
 
 
 				<table class="table table-bordered">
-			<%
-			   ArrayList<String> list = new ArrayList<String>();
-				list.add(0,"power");
-				list.add(1,"over");
-				list.add(2,"whelming");
-               for (int i = 0; i < list.size(); i++) {
-                  
-            %>
-            
+					<%
+						Object ClistObj = request.getAttribute("CBoardList");
+						List<CBoard> list = null;
+						if (ClistObj != null && ClistObj instanceof List) {
+							list = (List<CBoard>) ClistObj;
+						}
+					%>
+					<%
+						CBoard cdto = null;
+						for (int i = 0; i < list.size(); i++) {
+							cdto = (CBoard) list.get(i);
+					%>
+
 					<tbody>
 						<tr>
-							
-							<td align="center" style="overflow:hidden;" rowspan="3"><a href="<%=request.getContextPath()%>/FreeBoard/=<%=list.get(0).toString()%>'" >
-                  			<%=list.get(0).toString()%>"><img
-								 src="<%=request.getContextPath()%>/img/redBalloon.png"
-								class="img-thumbnail" alt="Cinque Terre" width="100"
-								height="150"></a></td>
-							
-								
-							<td>태그(카테고리) <%=list.get(0).toString()%></td>
-							
-							<td id="name" style="width: 450px; cursor: pointer;" 
-							onclick="location.href='<%=request.getContextPath()%>/ '" >
-							<strong>제목<%=list.get(0).toString()%> </strong></td>
-							
-							<td style="width: 100px">작성자 <%=list.get(1).toString()%></td>
+
+							<td align="center" style="overflow: hidden;" rowspan="3"><a
+								href="<%=request.getContextPath()%>/ContentBoard/view?ContentNo=<%=cdto.getCno()%>">
+									<img
+									src="<%=request.getContextPath()%><%=cdto.getImgData() %>"
+									class="img-thumbnail" alt="Cinque Terre" width="100"
+									height="150">
+							</a></td>
+
+
+							<td>태그(카테고리) <%=cdto.getCategory()%></td>
+
+							<td id="name" style="width: 450px; cursor: pointer;"
+								onclick="location.href='<%=request.getContextPath()%>/ '">
+								<strong>제목<%=cdto.getTitle()%>
+							</strong>
+							</td>
+
+							<td style="width: 100px">작성자 <%=cdto.getUserId()%></td>
 							<td><button style="width: 80px" type="button"
-									class="btn btn-xs">즐겨찾기 <%=list.get(2).toString()%></button></td>
+									class="btn btn-xs">
+									즐겨찾기
+									</button></td>
 						</tr>
 
 
 						<tr>
-							<td colspan="2" rowspan="2">작품소개 <%=list.get(0).toString()%></td>
+							<td colspan="2" rowspan="2">작품소개 <%=cdto.getContent()%></td>
 							<td>
-							
-							<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" align="right">
-							
-								<div class="btn-group">
-								<div class="row">
-								
-									<button type="button" class="btn btn-xs">회차</button>
-									<button type="button" class="btn btn-xs dropdown-toggle"
-										data-toggle="dropdown">
-										<span class="caret"></span>
-									</button>
-									
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">1회</a></li>
-										<li><a href="#">2회</a></li>
-										<li><a href="#">3회</a></li>
-										<li><a href="#">4회</a></li>
-										<li><a href="#">5회</a></li>
-										<li><a href="#">6회</a></li>
-										<li><a href="#">7회</a></li>
-										<li><a href="#">8회</a></li>
-										<li><a href="#">9회</a></li>
-										<li><a href="#">10회</a></li>
-									</ul>
-								</div>
-								</div>
+
+								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10"
+									align="right">
+
+									<div class="btn-group">
+										<div class="row">
+
+											<button type="button" class="btn btn-xs">회차</button>
+											<button type="button" class="btn btn-xs dropdown-toggle"
+												data-toggle="dropdown">
+												<span class="caret"></span>
+											</button>
+
+											<ul class="dropdown-menu" role="menu">
+												<li><a href="#">1회</a></li>
+												<li><a href="#">2회</a></li>
+												<li><a href="#">3회</a></li>
+												<li><a href="#">4회</a></li>
+												<li><a href="#">5회</a></li>
+												<li><a href="#">6회</a></li>
+												<li><a href="#">7회</a></li>
+												<li><a href="#">8회</a></li>
+												<li><a href="#">9회</a></li>
+												<li><a href="#">10회</a></li>
+											</ul>
+										</div>
+									</div>
 								</div>
 							</td>
 							<td><button style="width: 80px" type="button"
-									class="btn btn-xs">보기 <%=list.get(0).toString()%></button></td>
+									class="btn btn-xs">
+									보기
+									<%=list.get(0).toString()%></button></td>
 						</tr>
 
 						<tr>
-							<td>조회 <%=list.get(0).toString()%></td>
-							<td>추천 <%=list.get(0).toString()%></td>
+							<td>조회 <%=cdto.getCview()%></td>
+							<td>추천 <%=cdto.getGood()%></td>
 						</tr>
-		<%
-               }
-		%>
+						<%
+							}
+						%>
 					</tbody>
 				</table>
-				
+
 			</div>
 		</div>
+		
+		
+		
 	</div>
 
 
 
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 
 </body>
 </html>
