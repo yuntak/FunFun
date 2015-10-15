@@ -140,7 +140,9 @@ public class FBoardServiceImpl implements FBoardService {
 	public FBoard selectFullFBoard(int no) {
 		FBoard selectresult=null;
 		List<Reply> replyList=null;
+		int updateresult = 0;
 		try{
+		updateresult = fdao.updateFBoardVeiw(no);
 		selectresult = fdao.selectFullFBoard(no);
 		replyList = rdao.selectBoardReply(selectresult.getBoardNo(), selectresult.getBoardCode());
 		selectresult.setReplys(replyList);

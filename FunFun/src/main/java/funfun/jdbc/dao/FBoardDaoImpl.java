@@ -221,6 +221,15 @@ public class FBoardDaoImpl implements FBoardDao {
 		return result;
 	}
 
+	@Override
+	public int updateFBoardVeiw(int no) {
+		String sql2 = "select fview from free_board where fno=?";
+		int selectresult = jt.queryForObject(sql2, Integer.class,no);
+		String sql = "update free_board set fview=? where fno=?";
+		int updateresult = jt.update(sql,selectresult+1,no);
+		return updateresult;
+	}
+
 	
 	
 }

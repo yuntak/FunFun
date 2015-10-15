@@ -51,4 +51,6 @@ public interface FBoardDao {
 	
 	public String selectNickname(int no);
 	
+	public int updateFBoardVeiw(int no);
+	
 }
