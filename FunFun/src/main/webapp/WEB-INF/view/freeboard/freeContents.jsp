@@ -8,7 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="funfun.jdbc.dto.FBoard"%>
 <%@page import="funfun.jdbc.dto.Board"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -91,25 +91,18 @@ textarea {
 		 <div class="">
          <div class="panel-body">
 
-            <table class="table">
-             
+            <table id="comment" class="table">
                   <c:forEach  items="${FBoard.replys }" var="reply">
                     <thead>
-                  
                   <tr>
-                     <th class="ttr"><strong>${reply.userId }</strong></th>
-
+                     <th class="ttr"><strong>${reply.nickname }</strong></th>
                   </tr>
                </thead>
                <tbody>
-
                   <tr>
                      <td>${reply.context }</td>
-
                   </tr>
-                  
                   </c:forEach>
-
                </tbody>
             </table>
 			</div>
@@ -125,11 +118,11 @@ textarea {
                <label for="user">${FunFunUser.nickname }</label>
             </div>
             <div class="col-lg-7 col-sm-7 col-xs-7 col-md-7">
-               <textarea rows="4" cols="80" id="user">내용</textarea>
+               <textarea id="FBreplyContent" rows="4" cols="80" id="user" placeholder="내용" ></textarea>
             </div>
             <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" align="right">
-               <a href="#"><img src="<%=request.getContextPath()%>/img/ok.PNG"
-                  style="width: 90px; height: 90px"> </a>
+               <button id="FBreplyInsert"><img src="<%=request.getContextPath()%>/img/ok.PNG"
+                  style="width: 90px; height: 90px"></button>
             </div>
             </c:if>
 
@@ -137,8 +130,74 @@ textarea {
       </div>
 
    </div>
-
+<p id="hello">댓글</p>
 
 
 </body>
+<script type="text/javascript">
+$(function(){
+	console.log("Jquery Start!");
+	$("#FBreplyInsert").on("click",function(){
+		var replyContent=document.getElementById("FBreplyContent").value;
+		console.log(replyContent);
+		var user_id ="${FunFunUser.id}";
+		var nickname="${FunFunUser.nickname}";
+		var Board_code="${FBoard.boardCode}";
+		var Board_no="${FBoard.boardNo}";
+		var url="<%=request.getContextPath() %>/FreeBoard/ReplyWrite";
+		var reply={ id:user_id,
+					nickname:nickname,
+					code:Board_code,
+					no:Board_no,
+					content:replyContent};//
+		if(replyContent==""){
+			alert("댓글 내용을 입력하세요.");
+			return false;
+		}
+		$.ajax({
+			type:"post",
+			url:url,
+			dataType:"json",
+			data:{id:user_id,
+				nickname:nickname,
+				code:Board_code,
+				no:Board_no,
+				content:replyContent},
+			success:function(response){
+				console.log(response);
+				/* for(var i=0;i<response.size;i++){
+					
+				} */
+				Comment(response);
+			},
+			error:function(request,status,error){
+				console.log("ajax fail");
+				 alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+			}
+		});
+	});
+});
+</script>
+<script type="text/javascript">
+function Comment(list){
+	console.log("Comment Function");
+	var commentTable= document.getElementById("comment");
+	var comments="";
+	console.log(list.length);
+	for(var i=0;i<list.length;i++){
+		comments+="<tr><th class='ttr'><strong>"
+		+list[i].nickname+"</strong></th></tr><tr><td>"
+		+list[i].context+"</td></tr>";
+       //list[i].nickanme
+		//list[i].context
+		console.log(list[i]);
+		
+		
+	} /* $.each(list, function(index, obj){
+		console.log(obj);
+	}) */
+	
+	$("#comment").html(comments);
+}
+</script>
 </html>

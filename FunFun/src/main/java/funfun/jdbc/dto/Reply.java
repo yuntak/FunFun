@@ -12,6 +12,19 @@ public class Reply {
 	private String userId;
 	private String nickname;
 	
+	public Reply() {
+		super();
+	}
+	public Reply(int rno, String context, Date rdate, int boardNo, String boardCode, String userId, String nickname) {
+		super();
+		this.rno = rno;
+		this.context = context;
+		this.rdate = rdate;
+		this.boardNo = boardNo;
+		this.boardCode = boardCode;
+		this.userId = userId;
+		this.nickname = nickname;
+	}
 	public int getRno() {
 		return rno;
 	}

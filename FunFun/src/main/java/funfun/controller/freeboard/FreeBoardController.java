@@ -1,6 +1,7 @@
 package funfun.controller.freeboard;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,10 +13,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
+import ch.qos.logback.classic.spi.LoggerRemoteView;
 import funfun.jdbc.dto.FBoard;
+import funfun.jdbc.dto.Reply;
 import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.FBoardService;
+import funfun.jdbc.service.ReplyService;
 import funfun.jdbc.service.UsersService;
 
 @Controller
@@ -27,6 +34,8 @@ public class FreeBoardController {
 	FBoardService FreeBoardSvc;
 	@Autowired
 	UsersService UsersSvc;
+	@Autowired
+	ReplyService ReplySvc;
 	
 	@RequestMapping(value="/FreeBoard")
 	public String freeBoardMain(Model model){
@@ -92,9 +101,28 @@ public class FreeBoardController {
 		return "main/Template";
 	}
 	
-	@RequestMapping(value="FreeBoard/ReplyWrite")
-	public String freeBoardReplyWrite(){
-		return null;
+	@RequestMapping(value="FreeBoard/ReplyWrite",method=RequestMethod.POST,produces = "text/plain;charset=UTF-8")
+	public @ResponseBody String freeBoardReplyWrite(@RequestParam Map<String, String> reply){
+		logger.trace("FreeBoard Reply Insert >> Reply: {}",reply);
+		logger.trace(reply.get("no"));
+		int boardNo=Integer.parseInt(reply.get("no"));
+		logger.trace(""+boardNo);
+		Reply ReplyByFreeBoard = new Reply(0, // replyNo
+								reply.get("content"), // content
+								null, // date
+								Integer.parseInt(reply.get("no")),// boardNo
+								reply.get("code"),// boardCode
+								reply.get("id"),// User Id
+								reply.get("nickname"));// User NickName
+		ReplySvc.insertReply(ReplyByFreeBoard);
+		List<Reply> Rlist=null;
+		Rlist=ReplySvc.selectBoardReply(Integer.parseInt(reply.get("no")), reply.get("code"));
+		logger.trace(Rlist.toString());
+		logger.trace("Ajax ReplyWrite Select Reply List :{}",Rlist);
+		String ResponseReplyList;
+		Gson gson = new Gson();
+		ResponseReplyList = gson.toJson(Rlist);
+		return ResponseReplyList;
 	}
 	
 	
