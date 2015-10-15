@@ -38,8 +38,6 @@ public class test_controller {
 		return "freeboard/freeContents";
 	}
 
-
-	
 	@RequestMapping("/freeboard/list")
 	public String freeboardlist(@RequestParam int page_no, @RequestParam String code,Model model){
 		List<FBoard> FboardList=Fservice.selectFBoardByPage(code, page_no);
@@ -49,6 +47,18 @@ public class test_controller {
 		return "freeboard/freeboard";
 	}
 	 
+	@RequestMapping(value="/upload", method=RequestMethod.POST)
+	public String upload(@RequestParam MultipartFile uploadFile,
+						 @RequestParam String comment) throws IOException{
+		File file = new File("c:/Temp/upload/"+uploadFile.getOriginalFilename());
+		
+		Model model = null;
+		model.addAttribute("uploaded",uploadFile.getOriginalFilename());
+		uploadFile.transferTo(file);
+		
+		return "upload/uploadResult";
+	
+	}
 	
 	
 }

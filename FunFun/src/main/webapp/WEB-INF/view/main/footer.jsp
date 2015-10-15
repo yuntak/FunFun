@@ -37,8 +37,8 @@ a{
 
 <nav class="navbar navbar-inverse  navbar-fixed">
 
- <div class="container-fluid">
-  <div class="form-foot" align="center">     
+ <div class="container-fluid" >
+  <div class="form-foot" align="center" >     
   	
     <a class="myinline" style="color:white">회사이름:가나다라 마바사아 자차카타 파하</a>
     <a class="myinline" style="color:white">주소:abcdefg hijk</a>
