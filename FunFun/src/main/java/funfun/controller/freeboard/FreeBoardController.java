@@ -71,6 +71,15 @@ public class FreeBoardController {
 		return "main/Template";
 		
 	}
+	@RequestMapping(value="/FreeBoard/FreeBoardWrite",method=RequestMethod.POST)
+	public String freeBoardWriteDataInsert(FBoard Fboard){
+		logger.trace("FreeBoard insert try");
+		logger.trace("Insert FreeBoard :{}",Fboard);
+		FreeBoardSvc.insertFBoard(Fboard);
+		return "redirect:";
+		
+	}
+	
 	@RequestMapping(value="FreeBoard/View")
 	public String freeBoardView(@RequestParam int BoardNo,Model model){
 		FBoard FBoardcontent = FreeBoardSvc.selectFullFBoard(BoardNo);
