@@ -22,7 +22,7 @@ public class ContentBoardController {
 		model.addAttribute("CBoardList",CBoardList);
 		int allPage = ContentBoardSvc.selectCountAllPage();
 		model.addAttribute("allPage",allPage);
-		String viewlocation = "/WEB-INF/view/contentboard/contentBoard.jsp";
+		String viewlocation = "/WEB-INF/view/contentboard/CBoardList.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
