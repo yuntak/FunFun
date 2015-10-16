@@ -65,83 +65,24 @@
    </div>
    
    </div>
-
-<<<<<<< HEAD
-
-	<br>
-	<br>
-	
-=======
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 	<script>CKEDITOR.replace('content',{
 	 width:'100%',
      height:'350px',
      'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
      +'realUrl=http://localhost/main'
      +'&realDir=/main'
-    
 } );
 	</script>
-<<<<<<< HEAD
-
 	<br>
-	<sform:hidden value="${FunFunUser.id }" path="userId"/>
-	<sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
+
 	<div class="panel-footer">
-=======
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
-	
-<<<<<<< HEAD
 	</div>
-	
-	
-
-<script>CKEDITOR.replace('content',{
-    width:'100%',
-     height:'350px',
-     'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
-     +'realUrl=http://localhost:9090/FunFun/FreeBoard/Write'
-     +'&realDir=C:\\Temp\\upload\\'
-    
-} );
-
-
-
-=======
-
-	
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
-
-
 </sform:form>
 	 
 </body>
 <script type="text/javascript">
-<<<<<<< HEAD
 function freeBoardWrite(f){
 
-   console.log("FreeBoard Write");
-   var title=document.getElementById("title").value;
-   var content=document.getElementById("content").value;
-   console.log(title);
-   console.log(content);
-   if(title==""){
-      alert("제목을 입력하세요.");
-      
-      return false;
-   }
-   if(content==""){
-      alert("내용을 입력하세요.");
-      
-      return false;
-   }
-   
-   //f.action("");
-   return false;
-
-=======
-function freeBoardWrite(f){
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 	console.log("FreeBoard Write");
 	var title=document.getElementById("title").value;
 	
@@ -162,10 +103,6 @@ function freeBoardWrite(f){
 	//f.action("");
 	f.action = 'FreeBoardWrite';
 	return true;
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 }
 </script>
 <script type="text/javascript">
