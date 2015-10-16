@@ -179,6 +179,7 @@
                }
 			%>
 		</table>
+		<br>
 		<div align="center">
 		<a href="<%=request.getContextPath()%>/ContentBoard"><button type="button" class="btn-lg btn-default">목록</button></a>
 		</div>

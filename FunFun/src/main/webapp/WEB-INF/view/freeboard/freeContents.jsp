@@ -45,7 +45,7 @@
    font-size: 27px;
 } */
 .panel-body{
-	margin-bottom: 15%;
+	margin-bottom: 10%;
 	
 }
 </style>
@@ -58,7 +58,7 @@
 
 
       <div id="toppanel"
-         style="width: 1000px; height:40px;;  background-color: #EFEFE7" >
+         style="width: 900px; height:40px;;  background-color: #EFEFE7" >
          <ul class="nav nav-justified">
             <li>
                <div align="left"  style="width: 200px">${FBoard.nickName }</div>
@@ -73,57 +73,57 @@
       </div>
 
 
-      <div style="width: 1000px;">
+      <div style="width: 900px;">
          <div class="panel-body" align="center" style="color: #8A0000; font-size: 40px;">${FBoard.title }</div>
       </div>
 
 
-      <div align="left" class="panel-body" style="width: 1000px; overflow: auto;">
+      <div align="left" class="panel-body" style="width: 900px; overflow: auto;">
          ${FBoard.fcontext }
         
       </div>
 		
-      <div class=" panel-default" style=" width: 1000px; overflow: auto;">
-         <div class="panel-heading">코멘트</div>
+      <div class=" panel-default" style=" width: 900px; overflow: auto;">
+         <div class="panel-heading"><strong>코멘트</strong></div>
 
-         
-
+			<div>
             <table class="table">
              
                   <c:forEach  items="${FBoard.replys }" var="reply">
-                    <thead>
+                <thead>
                   
-                  <tr>
-                     <th class="ttr"><strong>${reply.userId }</strong></th>
+                  <tr class="success" style="color: blue;">
+                     <th><strong>${reply.userId }</strong></th>
 
                   </tr>
                </thead>
+               
                <tbody>
 
-                  <tr>
+                  <tr class="success" style="height: 50px;">
                      <td>${reply.context }</td>
 
                   </tr>
                   
                   </c:forEach>
-
+				 
                </tbody>
             </table>
+            </div>
 		
 
         
       </div>
-<hr>
 
-      <div class=" " style="width: 1000px; height: 100px; background-color:#EFEFE7">
-      	 <div class="panel-default"></div>
+      <div class=" " style="width: 900px; height: 100px; background-color:#EFEFE7">
+      	 
          <div class="row">
          <c:if test="${FunFunUser!=null }">
-            <div class="col-lg-1 col-sm-1 col-xs-1 col-md-1" style="margin-top: 5mm;">
+            <div class="col-lg-2 col-sm-2 col-xs-2 col-md-2" style="margin-top: 9mm;">
                <label for="user">${FunFunUser.nickname }</label>
             </div>
             <div class="col-lg-7 col-sm-7 col-xs-7 col-md-7">
-               <textarea rows="4" cols="80" id="user" style="margin-top:2mm; resize: none; height: 86px;">내용</textarea>
+               <textarea rows="4" cols="85" id="user" style="margin-top:2mm; resize: none; height: 86px;">내용</textarea>
             </div>
             <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3"  align="right">
                <a href="#"><img  src="<%=request.getContextPath()%>/img/ok.PNG"

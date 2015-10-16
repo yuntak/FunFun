@@ -81,7 +81,7 @@ style>#name:link {
       <br> <br>
       
       <form action="">
-      <div class="form-inline" style="margin-left: 60%;">
+      <div class="form-inline" style="margin-left: 57%;">
       <select class="form-control" name="name"><option value="nickname">닉네임</option>
 
               <option value="title">제목</option>
@@ -90,11 +90,7 @@ style>#name:link {
             
          <input type="text" name="keyword" class="form-control" placeholder="검색">
          <input type="hidden" name="page" value="1">
-         <input type="submit" value="검색" class="btn btn-success">
-   
-     	  
-         
-     	
+         <input type="submit" value="검색" class="btn btn-success">	
 
       </div>
       </form>
