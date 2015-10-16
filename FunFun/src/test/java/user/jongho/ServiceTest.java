@@ -172,7 +172,7 @@ public class ServiceTest {
 	
 	@Test
 	public void TestCBoardByPage(){
-		cservice.selectCBoardByPage("66", 1);
+		cservice.selectCBoardByPage("22", 1);
 	}
 	
 	@Test

@@ -59,13 +59,10 @@ textarea {
 
 
 
-<<<<<<< HEAD
       <div id="toppanel"
          style="width: 900px; height:40px;;  background-color: #EFEFE7" >
-=======
       <div id="toppanel" class="panel panel-default" 
          style="width: 900px; background-color: #F3F3ED" >
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
          <ul class="nav nav-justified">
             <li>
                <div align="left" class="panel-body" style="width: 200px">${FBoard.nickName }</div>
@@ -80,11 +77,8 @@ textarea {
       </div>
 
 
-<<<<<<< HEAD
       <div style="width: 900px;">
-=======
       <div class="panel panel-default" style="width: 900px;">
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
          <div class="panel-body" align="center" style="color: #8A0000; font-size: 40px;">${FBoard.title }</div>
       </div>
 
@@ -94,87 +88,59 @@ textarea {
         
       </div>
 		
-<<<<<<< HEAD
       <div class=" panel-default" style=" width: 900px; overflow: auto;">
          <div class="panel-heading"><strong>코멘트</strong></div>
-=======
       <div class="panel panel-default" style="width: 900px;">
-         <div class="panel-heading">코멘트</div>
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
+         <!-- <div class="panel-heading">코멘트</div> -->
 
-<<<<<<< HEAD
 			<div>
             <table class="table">
              
-=======
 		 <div class="">
          <div class="panel-body">
 
             <table id="comment" class="table">
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
                   <c:forEach  items="${FBoard.replys }" var="reply">
-<<<<<<< HEAD
                 <thead>
                   
                   <tr class="success" style="color: blue;">
                      <th><strong>${reply.userId }</strong></th>
 
-=======
                     <thead>
                   <tr>
                      <th class="ttr"><strong>${reply.nickname }</strong></th>
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
                   </tr>
                </thead>
                
                <tbody>
-<<<<<<< HEAD
 
                   <tr class="success" style="height: 50px;">
-=======
                   <tr>
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
                      <td>${reply.context }</td>
                   </tr>
                   </c:forEach>
-<<<<<<< HEAD
-				 
-=======
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
                </tbody>
             </table>
-<<<<<<< HEAD
             </div>
 		
-=======
 			</div>
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 
          </div>
       </div>
 
-<<<<<<< HEAD
       <div class=" " style="width: 900px; height: 100px; background-color:#EFEFE7">
       	 
-=======
 
       <div class="panel panel-danger" style="width: 900px;">
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
          <div class="row">
          <c:if test="${FunFunUser!=null }">
-<<<<<<< HEAD
-            <div class="col-lg-2 col-sm-2 col-xs-2 col-md-2" style="margin-top: 9mm;">
-=======
+            <!-- <div class="col-lg-2 col-sm-2 col-xs-2 col-md-2" style="margin-top: 9mm;"> -->
             <div class="col-lg-1 col-sm-1 col-xs-1 col-md-1" align="center">
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
                <label for="user">${FunFunUser.nickname }</label>
             </div>
             <div class="col-lg-7 col-sm-7 col-xs-7 col-md-7">
-<<<<<<< HEAD
-               <textarea rows="4" cols="85" id="user" style="margin-top:2mm; resize: none; height: 86px;">내용</textarea>
-=======
+               <!-- <textarea rows="4" cols="85" id="user" style="margin-top:2mm; resize: none; height: 86px;">내용</textarea> -->
                <textarea id="FBreplyContent" rows="4" cols="80" id="user" placeholder="내용" ></textarea>
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
             </div>
             <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" align="right">
                <button id="FBreplyInsert"><img src="<%=request.getContextPath()%>/img/ok.PNG"

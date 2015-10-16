@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 public class CBoard {
-	final public static String CONTENTBOARD_CODE="11";
+	final public static String CONTENTBOARD_CODE="22";
 	
 	private int cno;
 	private String title;
