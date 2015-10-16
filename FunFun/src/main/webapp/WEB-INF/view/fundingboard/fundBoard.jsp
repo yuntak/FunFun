@@ -21,11 +21,6 @@
 	margin-left: auto;
 }
 
-.btn {
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .container {
 	margin-right: auto;
 	margin-left: auto;
@@ -63,8 +58,8 @@
 									long date1;
 									long date3;
 									Date date2 = new Date();
-									date1 = fdto.getEndDate().getTime()-date2.getTime();
-									date3 = date1/(24*60*60*1000);
+									date1 = fdto.getEndDate().getTime() - date2.getTime();
+									date3 = date1 / (24 * 60 * 60 * 1000);
 								%>
 								<td><%=fdto.getContext()%></td>
 							</tr>
@@ -108,7 +103,7 @@
 
 										<td class="col-lg-5">
 											<h4 align="right">
-													목표금액 : <strong><%=(int) fdto.getGoal()%></strong>원
+												목표금액 : <strong><%=(int) fdto.getGoal()%></strong>원
 											</h4>
 										</td>
 									</tr>
@@ -119,31 +114,75 @@
 
 							</td>
 						</tr>
-						<tr>
+						<!-- <tr>
 							<td><select class="form-control" id="sel">
 									<option>금액선택</option>
 									<option>30,000원--치킨</option>
 									<option>20,000원--짜장면</option>
 									<option>10,000원--라면</option>
 							</select></td>
-						</tr>
-						<tr align="right">
-							<td>
+						</tr> -->
+						<tr>
+							<td align="right">
 
-								<button type="submit" class="btn btn-info"
-									style="font-size: 30px;">
-									프로젝트 후원하기 <span class="glyphicon glyphicon-heart-empty"
-										style="font-size: 25px;"></span>
+								<button type="button" class="btn btn-info btn-lg"
+									data-toggle="modal" data-target="#myModal" style="width: 300px">
+									프로젝트 후원<span class="glyphicon glyphicon-heart-empty"
+										style="font-size: 30px;"></span>
 								</button>
+
+
+								<div class="modal fade" id="myModal" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h2 class="modal-title" align="center">후원하기</h2>
+											</div>
+											<div class="modal-body" align="center">
+												<table>
+													<tr>
+														<td style="width: 200px" align="center">
+
+
+															<h4>금액별 상품</h4>
+															<li><h5>50,000원 = 피자 5판</h5></li>
+															<li><h5>30,000원 = 피자 3판</h5></li>
+															<li><h5>10,000원 = 피자 1판</h5></li>
+														</td>
+													</tr>
+													<tr>
+														<td style="width: 450px">
+															<form class="form-inline" role="form">
+																<div class="form-group">
+																	<label for="focusedInput" style="font-size: 20px;">후원금액:
+																	</label> <input class="form-control" type="text"
+																		style="width: 300px">
+																</div>
+															</form>
+
+														</td>
+
+													</tr>
+												</table>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">확인</button>
+												<button type="button" class="btn btn-default"
+													data-dismiss="modal">취소</button>
+											</div>
+										</div>
+									</div>
+
+								</div>
 
 							</td>
 						</tr>
 
 					</table>
-
-
-
-
 
 				</div>
 			</div>
