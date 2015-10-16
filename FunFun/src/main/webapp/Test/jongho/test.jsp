@@ -27,8 +27,9 @@ margin-left: 15px;
 margin-bottom: 10px;
 }
 .container {
-	width: 1300px;
-	max-width: none !important;
+	margin:0 0 10px 0;
+	padding:10px;
+	width:1300px;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
