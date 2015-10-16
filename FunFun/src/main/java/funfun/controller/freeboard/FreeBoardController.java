@@ -85,10 +85,11 @@ public class FreeBoardController {
 		
 	}
 	@RequestMapping(value="/FreeBoard/FreeBoardWrite",method=RequestMethod.POST)
-	public String freeBoardWriteDataInsert(FBoard Fboard){
+	public String freeBoardWriteDataInsert(Model model,FBoard Fboard){
 		logger.trace("FreeBoard insert try");
 		logger.trace("Insert FreeBoard :{}",Fboard);
 		FreeBoardSvc.insertFBoard(Fboard);
+		model.addAttribute("Fboard",Fboard);
 		return "redirect:";
 		
 	}

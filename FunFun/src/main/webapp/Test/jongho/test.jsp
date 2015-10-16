@@ -15,7 +15,7 @@ display: inline;
 #myNickName{
 color: #0066FF;
 font-weight: bold;
-
+font-size: 15 px;
 }
 .login-after-btn{
 margin-left: 10px;
@@ -27,8 +27,9 @@ margin-left: 15px;
 margin-bottom: 10px;
 }
 .container {
-	width: 1300px;
-	max-width: none !important;
+	margin:0 0 10px 0;
+	padding:10px;
+	width:1300px;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -108,7 +109,7 @@ margin-bottom: 10px;
 			</div>
 	
 			<div align="right" class="userlogin" >
-				<div id="login-after-msg"><span id="myNickName"> ${FunFunUser.nickname }</span>님 반갑습니다.</div>
+				<p id="login-after-msg"><span id="myNickName"> ${FunFunUser.nickname }</span>님 반갑습니다.</p>
 			    <a class="btn btn-success login-after-btn" href="../Logout">로그아웃</a>
 			    <a class="btn btn-info login-after-btn" href="../myinfo/info">회원정보</a>
 			</div>	

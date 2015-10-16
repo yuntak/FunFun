@@ -92,9 +92,9 @@ style>#name:link {
          <input type="hidden" name="page" value="1">
          <input type="submit" value="검색" class="btn btn-success">
    
-     	  
+          
          
-     	
+        
 
       </div>
       </form>

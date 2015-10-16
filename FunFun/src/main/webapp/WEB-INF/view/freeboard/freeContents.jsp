@@ -45,7 +45,7 @@
    font-size: 27px;
 } */
 .panel-body{
-	margin-bottom: 15%;
+	margin-bottom: 10%;
 	
 }
 textarea {
@@ -59,6 +59,8 @@ textarea {
 
 
 
+      <div id="toppanel"
+         style="width: 900px; height:40px;;  background-color: #EFEFE7" >
       <div id="toppanel" class="panel panel-default" 
          style="width: 900px; background-color: #F3F3ED" >
          <ul class="nav nav-justified">
@@ -75,6 +77,7 @@ textarea {
       </div>
 
 
+      <div style="width: 900px;">
       <div class="panel panel-default" style="width: 900px;">
          <div class="panel-body" align="center" style="color: #8A0000; font-size: 40px;">${FBoard.title }</div>
       </div>
@@ -85,39 +88,58 @@ textarea {
         
       </div>
 		
+      <div class=" panel-default" style=" width: 900px; overflow: auto;">
+         <div class="panel-heading"><strong>코멘트</strong></div>
       <div class="panel panel-default" style="width: 900px;">
-         <div class="panel-heading">코멘트</div>
+         <!-- <div class="panel-heading">코멘트</div> -->
 
+			<div>
+            <table class="table">
+             
 		 <div class="">
          <div class="panel-body">
 
             <table id="comment" class="table">
                   <c:forEach  items="${FBoard.replys }" var="reply">
+                <thead>
+                  
+                  <tr class="success" style="color: blue;">
+                     <th><strong>${reply.userId }</strong></th>
+
                     <thead>
                   <tr>
                      <th class="ttr"><strong>${reply.nickname }</strong></th>
                   </tr>
                </thead>
+               
                <tbody>
+
+                  <tr class="success" style="height: 50px;">
                   <tr>
                      <td>${reply.context }</td>
                   </tr>
                   </c:forEach>
                </tbody>
             </table>
+            </div>
+		
 			</div>
 
          </div>
       </div>
 
+      <div class=" " style="width: 900px; height: 100px; background-color:#EFEFE7">
+      	 
 
       <div class="panel panel-danger" style="width: 900px;">
          <div class="row">
          <c:if test="${FunFunUser!=null }">
+            <!-- <div class="col-lg-2 col-sm-2 col-xs-2 col-md-2" style="margin-top: 9mm;"> -->
             <div class="col-lg-1 col-sm-1 col-xs-1 col-md-1" align="center">
                <label for="user">${FunFunUser.nickname }</label>
             </div>
             <div class="col-lg-7 col-sm-7 col-xs-7 col-md-7">
+               <!-- <textarea rows="4" cols="85" id="user" style="margin-top:2mm; resize: none; height: 86px;">내용</textarea> -->
                <textarea id="FBreplyContent" rows="4" cols="80" id="user" placeholder="내용" ></textarea>
             </div>
             <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" align="right">

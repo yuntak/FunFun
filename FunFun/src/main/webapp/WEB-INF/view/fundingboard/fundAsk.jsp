@@ -76,11 +76,12 @@
 	<br>
 
 	<div class="panel-footer">
-		<table>
+		<table style="resize: none;">
 			<tr>
+			<td style="width: 1300px;"></td>
 				<td>
-					<button class="btn btn-success">가 입</button> <a href=""><button
-							class="btn btn-danger">취소</button></a>
+					<button class="btn btn-success"align="center"><a href=""></a>가 입</button> 
+					<button	class="btn btn-danger"align="center"><a href=""></a>취소</button>
 				</td>
 			</tr>
 		</table>
