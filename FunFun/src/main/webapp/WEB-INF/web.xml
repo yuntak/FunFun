@@ -92,6 +92,8 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
                    /ckfinder/core/connector/java/connector.java
           </url-pattern>
 	</filter-mapping>
+
+	
 	<!-- CKFINDER end -->
 
 </web-app>

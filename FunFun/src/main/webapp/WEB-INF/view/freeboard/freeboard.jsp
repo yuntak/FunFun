@@ -69,24 +69,20 @@ style>#name:link {
 .table {
 	text-align: center;
 }
-
-.container {
-	width: 1300px;
-	max-width: none !important;
-}
 </style>
 </head>
 
 <body>
-	<div class="container">
+
+	<nav>
+
 		<div class="container">
 
 			<br>
 			<p align="center">자유게시판</p>
 			<br> <br>
-
 			<form action="">
-				<div class="form-inline" align="right">
+				<div class="form-inline" style="margin-left: 57%;">
 					<select class="form-control" name="name"><option
 							value="nickname">닉네임</option>
 
@@ -96,57 +92,57 @@ style>#name:link {
 						type="hidden" name="page" value="1"> <input type="submit"
 						value="검색" class="btn btn-success">
 
-
-
-
-
 				</div>
 			</form>
+
 			<br>
 		</div>
 
-		<table class="table">
-			<thead>
-				<tr class="success">
-					<th class="ttr">번호</th>
-					<th class="title">제목</th>
-					<th class="ttr">작성자</th>
-					<th class="ttr">날짜</th>
-					<th class="ttr">조회</th>
-				</tr>
-			</thead>
-			<tbody>
-				<%
-					@SuppressWarnings("unchecked")
-					List<FBoard> list = (List<FBoard>) request.getAttribute("FBoardList");
-				%>
+		<div style="width: 1000px; margin-left: 24%;">
+			<table class="table">
+				<thead>
+					<tr class="success">
+						<th class="ttr">번호</th>
+						<th class="title">제목</th>
+						<th class="ttr">작성자</th>
+						<th class="ttr">날짜</th>
+						<th class="ttr">조회</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+						@SuppressWarnings("unchecked")
+						List<FBoard> list = (List<FBoard>) request.getAttribute("FBoardList");
+					%>
 
-				<%
-					FBoard fdto = null;
-					for (int i = 0; i < list.size(); i++) {
-						fdto = (FBoard) list.get(i);
-				%>
-				<tr>
-					<td><%=fdto.getFno()%></td>
+					<%
+						FBoard fdto = null;
+						for (int i = 0; i < list.size(); i++) {
+							fdto = (FBoard) list.get(i);
+					%>
+					<tr>
+						<td><%=fdto.getFno()%></td>
 
-					<td id="name" style="cursor: pointer"
-						onclick="location.href='<%=request.getContextPath()%>/FreeBoard/View?BoardNo=<%=fdto.getFno()%>'">
-						<%=fdto.getTitle()%>
-					</td>
+						<td id="name" style="cursor: pointer"
+							onclick="location.href='<%=request.getContextPath()%>/FreeBoard/View?BoardNo=<%=fdto.getFno()%>'">
+							<%=fdto.getTitle()%>
+						</td>
 
-					<td><%=fdto.getUserId()%></td>
+						<td><%=fdto.getUserId()%></td>
 
-					<td><%=fdto.getFdate()%></td>
+						<td><%=fdto.getFdate()%></td>
 
-					<td><%=fdto.getFview()%></td>
-				</tr>
+						<td><%=fdto.getFview()%></td>
+					</tr>
 
-				<%
-					}
-				%>
+					<%
+						}
+					%>
 
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</div>
+
 		<hr>
 		<div align="center">
 			<table>
@@ -250,8 +246,8 @@ style>#name:link {
 
 			</table>
 		</div>
+	</nav>
 
 
-	</div>
 </body>
 </html>
