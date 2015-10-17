@@ -36,6 +36,7 @@ public class CBoardServiceImpl implements CBoardService {
 
 	@Override
 	public List<CBoard> selectCBoardByPage(String code,int page_no) {
+		
 		List<CBoard> selectresult = cdao.selectCBoardByPage(code, page_no);
 		logger.trace("select over : {}",selectresult);
 		return selectresult;		

@@ -11,4 +11,5 @@ public interface CBoard_subService {
 	int selectCountCno(int cno);
 	List<CBoard_sub> selectCBoardSubByPage(int cno,int page_no);
 	CBoard_sub selectCBoardBycno(int no,int cno);
+	List<CBoard_sub> selectCBoardSub(int cno);
 }

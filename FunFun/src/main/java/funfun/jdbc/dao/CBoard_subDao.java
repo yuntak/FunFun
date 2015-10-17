@@ -11,5 +11,6 @@ public interface CBoard_subDao {
 	public int updateCBoardSub(CBoard_sub sub);
 	public int selectCountCno(int cno);
 	public List<CBoard_sub> selectCBoardSubByPage(int cno,int page_no);
+	public List<CBoard_sub> selectCBoardSub(int cno);
 	public CBoard_sub selectCBoardBycno(int no, int cno);
 }

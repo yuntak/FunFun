@@ -74,34 +74,6 @@ style>#name:link {
 
 <body>
 
-	<<<<<<< HEAD
-	<nav>
-
-		<div class="container">
-			=======
-			<nav>
-				>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
-
-				<<<<<<< HEAD <br>
-				<p align="center">자유게시판</p>
-				<br> <br>
-				<form action="">
-					<div class="form-inline" style="margin-left: 57%;">
-						<select class="form-control" name="name"><option
-								value="nickname">닉네임</option>
-
-							<option value="title">제목</option>
-							<option value="content">내용</option></select> <input type="text"
-							name="keyword" class="form-control" placeholder="검색"> <input
-							type="hidden" name="page" value="1"> <input type="submit"
-							value="검색" class="btn btn-success">
-
-					</div>
-				</form>
-
-				<br>
-		</div>
-		=======
 		<div class="container">
 			>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git <br>
 			<p align="center">자유게시판</p>

@@ -78,4 +78,11 @@ public class CBoard_subDaoImpl implements CBoard_subDao {
 			}};
 	}
 
+	@Override
+	public List<CBoard_sub> selectCBoardSub(int cno) {
+		String sql = "select * from content_board_sub where content_board_cno=?";
+		List<CBoard_sub> result = jt.query(sql, new BeanPropertyRowMapper<CBoard_sub>(CBoard_sub.class),cno);
+		return result;
+	}
+
 }
