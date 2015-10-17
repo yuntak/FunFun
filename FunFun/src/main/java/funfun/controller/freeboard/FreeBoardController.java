@@ -51,14 +51,18 @@ public class FreeBoardController {
 	public String freeBoardList(@RequestParam String name,@RequestParam String keyword, @RequestParam int page,Model model){
 		List<FBoard> FBoardList=null;
 		int allPage=0;
+		String code="11";
 		if(name.equals("subject")){
-			
+			allPage=FreeBoardSvc.selectFBoardByTitleAllPage(keyword, code);
+			FBoardList=FreeBoardSvc.selectTitleFBoardByPage(keyword, code, page);
 		}
 		else if(name.equals("content")){
-			
+			allPage=FreeBoardSvc.selectFBoardByContextAllPage(keyword, code);
+			FBoardList=FreeBoardSvc.selectFBoardBySelectContextPage(keyword, code, page);
 		}
 		else if(name.equals("nickname")){
-			
+			allPage=FreeBoardSvc.selectFBoardByNicknameAllPage(keyword, code);
+			FBoardList=FreeBoardSvc.selectNicknameFBoardByPage(keyword, code, page);
 		}
 		else{
 			allPage= FreeBoardSvc.selectCountAllPage();

@@ -65,47 +65,47 @@
    </div>
    
    </div>
-   <script>CKEDITOR.replace('content',{
-    width:'100%',
+
+	<script>CKEDITOR.replace('content',{
+	 width:'100%',
      height:'350px',
      'filebrowserUploadUrl':'/ckeditor/upload.jsp?'
      +'realUrl=http://localhost/main'
      +'&realDir=/main'
 } );
-   </script>
-   <br>
+	</script>
+	<br>
+	</sform:form> 
+	<div class="panel-footer">
+	</div>
 
-   <div class="panel-footer">
-   </div>
-</sform:form>
-    
+
 </body>
 <script type="text/javascript">
 function freeBoardWrite(f){
 
-   console.log("FreeBoard Write");
-   var title=document.getElementById("title").value;
-   
-   var content = CKEDITOR.instances.content.getData();
-   console.log(title);
-   console.log(content);
-   if(title==""){
-      alert("제목을 입력하세요.");
-      
-      return false;
-   }
-   if(content==""){
-      alert("내용을 입력하세요.");
-      
-      return false;
-   }
-   
-   //f.action("");
-   f.action = 'FreeBoardWrite';
-   return true;
+	console.log("FreeBoard Write");
+	var title=document.getElementById("title").value;
+	
+	var content = CKEDITOR.instances.content.getData();
+	console.log(title);
+	console.log(content);
+	if(title==""){
+		alert("제목을 입력하세요.");
+		
+		return false;
+	}
+	if(content==""){
+		alert("내용을 입력하세요.");
+		
+		return false;
+	}
+	
+	//f.action("");
+	f.action = 'FreeBoardWrite';
+	return true;
 }
 </script>
 <script type="text/javascript">
-
 </script>
 </html>
