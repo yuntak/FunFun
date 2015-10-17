@@ -22,14 +22,13 @@
 	margin-right: auto;
 	margin-left: auto;
 }
-
 </style>
 </head>
 <body>
 	<%
 		Users user = new Users();
 
-		user.setRoll("BASIC");
+		user.setRoll("REGULAR");
 	%>
 	<c:set value="<%=user%>" var="FunFunUser"></c:set>
 
@@ -122,16 +121,20 @@
 					<c:when test="${FunFunUser.roll=='BASIC' }">
 
 						<button type="submit" class="btn btn-info"
-							style="font-size: 30px; margin-right: auto;	margin-left: auto;	width: 300px;	height: 60px;">
-							<span class="glyphicon glyphicon-pencil" style="font-size: 25px;"></span><a href="<%=request.getContextPath()%>/FundingBoard/Write">펀딩 신청</a>
-							
+							style="font-size: 30px; margin-right: auto; margin-left: auto; width: 300px; height: 60px;">
+							<span class="glyphicon glyphicon-pencil" style="font-size: 25px;"></span><a
+								href="<%=request.getContextPath()%>/FundingBoard/Write">펀딩
+								신청</a>
+
 						</button>
 					</c:when>
 					<c:when test="${FunFunUser.roll=='REGULAR' }">
 						<button type="submit" class="btn btn-info"
-							style="font-size: 30px; margin-right: auto;	margin-left: auto;	width: 300px;	height: 60px;">
-							펀딩 시작 <span class="glyphicon glyphicon-heart-empty"
-								style="font-size: 25px;"></span>
+							style="font-size: 30px; margin-right: auto; margin-left: auto; width: 300px; height: 60px;">
+							<span class="glyphicon glyphicon-heart-empty"
+								style="font-size: 25px;"></span><a
+								href="<%=request.getContextPath()%>/FundingBoard/WriteStart">펀딩
+								시작</a>
 						</button>
 
 
