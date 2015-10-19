@@ -68,17 +68,16 @@
 						<tr>
 							<%
 								Object ClistObj = request.getAttribute("CBoard");
-								List<CBoard> list = null;
-								if (ClistObj != null && ClistObj instanceof List) {
-									list = (List<CBoard>) ClistObj;
-								}
+								List<CBoard_sub> list = null;
+								CBoard cdto=(CBoard)ClistObj;
+								list=cdto.getCboard_sub();
 							%>
 
 							<%
-								CBoard cdto = null;
-								int csdto = 0;
+								CBoard_sub csdto;
+								
 								for (int i = 0; i < list.size(); i++) {
-									cdto = (CBoard) list.get(i);
+									csdto = (CBoard_sub) list.get(i);
 									Object CslistObj = request.getAttribute("CsBoardCount" + i);
 									int cslist = 0;
 									if (CslistObj != null && CslistObj instanceof Integer) {

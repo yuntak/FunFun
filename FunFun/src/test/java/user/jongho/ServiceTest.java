@@ -99,6 +99,11 @@ public class ServiceTest {
 	}*/
 	
 	@Test
+	public void TestFullCBoard(){
+		cservice.selectFullCBoard(3);
+	}
+	
+	@Test
 	public void TestInsertBank(){
 		Bank bank = new Bank();
 		bank.setFno(107);

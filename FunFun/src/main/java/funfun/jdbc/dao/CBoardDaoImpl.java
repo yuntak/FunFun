@@ -59,7 +59,7 @@ public class CBoardDaoImpl implements CBoardDao {
 				CBoard cboard = new CBoard();
 				cboard.setCno(rs.getInt("cno"));
 				cboard.setTitle(rs.getString("title"));
-				cboard.setContent(rs.getString("context"));
+				cboard.setContent(rs.getString("content"));
 				cboard.setCdate(rs.getDate("cdate"));
 				cboard.setCview(rs.getInt("cview"));
 				cboard.setGood(rs.getInt("good"));

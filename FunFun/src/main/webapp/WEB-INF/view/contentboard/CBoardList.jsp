@@ -111,7 +111,7 @@ style>#name:link {
 
                      <td style="width: 200px; margin-left: auto; margin-right: auto;"
                         rowspan="3"><a
-                        href="<%=request.getContextPath()%>/ContentBoard/view?ContentNo=<%=cdto.getCno()%>">
+                        href="<%=request.getContextPath()%>/ContentBoard/MainView?ContentNo=<%=cdto.getCno()%>">
                            <img src="<%=request.getContextPath()%><%=cdto.getImgData()%>"
                            class="img-thumbnail" alt="Cinque Terre" width="150"
                            height="150px">
