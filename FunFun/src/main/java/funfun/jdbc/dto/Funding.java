@@ -20,7 +20,16 @@ public class Funding {
 	private Date endDate;
 	private int ok;
 	private String nickName;
+	private String receive;
 	
+	public String getReceive() {
+		return receive;
+	}
+
+	public void setReceive(String receive) {
+		this.receive = receive;
+	}
+
 	public String getNickName() {
 		return nickName;
 	}
@@ -131,8 +140,8 @@ public class Funding {
 	public String toString() {
 		return "Funding [fno=" + fno + ", title=" + title + ", goal=" + goal + ", FContent=" + FContent + ", FContext="
 				+ FContext + ", money=" + money + ", context=" + context + ", userId=" + userId + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", ok=" + ok + ", nickName=" + nickName + ", replys=" + replys
-				+ "]";
+				+ startDate + ", endDate=" + endDate + ", ok=" + ok + ", nickName=" + nickName + ", receive=" + receive
+				+ ", replys=" + replys + "]";
 	}
 
 	

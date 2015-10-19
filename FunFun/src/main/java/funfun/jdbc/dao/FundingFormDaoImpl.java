@@ -23,8 +23,8 @@ public class FundingFormDaoImpl implements FundingFormDao {
 	
 	@Override
 	public int FundingFormInsert(Funding_form form) {
-		String sql = "insert into funding_form(ffno,subject,category,ff_context,tel,money,user_id,receive,funding_fno) values(seq_funding_form.nextval,?,?,?,?,?,?,?,?)";
-		int result = jt.update(sql,form.getSubject(),form.getCategory(),form.getFfContext(),form.getTel(),form.getMoney(),form.getUserId(),form.getReceive(),form.getFunding_fno());
+		String sql = "insert into funding_form(ffno,subject,category,ff_context,tel,money,user_id,receive,funding_fno) values(seq_funding_form.nextval,?,?,?,?,?,?)";
+		int result = jt.update(sql,form.getSubject(),form.getCategory(),form.getFfContext(),form.getTel(),form.getMoney(),form.getUserId());
 		return result;
 	}
 
@@ -55,8 +55,6 @@ public class FundingFormDaoImpl implements FundingFormDao {
 				form.setTel(rs.getString("tel"));
 				form.setMoney(rs.getString("money"));
 				form.setUserId(rs.getString("user_id"));
-				form.setReceive(rs.getString("receive"));
-				form.setFunding_fno(rs.getInt("funding_fno"));
 				return form;
 			}
 		};
@@ -78,11 +76,6 @@ public class FundingFormDaoImpl implements FundingFormDao {
 		}
 	}
 
-	@Override
-	public int updateReceive(Funding_form form) {
-		String sql = "update funding_form set receive=? where ffno=?";
-		int updateresult = jt.update(sql,form.getReceive(),form.getFfno());
-		return updateresult;
-	}
+
 
 }

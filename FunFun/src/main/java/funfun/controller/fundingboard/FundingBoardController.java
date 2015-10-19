@@ -91,8 +91,8 @@ public class FundingBoardController {
 	@RequestMapping("/FundingBoard/view")
 	public String fundingboard(@RequestParam int FundingNo,Model model) {
 		Funding funding = FundingSvc.selectFunding(FundingNo);
-		Funding_form ffunding = FFundingSvc.selectFormByFfno(FundingNo);
-		model.addAttribute("FFunding",ffunding);
+		//Funding_form ffunding = FFundingSvc.selectFormByFfno(FundingNo);
+		//model.addAttribute("FFunding",ffunding);
 		model.addAttribute("FundingBoard",funding);
 		String viewlocation = "/WEB-INF/view/fundingboard/fundBoard.jsp";
 		model.addAttribute("view",viewlocation);

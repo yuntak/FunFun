@@ -25,10 +25,10 @@ public class FundingDaoImpl implements FundingDao {
 
 	@Override
 	public int insertFunding(Funding funding) {
-		String sql = "insert into funding values(seq_funding.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into funding values(seq_funding.nextval,?,?,?,?,?,?,?,?,?,?,?,?)";
 		int insertresult = jt.update(sql, funding.getTitle(), funding.getGoal(), funding.getFContent(),
 				funding.getFContext(), funding.getMoney(), funding.getContext(), funding.getStartDate(),
-				funding.getEndDate(), funding.getUserId(),funding.getOk(),funding.getNickName());
+				funding.getEndDate(), funding.getUserId(),funding.getOk(),funding.getNickName(),funding.getReceive());
 		return insertresult;
 	}
 
@@ -41,9 +41,9 @@ public class FundingDaoImpl implements FundingDao {
 
 	@Override
 	public int updateFunding(Funding funding) {
-		String sql = "update funding set title=?,f_content=?,f_context=?,goal=?,money=?,context=? where fno=?";
+		String sql = "update funding set title=?,f_content=?,f_context=?,goal=?,money=?,context=?,receive=? where fno=?";
 		int updateresult = jt.update(sql, funding.getTitle(), funding.getFContent(), funding.getFContext(),
-				funding.getGoal(), funding.getMoney(), funding.getContext(), funding.getFno());
+				funding.getGoal(), funding.getMoney(), funding.getContext(),funding.getReceive(), funding.getFno());
 		return updateresult;
 	}
 
@@ -116,6 +116,7 @@ public class FundingDaoImpl implements FundingDao {
 				funding.setEndDate(rs.getDate("enddate"));
 				funding.setUserId(rs.getString("user_id"));
 				funding.setOk(rs.getInt("ok"));
+				funding.setReceive(rs.getString("receive"));
 				return funding;
 			}
 		};

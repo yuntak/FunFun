@@ -9,5 +9,5 @@ public interface FundingFormDao {
 	public int FundingFormDelete(int ffno);
 	public List<Funding_form> selectFundingForm();
 	public Funding_form selectFundingFormByFfno(int ffno);
-	public int updateReceive(Funding_form form);
+	
 }
