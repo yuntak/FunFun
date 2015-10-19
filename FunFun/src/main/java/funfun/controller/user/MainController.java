@@ -195,10 +195,12 @@ public class MainController {
 		return "main/Template";
 	}
 	@RequestMapping(value="/myinfo/info",method=RequestMethod.POST)
-	public String infoEditForm(Users userEdit,Model model){ 
+	public String infoEditForm(Users userEdit,Model model,HttpSession session){ 
 		if(UserSvc.mylogin(userEdit.getId(), userEdit.getPass())==null){
 			return "redirect:../myinfo/info";
 		}else{
+		Users user=(Users)session.getAttribute("FunFunUser");
+		model.addAttribute("userEdit", user);
 		String viewlocation = "/WEB-INF/view/UserEdit/InfoEditForm.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
