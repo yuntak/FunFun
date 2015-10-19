@@ -19,7 +19,16 @@ public class Funding {
 	private Date startDate;
 	private Date endDate;
 	private int ok;
+	private String nickName;
 	
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
 	public int getOk() {
 		return ok;
 	}
@@ -122,7 +131,8 @@ public class Funding {
 	public String toString() {
 		return "Funding [fno=" + fno + ", title=" + title + ", goal=" + goal + ", FContent=" + FContent + ", FContext="
 				+ FContext + ", money=" + money + ", context=" + context + ", userId=" + userId + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", ok=" + ok + ", replys=" + replys + "]";
+				+ startDate + ", endDate=" + endDate + ", ok=" + ok + ", nickName=" + nickName + ", replys=" + replys
+				+ "]";
 	}
 
 	

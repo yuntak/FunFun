@@ -52,6 +52,13 @@ public class FundingFormServiceImpl implements FundingFormService{
 		}
 	}
 
+	@Override
+	public void updateReceive(Funding_form form) {
+		int updateresult = ffdao.updateReceive(form);
+		logger.trace("update over : {}",updateresult);
+		
+	}
+
 	
 	
 }

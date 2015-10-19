@@ -26,10 +26,7 @@ margin-right: 15px;
 margin-left: 15px;
 margin-bottom: 10px;
 }
-.container {
-	width: 1300px;
-	max-width: none !important;
-}
+
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -54,7 +51,6 @@ margin-bottom: 10px;
 
 </head>
 <body>
-<div class="container">
 	<nav class="navbar" style="background-color: #C4FFB1; color: #FF9900;">
 	
 	<c:choose>
@@ -137,6 +133,5 @@ margin-bottom: 10px;
 <hr>
 
 
-</div>
 </body>
 </html>

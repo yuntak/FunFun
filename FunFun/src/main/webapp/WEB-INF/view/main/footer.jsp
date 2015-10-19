@@ -32,15 +32,12 @@ a {
 	margin-bottom: 0px;
 }
 
-.container {
-	width: 1300px;
-	max-width: none !important;
-}
+
 </style>
 
 </head>
 <body>
-<div class="container">
+
 	<nav class="navbar navbar-inverse  navbar-fixed">
 		
 			<div class="container-fluid">
@@ -56,6 +53,6 @@ a {
 		
 
 	</nav>
-</div>
+
 </body>
 </html>

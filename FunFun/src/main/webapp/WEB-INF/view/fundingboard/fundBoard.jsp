@@ -4,6 +4,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="funfun.jdbc.dto.Funding"%>
+<%@page import="funfun.jdbc.dto.Funding_form"%>
 <%@page import="funfun.jdbc.dto.Board"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -50,6 +51,8 @@
 								<%
 									Object FlistObj = request.getAttribute("FundingBoard");
 									Funding fdto = (Funding) FlistObj;
+									Object FFlistObj = request.getAttribute("FFunding");
+									Funding_form ffdto = (Funding_form) FFlistObj;
 								%>
 								<%
 									double per = 0.0;
@@ -148,9 +151,8 @@
 
 
 															<h4>금액별 상품</h4>
-															<li><h5>50,000원 = 피자 5판</h5></li>
-															<li><h5>30,000원 = 피자 3판</h5></li>
-															<li><h5>10,000원 = 피자 1판</h5></li>
+															<li><h5><%=ffdto.getReceive() %></h5></li>
+															
 														</td>
 													</tr>
 													<tr>

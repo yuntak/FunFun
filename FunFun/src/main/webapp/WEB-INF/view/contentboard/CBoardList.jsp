@@ -89,17 +89,27 @@ style>#name:link {
 						if (ClistObj != null && ClistObj instanceof List) {
 							list = (List<CBoard>) ClistObj;
 						}
+						
+						
 					%>
+
 					<%
 						CBoard cdto = null;
-						for (int i = 0; i < list.size(); i++) {
-							cdto = (CBoard) list.get(i);
+						int csdto = 0;
+							for (int i = 0; i < list.size(); i++) {
+								cdto = (CBoard) list.get(i);
+								Object CslistObj = request.getAttribute("CsBoardCount"+i);
+								int cslist = 0;
+								if (CslistObj != null && CslistObj instanceof Integer) {
+									cslist = (int) CslistObj;
+								}
+								csdto = cslist;
 					%>
 
 					<tbody align="center">
 						<tr>
 
-							<td style="width: 210px; margin-left: auto; margin-right: auto;"
+							<td style="width: 500px; margin-left: auto; margin-right: auto;"
 								rowspan="3"><a
 								href="<%=request.getContextPath()%>/ContentBoard/view?ContentNo=<%=cdto.getCno()%>">
 									<img src="<%=request.getContextPath()%><%=cdto.getImgData()%>"
@@ -108,11 +118,11 @@ style>#name:link {
 							</a></td>
 
 
-							<td>태그(카테고리) : <%=cdto.getCategory()%></td>
+							<td rowspan="3">태그(카테고리) : <%=cdto.getCategory()%></td>
 
-							<td id="name" style="width: 450px; cursor: pointer;"
+							<td colspan="2" id="name" style="width: 450px; cursor: pointer;"
 								onclick="location.href='<%=request.getContextPath()%>/ '">
-								<strong>제목<%=cdto.getTitle()%>
+								<strong>제목 : <%=cdto.getTitle()%>
 							</strong>
 							</td>
 
@@ -124,44 +134,20 @@ style>#name:link {
 							<td colspan="2" rowspan="2">작품소개 : <%=cdto.getContent()%></td>
 							<td>
 
-								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10"
-									align="right">
+								<div align="right">
 
 									<div class="btn-group">
 										<div class="row">
-
-											<div  class="container">회차</div>
-											<button type="button" class="btn btn-xs dropdown-toggle"
-												data-toggle="dropdown" >
-												<span class="caret"></span>
-											</button>
-
-											<ul class="dropdown-menu" role="menu">
-												<%
-												
-											/* 	List<CBoard_sub> CsBoardList=null;
-												for(int i = 0;i<CBoardList.size();i++){
-												CBoard cboard = CBoardList.get(i);
-												CsBoardList = ContentsubBoardSvc.selectCBoardSub(cboard.getCno());
+											<div class="container">회차</div>
+											<select>
+											<%for(int j=1;j<=csdto;j++){ %>
+											<option><%=j%>회</option>
+											<%
 												}
-												model.addAttribute("CsBoardList",CsBoardList); */
-													Object CslistObj = request.getAttribute("CsBoardList");
-														List<CBoard_sub> cslist = null;
-														if (CslistObj != null && CslistObj instanceof List) {
-															cslist = (List<CBoard_sub>) CslistObj;
-														}
 												%>
-												<%
-													CBoard_sub csdto = null;
-														for (int j = 0; j < cslist.size(); j++) {
-															csdto = (CBoard_sub) cslist.get(j);
-												%>
-												<li><a href="#"><%=csdto.getNo() %>회</a></li>
+
+											</select>
 											
-												<%
-													}
-												%>
-											</ul>
 										</div>
 									</div>
 								</div>
@@ -169,7 +155,7 @@ style>#name:link {
 							<td><button style="width: 80px" type="button"
 									class="btn btn-xs">
 									보기
-									<%=list.get(0).toString()%></button></td>
+									</button></td>
 						</tr>
 
 						<tr>
@@ -177,7 +163,7 @@ style>#name:link {
 							<td>추천 <%=cdto.getGood()%></td>
 						</tr>
 						<%
-							}
+						}
 						%>
 					</tbody>
 				</table>

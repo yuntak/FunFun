@@ -25,10 +25,10 @@ public class FundingDaoImpl implements FundingDao {
 
 	@Override
 	public int insertFunding(Funding funding) {
-		String sql = "insert into funding values(seq_funding.nextval,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into funding values(seq_funding.nextval,?,?,?,?,?,?,?,?,?,?,?)";
 		int insertresult = jt.update(sql, funding.getTitle(), funding.getGoal(), funding.getFContent(),
 				funding.getFContext(), funding.getMoney(), funding.getContext(), funding.getStartDate(),
-				funding.getEndDate(), funding.getUserId(),funding.getOk());
+				funding.getEndDate(), funding.getUserId(),funding.getOk(),funding.getNickName());
 		return insertresult;
 	}
 
