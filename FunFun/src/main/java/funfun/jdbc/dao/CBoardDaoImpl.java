@@ -57,17 +57,18 @@ public class CBoardDaoImpl implements CBoardDao {
 			@Override
 			public CBoard mapRow(ResultSet rs, int rowNum) throws SQLException {
 				CBoard cboard = new CBoard();
-				cboard.setCno(rs.getInt("fno"));
+				cboard.setCno(rs.getInt("cno"));
 				cboard.setTitle(rs.getString("title"));
-				cboard.setContent(rs.getString("fcontext"));
-				cboard.setCdate(rs.getDate("fdate"));
-				cboard.setCview(rs.getInt("fview"));
+				cboard.setContent(rs.getString("context"));
+				cboard.setCdate(rs.getDate("cdate"));
+				cboard.setCview(rs.getInt("cview"));
 				cboard.setGood(rs.getInt("good"));
 				cboard.setCategory(rs.getString("category"));
 				cboard.setImgData(rs.getString("imgdata"));
 				cboard.setBoard_no(rs.getInt("board_no"));
 				cboard.setBoard_code(rs.getString("board_code"));
 				cboard.setUserId(rs.getString("user_id"));
+				cboard.setSubdate(rs.getDate("subdate"));
 				return cboard;
 			}};
 	}
