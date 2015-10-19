@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
+import funfun.jdbc.dto.Funding_form;
+import funfun.jdbc.service.FundingFormService;
 import funfun.jdbc.service.FundingService;
 
 @Controller
@@ -18,6 +20,8 @@ public class FundingBoardController {
 	
 	@Autowired
 	FundingService FundingSvc;
+	@Autowired
+	FundingFormService FFundingSvc;
 
 	@RequestMapping(value="/FundingBoard")
 	public String fundingBoardMain(Model model){
@@ -31,7 +35,7 @@ public class FundingBoardController {
 	}
 	
 	@RequestMapping(value="/FundingBoard/List",method=RequestMethod.GET)
-	public String freeBoardList(@RequestParam int page,Model model){
+	public String FundingList(@RequestParam int page,Model model){
 		List<Funding> FundingList=null;
 		int allPage=0;
 		
@@ -46,9 +50,24 @@ public class FundingBoardController {
 		
 	}
 	@RequestMapping(value="/FundingBoard/Write")
-	public String freeBoardWrite(Model model){
+	public String FundingWrite(Model model){
 		Funding funding= new Funding();
 		String viewlocation = "/WEB-INF/view/fundingboard/fundAsk.jsp";
+		model.addAttribute("Funding", funding);
+		model.addAttribute("view", viewlocation);
+		//
+		FBoard fboard=new FBoard();
+		model.addAttribute("Fboard", fboard);
+		
+		//
+		return "main/Template";
+		
+	}
+	
+	@RequestMapping(value="/FundingBoard/WriteStart")
+	public String FundingWriteStart(Model model){
+		Funding funding= new Funding();
+		String viewlocation = "/WEB-INF/view/fundingboard/fundWrite.jsp";
 		model.addAttribute("Funding", funding);
 		model.addAttribute("view", viewlocation);
 		
@@ -60,9 +79,20 @@ public class FundingBoardController {
 		return "main/Template";
 		
 	}
+	
+	@RequestMapping("/FundingBoard/WriteSuccess")
+	public String FundingWriteSuccess(Model model,Funding funding){
+		String viewlocation = "/Web-Inf/view/fundingboard/fundListBoard.jsp";
+		FundingSvc.insertFunding(funding);
+		model.addAttribute("Funding",funding);
+		model.addAttribute("view",viewlocation);
+		return "main/Template";
+	}
 	@RequestMapping("/FundingBoard/view")
 	public String fundingboard(@RequestParam int FundingNo,Model model) {
 		Funding funding = FundingSvc.selectFunding(FundingNo);
+		Funding_form ffunding = FFundingSvc.selectFormByFfno(FundingNo);
+		model.addAttribute("FFunding",ffunding);
 		model.addAttribute("FundingBoard",funding);
 		String viewlocation = "/WEB-INF/view/fundingboard/fundBoard.jsp";
 		model.addAttribute("view",viewlocation);

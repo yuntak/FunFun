@@ -8,6 +8,21 @@ public class Funding_form {
 	private String tel;
 	private String money;
 	private String userId;
+	private String receive;
+	private int funding_fno;
+	
+	public int getFunding_fno() {
+		return funding_fno;
+	}
+	public void setFunding_fno(int funding_fno) {
+		this.funding_fno = funding_fno;
+	}
+	public String getReceive() {
+		return receive;
+	}
+	public void setReceive(String receive) {
+		this.receive = receive;
+	}
 	public int getFfno() {
 		return ffno;
 	}
@@ -53,7 +68,8 @@ public class Funding_form {
 	@Override
 	public String toString() {
 		return "Funding_form [ffno=" + ffno + ", subject=" + subject + ", category=" + category + ", ffContext="
-				+ ffContext + ", tel=" + tel + ", money=" + money + ", userId=" + userId + "]";
+				+ ffContext + ", tel=" + tel + ", money=" + money + ", userId=" + userId + ", receive=" + receive
+				+ ", funding_fno=" + funding_fno + "]";
 	}
 	
 	

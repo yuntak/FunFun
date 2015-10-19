@@ -56,4 +56,18 @@ public class CBoard_subServiceImpl implements CBoard_subService {
 		logger.trace("select over : {}",selectresult);
 		return selectresult;
 	}
+
+	@Override
+	public List<CBoard_sub> selectCBoardSub(int cno) {
+		List<CBoard_sub> selectresult = csdao.selectCBoardSub(cno);
+		logger.trace("select over : {}",selectresult);
+		return selectresult;
+	}
+
+	@Override
+	public List<Integer> selctCountAll(int cno) {
+		List<Integer> selectCount = csdao.selctCountAll(cno);
+		logger.trace("select over : {}",selectCount);
+		return selectCount;
+	}
 }

@@ -89,26 +89,36 @@ style>#name:link {
 						if (ClistObj != null && ClistObj instanceof List) {
 							list = (List<CBoard>) ClistObj;
 						}
+						
+						
 					%>
+
 					<%
 						CBoard cdto = null;
-						for (int i = 0; i < list.size(); i++) {
-							cdto = (CBoard) list.get(i);
+						int csdto = 0;
+							for (int i = 0; i < list.size(); i++) {
+								cdto = (CBoard) list.get(i);
+								Object CslistObj = request.getAttribute("CsBoardCount"+i);
+								int cslist = 0;
+								if (CslistObj != null && CslistObj instanceof Integer) {
+									cslist = (int) CslistObj;
+								}
+								csdto = cslist;
 					%>
 
-					<tbody>
+					<tbody align="center">
 						<tr>
 
-							<td align="center" style="overflow: hidden;" rowspan="3"><a
+							<td style="width: 210px; margin-left: auto; margin-right: auto;"
+								rowspan="3"><a
 								href="<%=request.getContextPath()%>/ContentBoard/view?ContentNo=<%=cdto.getCno()%>">
-									<img
-									src="<%=request.getContextPath()%><%=cdto.getImgData() %>"
-									class="img-thumbnail" alt="Cinque Terre" width="100"
-									height="150">
+									<img src="<%=request.getContextPath()%><%=cdto.getImgData()%>"
+									class="img-thumbnail" alt="Cinque Terre" width="150"
+									height="150px">
 							</a></td>
 
 
-							<td>태그(카테고리) <%=cdto.getCategory()%></td>
+							<td>태그(카테고리) : <%=cdto.getCategory()%></td>
 
 							<td id="name" style="width: 450px; cursor: pointer;"
 								onclick="location.href='<%=request.getContextPath()%>/ '">
@@ -116,16 +126,12 @@ style>#name:link {
 							</strong>
 							</td>
 
-							<td style="width: 100px">작성자 <%=cdto.getUserId()%></td>
-							<td><button style="width: 80px" type="button"
-									class="btn btn-xs">
-									즐겨찾기
-									</button></td>
+							<td style="width: 100px" colspan="2">작성자 : <%=cdto.getUserId()%></td>
 						</tr>
 
 
 						<tr>
-							<td colspan="2" rowspan="2">작품소개 <%=cdto.getContent()%></td>
+							<td colspan="2" rowspan="2">작품소개 : <%=cdto.getContent()%></td>
 							<td>
 
 								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10"
@@ -134,23 +140,18 @@ style>#name:link {
 									<div class="btn-group">
 										<div class="row">
 
-											<button type="button" class="btn btn-xs">회차</button>
+											<div class="container">회차</div>
 											<button type="button" class="btn btn-xs dropdown-toggle"
 												data-toggle="dropdown">
 												<span class="caret"></span>
 											</button>
 
 											<ul class="dropdown-menu" role="menu">
-												<li><a href="#">1회</a></li>
-												<li><a href="#">2회</a></li>
-												<li><a href="#">3회</a></li>
-												<li><a href="#">4회</a></li>
-												<li><a href="#">5회</a></li>
-												<li><a href="#">6회</a></li>
-												<li><a href="#">7회</a></li>
-												<li><a href="#">8회</a></li>
-												<li><a href="#">9회</a></li>
-												<li><a href="#">10회</a></li>
+												<%for(int j=1;j<=csdto;j++){ %>
+												<li><a href="#"><%=j%>회</a></li>
+												<%
+												}
+												%>
 											</ul>
 										</div>
 									</div>
@@ -167,16 +168,16 @@ style>#name:link {
 							<td>추천 <%=cdto.getGood()%></td>
 						</tr>
 						<%
-							}
+						}
 						%>
 					</tbody>
 				</table>
 
 			</div>
 		</div>
-		
-		
-		
+
+
+
 	</div>
 
 

@@ -28,14 +28,14 @@
 </style>
 <script type="text/JavaScript">
 	window.onload = function(){
-		CKEDITOR.replace('fcontext');
+		CKEDITOR.replace('context');
 	};
 </script>
 
 </head>
 
 <body>
-<sform:form  method="post" onsubmit="return freeBoardWrite(this) " modelAttribute="Fboard" >
+<sform:form  method="post" onsubmit="return fundWrite(this) " modelAttribute="Funding" >
 	<div class="writebody">
 	<div class="panel panel-info">
 	<div class="panel-heading">
@@ -52,15 +52,15 @@
 	<br>
 	<br>
 	
-	<sform:textarea  rows="40" cols="100" placeholder="내용" path="fcontext" value=""/>
+	<sform:textarea  rows="40" cols="100" placeholder="내용" path="context" value=""/>
 	</div>
 	<br>
 	<sform:hidden value="${FunFunUser.id }" path="userId"/>
 	<sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
 	<div class="panel-footer">
-	<sform:button class="btn btn-info">확인</sform:button>
-<%-- 	<a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
-	<a href="/main" class="btn btn-info">취소</a>
+	<sform:button class="btn btn-info"><a href="<%=request.getContextPath()%>/FundingBoard/WriteSuccess" class="btn btn-info">확인</a></sform:button>
+	
+	<a href="<%=request.getContextPath()%>/FundingBoard" class="btn btn-info">취소</a>
 	</div>
 	
 	</div>
@@ -70,7 +70,7 @@
 </body>
 <script type="text/javascript">
 function freeBoardWrite(f){
-	console.log("FreeBoard Write");
+	console.log("Funding Write");
 	var title=document.getElementById("title").value;
 	var content=document.getElementById("content").value;
 	console.log(title);
@@ -86,8 +86,9 @@ function freeBoardWrite(f){
 		return false;
 	}
 	
-	//f.action("");
-	return false;
+	f.action = 'FundWrite';
+	return true;
+	
 	
 }
 

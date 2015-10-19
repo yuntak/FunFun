@@ -9,4 +9,5 @@ public interface FundingFormService {
 	void deleteForm(int ffno);
 	List<Funding_form> selectForm();
 	Funding_form selectFormByFfno(int ffno);
+	void updateReceive(Funding_form form);
 }
