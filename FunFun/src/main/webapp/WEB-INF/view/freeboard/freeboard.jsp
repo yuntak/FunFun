@@ -101,7 +101,7 @@ style>#name:link {
       <br>
       </div>
 
-<div style="width: 1000px; margin-left: 24%;">
+<div style="width: 1200px; margin-left: 12%;">
       <table class="table">
          <thead>
             <tr class="success">
