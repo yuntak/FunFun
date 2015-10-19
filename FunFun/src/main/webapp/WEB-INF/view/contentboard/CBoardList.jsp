@@ -109,7 +109,7 @@ style>#name:link {
                <tbody align="center">
                   <tr>
 
-                     <td style="width: 500px; margin-left: auto; margin-right: auto;"
+                     <td style="width: 200px; margin-left: auto; margin-right: auto;"
                         rowspan="3"><a
                         href="<%=request.getContextPath()%>/ContentBoard/view?ContentNo=<%=cdto.getCno()%>">
                            <img src="<%=request.getContextPath()%><%=cdto.getImgData()%>"
@@ -118,7 +118,7 @@ style>#name:link {
                      </a></td>
 
 
-                     <td rowspan="3">태그(카테고리) : <%=cdto.getCategory()%></td>
+                     <td>태그(카테고리)</td>
 
                      <td colspan="2" id="name" style="width: 450px; cursor: pointer;"
                         onclick="location.href='<%=request.getContextPath()%>/ '">
@@ -131,14 +131,15 @@ style>#name:link {
 
 
                   <tr>
+                  <td rowspan="2"><%=cdto.getCategory()%></td>
                      <td colspan="2" rowspan="2">작품소개 : <%=cdto.getContent()%></td>
                      <td>
 
                         <div align="right">
 
-                           <div class="btn-group">
+                           <div class=form-horizontal>
                               <div class="row">
-                                 <div class="container">회차</div>
+                                 <div class="container" style="width: 100px">
                                  <select>
                                  <%for(int j=1;j<=csdto;j++){ %>
                                  <option><%=j%>회</option>
@@ -147,7 +148,7 @@ style>#name:link {
                                     %>
 
                                  </select>
-                                 
+                                 </div>
                               </div>
                            </div>
                         </div>
