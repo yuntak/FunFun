@@ -138,7 +138,6 @@ style>#name:link {
                         <div align="right">
 
                            <div class=form-horizontal>
-                              <div class="row">
                                  <div class="container" style="width: 100px">
                                  <select>
                                  <%for(int j=1;j<=csdto;j++){ %>
@@ -151,7 +150,6 @@ style>#name:link {
                                  </div>
                               </div>
                            </div>
-                        </div>
                      </td>
                      <td><button style="width: 80px" type="button"
                            class="btn btn-xs">
