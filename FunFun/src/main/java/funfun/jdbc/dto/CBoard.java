@@ -21,6 +21,14 @@ public class CBoard {
 	
 	private List<CBoard_sub> cboard_sub;
 	
+	public List<CBoard_sub> getCboard_sub() {
+		return cboard_sub;
+	}
+
+	public void setCboard_sub(List<CBoard_sub> cboard_sub) {
+		this.cboard_sub = cboard_sub;
+	}
+
 	private List<Reply> replys;
 
 	public int getCno() {
@@ -131,8 +139,8 @@ public class CBoard {
 	public String toString() {
 		return "CBoard [cno=" + cno + ", title=" + title + ", content=" + content + ", cdate=" + cdate + ", subdate="
 				+ subdate + ", cview=" + cview + ", good=" + good + ", category=" + category + ", board_no=" + board_no
-				+ ", board_code=" + board_code + ", userId=" + userId + ", imgData=" + imgData + ", replys=" + replys
-				+ "]";
+				+ ", board_code=" + board_code + ", userId=" + userId + ", imgData=" + imgData + ", cboard_sub="
+				+ cboard_sub + ", replys=" + replys + "]";
 	}
 
 }

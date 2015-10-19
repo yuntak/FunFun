@@ -9,6 +9,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import funfun.jdbc.dao.CBoardDao;
+import funfun.jdbc.dao.CBoard_subDao;
 import funfun.jdbc.dao.ReplyDao;
 import funfun.jdbc.dto.CBoard;
 import funfun.jdbc.dto.CBoard_sub;
@@ -22,7 +23,7 @@ public class CBoardServiceImpl implements CBoardService {
 	@Autowired
 	ReplyDao rdao;
 	@Autowired
-	CBoard_sub csdao;
+	CBoard_subDao csdao;
 
 	@Override
 	public void insertCBoard(CBoard cboard) {
@@ -91,12 +92,15 @@ public class CBoardServiceImpl implements CBoardService {
 	public CBoard selectFullCBoard(int cno) {
 		CBoard selectresult = null;
 		List<Reply> replyList = null;
+		List<CBoard_sub> csList = null;
 		int updateresult = 0;
 		try {
 			updateresult = cdao.updateCBoardVeiw(cno);
 			selectresult = cdao.selectFullCBoard(cno);
 			replyList = rdao.selectBoardReply(selectresult.getBoard_no(), selectresult.getBoard_code());
 			selectresult.setReplys(replyList);
+			csList = csdao.selectCBoardSub(selectresult.getCno());
+			selectresult.setCboard_sub(csList);
 		} catch (EmptyResultDataAccessException e) {
 			selectresult = null;
 
