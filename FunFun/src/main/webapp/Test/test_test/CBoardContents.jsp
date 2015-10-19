@@ -55,7 +55,7 @@
 
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"
 				style="overflow:auto; margin-left: 10%; border-top: 1px solid blue; width: 900px; height: 300px;">
-				<table style="" class="table">
+				<table style="" class="table" border="1">
 
 
 					<tbody>
@@ -75,7 +75,7 @@
 
 							<td style="width: 100px">작성자</td>
 							<td><button style="width: 80px" type="button"
-									class="btn btn-xs">즐겨찾기</button></td>
+									class="btn btn-xs">추천하기</button></td>
 						</tr>
 
 

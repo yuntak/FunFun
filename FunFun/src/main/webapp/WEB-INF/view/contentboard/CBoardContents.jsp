@@ -61,7 +61,7 @@
 
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"
 				style="overflow: auto; margin-left: 10%; border-top: 1px solid blue; width: 900px; height: 300px;">
-				<table style="" class="table">
+				<table style="" class="table" border="1">
 
 
 					<tbody>
@@ -72,19 +72,8 @@
 								CBoard cdto=(CBoard)ClistObj;
 								list=cdto.getCboard_sub();
 							%>
-
-							<%
-								CBoard_sub csdto;
-								
-								for (int i = 0; i < list.size(); i++) {
-									csdto = (CBoard_sub) list.get(i);
-									Object CslistObj = request.getAttribute("CsBoardCount" + i);
-									int cslist = 0;
-									if (CslistObj != null && CslistObj instanceof Integer) {
-										cslist = (int) CslistObj;
-									}
-									csdto = cslist;
-							%>
+						<%-- 	<c:set value="<%=list %>" var="list"></c:set> --%>
+							
 
 							<td align="center" style="overflow: hidden;" rowspan="3"><img
 								src="<%=request.getContextPath()%><%=cdto.getImgData()%>"
@@ -94,10 +83,11 @@
 
 							<td>태그(카테고리)<%=cdto.getCategory()%></td>
 
-							<td id="name" colspan="2" style="width: 450px; cursor: pointer;"
+							<td id="name" style="width: 450px; cursor: pointer;"
 								onclick="location.href='/ '"><strong>제목<%=cdto.getTitle()%></strong></td>
 
 							<td style="width: 100px">작성자<%=cdto.getUserId()%></td>
+							
 
 						</tr>
 
@@ -106,35 +96,17 @@
 							<td colspan="2" rowspan="2"></td>
 							<td>
 
-								<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10"
-									align="right">
-
-									<div class="container" style="width: 100px">
-										<select>
-											<%
-												for (int j = 1; j <= csdto; j++) {
-											%>
-											<option><%=j%>회
-											</option>
-											<%
-												}
-											%>
-
-										</select>
-									</div>
-								</div>
+								
 							</td>
-							<td><button style="width: 80px" type="button"
-									class="btn btn-xs">보기</button></td>
+							
 						</tr>
 
 						<tr>
 							<td>조회 <%=cdto.getCview()%></td>
 							<td>추천 <%=cdto.getGood()%></td>
 						</tr>
-						<%
-							}
-						%>
+						
+						
 					</tbody>
 				</table>
 
@@ -169,17 +141,19 @@
 					<th>소제목</th>
 					<th>회차</th>
 					<th>날짜</th>
-					<th>조회</th>
-					<th>추천</th>
-				</tr>
-
-
-				<tr>
-					<td id="name" style="cursor: pointer">${CBoard_sub.subtitle }</td>
-					<td id="name" style="cursor: pointer">${CBoard_sub.contentBoardCno }</td>
-					<td>${CBoard.csDate }</td>
 					
 				</tr>
+				
+<c:forEach items="${CBoard.cboard_sub }" var="sub">
+<tr>
+<td>${sub.subtitle }</td>
+<td>${sub.contentBoardCno }</td>
+<td>${sub.csDate }</td>
+</tr>
+
+</c:forEach>
+
+					
 				
 			</table>
 			<br>
@@ -195,6 +169,5 @@
 </body>
 
 <script type="text/javascript">
-console.log(${CBoard });
 </script>
 </html>
