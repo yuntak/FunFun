@@ -19,6 +19,8 @@ public class CBoard {
 	private String userId;
 	private String imgData;
 	
+	private List<CBoard_sub> cboard_sub;
+	
 	private List<Reply> replys;
 
 	public int getCno() {

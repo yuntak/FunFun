@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import funfun.jdbc.dao.BankDao;
 import funfun.jdbc.dao.BoardDao;
 import funfun.jdbc.dao.CBoardDao;
 import funfun.jdbc.dao.CBoard_subDao;
@@ -27,6 +28,7 @@ import funfun.jdbc.dao.FundingDao;
 import funfun.jdbc.dao.FundingFormDao;
 import funfun.jdbc.dao.ReplyDao;
 import funfun.jdbc.dao.UsersDao;
+import funfun.jdbc.dto.Bank;
 import funfun.jdbc.dto.Board;
 import funfun.jdbc.dto.CBoard;
 import funfun.jdbc.dto.CBoard_sub;
@@ -35,6 +37,7 @@ import funfun.jdbc.dto.Funding;
 import funfun.jdbc.dto.Funding_form;
 import funfun.jdbc.dto.Reply;
 import funfun.jdbc.dto.Users;
+import funfun.jdbc.service.BankService;
 import funfun.jdbc.service.BoardService;
 import funfun.jdbc.service.CBoardService;
 import funfun.jdbc.service.CBoard_subService;
@@ -86,10 +89,25 @@ public class ServiceTest {
 	CBoard_subDao csdao;
 	@Autowired
 	CBoard_subService csservice;
+	@Autowired
+	BankDao bkdao;
+	@Autowired
+	BankService bkservice;
 	/*@Before
 	public void cleanDB(){
 		dao.deleteAllUsers();
 	}*/
+	
+	@Test
+	public void TestInsertBank(){
+		Bank bank = new Bank();
+		bank.setFno(107);
+		bank.setUserId("every9168");
+		bank.setMoney(10000);
+		bkservice.insertBank(bank);
+		logger.trace("{}",bank);
+	}
+	
 	
 	@Test
 	public void TestSelectFBoardContext(){

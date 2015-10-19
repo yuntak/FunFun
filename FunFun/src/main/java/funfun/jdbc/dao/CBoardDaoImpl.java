@@ -15,6 +15,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import funfun.jdbc.dto.CBoard;
+import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Reply;
 
 @Repository
@@ -116,8 +117,15 @@ public class CBoardDaoImpl implements CBoardDao {
 			}
 		};
 	}
-
+	
 	@Override
+	public CBoard selectFullCBoard(int cno) {
+		String sql = "select * from content_board where cno=?";
+		CBoard cboard = jt.queryForObject(sql, getCBoardRowMapper(), cno); 
+		return cboard;
+	}
+
+	/*@Override
 	public CBoard selectFullCBoard(int cno) {
 		String sql = "select c.*,r.* from content_board c,reply r where r.user_id=c.user_id and c.cno=?";
 		CBoard cboard = jt.query(sql, new ResultSetExtractor<CBoard>() {
@@ -140,7 +148,7 @@ public class CBoardDaoImpl implements CBoardDao {
 		}, cno);
 
 		return cboard;
-	}
+	}*/
 	@Override
 	public List<CBoard> selectCBoardBySelectTitlePage(String title, String code, int page_no) {
 		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board where title like '%'||?||'%' and board_code=? order by cno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
