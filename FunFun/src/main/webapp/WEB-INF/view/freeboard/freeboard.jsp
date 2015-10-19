@@ -74,12 +74,13 @@ style>#name:link {
 
 <body>
 
+	<nav>
+	
    <div class="container">
 
       <br>
       <p align="center">자유게시판</p>
-      <br> <br>
-      
+      <br> <br>     
       <form action="">
       <div class="form-inline" style="margin-left: 60%;">
       <select class="form-control" name="name"><option value="nickname">닉네임</option>
@@ -98,10 +99,11 @@ style>#name:link {
 
       </div>
       </form>
+
       <br>
       </div>
 
-<div style="width: 1200px; margin-left: 12%;">
+<div style="width: 1200px; margin-left: 17%;">
       <table class="table">
          <thead>
             <tr class="success">
@@ -246,7 +248,7 @@ style>#name:link {
          
    </table>
 </div>
-
+</nav>
 
 
 </body>
