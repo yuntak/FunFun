@@ -113,6 +113,8 @@ display: inline;
 			<ul class="nav navbar-nav navbar-right myinline">
 				<li><a class="a-button" href="<%=request.getContextPath() %>/agreement">회원가입</a></li>
 				<li><a class="a-button" href="<%=request.getContextPath() %>/Login">로그인</a></li>
+				<li><a class="a-button" href="<%=request.getContextPath() %>/">아이디찾기</a></li>
+				<li><a class="a-button" href="<%=request.getContextPath() %>/">비번찾기</a></li>
 			</ul>
 		
 		</div>

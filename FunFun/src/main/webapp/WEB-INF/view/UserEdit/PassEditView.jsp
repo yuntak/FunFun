@@ -18,6 +18,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script>
+$('#editForm').validate({
+	// 테스트를 위하여 유효성 검사가 완료되어 submit을 처리하지 않음.(값이 true일경우)
+	debug : true,
+	//검사할 필드와 검사 항목의 나열
+	rules : {
+
+		pass : {
+			required : true,
+			minlength : 8,
+		},
+	
+
+	},
+	// 검사를 충족하지 못할 경우 표시될 메시지의 나열
+	messages : {
+
+		pass : {
+			required : "암호를 입력하시오.",
+			minlength : "비밀번호는 {0}자 이상 입력해주세요!",
+		},
+		
+	}, submitHandler: function(form) {
+	    form.submit();
+	  }
+
+});
+
+
+
+
+
+
+	
+</script>
 
 <style>
 p {
@@ -39,7 +74,8 @@ p {
 
 </head>
 <body>
-	<form class="form-horizontal" id="editForm" name="editForm">
+
+	<form class="form-horizontal" id="editForm" name="editForm" action="SignUpResult">
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="nav nav-pills">
@@ -55,7 +91,7 @@ p {
 		<div class="panel-body">
 			<div class="form-group">
 				<label for="id" class="col-sm-2 control-label">아이디</label>
-				<div class="col-sm-4">
+				<div class="col-sm-4" style="width: 300px;">
 					<input type="text" class="form-control" value="${FunFunUser.id }" id="id"
 						readonly="readonly">
 				</div>
@@ -63,7 +99,7 @@ p {
 
 			<div class="form-group">
 				<label for="pass" class="col-sm-2 control-label">비밀번호</label>
-				<div class="col-sm-4">
+				<div class="col-sm-4" style="width: 300px;">
 					<input type="password" class="form-control" name="pass" id="pass">
 				</div>
 			</div>

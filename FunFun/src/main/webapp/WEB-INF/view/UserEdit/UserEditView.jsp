@@ -34,6 +34,9 @@ p{
 #deledit {
 	
 }
+.panel-body{
+	
+}
 </style>
 
 </head>
@@ -64,15 +67,15 @@ p{
 			
 				<div class="form-group">
 					<sform:label for="id" class="col-sm-2 control-label" path="id">아이디</sform:label>
-					<div class="col-sm-4">
+					<div class="col-sm-4" style="width: 300px;"> 
 						<sform:input type="text" class="form-control" value="${FunFunUser.id }"
 							 id="id" readonly="true" path="id"/>
 					</div>
 				</div>
 
-				<div class="form-group">
+				<div class="form-group" >
 					<sform:label for="pass" class="col-sm-2 control-label" path="pass">비밀번호</sform:label>
-					<div class="col-sm-4">
+					<div class="col-sm-4" style="width: 300px;">
 						<sform:input type="password" class="form-control" name="pass"
 							id="pass" path="pass"/>
 					</div>
@@ -92,7 +95,7 @@ p{
 				<div class="form-group">
 					<button class="btn btn-success">확인</button>
 
-					<a href="../main" class="btn btn-danger">취소</a>
+					<a href="../main" class="btn btn-danger" style="margin-bottom: 5mm;">취소</a>
 				</div>
 			</div>
 	</sform:form>

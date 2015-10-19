@@ -178,9 +178,6 @@
 <body>
 
 
-
-
-
 	<sform:form class="form-horizontal" name="fregisterform" id="fregisterform"	method="post" action="SignUpResult"
 		enctype="multipart/form-data" modelAttribute="user">
 
