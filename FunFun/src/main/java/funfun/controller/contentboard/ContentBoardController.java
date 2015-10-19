@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.jdbc.dto.CBoard;
 import funfun.jdbc.service.CBoardService;
@@ -36,6 +37,17 @@ public class ContentBoardController {
 		int allPage = ContentBoardSvc.selectCountAllPage();
 		model.addAttribute("allPage",allPage);
 		String viewlocation = "/WEB-INF/view/contentboard/CBoardList.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+	}
+	
+	
+	@RequestMapping(value="/ContentBoard/MainView")
+	public String contentBoardMainView(@RequestParam int Cno,Model model){
+		CBoard cboard = ContentBoardSvc.selectFullCBoard(Cno);
+		model.addAttribute("CBoard", cboard);
+		
+		String viewlocation = "/WEB-INF/view/contentboard/CBoardContents.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}

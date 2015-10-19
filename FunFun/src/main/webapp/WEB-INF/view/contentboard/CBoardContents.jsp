@@ -194,4 +194,8 @@
 
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
+
+<script type="text/javascript">
+console.log(${CBoard });
+</script>
 </html>
