@@ -21,20 +21,20 @@
 	<div class="panel-body">
 		<form class="form-horizontal" method="post" action="serachId.jsp">
 			<div class="form-group">
-				<sform:label for="mb_password" class="col-sm-2 control-label" path="pass">패스워드</sform:label>
+				<label for="mb_password" class="col-sm-2 control-label" >패스워드</label>
 				<div class="col-sm-6">
-					<sform:input class="form-control" type="password" name="mb_pass"
-						id="mb_pass" size="20" maxlength="20"   placeholder="Password" path="pass" />
+					<input class="form-control" type="password" name="mb_pass"
+						id="mb_pass" size="20" maxlength="20"   placeholder="Password" />
 				<p class="help-block">비밀번호는 8자 이상으로 입력하세요.</p>
 				</div>
 			</div>
 			
 			<div class="form-group" id="form">
-			<label for="mb_email" class="col-sm-2 control-label" path="email">E-mail</label>
+			<label for="mb_email" class="col-sm-2 control-label" >E-mail</label>
 			<div class="col-sm-6">
 				<input class="form-control" type="text" id='mb_email'
 					name='mb_email'  style="ime-mode: disabled" size="38"
-					maxlength="50" value='' placeholder="E-mail" onblur="" path="email" />
+					maxlength="50" value='' placeholder="E-mail" onblur=""  />
 				<p class="help-block">
 					아이디, 비밀번호 분실 시 본인확인용으로 사용되므로<br>유효한 이메일 계정으로 입력하시기 바랍니다.
 				</p>

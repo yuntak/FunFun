@@ -1,7 +1,7 @@
 <%@page import="funfun.jdbc.dto.Reply"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="java.util.ArrayList"%>
@@ -84,6 +84,7 @@ textarea {
         
       </div>
       
+      
       <div class=" panel-default" style="width: 900px; overflow: auto;">
          <div class="panel-heading"><strong>코멘트</strong></div>
      
@@ -112,6 +113,7 @@ textarea {
          
       </div>
 	 </c:when>
+	 
 		<c:otherwise>
 	  <div class="panel-body" align="center">
 
@@ -141,6 +143,16 @@ textarea {
         
       </div>
       
+       <%-- <c:if test="${FunFunUser=fdto.getuserId()}">   
+      	
+      </c:if> --%>
+      <div style="width: 900px;" align="right">
+      	<input value="글수정" class="btn btn-info" onclick="modi();" style="width: 70px;"/>
+        <input value="글삭제" class="btn btn-info" onclick="del();" style="width: 70px;"/>
+        
+      </div>
+        
+         
       <div class=" panel-default" style="width: 900px; overflow: auto;">
          <div class="panel-heading"><strong>코멘트</strong></div>
      
@@ -168,10 +180,16 @@ textarea {
 
          
       </div>
+      
+       
+      
+    
+    
 	  	
       <div class="" style="width: 900px; height: 110px; background-color:#EFEFE7">
          <div class="row">
-         <c:if test="${FunFunUser!=null }">
+         <c:if test="${FunFunUser!=null}">
+         	
             <div class="col-lg-2 col-sm-2 col-xs-2 col-md-2" style="margin-top: 10mm;">
                <label for="user">${FunFunUser.nickname }</label>
             </div>
@@ -260,6 +278,14 @@ function Comment(list){
    }) */
    
    $("#comment").html(comments);
+}
+
+	
+function modi(){
+	window.location.assign("<%=request.getContextPath()%>/main");
+}
+function del(){
+	window.location.assign("<%=request.getContextPath()%>/main");
 }
 </script>
 </html>

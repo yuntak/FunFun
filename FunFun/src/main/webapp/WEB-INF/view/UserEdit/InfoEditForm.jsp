@@ -18,6 +18,13 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- jQuery.validate 플러그인 삽입 -->
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
@@ -73,6 +80,9 @@ $(document).ready(function() {
 			loca_addr:{
 				required : true
 			},
+			plus1:{
+				required : true	
+			}
 
 		},
 		// 검사를 충족하지 못할 경우 표시될 메시지의 나열
@@ -108,6 +118,9 @@ $(document).ready(function() {
 			loca_addr:{
 				required : "지번 주소를 입력하세요."
 			},
+			plus1:{
+				required : "입력하세요.~!~!~!"
+			}
 		}, submitHandler: function(form) {
 		    form.submit();
 		  }
@@ -224,10 +237,10 @@ font-size: 35px;
 					</div>
 
 					<div class="form-group">
-						<sform:label for="nickname" class="col-sm-2 control-label" path="nickname">닉네임</sform:label> 
+						<sform:label for="nickname" class="col-sm-2 control-label"  path="nickname">닉네임</sform:label> 
 						<div class="col-sm-4">
 						<sform:input class="form-control" type="text" value=""
-							path="nickname"/><br>
+							path="nickname" name="nickname" id="nickname"/><br>
 					</div>
 					</div>
 
@@ -308,7 +321,7 @@ font-size: 35px;
 					<div class="form-group">
 						<label class="col-sm-2 control-label" >추가1</label> 
 						<div class="col-sm-4">
-						<input class="form-control" /><br>
+						<input class="form-control" name="plus1" id="plus1"/><br>
 					</div>
 					</div>
 					

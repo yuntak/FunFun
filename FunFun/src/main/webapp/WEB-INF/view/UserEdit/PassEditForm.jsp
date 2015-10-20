@@ -38,14 +38,14 @@
 <div class="form-group">
 <label for="pass" class="col-sm-2 control-label">비밀번호</label>
 <div class="col-sm-4" style="width: 300px;">
-<input type="password" class="form-control" name="password" id="pass">
+<input type="password" class="form-control" name="pass" id="pass">
 </div>
 </div>
 
 <div class="form-group">
 <label for="pass_check" class="col-sm-2 control-label">비밀번호 확인</label>
 <div class="col-sm-4">
-<input type="password" class="form-control" name="password_check" id="pass_check">
+<input type="password" class="form-control" name="pass_check" id="pass_check">
 </div>
 </div>
 </div>

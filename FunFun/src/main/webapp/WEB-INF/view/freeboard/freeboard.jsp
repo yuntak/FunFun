@@ -24,6 +24,9 @@
 <script
    src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script>
+
+</script>
 <style type="text/css">
 p {
    font-size: 30px;
@@ -74,7 +77,7 @@ style>#name:link {
 
 <body>
 
-	<nav>
+<nav>
 	
    <div class="container">
 
@@ -83,8 +86,9 @@ style>#name:link {
       <br> <br>     
       <form action="">
       <div class="form-inline" style="margin-left: 60%;">
-      <select class="form-control" name="name"><option value="nickname">닉네임</option>
-
+      <select class="form-control" name="name">
+      
+      		  <option value="nickname">닉네임</option>
               <option value="title">제목</option>
               <option value="content">내용</option></select>
               
