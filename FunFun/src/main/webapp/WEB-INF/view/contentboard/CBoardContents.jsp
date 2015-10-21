@@ -46,7 +46,6 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
@@ -168,7 +167,6 @@
 
 	</div>
 
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 
 <script type="text/javascript">
