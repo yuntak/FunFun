@@ -108,4 +108,32 @@ public class CBoardServiceImpl implements CBoardService {
 		logger.trace("select content Board Service : {}", selectresult);
 		return selectresult;
 	}
+
+	@Override
+	public int selectCBoardByContextAllPage(String context, String code) {
+		int selectresult = cdao.selectCBoardByContextAllPage(context, code);
+		logger.trace("select over : {}", selectresult);
+		return selectresult;
+	}
+
+	@Override
+	public int selectCBoardByNicknameAllPage(String nickname, String code) {
+		int selectresult = cdao.selectCBoardByNicknameAllPage(nickname, code);
+		logger.trace("select over : {}", selectresult);
+		return selectresult;
+	}
+
+	@Override
+	public int selectCBoardByTitleAllPage(String title, String code) {
+		int selectresult = cdao.selectCBoardByTitleAllPage(title, code);
+		logger.trace("select over : {}", selectresult);
+		return selectresult;
+	}
+
+	@Override
+	public int selectCBoardByCategoryAllPage(String context, String code) {
+		int selectresult = cdao.selectCBoardByCategoryAllPage(context, code);
+		logger.trace("select over : {}", selectresult);
+		return selectresult;
+	}
 }

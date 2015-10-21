@@ -192,6 +192,14 @@ public class FBoardDaoImpl implements FBoardDao {
 	}
 	
 	@Override
+	public int selectFBoardByContextAllPage(String context, String code) {
+		String sql = "select count(*) from free_board where fcontext like '%'||?||'%' and board_code=? order by fno desc";
+		int countresult = jt.queryForObject(sql, Integer.class,context,code);
+		int result = (int)Math.ceil(countresult/(double)FBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	
+	@Override
 	public int selectCount(int to, int from) {
 		String sql = "SELECT count(*) FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from free_board order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		int result = jt.queryForObject(sql, Integer.class, to, from);
@@ -210,14 +218,6 @@ public class FBoardDaoImpl implements FBoardDao {
 	public String selectNickname(int no) {
 		String sql = "select nickname from free_board where fno=?";
 		String result = jt.queryForObject(sql, String.class,no);
-		return result;
-	}
-
-	@Override
-	public int selectFBoardByContextAllPage(String context, String code) {
-		String sql = "select count(*) from free_board where fcontext like '%'||?||'%' and board_code=? order by fno desc";
-		int countresult = jt.queryForObject(sql, Integer.class,context,code);
-		int result = (int)Math.ceil(countresult/(double)FBoardDao.BOARD_PER_PAGE);
 		return result;
 	}
 
