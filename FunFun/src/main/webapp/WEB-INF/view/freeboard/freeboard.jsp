@@ -86,10 +86,16 @@ style>#name:link {
       <br> <br>     
       <form action="">
       <div class="form-inline" style="margin-left: 60%;">
+<<<<<<< HEAD
       <select class="form-control" name="name">
       
       		  <option value="nickname">닉네임</option>
               <option value="title">제목</option>
+=======
+      <select class="form-control" name="name"><option value="nickname">닉네임</option>
+
+              <option value="subject">제목</option>
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
               <option value="content">내용</option></select>
               
             
@@ -136,7 +142,7 @@ style>#name:link {
                   <%=fdto.getTitle()%>
                </td>
 
-               <td><%=fdto.getUserId()%></td>
+               <td><%=fdto.getNickName()%></td>
 
                <td><%=fdto.getFdate()%></td>
 

@@ -179,7 +179,7 @@
 <body>
 
 
-	<sform:form class="form-horizontal" name="fregisterform" id="fregisterform"	method="post" action="SignUpResult"
+	<sform:form class="form-horizontal" name="fregisterform" id="fregisterform"	method="post" action=""
 		enctype="multipart/form-data" modelAttribute="user">
 
 		<div class="panel panel-info">

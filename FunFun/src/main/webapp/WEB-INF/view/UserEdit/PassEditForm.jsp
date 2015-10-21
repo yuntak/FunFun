@@ -17,6 +17,10 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <head>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- jQuery.validate 플러그인 삽입 -->
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>

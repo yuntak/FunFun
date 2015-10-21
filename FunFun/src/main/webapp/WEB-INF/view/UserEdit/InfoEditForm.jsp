@@ -27,30 +27,24 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- jQuery.validate 플러그인 삽입 -->
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <title>Insert title here</title>
 <script>
 $(document).ready(function() {
 	
-	$.validator.addMethod("numcheck", function(value, element) {
+	/* $.validator.addMethod("numcheck", function(value, element) {
 		return this.optional(element)
 				|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
-	});
-
-	//확장옵션
-	 
+	}); */
 	$('#fregisterform').validate({
 		// 테스트를 위하여 유효성 검사가 완료되어 submit을 처리하지 않음.(값이 true일경우)
 		debug : true,
 		//검사할 필드와 검사 항목의 나열
 		rules : {
 
-			cellphone : {
-				required : true,
-				numcheck : true
-			},
-			address : {
-				required : true,
-			},
 			nickname : {
 				required : true,
 				minlength : 4,
@@ -59,6 +53,14 @@ $(document).ready(function() {
 					type : "post",
 					url : "./Nick_dupl_ajax"
 				}
+			},
+
+			cellphone : {
+				required : true,
+				numcheck : true
+			},
+			address : {
+				required : true,
 			},
 
 			email : {
@@ -88,13 +90,7 @@ $(document).ready(function() {
 		// 검사를 충족하지 못할 경우 표시될 메시지의 나열
 		messages : {
 
-			cellphone : {
-				required : "번호를 입력하시오.",
-				numcheck : "올바른 연락처를 입력해주십시오.",
-			},
-			address : {
-				required : "주소를 입력하시오."
-			},
+			
 			nickname : {
 
 				required : "닉네임을 입력하시오.",
@@ -102,6 +98,13 @@ $(document).ready(function() {
 				maxlength : "닉네임 {0}자 이하로 입력해주세요 ",
 				remote : "닉네임이 중복 되었습니다."
 
+			},
+			cellphone : {
+				required : "번호를 입력하시오.",
+				numcheck : "올바른 연락처를 입력해주십시오.",
+			},
+			address : {
+				required : "주소를 입력하시오."
 			},
 			email : {
 				required : "이메일을 입력하시오.",
@@ -126,8 +129,8 @@ $(document).ready(function() {
 		  }
 
 	});
+});
 
-}); //end ready() 
 
 function sample4_execDaumPostcode() {
 	new daum.Postcode(
@@ -209,7 +212,7 @@ font-size: 35px;
 <nav>
 
 	<sform:form class="form-horizontal" name="fregisterform" id="fregisterform" onsubmit="return onSubmit(this)"
-		action="SignUpResult" method="post" modelAttribute="userEdit"><div class="panel panel-info">
+		action="" method="post" modelAttribute="userEdit"><div class="panel panel-info">
 			<div class="panel-heading">
 				<div class="nav nav-pills">
 					<ul class="nav nav-justified">
