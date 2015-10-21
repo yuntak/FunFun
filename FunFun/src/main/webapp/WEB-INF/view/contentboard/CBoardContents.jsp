@@ -150,7 +150,7 @@
 					<tr>
 
 						<td id="subtitle" style="cursor: pointer"
-							onclick="location.href='<%=request.getContextPath()%>/ContentBoard/View?CBoardNo=${sub.no }&${CBoard.no }'">${sub.subtitle }</td>
+							onclick="location.href='<%=request.getContextPath()%>/ContentBoard/View?CBoardNo=${sub.no }&No=${CBoard.cno }'">${sub.subtitle }</td>
 						<td>${sub.contentBoardCno }</td>
 						<td>${sub.csDate }</td>
 					</tr>
