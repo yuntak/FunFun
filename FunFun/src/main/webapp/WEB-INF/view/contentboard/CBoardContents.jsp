@@ -46,7 +46,6 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
@@ -148,9 +147,8 @@
 
 				<c:forEach var="sub" items="${CBoard.cboard_sub }">
 					<tr>
-
 						<td id="subtitle" style="cursor: pointer"
-							onclick="location.href='<%=request.getContextPath()%>/ContentBoard/View?CBoardNo=${sub.no }&No=${CBoard.cno }'">${sub.subtitle }</td>
+							onclick="location.href='<%=request.getContextPath()%>/ContentBoard/View?Cno=<%=cdto.getCno() %>&no=${sub.no }'">${sub.subtitle }</td>
 						<td>${sub.contentBoardCno }</td>
 						<td>${sub.csDate }</td>
 					</tr>
@@ -168,7 +166,6 @@
 
 	</div>
 
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 
 <script type="text/javascript">
