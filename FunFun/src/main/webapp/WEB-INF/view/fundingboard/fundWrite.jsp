@@ -56,7 +56,7 @@
    </div>
    <br>
    <sform:hidden value="${FunFunUser.id }" path="userId"/>
-   <sform:hidden value="${FunFunUser.nickname }" path="nickname"/>
+   <sform:hidden value="${FunFunUser.nickname }" path="nickName"/>
    <div class="panel-footer">
    <sform:button class="btn btn-info">확인</sform:button>
    <%-- <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
