@@ -15,4 +15,8 @@ public interface CBoardService {
 	List<CBoard> selectCBoardBySelectTitlePage(String title,String code, int page_no);
 	int selectCountAllPage();
 	CBoard selectFullCBoard(int cno);
+	int selectCBoardByContextAllPage(String context, String code);
+	int selectCBoardByNicknameAllPage(String nickname,String code);
+	int selectCBoardByTitleAllPage(String title,String code);
+	int selectCBoardByCategoryAllPage(String context, String code);
 }

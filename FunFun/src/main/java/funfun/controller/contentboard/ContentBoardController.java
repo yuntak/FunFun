@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import funfun.jdbc.dto.CBoard;
+import funfun.jdbc.dto.CBoard_sub;
+import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.service.CBoardService;
 import funfun.jdbc.service.CBoard_subService;
 
@@ -41,6 +44,27 @@ public class ContentBoardController {
 		return "main/Template";
 	}
 	
+	@RequestMapping(value="/ContentBoard/List",method=RequestMethod.GET)
+	public String contentBoardList(@RequestParam String name,@RequestParam String keyword, @RequestParam int page,Model model){
+		List<CBoard> CBoardList=null;
+		int allPage=0;
+		String code="22";
+		logger.trace(""+name+" : " +keyword+" : " +page+" qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+		if(name.equals("subject")){
+			allPage=ContentBoardSvc.selectCBoardByTitleAllPage(keyword, code);
+			CBoardList=ContentBoardSvc.selectCBoardBySelectTitlePage(keyword, code, page);
+		}else{
+			allPage= ContentBoardSvc.selectCountAllPage();
+			CBoardList=ContentBoardSvc.selectCBoardByPage(CBoard.CONTENTBOARD_CODE,page);
+		}
+		model.addAttribute("allPage", allPage);
+		model.addAttribute("CBoardList", CBoardList);
+		String viewlocation = "/WEB-INF/view/contentboard/CBoardList.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+		
+	}
+	
 	
 	@RequestMapping(value="/ContentBoard/MainView")
 	public String contentBoardMainView(@RequestParam int Cno,Model model){
@@ -48,6 +72,16 @@ public class ContentBoardController {
 		model.addAttribute("CBoard", cboard);
 		
 		String viewlocation = "/WEB-INF/view/contentboard/CBoardContents.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+	}
+	
+	@RequestMapping(value="/ContentBoard/View")
+	public String contentBoardView(@RequestParam int no,@RequestParam int Cno,Model model){
+		CBoard_sub cboard_sub = ContentSubBoardSvc.selectCBoardBycno(no, Cno);
+		model.addAttribute("CBoard_sub", cboard_sub);
+		
+		String viewlocation = "/WEB-INF/view/contentboard/contentBoard.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
