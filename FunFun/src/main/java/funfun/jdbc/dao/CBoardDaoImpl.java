@@ -2,20 +2,16 @@ package funfun.jdbc.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import funfun.jdbc.dto.CBoard;
-import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Reply;
 
 @Repository
@@ -161,6 +157,38 @@ public class CBoardDaoImpl implements CBoardDao {
 	public int selectCountAllPage() {
 		String sql = "select count(*) from content_board";
 		int countresult = jt.queryForObject(sql, Integer.class);
+		int result = (int)Math.ceil(countresult/(double)CBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	
+	@Override
+	public int selectCBoardByTitleAllPage(String title,String code) {
+		String sql = "select count(*) from content_board where title like '%'||?||'%' and board_code=? order by cno desc";
+		int countresult = jt.queryForObject(sql, Integer.class,title,code);
+		int result = (int)Math.ceil(countresult/(double)CBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	
+	@Override
+	public int selectCBoardByNicknameAllPage(String nickname,String code) {
+		String sql = "select count(*) from content_board where nickname like '%'||?||'%' and board_code=? order by cno desc";
+		int countresult = jt.queryForObject(sql, Integer.class,nickname,code);
+		int result = (int)Math.ceil(countresult/(double)CBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	
+	@Override
+	public int selectCBoardByContextAllPage(String context, String code) {
+		String sql = "select count(*) from content_board where content like '%'||?||'%' and board_code=? order by cno desc";
+		int countresult = jt.queryForObject(sql, Integer.class,context,code);
+		int result = (int)Math.ceil(countresult/(double)CBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	
+	@Override
+	public int selectCBoardByCategoryAllPage(String category, String code) {
+		String sql = "select count(*) from content_board where category=? and board_code=? order by cno desc";
+		int countresult = jt.queryForObject(sql, Integer.class,category,code);
 		int result = (int)Math.ceil(countresult/(double)CBoardDao.BOARD_PER_PAGE);
 		return result;
 	}

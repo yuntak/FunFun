@@ -6,7 +6,7 @@
 <%@page import="funfun.jdbc.dto.Board"%>
 <%@page import="funfun.jdbc.dto.CBoard"%>
 <%@page import="funfun.jdbc.dto.CBoard_sub"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
 <%@page import="org.springframework.ui.Model"%>
 
@@ -46,7 +46,6 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
@@ -63,7 +62,7 @@
 			<%-- <p>${CBoard }</p> --%>
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"
 				style="overflow: auto; margin-left: 10%; border-top: 1px solid blue; width: 900px; height: 300px;">
-				<table style="" class="table" border="1">
+				<table style="" class="table">
 
 
 					<tbody>
@@ -71,68 +70,68 @@
 							<%
 								Object ClistObj = request.getAttribute("CBoard");
 								List<CBoard_sub> list = null;
-								CBoard cdto=(CBoard)ClistObj;
-								list=cdto.getCboard_sub();
+								CBoard cdto = (CBoard) ClistObj;
+								list = cdto.getCboard_sub();
 							%>
-							
-							
+
+
 
 							<td align="center" style="overflow: hidden;" rowspan="3"><img
 								src="<%=request.getContextPath()%><%=cdto.getImgData()%>"
-								class="img-thumbnail" alt="Cinque Terre" width="100"
-								height="150"></td>
+								class="img-thumbnail" alt="Cinque Terre" width="150"
+								height="200"></td>
 
 
-							<td>태그(카테고리)<%=cdto.getCategory()%></td>
+							<td>태그 : <%=cdto.getCategory()%></td>
 
-							<td id="name" style="width: 450px; cursor: pointer;"
-								onclick="location.href='/ '"><strong>제목<%=cdto.getTitle()%></strong></td>
+							<td id="name" style="width: 450px; cursor: pointer;" onclick=" "><strong>제목
+									: <%=cdto.getTitle()%></strong></td>
 
 							<td style="width: 100px">작성자<%=cdto.getUserId()%></td>
-							
+
 
 						</tr>
 
 
 						<tr>
-							<td colspan="2" rowspan="2"></td>
-							<td>
+							<td colspan="2" rowspan="2">
+								<ul class="nav nav-tabs" style="width:; margin-left: 1%;">
+									<li class="active"><a data-toggle="tab" href="#home">작품공지</a></li>
+									<li><a data-toggle="tab" href="#menu1">작품소개</a></li>
+								</ul>
+								<div align="center">
 
-								
+
+
+									<div class="tab-content">
+										<div id="home" class="tab-pane fade in active">
+
+											<p>등록된 공지사항이 없습니다.</p>
+										</div>
+										<div id="menu1" class="tab-pane fade">
+
+											<p>${CBoard.content }</p>
+										</div>
+
+									</div>
+								</div>
 							</td>
-							
+							<td>조회 <%=cdto.getCview()%></td>
+
 						</tr>
 
 						<tr>
-							<td>조회 <%=cdto.getCview()%></td>
-							<td>추천 <%=cdto.getGood()%></td>
+
+							<td>추천 <%=cdto.getGood()%><button>추천하기</button></td>
 						</tr>
-						
-						
+
+
+
 					</tbody>
 				</table>
 
 
-				<div align="center">
 
-					<ul class="nav nav-tabs" style="width:; margin-left: 20%;">
-						<li class="active"><a data-toggle="tab" href="#home">작품공지</a></li>
-						<li><a data-toggle="tab" href="#menu1">작품소개</a></li>
-
-					</ul>
-
-					<div class="tab-content">
-						<div id="home" class="tab-pane fade in active">
-
-							<p>등록된 공지사항이 없습니다.</p>
-						</div>
-						<div id="menu1" class="tab-pane fade">
-
-							<p>${CBoard.content }</p>
-						</div>
-
-					</div>
-				</div>
 			</div>
 		</div>
 		<div style="width: 900px; height: 200px; border:; margin-left: 27%;">
@@ -142,20 +141,21 @@
 					<th>소제목</th>
 					<th>회차</th>
 					<th>날짜</th>
-					
-				</tr>
-		
-			
-<c:forEach var="sub" items="${CBoard.cboard_sub }">
-<tr>
-<td>${sub.subtitle }</td>
-<td>${sub.contentBoardCno }</td>
-<td>${sub.csDate }</td>
-</tr>
-</c:forEach>
 
-					
-				
+				</tr>
+
+
+				<c:forEach var="sub" items="${CBoard.cboard_sub }">
+					<tr>
+						<td id="subtitle" style="cursor: pointer"
+							onclick="location.href='<%=request.getContextPath()%>/ContentBoard/View?Cno=<%=cdto.getCno() %>&no=${sub.no }'">${sub.subtitle }</td>
+						<td>${sub.contentBoardCno }</td>
+						<td>${sub.csDate }</td>
+					</tr>
+				</c:forEach>
+
+
+
 			</table>
 			<br>
 			<div align="center">
@@ -166,10 +166,9 @@
 
 	</div>
 
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 
 <script type="text/javascript">
-console.log("${CBoard }");
+	console.log("${CBoard }");
 </script>
 </html>
