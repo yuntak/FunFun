@@ -44,10 +44,24 @@ textarea {
 
 			<div class="panel-body">
 				<div class="form-group">
-					<sform:label for="title" class="col-sm-1" path="">제목</sform:label>
+					<sform:label for="goal" class="col-sm-1" path="">목표금액</sform:label>
 					<div class="col-xs-9">
-						<sform:input type="text" class=" form-control" id="title" required
-							placeholder="제목입력란" path=""></sform:input>
+						<sform:input type="text" class=" form-control" id="goal" required
+							placeholder="목표금액" path=""></sform:input>
+					</div>
+				</div><br>
+				<div class="form-group">
+					<sform:label for="endDate" class="col-sm-1" path="">끝나는 날짜</sform:label>
+					<div class="col-xs-9">
+						<sform:input type="text" class=" form-control" id="endDate"
+							required placeholder="끝나는 날짜" path=""></sform:input>
+					</div>
+				</div><br>
+				<div class="form-group">
+					<sform:label for="receive" class="col-sm-1" path="">보상</sform:label>
+					<div class="col-xs-9">
+						<sform:input type="text" class=" form-control" id="receive"
+							required placeholder="보상" path=""></sform:input>
 					</div>
 				</div>
 				<br> <br>
@@ -69,7 +83,7 @@ textarea {
 				width : '100%',
 				height : '350px',
 				'filebrowserUploadUrl' : '/ckeditor/upload.jsp?'
-						+ 'realUrl=http://localhost/FunFun/FreeBoard/Write' 
+						+ 'realUrl=http://localhost/FunFun/FreeBoard/Write'
 						+ '&realDir=c:\\temp\\upload\\'
 
 			});
