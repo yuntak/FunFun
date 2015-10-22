@@ -42,7 +42,8 @@ textarea {
 </head>
 
 <body>
-	<sform:form method="post" onsubmit="return fundingWrite(this)" modelAttribute="Funding">
+	<sform:form method="post" onsubmit="return fundingWrite(this)"
+		modelAttribute="Funding">
 		<div class="writebody">
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -82,18 +83,21 @@ textarea {
 					</tr>
 				</table>
 				<br> <br>
-
-				<sform:textarea rows="40" cols="100" placeholder="내용" path="context"
-					value="" />
-
+				<form name="FContent" id="FContent" method="POST" action="<%=request.getContextPath() %>/fundingboard/fileUpload.jsp" enctype="multipart/form-data">
+					<input type="file" name="FContent" id="FContent"> 
+					<input type="submit" value="전송">
+				</form>
+					<sform:textarea rows="40" cols="100" placeholder="내용"
+						path="context" value="" />
 			</div>
 			<br> <br> <br>
-			<sform:hidden value=11 path="ok"/>
+			<sform:hidden value="11" path="ok" />
 			<sform:hidden value="${FunFunUser.id }" path="userId" />
 			<sform:hidden value="${FunFunUser.nickname }" path="nickName" />
 			<div class="panel-footer">
-			<sform:button class="btn btn-info">확인</sform:button>
-				<a href="<%=request.getContextPath()%>/FundingBoard" class="btn btn-info">취소</a>
+				<sform:button class="btn btn-info">확인</sform:button>
+				<a href="<%=request.getContextPath()%>/FundingBoard"
+					class="btn btn-info">취소</a>
 			</div>
 		</div>
 
@@ -108,6 +112,7 @@ textarea {
 		var goal = document.getElementById("goal").value;
 		var receive = document.getElementById("receive").value;
 		var FContext = document.getElementById("FContext").value;
+		var FContent = document.getElementById("FContent").value;
 		console.log(title);
 		console.log(context);
 		if (title == "") {
@@ -132,6 +137,11 @@ textarea {
 		}
 		if (FContext == "") {
 			alert("끝나는 날짜를 입력하세요.");
+
+			return false;
+		}
+		if (FContent == "") {
+			alert("메인 그림을 입력하세요.");
 
 			return false;
 		}

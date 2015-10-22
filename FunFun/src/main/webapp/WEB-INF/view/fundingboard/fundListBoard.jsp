@@ -1,10 +1,11 @@
-<%@page import="java.util.Date"%>
+<%@page import="java.util.*"%>
+<%@page import="javax.print.attribute.standard.DateTimeAtCompleted"%>
+<%@page import="java.sql.Date"%>
+
 
 <%@page import="funfun.jdbc.dto.Users"%>
 <%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
 <%@page import="org.springframework.ui.Model"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
 <%@page import="funfun.jdbc.dto.Funding"%>
 <%@page import="funfun.jdbc.dto.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -53,12 +54,13 @@
 					int per1 = 0;
 					long date1;
 					long date3;
-					Date date2 = new Date();
+					Calendar c = Calendar.getInstance();
+					long date2 = c.getTimeInMillis();
 					for (int i = 0; i < list.size(); i++) {
 						fdto = (Funding) list.get(i);
 						per = fdto.getMoney() / fdto.getGoal() * 100;
 						per1 = (int) per;
-						date1 = fdto.getEndDate().getTime() - date2.getTime();
+						date1 = fdto.getEndDate().getTime() - date2;
 						date3 = date1 / (24 * 60 * 60 * 1000);
 				%>
 				<div class="col-sm-4" style="background-color: lavenderblush;">
