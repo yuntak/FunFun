@@ -88,8 +88,8 @@
 	</div>
 	</div>
 	
-	<div style="width: 600px; border-top:1px solid black; border-bottom:1px solid black;
-	 margin-left: 33%; overflow: hidden;">
+	<div style="width: 750px; border-top:1px solid black; border-bottom:1px solid black;
+	 margin-left: 33%; margin-top:-250px; overflow: hidden;">
 	
 		 
 		<img src="<%=request.getContextPath()%>/img/Koala.jpg">

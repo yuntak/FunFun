@@ -30,15 +30,19 @@ public class ContentBoardController {
 		List<CBoard> CBoardList = ContentBoardSvc.selectCBoardByPage(CBoard.CONTENTBOARD_CODE, 1);
 		model.addAttribute("CBoardList",CBoardList);
 		int CsBoardCount=0;
+		List<CBoard_sub> sublist = null;
 		for(int i=0;i<CBoardList.size();i++){
 			CBoard cboard = CBoardList.get(i);
 			CsBoardCount = ContentSubBoardSvc.selectCountCno(cboard.getCno());
 			model.addAttribute("CsBoardCount"+i,CsBoardCount);
+			sublist=cboard.getCboard_sub();
+			model.addAttribute("sublist"+i,sublist);
 			logger.trace("Test : {}"+i,CsBoardCount);
 		}
 		
 		int allPage = ContentBoardSvc.selectCountAllPage();
 		model.addAttribute("allPage",allPage);
+		
 		String viewlocation = "/WEB-INF/view/contentboard/CBoardList.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
@@ -70,7 +74,8 @@ public class ContentBoardController {
 	public String contentBoardMainView(@RequestParam int Cno,Model model){
 		CBoard cboard = ContentBoardSvc.selectFullCBoard(Cno);
 		model.addAttribute("CBoard", cboard);
-		
+		List<CBoard_sub> cboard_sub2=cboard.getCboard_sub();
+		model.addAttribute("CBoard_sub2",cboard_sub2);
 		String viewlocation = "/WEB-INF/view/contentboard/CBoardContents.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
@@ -78,9 +83,16 @@ public class ContentBoardController {
 	
 	@RequestMapping(value="/ContentBoard/View")
 	public String contentBoardView(@RequestParam int no,@RequestParam int Cno,Model model){
+		
+		List<CBoard_sub> sublist =null;
+		CBoard cboard = ContentBoardSvc.selectFullCBoard(Cno);
+		if(cboard!=null){
+			sublist=cboard.getCboard_sub();
+		}
 		CBoard_sub cboard_sub = ContentSubBoardSvc.selectCBoardBycno(no, Cno);
 		model.addAttribute("CBoard_sub", cboard_sub);
-		
+		model.addAttribute("sublist", sublist);
+		logger.trace( "컨텐츠 보드 서브리스트 입니다{}",sublist);
 		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";

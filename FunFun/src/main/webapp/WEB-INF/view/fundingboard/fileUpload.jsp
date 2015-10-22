@@ -5,6 +5,7 @@
 <%@ page contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <%
+
 	request.setCharacterEncoding("EUC-KR");
 	String saveFolder = "C:\\FunFun\\editorFiles2\\images";
 	String encType = "EUC-KR";
@@ -15,10 +16,7 @@
 					maxSize, encType,
 					new DefaultFileRenamePolicy());
 		Enumeration<String> params = multi.getParameterNames();
-	
-		Enumeration<String> files = multi.getFileNames();
-		
-		
+
 		
 	}catch(Exception e){
 		e.printStackTrace();
