@@ -85,7 +85,8 @@ style>#name:link {
 
 
 				<table class="table table-bordered">
-					<%List<CBoard_sub> mysublist = null;
+					<%
+						List<CBoard_sub> mysublist = null;
 						Object ClistObj = request.getAttribute("CBoardList");
 						List<CBoard> list = null;
 						if (ClistObj != null && ClistObj instanceof List) {
@@ -117,8 +118,8 @@ style>#name:link {
 							csdto = cslist;
 							 mysublist = cdto.getCboard_sub();
 					%>
-					<c:set var="sublist" value="<%=mysublist %>"></c:set>
-					<c:out value="${sublist }"></c:out>
+					<%-- <c:set var="sublist" value="<%=mysublist %>"></c:set>
+					<c:out value="${sublist }"></c:out> --%>
 					<tbody align="center">
 						<tr>
 
