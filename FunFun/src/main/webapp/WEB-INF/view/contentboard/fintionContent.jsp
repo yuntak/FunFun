@@ -116,16 +116,19 @@
 			CBoard cdto = (CBoard) ClistObj;
 			
 		%>
-		<form action="<%=request.getContextPath()%>/ContentBoard/View?Cno">
-
+		<form action="<%=request.getContextPath()%>/ContentBoard/View">
+			<input type="hidden" name="Cno" value="<%=request.getParameter("Cno") %>">
 			<div align="left" style="width: 900px; margin-left: 27%;">
 				<table>
 					<tr>
 					
 						<td><select class="form-control" style="width: 100px;"
 							id="num" name="no">
-
-								
+							<optgroup label="sublabel" >
+							<c:forEach items="${sublist }" var="sub" >
+							<option id="sublabel" value="${sub.no }">${sub.no } 회</option>
+							</c:forEach>
+								</optgroup>
 							
 						</select></td>
 						<td><input type="submit" value="이동" class="btn btn-default">
@@ -148,9 +151,8 @@
 		<hr>
 
 	</div>
-
+${sublist }
 </body>
 <script>
-	
 </script>
 </html>

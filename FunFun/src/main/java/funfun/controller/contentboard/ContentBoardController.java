@@ -78,9 +78,16 @@ public class ContentBoardController {
 	
 	@RequestMapping(value="/ContentBoard/View")
 	public String contentBoardView(@RequestParam int no,@RequestParam int Cno,Model model){
+		
+		List<CBoard_sub> sublist =null;
+		CBoard cboard = ContentBoardSvc.selectFullCBoard(Cno);
+		if(cboard!=null){
+			sublist=cboard.getCboard_sub();
+		}
 		CBoard_sub cboard_sub = ContentSubBoardSvc.selectCBoardBycno(no, Cno);
 		model.addAttribute("CBoard_sub", cboard_sub);
-		
+		model.addAttribute("sublist", sublist);
+		logger.trace( "컨텐츠 보드 서브리스트 입니다{}",sublist);
 		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
