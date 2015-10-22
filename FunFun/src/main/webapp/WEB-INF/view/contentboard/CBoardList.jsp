@@ -94,6 +94,7 @@ style>#name:link {
 					<%
 						CBoard cdto = null;
 						int csdto = 0;
+						int j;
 						for (int i = 0; i < list.size(); i++) {
 							cdto = (CBoard) list.get(i);
 							Object CslistObj = request.getAttribute("CsBoardCount" + i);
@@ -139,7 +140,7 @@ style>#name:link {
 										<div class="container" style="width: 100px; padding-top: 20">
 											<select id="sub" style="width: 80px">
 												<%
-													for (int j = 1; j <= csdto; j++) {
+													for (j = 1; j <= csdto; j++) {
 												%>
 												<option value="<%=j%>"><%=j%>회
 												</option>
@@ -152,9 +153,23 @@ style>#name:link {
 									</div>
 								</div>
 							</td>
-							
+
 							<td style="height: 50px">
-								<form action="<%=request.getContextPath()%>/ContentBoard/View?Cno=<%=cdto.getCno() %>&no=${sub.no}">
+							<%
+							Object Oblist = request.getAttribute("CBoard_sub2");
+								List<CBoard_sub> cslist2 = null;
+								if (Oblist != null && Oblist instanceof List) {
+									cslist2 = (List<CBoard_sub>) Oblist;
+								}
+								CBoard_sub csdto2 = null;
+								for (int k = 0; k < cslist2.size(); k++) {
+									csdto2 = (CBoard_sub) cslist2.get(j);
+						%>
+								<form
+									action="<%=request.getContextPath()%>/ContentBoard/View?Cno=<%=cdto.getCno()%>&No=<%=csdto2.getNo()%>">
+							<%
+								}
+							%>
 									<input type="submit" value="보기">
 								</form>
 							</td>

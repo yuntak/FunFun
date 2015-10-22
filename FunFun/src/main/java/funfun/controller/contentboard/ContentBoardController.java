@@ -39,6 +39,7 @@ public class ContentBoardController {
 		
 		int allPage = ContentBoardSvc.selectCountAllPage();
 		model.addAttribute("allPage",allPage);
+		
 		String viewlocation = "/WEB-INF/view/contentboard/CBoardList.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
@@ -70,15 +71,16 @@ public class ContentBoardController {
 	public String contentBoardMainView(@RequestParam int Cno,Model model){
 		CBoard cboard = ContentBoardSvc.selectFullCBoard(Cno);
 		model.addAttribute("CBoard", cboard);
-		
+		List<CBoard_sub> cboard_sub2=cboard.getCboard_sub();
+		model.addAttribute("CBoard_sub2",cboard_sub2);
 		String viewlocation = "/WEB-INF/view/contentboard/CBoardContents.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
 	
 	@RequestMapping(value="/ContentBoard/View")
-	public String contentBoardView(@RequestParam int no,@RequestParam int Cno,Model model){
-		CBoard_sub cboard_sub = ContentSubBoardSvc.selectCBoardBycno(no, Cno);
+	public String contentBoardView(@RequestParam int No,@RequestParam int Cno,Model model){
+		CBoard_sub cboard_sub = ContentSubBoardSvc.selectCBoardBycno(No, Cno);
 		model.addAttribute("CBoard_sub", cboard_sub);
 		
 		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";

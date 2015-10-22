@@ -9,7 +9,7 @@
 <%@ page import="java.util.*"%>
 
 <%
-	String uploadPath = "";
+	String uploadPath = "C:\\FunFun\\editorFiles2\\images\\";
 
 	int size = 10 * 1024 * 1024; // 업로드 파일 최대 크기 지정
 
