@@ -1,46 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"%>
-
-<!-- 파일 업로드 처리를 위한 MultipartRequest 객체를 임포트 -->
-<%@ page import="com.oreilly.servlet.MultipartRequest"%>
-
-<!-- 파일 중복처리 객체 임포트 -->
-<%@ page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-
-<%@ page import="java.util.*"%>
-
+<%@page import="java.util.Enumeration"%>
+<%@page import="java.io.File"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@ page contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <%
-	String uploadPath = "";
-
-	int size = 10 * 1024 * 1024; // 업로드 파일 최대 크기 지정
-
+	request.setCharacterEncoding("EUC-KR");
+	String saveFolder = "C:\\FunFun\\editorFiles2\\images";
+	String encType = "EUC-KR";
+	int maxSize = 5*1024*1024;//5MB
+	try{
+		MultipartRequest multi = 
+				new MultipartRequest(request, saveFolder, 
+					maxSize, encType,
+					new DefaultFileRenamePolicy());
+		Enumeration<String> params = multi.getParameterNames();
 	
-	String filename = "";
-
-	try {
-
-		// 파일 업로드. 폼에서 가져온 인자값을 얻기 위해request 객체 전달,
-		//업로드 경로, 파일 최대 크기, 한글처리, 파일 중복처리
-		MultipartRequest multi = new MultipartRequest(request, uploadPath, size, "euc-kr",
-				new DefaultFileRenamePolicy());
-
-		// 업로드한 파일들을 Enumeration 타입으로 반환
-		// Enumeration형은 데이터를 뽑아올때 유용한 인터페이스 Enumeration객체는 java.util 팩키지에 정의 되어있으므로
-		// java.util.Enumeration을 import 시켜야 한다.
-		Enumeration files = multi.getFileNames();
-
-		// 업로드한 파일들의 이름을 얻어옴
-		String file = (String) files.nextElement();
-		filename = multi.getFilesystemName(file);
-
-	} catch (Exception e) {
-		// 예외처리
+		Enumeration<String> files = multi.getFileNames();
+		
+		
+		
+	}catch(Exception e){
 		e.printStackTrace();
 	}
 %>
-
-<html>
-<body>
-	업로드 된 파일명 :
-	<%=filename%><br>
-</body>
-</html>
