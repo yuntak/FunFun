@@ -84,7 +84,7 @@
 
 							<td>태그 : <%=cdto.getCategory()%></td>
 
-							<td id="name" style="width: 450px; cursor: pointer;" onclick=" "><strong>제목
+							<td id="name" style="width: 450px; cursor: pointer;"><strong>제목
 									: <%=cdto.getTitle()%></strong></td>
 
 							<td style="width: 100px">작성자<%=cdto.getUserId()%></td>

@@ -81,7 +81,7 @@ public class ContentBoardController {
 		CBoard_sub cboard_sub = ContentSubBoardSvc.selectCBoardBycno(no, Cno);
 		model.addAttribute("CBoard_sub", cboard_sub);
 		
-		String viewlocation = "/WEB-INF/view/contentboard/contentBoard.jsp";
+		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
