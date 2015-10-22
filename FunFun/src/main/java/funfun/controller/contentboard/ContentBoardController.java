@@ -76,21 +76,40 @@ public class ContentBoardController {
 		return "main/Template";
 	}
 	
-	@RequestMapping(value="/ContentBoard/View")
+	@RequestMapping(value="/ContentBoard/View",method=RequestMethod.GET)
 	public String contentBoardView(@RequestParam int no,@RequestParam int Cno,Model model){
-		
-		List<CBoard_sub> sublist =null;
+		logger.trace("컨텐츠 보드 뷰");
 		CBoard cboard = ContentBoardSvc.selectFullCBoard(Cno);
-		if(cboard!=null){
-			sublist=cboard.getCboard_sub();
-		}
+		model.addAttribute("CBoard", cboard);
+		List<CBoard_sub> sublist = ContentSubBoardSvc.selectCBoardSub(cboard.getCno());
+		model.addAttribute("sublist",sublist);
 		CBoard_sub cboard_sub = ContentSubBoardSvc.selectCBoardBycno(no, Cno);
 		model.addAttribute("CBoard_sub", cboard_sub);
-		model.addAttribute("sublist", sublist);
-		logger.trace( "컨텐츠 보드 서브리스트 입니다{}",sublist);
+		String category=cboard.getCategory();
+		if(category.equals("webtoon")){
+		String viewlocation = "/WEB-INF/view/contentboard/cartoonContent.jsp";
+		model.addAttribute("view", viewlocation);
+		}
+		else if(category.equalsIgnoreCase("CARTOON")){
+			
+		}
+		else if(category.equalsIgnoreCase("NOVEL")){
+			String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
+			model.addAttribute("view", viewlocation);
+			
+		}
+		return "main/Template";
+	}
+	
+	@RequestMapping(value="/ContentBoard/SubView",method=RequestMethod.GET)
+	public String contentBoardSubView(@RequestParam int Cno, @RequestParam int no, Model model){
+		logger.trace("Content Board SubView");
+		CBoard cboard = ContentBoardSvc.selectFullCBoard(Cno);
+		CBoard_sub sub = ContentSubBoardSvc.selectCBoardBycno(no, Cno);
+		model.addAttribute("CBoard_sub", sub);
+		model.addAttribute("CBoard", cboard);
 		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
-	
 }

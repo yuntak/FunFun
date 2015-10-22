@@ -58,44 +58,24 @@
 			<div style="width: 900px; height: 100px; border-bottom:1px solid skyblue; background-color: #EFEFE7">
 					<table style="margin-left: 2%;">
 					<tr>
-						<th style="font-size:20pt; width: 90px;">제목 /</th>
-						<th style="font-size:13pt; color:#00007D">작성자</th>
+						<th style="font-size:20pt; width: 90px;">${CBoard_sub.subtitle }/</th>
+						<th style="font-size:13pt; color:#00007D">${CBoard.userId }</th>
 					</tr>
 					</table>
 				</div>	
 
-		
-		<div align="center">
-  
-  <ul class="nav nav-tabs" style="width:;margin-top:10%; margin-left: 20%;" >
-    <li class="active"><a data-toggle="tab" href="#home">작품공지</a></li>
-    <li><a data-toggle="tab" href="#menu1">작품소개</a></li>
-   
-  </ul>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      
-      <p>등록된 공지사항이 없습니다.</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
-      
-      <p>어느 날 나는 끝내주게 잘생긴 약혼자를 가진 루덴바흐 황제의 딸 ‘레이디 에디타’가 돼 버렸다. 그러나 손꼽아 기다리던 약혼자의 귀환 날 그의 비보가 전해진다! 슬퍼할 겨를도 없이 나를 냉랭하게 바라보던 브란트 공작이 “전장에서 한 피의 맹세대로 제가 레이디 에디타를 거두겠습니다.”라며 나선다. 설상가상 이 남자, 단 둘만 남으면 “넌 이제 나를 벗어날 수 없다”며 집착까지 하는데! 대체 이들 사이에 무슨 일이 있었던 거야?!</p>
-    </div>
-    
-  </div>
-</div>
 	</div>
 	</div>
 	
-	<div style="width: 600px; height:600px; border:1px solid black; 
-	 margin-left: 33%;">
-	
-		웹툰 
+	<div style="width: 750px; border-top:1px solid black; border-bottom:1px solid black;
+	 margin-left: 33%; margin-top:-250px; overflow: hidden;">
+	${CBoard_sub.context }
+		 
 		
 	</div>
 	<br>
-	<form action="">
+	<form action="" class="form-inline">
 		<div align="left" style="width: 900px; margin-left: 27%;">
 			<select class="form-control" style="width: 100px;" id="num">
 
@@ -112,8 +92,7 @@
 		</div>
 	
 	<hr>
-    
-         
+     
       </div>
 	
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
