@@ -133,6 +133,11 @@
 
 
 
+<<<<<<< HEAD
+=======
+		<hr>
+		
+>>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 	</div>
 
 </body>

@@ -9,7 +9,7 @@
 
 <script>
 $(document).ready(function() {
- 	
+ 	alert("validator : "+$('#fregisterform').validate);
 	 /* $.validator.addMethod("numcheck", function(value, element) {
 		return this.optional(element)
 				|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
