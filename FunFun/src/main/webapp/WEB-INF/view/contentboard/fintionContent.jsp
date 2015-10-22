@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="funfun.jdbc.dto.CBoard_sub"%>
+<%@page import="funfun.jdbc.dto.CBoard"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -39,7 +41,6 @@
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
@@ -58,9 +59,15 @@
 				style="margin-left: 10%; border-top: 1px solid blue; width: 950px; height: 300px;">
 				<div style="width: 900px; height: 100px; border-bottom:1px solid skyblue; background-color: #EFEFE7">
 					<table style="margin-left: 2%;">
+					<%
+									Object CslistObj = request.getAttribute("CBoard_sub");
+									CBoard_sub csdto = (CBoard_sub) CslistObj;
+									Object ClistObj = request.getAttribute("CBoard");
+									CBoard cdto = (CBoard) ClistObj;
+								%>
 					<tr>
-						<th style="font-size:20pt; width: 90px;">제목 /</th>
-						<th style="font-size:13pt; color:#00007D">작성자</th>
+						<th style="font-size:20pt; width: 90px;"><%=csdto.getSubtitle() %></th>
+						<th style="font-size:13pt; color:#00007D">${FunFunUser.nickname }</th><!-- ??????????????????? -->
 					</tr>
 					</table>
 				</div>
@@ -81,10 +88,7 @@
 						</div>
 						<div id="menu1" class="tab-pane fade">
 
-							<p>어느 날 나는 끝내주게 잘생긴 약혼자를 가진 루덴바흐 황제의 딸 ‘레이디 에디타’가 돼 버렸다. 그러나
-								손꼽아 기다리던 약혼자의 귀환 날 그의 비보가 전해진다! 슬퍼할 겨를도 없이 나를 냉랭하게 바라보던 브란트 공작이
-								“전장에서 한 피의 맹세대로 제가 레이디 에디타를 거두겠습니다.”라며 나선다. 설상가상 이 남자, 단 둘만 남으면
-								“넌 이제 나를 벗어날 수 없다”며 집착까지 하는데! 대체 이들 사이에 무슨 일이 있었던 거야?!</p>
+							<p><%=cdto.getContent() %></p>
 						</div>
 
 					</div>
@@ -98,7 +102,7 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
 					style="width: 850px; height: 800px; background-color: #E2FFD3; margin-left: 11mm;">
-					소설내용</div>
+					<%=csdto.getContext() %></div>
 
 			</div>
 
@@ -179,6 +183,5 @@
 		</div>
 	</div>
 
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
 </body>
 </html>
