@@ -83,8 +83,9 @@ style>#name:link {
 
       <br>
       <p align="center">자유게시판</p>
-      <br> <br>     
-      <form action="">
+      <br> <br> 
+          
+      <form action="<%=request.getContextPath()%>/FreeBoard/List">
       <div class="form-inline" style="margin-left: 60%;">
 
 
@@ -94,15 +95,10 @@ style>#name:link {
       		<option value="nickname">닉네임</option>
               <option value="subject">제목</option>
               <option value="content">내용</option></select>
-              
-            
+                        
          <input type="text" name="keyword" class="form-control" placeholder="검색">
          <input type="hidden" name="page" value="1">
          <input type="submit" value="검색" class="btn btn-success">
-   
-          
-         
-        
 
       </div>
       </form>
