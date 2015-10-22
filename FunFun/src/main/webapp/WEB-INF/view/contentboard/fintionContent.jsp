@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="funfun.jdbc.dto.CBoard_sub"%>
-<%@page import="funfun.jdbc.dto.CBoard"%>
 <%@page import="java.util.List"%>
+<%@page import="funfun.jdbc.dto.FBoard"%>
+<%@page import="funfun.jdbc.dto.Board"%>
+<%@page import="funfun.jdbc.dto.CBoard"%>
+<%@page import="funfun.jdbc.dto.CBoard_sub"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="org.springframework.web.bind.annotation.ModelAttribute"%>
+<%@page import="org.springframework.ui.Model"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -69,7 +74,7 @@
 					</table>
 				</div>
 
-		<!-- 		<div align="center">
+				<!-- 		<div align="center">
 
 					<ul class="nav nav-tabs"
 						style="width:; margin-top: 10%; margin-left: 20%;">
@@ -93,29 +98,35 @@
 			</div>
 		</div>
 		<div
-			style="width: 900px; height: 800px; background-color: skyblue; margin-left: 27%;">
+			style="width: 900px; height: 800px; background-color: skyblue; margin-left: 27%; margin-top: -250px;">
 
 
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
-					style="width: 850px; height: 800px; background-color: #E2FFD3; margin-left: 11mm;">
+					style="width: 850px; height: 740px; background-color: #E2FFD3; margin-left: 11mm; margin-top: -100px;">
 					${CBoard_sub.context }</div>
 
 			</div>
 
 		</div>
 		<br>
-
-		<form action="">
+		<%
+			Object ClistObj = request.getAttribute("CBoard");
+			
+			CBoard cdto = (CBoard) ClistObj;
+			
+		%>
+		<form action="<%=request.getContextPath()%>/ContentBoard/View?Cno">
 
 			<div align="left" style="width: 900px; margin-left: 27%;">
 				<table>
 					<tr>
+					
 						<td><select class="form-control" style="width: 100px;"
-							id="num">
+							id="num" name="no">
 
-								<option>회차</option>
-								<option value="">1회</option>
+								
+							
 						</select></td>
 						<td><input type="submit" value="이동" class="btn btn-default">
 						</td>
@@ -126,7 +137,8 @@
 		</form>
 
 		<div style="width: 900px; margin-left: 28%;" align="center">
-			<a href="<%=request.getContextPath()%>/ContentBoard/List"><button type="button" class="btn-lg btn-info" style="width: 80px;">목록</button></a>
+			<a href="<%=request.getContextPath()%>/ContentBoard/List"><button
+					type="button" class="btn-lg btn-info" style="width: 80px;">목록</button></a>
 		</div>
 
 
@@ -134,8 +146,11 @@
 
 
 		<hr>
-		
+
 	</div>
 
 </body>
+<script>
+	
+</script>
 </html>

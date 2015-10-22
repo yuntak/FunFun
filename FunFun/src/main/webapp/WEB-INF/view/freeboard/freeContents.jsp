@@ -72,25 +72,13 @@ textarea {
          ${FBoard.fcontext }
         
       </div>
-      ${FunFunUser.nickname }<br>
-      ${FBoard.nickName }
-      <c:set value="${FunFunUser.nickname }" var="userNickname"></c:set>
-      <c:set value="${FBoard.nickName }" var="fboardNickname"></c:set>
-      <br>
-      <c:out value="${userNickname }"></c:out>
-      <c:out value="${fboardNickname }"></c:out>
-      1111111111111111111111111
-     <c:if test="${'1' eq '1' }" >
-     222222222222222
-     <p>닉네임이 같음</p>
+     <c:if test="${FunFunUser.nickname ==  FBoard.nickName}" >
         <div style="width: 900px;" align="right">
-            닉네임 같음
+            <input value="글수정" class="btn btn-info" onclick="modi();" style="width: 70px;"/>
+        <input value="글삭제" class="btn btn-info" onclick="del();" style="width: 70px;"/>
         </div>
       </c:if>
-      33333333333333333
-        	<input value="글수정" class="btn btn-info" onclick="modi();" style="width: 70px;"/>
-        <input value="글삭제" class="btn btn-info" onclick="del();" style="width: 70px;"/>
-         
+        	
       <div class=" panel-default" style="width: 900px; overflow: auto;">
          <div class="panel-heading"><strong>코멘트</strong></div>
      
