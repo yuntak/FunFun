@@ -90,6 +90,7 @@ public class FreeBoardController {
 		String viewlocation = "/WEB-INF/view/freeboard/freeWrite.jsp";
 		model.addAttribute("Fboard", fboard);
 		model.addAttribute("view", viewlocation);
+		logger.trace("dkkkdkk : {}", fboard);
 		return "main/Template";
 		
 	}
