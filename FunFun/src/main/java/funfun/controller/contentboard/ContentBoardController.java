@@ -49,17 +49,18 @@ public class ContentBoardController {
 	}
 	
 	@RequestMapping(value="/ContentBoard/List",method=RequestMethod.GET)
-	public String contentBoardList(@RequestParam String name,@RequestParam String keyword, @RequestParam int page,Model model){
+	public String contentBoardList(@RequestParam String category,Model model){
 		List<CBoard> CBoardList=null;
+		
 		int allPage=0;
 		String code="22";
-		logger.trace(""+name+" : " +keyword+" : " +page+" qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-		if(name.equals("subject")){
-			allPage=ContentBoardSvc.selectCBoardByTitleAllPage(keyword, code);
-			CBoardList=ContentBoardSvc.selectCBoardBySelectTitlePage(keyword, code, page);
+		logger.trace(""+category+" qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+		if(category !=""){
+			allPage=ContentBoardSvc.selectCBoardByCategoryAllPage(category, code);
+			CBoardList=ContentBoardSvc.selectCBoardByCategoryPage(category, code, 1);
 		}else{
 			allPage= ContentBoardSvc.selectCountAllPage();
-			CBoardList=ContentBoardSvc.selectCBoardByPage(CBoard.CONTENTBOARD_CODE,page);
+			CBoardList=ContentBoardSvc.selectCBoardByPage(CBoard.CONTENTBOARD_CODE,1);
 		}
 		model.addAttribute("allPage", allPage);
 		model.addAttribute("CBoardList", CBoardList);

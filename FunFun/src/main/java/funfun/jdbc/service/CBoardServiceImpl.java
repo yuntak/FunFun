@@ -72,9 +72,15 @@ public class CBoardServiceImpl implements CBoardService {
 	@Override
 	public List<CBoard> selectCBoardByCategoryPage(String category, String code, int page_no) {
 		List<CBoard> selectresult = null;
-
+		List<CBoard_sub> csList = null;
+		CBoard result = null;
 		try {
 			selectresult = cdao.selectCBoardByCategoryPage(category, code, page_no);
+			for (int i = 0; i < selectresult.size(); i++) {
+				result = selectresult.get(i);
+				csList = csdao.selectCBoardSub(result.getCno());
+				result.setCboard_sub(csList);
+			}
 
 		} catch (EmptyResultDataAccessException e) {
 			selectresult = null;
