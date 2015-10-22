@@ -42,8 +42,7 @@ textarea {
 </head>
 
 <body>
-	<sform:form method="post" onsubmit="return fundWrite(this) "
-		modelAttribute="Funding">
+	<sform:form method="post" onsubmit="return WriteSuccess(this)" modelAttribute="Funding">
 		<div class="writebody">
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -89,39 +88,40 @@ textarea {
 
 			</div>
 			<br> <br> <br>
-			<sform:hidden value="33" path="boardCode"/>
 			<sform:hidden value="${FunFunUser.id }" path="userId" />
 			<sform:hidden value="${FunFunUser.nickname }" path="nickName" />
 			<div class="panel-footer">
-			<div>
-				<sform:button class="btn btn-info">확인</sform:button>
+			<sform:button class="btn btn-info">확인
+				<%-- <a href="<%=request.getContextPath()%>/FundingBoard/WriteSuccess" class="btn btn-info">확인</a> --%>
+				</sform:button>
 				<%-- <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
 				<a href="<%=request.getContextPath()%>/FundingBoard"
 					class="btn btn-info">취소</a>
 			</div>
-			</div>
 		</div>
+
+
 	</sform:form>
 </body>
 <script type="text/javascript">
-	function freeBoardWrite(f) {
+	function fundingWrite(f) {
 		console.log("Funding Write");
 		var title = document.getElementById("title").value;
-		var content = document.getElementById("content").value;
+		var content = document.getElementById("context").value;
 		console.log(title);
-		console.log(content);
+		console.log(context);
 		if (title == "") {
 			alert("제목을 입력하세요.");
 
 			return false;
 		}
-		if (content == "") {
+		if (context == "") {
 			alert("내용을 입력하세요.");
 
 			return false;
 		}
 
-		f.action = 'FundWrite';
+		f.action = 'WriteStart';
 		return true;
 
 	}
