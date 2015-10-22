@@ -95,12 +95,19 @@ style>#name:link {
 						CBoard cdto = null;
 						int csdto = 0;
 						int j;
+						int k;
+						List<CBoard_sub> sublist = null;
 						for (int i = 0; i < list.size(); i++) {
 							cdto = (CBoard) list.get(i);
 							Object CslistObj = request.getAttribute("CsBoardCount" + i);
+							Object CsListObj = request.getAttribute("sublist"+i);
+							
 							int cslist = 0;
 							if (CslistObj != null && CslistObj instanceof Integer) {
 								cslist = (int) CslistObj;
+							}
+							if(CsListObj !=null && CsListObj instanceof List){
+								sublist=(List<CBoard_sub>) CsListObj;
 							}
 							csdto = cslist;
 					%>
@@ -156,17 +163,13 @@ style>#name:link {
 
 							<td style="height: 50px">
 							<%
-							Object Oblist = request.getAttribute("CBoard_sub2");
-								List<CBoard_sub> cslist2 = null;
-								if (Oblist != null && Oblist instanceof List) {
-									cslist2 = (List<CBoard_sub>) Oblist;
-								}
-								CBoard_sub csdto2 = null;
-								for (int k = 0; k < cslist2.size(); k++) {
-									csdto2 = (CBoard_sub) cslist2.get(j);
+							
+								CBoard_sub sub = null;
+								for (k = 0; k < sublist.size(); k++) {
+									sub = (CBoard_sub) sublist.get(k);
 						%>
 								<form
-									action="<%=request.getContextPath()%>/ContentBoard/View?Cno=<%=cdto.getCno()%>&No=<%=csdto2.getNo()%>">
+									action="<%=request.getContextPath()%>/ContentBoard/View?Cno=<%=cdto.getCno()%>&No=<%=sub.getNo()%>">
 							<%
 								}
 							%>

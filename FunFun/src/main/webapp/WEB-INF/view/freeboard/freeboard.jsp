@@ -93,8 +93,8 @@ style>#name:link {
 
       <select class="form-control" name="name">
       		<option value="nickname">닉네임</option>
-              <option value="subject">제목</option>
-              <option value="content">내용</option></select>
+            <option value="subject">제목</option>
+            <option value="content">내용</option></select>
                         
          <input type="text" name="keyword" class="form-control" placeholder="검색">
          <input type="hidden" name="page" value="1">
