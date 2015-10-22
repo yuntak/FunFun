@@ -13,17 +13,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-<script
-   src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
 
 /*  .top {
@@ -54,67 +43,8 @@ textarea {
 </style>
 </head>
 <body>
-	<c:choose>
-	<c:when test="${empty FunFunUser }">
-   <div class="panel-body" align="center">
-
-      <div id="toppanel" class="" 
-         style="width: 900px; height:40px; background-color: #F3F3ED" >
-         <ul class="nav nav-justified">
-            <li>
-               <div align="left" class="panel-body" style="width: 200px">${FBoard.nickName }</div>
-            </li>
-            <li>
-               <div align="center" class="panel-body" style="width: 200px">${FBoard.fdate }</div>
-            </li>
-            <li>
-               <div align="right" class="panel-body" style="width: 200px">${FBoard.fview }</div>
-            </li>
-         </ul>
-      </div>
-
-
-      <div style="width: 900px;">
-         <div class="" align="center" style="color: #8A0000; font-size: 40px;">${FBoard.title }</div>
-      </div>
-
-
-      <div align="left" class="panel-body" style="width: 900px; overflow: auto;">
-         ${FBoard.fcontext }
-        
-      </div>
-      
-      
-      <div class=" panel-default" style="width: 900px; overflow: auto;">
-         <div class="panel-heading"><strong>코멘트</strong></div>
-     
-         
-            <table id="comment" class="table">
-                  <c:forEach  items="${FBoard.replys }" var="reply">
-               
-               
-               <thead>
-                  <tr>
-                     <th class="ttr" style="font-size:11pt;color:#454581;border-width: ;  border-top: ; border-bottom: none !important;/* border-bottom:thick solid white */">${reply.nickname }</th>
-                  </tr>
-               </thead>
-               
-               <tbody>
-                  <tr>
-                     <td style="font-size:9pt; border-top: none !important;border-width: 0; border-bottom: none !important;">${reply.context }</td>
-                  </tr>
-                  </c:forEach>
-               </tbody>
-               
-               
-            </table>
-         <div style="width: 900px; border: 2px solid #F3F3ED"></div>
-		</div>
-         
-      </div>
-	 </c:when>
-	 
-		<c:otherwise>
+	
+		
 	  <div class="panel-body" align="center">
 
       <div id="toppanel" class="" 
@@ -142,16 +72,24 @@ textarea {
          ${FBoard.fcontext }
         
       </div>
-      
-       <%-- <c:if test="${FunFunUser==fdto.getuserId()}">   
-      	
-      </c:if> --%>
-      <div style="width: 900px;" align="right">
-      	<input value="글수정" class="btn btn-info" onclick="modi();" style="width: 70px;"/>
+      ${FunFunUser.nickname }<br>
+      ${FBoard.nickName }
+      <c:set value="${FunFunUser.nickname }" var="userNickname"></c:set>
+      <c:set value="${FBoard.nickName }" var="fboardNickname"></c:set>
+      <br>
+      <c:out value="${userNickname }"></c:out>
+      <c:out value="${fboardNickname }"></c:out>
+      1111111111111111111111111
+     <c:if test="${'1' eq '1' }" >
+     222222222222222
+     <p>닉네임이 같음</p>
+        <div style="width: 900px;" align="right">
+            닉네임 같음
+        </div>
+      </c:if>
+      33333333333333333
+        	<input value="글수정" class="btn btn-info" onclick="modi();" style="width: 70px;"/>
         <input value="글삭제" class="btn btn-info" onclick="del();" style="width: 70px;"/>
-        
-      </div>
-        
          
       <div class=" panel-default" style="width: 900px; overflow: auto;">
          <div class="panel-heading"><strong>코멘트</strong></div>
@@ -159,8 +97,6 @@ textarea {
          
             <table id="comment" class="table">
                   <c:forEach  items="${FBoard.replys }" var="reply">
-               
-               
                <thead>
                   <tr>
                      <th class="ttr" style="font-size:11pt;color:#454581;border-width: ;  border-top: ; border-bottom: none !important;/* border-bottom:thick solid white */">${reply.nickname }</th>
@@ -179,16 +115,10 @@ textarea {
          
 
          
-      </div>
-      
-       
-      
-    
-    
-	  	
+      </div>   <c:if test="${FunFunUser!=null}">
       <div class="" style="width: 900px; height: 110px; background-color:#EFEFE7">
          <div class="row">
-         <c:if test="${FunFunUser!=null}">
+      
          	
             <div class="col-lg-2 col-sm-2 col-xs-2 col-md-2" style="margin-top: 10mm;">
                <label for="user">${FunFunUser.nickname }</label>
@@ -199,14 +129,13 @@ textarea {
             <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" align="right">
                <button id="FBreplyInsert" style="margin-top:3mm; margin-right:1mm; border: 1px solid #BFBFFF;background-color:#FBFBF9; font-size:15pt; width: 90px; height: 90px;">등록</button>
             </div>
-            </c:if>
+          
 
          </div>
       </div>
-
+  </c:if>
    </div>
-</c:otherwise>
-</c:choose>
+
 </body>
 <script type="text/javascript">
 $(function(){
