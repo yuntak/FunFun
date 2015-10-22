@@ -1,7 +1,9 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.ArrayList"%>
-<%@page import="java.util.List"%>
+
 <%@page import="funfun.jdbc.dto.FBoard"%>
 <%@page import="funfun.jdbc.dto.Board"%>
 <%@page import="funfun.jdbc.dto.CBoard"%>
@@ -83,7 +85,7 @@ style>#name:link {
 
 
 				<table class="table table-bordered">
-					<%
+					<%List<CBoard_sub> mysublist = null;
 						Object ClistObj = request.getAttribute("CBoardList");
 						List<CBoard> list = null;
 						if (ClistObj != null && ClistObj instanceof List) {
@@ -94,16 +96,29 @@ style>#name:link {
 					<%
 						CBoard cdto = null;
 						int csdto = 0;
+						int j;
+						int k;
+						int cslist = 0;
+						List<CBoard_sub> cslist2=null;
+						//List<CBoard_sub> sublist = null;
 						for (int i = 0; i < list.size(); i++) {
 							cdto = (CBoard) list.get(i);
+							cslist2 = cdto.getCboard_sub();
 							Object CslistObj = request.getAttribute("CsBoardCount" + i);
-							int cslist = 0;
+							//Object CsListObj = request.getAttribute("sublist"+i);
+							
+							
 							if (CslistObj != null && CslistObj instanceof Integer) {
 								cslist = (int) CslistObj;
 							}
+							/* if(CsListObj !=null && CsListObj instanceof List){
+								sublist=(List<CBoard_sub>) CsListObj;
+							} */
 							csdto = cslist;
+							 mysublist = cdto.getCboard_sub();
 					%>
-
+					<c:set var="sublist" value="<%=mysublist %>"></c:set>
+					<c:out value="${sublist }"></c:out>
 					<tbody align="center">
 						<tr>
 
@@ -127,37 +142,48 @@ style>#name:link {
 							<td style="width: 100px" colspan="2">작성자 : <%=cdto.getUserId()%></td>
 						</tr>
 
-
+						
 						<tr>
+						
 							<td rowspan="2"><%=cdto.getCategory()%></td>
 							<td colspan="2" rowspan="2">작품소개 : <%=cdto.getContent()%></td>
 							<td>
+							<form action="<%=request.getContextPath()%>/ContentBoard/View" method="get"  >
+							<input type="hidden" value="<%=cdto.getCno() %>" name="Cno">
 
 								<div align="right">
 
 									<div class=form-horizontal>
 										<div class="container" style="width: 100px; padding-top: 20">
-											<select id="sub" style="width: 80px">
-												<%
-													for (int j = 1; j <= csdto; j++) {
+											<select id="sub" name="no" style="width: 80px">
+										
+												<%  for(j=0;j<cslist2.size();j++){ 
+													CBoard_sub sub = cslist2.get(j);
 												%>
-												<option value="<%=j%>"><%=j%>회
+												<option value="<%=sub.getNo() %>"> <%=sub.getNo() %>회
 												</option>
-												<%
-													}
-												%>
+												<% } %>
 
 											</select>
 										</div>
 									</div>
 								</div>
-							</td>
-							
-							<td style="height: 50px">
-								<form action="<%=request.getContextPath()%>/ContentBoard/View?Cno=<%=cdto.getCno() %>&no=${sub.no}">
-									<input type="submit" value="보기">
+								<input type="submit" value="보기">
 								</form>
 							</td>
+
+							<td style="height: 50px">
+						<%-- 	<%
+								CBoard_sub sub = null;
+								for (k = 0; k < sublist.size(); k++) {
+									sub = (CBoard_sub) sublist.get(k);
+						%>
+							<%
+								}
+							%> --%>
+									<!-- <input type="submit" value="보기"> -->
+							</td>
+						
 						</tr>
 
 						<tr>
@@ -286,5 +312,7 @@ style>#name:link {
 
 
 </body>
-<script type="text/javascript"></script>
+<script type="text/javascript">
+
+</script>
 </html>
