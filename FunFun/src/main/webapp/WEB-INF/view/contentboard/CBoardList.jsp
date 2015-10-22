@@ -117,8 +117,7 @@ style>#name:link {
 							csdto = cslist;
 							 mysublist = cdto.getCboard_sub();
 					%>
-					<c:set var="sublist" value="<%=mysublist %>"></c:set>
-					<c:out value="${sublist }"></c:out>
+					
 					<tbody align="center">
 						<tr>
 
