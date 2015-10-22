@@ -88,14 +88,15 @@
 	</div>
 	</div>
 	
-	<div style="width: 600px; height:600px; border:1px solid black; 
-	 margin-left: 33%;">
+	<div style="width: 600px; border-top:1px solid black; border-bottom:1px solid black;
+	 margin-left: 33%; overflow: hidden;">
 	
-		웹툰 
-		
+		 
+		<img src="<%=request.getContextPath()%>/img/Koala.jpg">
+		<img src="<%=request.getContextPath()%>/img/tae.jpg">
 	</div>
 	<br>
-	<form action="">
+	<form action="" class="form-inline">
 		<div align="left" style="width: 900px; margin-left: 27%;">
 			<select class="form-control" style="width: 100px;" id="num">
 
@@ -112,47 +113,7 @@
 		</div>
 	
 	<hr>
-     <div class=" panel-default" style=" margin-left: 27%; width: 900px; overflow: auto;">
-         <div class="panel-heading"><strong>코멘트</strong></div>
      
-         
-            <table id="comment" class="table">
-             
-               <thead>
-                  <tr>
-                     <th class="ttr" style="font-size:11pt;color:#454581;border-width: ;  border-top: ; border-bottom: none !important;/* border-bottom:thick solid white */">닉네임</th>
-                  </tr>
-               </thead>
-               
-               <tbody>
-                  <tr>
-                     <td style="font-size:9pt; border-top: none !important;border-width: 0; border-bottom: none !important;">내용</td>
-                  </tr>
-
-               </tbody>
-               
-               
-            </table>
-         <div style="width: 900px; border: 2px solid #F3F3ED"></div>
-		</div>
-         
-          <div class="" style=" margin-left: 27%; width: 900px; height: 110px; background-color:#EFEFE7">
-         <div class="row">
-         
-         	
-            <div class="col-lg-2 col-sm-2 col-xs-2 col-md-2" style="margin-top: 10mm;">
-               <label for="user">닉네임</label>
-            </div>
-            <div class="col-lg-7 col-sm-7 col-xs-7 col-md-7">
-               <textarea id="FBreplyContent" rows="4" cols="85" id="user" style="border: 1px solid #BFBFFF; margin-top:2mm; resize: none; height: 96px;" placeholder="내용" ></textarea>
-            </div>
-            <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3" align="right">
-               <button id="FBreplyInsert" style="margin-top:3mm; margin-right:1mm; border: 1px solid #BFBFFF;background-color:#FBFBF9; font-size:15pt; width: 90px; height: 90px;">등록</button>
-            </div>
-           
-
-         </div>
-      </div> 
       </div>
 	
 	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>

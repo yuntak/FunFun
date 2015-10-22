@@ -72,21 +72,19 @@ public class FundingBoardController {
 		model.addAttribute("view", viewlocation);
 		
 		//
-		FBoard fboard=new FBoard();
-		model.addAttribute("Fboard", fboard);
+		/*FBoard fboard=new FBoard();
+		model.addAttribute("Funding", funding);*/
 		
 		//
 		return "main/Template";
 		
 	}
 	
-	@RequestMapping("/FundingBoard/WriteSuccess")
+	@RequestMapping(value="/FundingBoard/WriteSuccess",method=RequestMethod.POST)
 	public String FundingWriteSuccess(Model model,Funding funding){
-		String viewlocation = "/Web-Inf/view/fundingboard/fundListBoard.jsp";
 		FundingSvc.insertFunding(funding);
 		model.addAttribute("Funding",funding);
-		model.addAttribute("view",viewlocation);
-		return "main/Template";
+		return "redirect:";
 	}
 	@RequestMapping("/FundingBoard/view")
 	public String fundingboard(@RequestParam int FundingNo,Model model) {
