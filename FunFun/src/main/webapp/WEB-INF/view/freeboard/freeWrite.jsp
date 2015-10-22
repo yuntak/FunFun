@@ -31,7 +31,6 @@
 
 <body>
 <sform:form  method="post" onsubmit="return freeBoardWrite(this) " modelAttribute="Fboard" >
-
    
    <div class="panel panel-info">
    <div class="panel-heading">
