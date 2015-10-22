@@ -38,7 +38,7 @@
 
 </head>
 <body>
-	<div class="panel panel" style="height: 80px;"></div>
+	<div class="panel panel" style="height: 30px;"></div>
 
 	<div class="panel panel-danger">
 		<div class="row">
