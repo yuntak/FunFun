@@ -65,7 +65,7 @@
 				</div>	
 
 		
-		<div align="center">
+		<!-- <div align="center">
   
   <ul class="nav nav-tabs" style="width:;margin-top:10%; margin-left: 20%;" >
     <li class="active"><a data-toggle="tab" href="#home">작품공지</a></li>
@@ -84,7 +84,7 @@
     </div>
     
   </div>
-</div>
+</div> -->
 	</div>
 	</div>
 	

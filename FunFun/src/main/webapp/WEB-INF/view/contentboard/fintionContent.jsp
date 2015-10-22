@@ -69,7 +69,7 @@
 					</table>
 				</div>
 
-				<div align="center">
+		<!-- 		<div align="center">
 
 					<ul class="nav nav-tabs"
 						style="width:; margin-top: 10%; margin-left: 20%;">
@@ -89,7 +89,7 @@
 						</div>
 
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div
@@ -126,7 +126,7 @@
 		</form>
 
 		<div style="width: 900px; margin-left: 28%;" align="center">
-			<button type="button" class="btn-lg btn-info" style="width: 80px;">목록</button>
+			<a href="<%=request.getContextPath()%>/ContentBoard/List"><button type="button" class="btn-lg btn-info" style="width: 80px;">목록</button></a>
 		</div>
 
 

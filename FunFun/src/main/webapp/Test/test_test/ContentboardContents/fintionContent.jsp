@@ -65,7 +65,7 @@
 					</table>
 				</div>
 
-				<div align="center">
+				<!-- <div align="center">
 
 					<ul class="nav nav-tabs"
 						style="width:; margin-top: 10%; margin-left: 20%;">
@@ -88,7 +88,7 @@
 						</div>
 
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 		<div
