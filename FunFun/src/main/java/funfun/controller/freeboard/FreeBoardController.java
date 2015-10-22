@@ -1,5 +1,7 @@
 package funfun.controller.freeboard;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.gson.Gson;
 
 import ch.qos.logback.classic.spi.LoggerRemoteView;
+import funfun.controller.interceptors.LoginCheck;
 import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Reply;
 import funfun.jdbc.dto.Users;
@@ -52,7 +55,11 @@ public class FreeBoardController {
 		List<FBoard> FBoardList=null;
 		int allPage=0;
 		String code="11";
-		logger.trace(""+name+" : " +keyword+" : " +page+" qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
+		Map<String, String> param = new HashMap<>();
+		param.put("name", name);
+		param.put("keyword", keyword);
+		param.put("page", Integer.toString(page));
+		model.addAttribute("param", param);
 		if(name.equals("subject")){
 			allPage=FreeBoardSvc.selectFBoardByTitleAllPage(keyword, code);
 			FBoardList=FreeBoardSvc.selectTitleFBoardByPage(keyword, code, page);
@@ -76,6 +83,7 @@ public class FreeBoardController {
 		return "main/Template";
 		
 	}
+	@LoginCheck
 	@RequestMapping(value="/FreeBoard/Write")
 	public String freeBoardWrite(Model model){
 		FBoard fboard= new FBoard();

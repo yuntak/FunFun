@@ -42,7 +42,7 @@ textarea {
 </head>
 
 <body>
-	<sform:form method="post" onsubmit="return WriteSuccess(this)" modelAttribute="Funding">
+	<sform:form method="post" onsubmit="return fundingWrite(this)" modelAttribute="Funding">
 		<div class="writebody">
 			<div class="panel panel-info">
 				<div class="panel-heading">
@@ -75,9 +75,9 @@ textarea {
 					</tr>
 					<tr>
 						<td><div class="col-xs-9">
-								<sform:label for="endDate" class="col-sm-3" path="endDate">끝나는 날짜</sform:label>
-								<sform:input class=" form-control" id="endDate"
-									placeholder="끝나는 날짜" value="" path="endDate" />
+								<sform:label for="FContext" class="col-sm-3" path="FContext">부가설명</sform:label>
+								<sform:input class=" form-control" id="FContext"
+									placeholder="부가설명" value="" path="FContext" />
 							</div> <br></td>
 					</tr>
 				</table>
@@ -88,15 +88,12 @@ textarea {
 
 			</div>
 			<br> <br> <br>
+			<sform:hidden value=11 path="ok"/>
 			<sform:hidden value="${FunFunUser.id }" path="userId" />
 			<sform:hidden value="${FunFunUser.nickname }" path="nickName" />
 			<div class="panel-footer">
-			<sform:button class="btn btn-info">확인
-				<%-- <a href="<%=request.getContextPath()%>/FundingBoard/WriteSuccess" class="btn btn-info">확인</a> --%>
-				</sform:button>
-				<%-- <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
-				<a href="<%=request.getContextPath()%>/FundingBoard"
-					class="btn btn-info">취소</a>
+			<sform:button class="btn btn-info">확인</sform:button>
+				<a href="<%=request.getContextPath()%>/FundingBoard" class="btn btn-info">취소</a>
 			</div>
 		</div>
 
@@ -108,6 +105,9 @@ textarea {
 		console.log("Funding Write");
 		var title = document.getElementById("title").value;
 		var content = document.getElementById("context").value;
+		var goal = document.getElementById("goal").value;
+		var receive = document.getElementById("receive").value;
+		var FContext = document.getElementById("FContext").value;
 		console.log(title);
 		console.log(context);
 		if (title == "") {
@@ -120,8 +120,23 @@ textarea {
 
 			return false;
 		}
+		if (goal == "") {
+			alert("목표금액을 입력하세요.");
 
-		f.action = 'WriteStart';
+			return false;
+		}
+		if (receive == "") {
+			alert("보상을 입력하세요.");
+
+			return false;
+		}
+		if (FContext == "") {
+			alert("끝나는 날짜를 입력하세요.");
+
+			return false;
+		}
+
+		f.action = 'WriteSuccess';
 		return true;
 
 	}
