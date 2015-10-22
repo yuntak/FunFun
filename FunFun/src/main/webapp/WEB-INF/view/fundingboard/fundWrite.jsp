@@ -54,56 +54,53 @@ textarea {
 			<div class="panel-body">
 				<table>
 					<tr>
-						<td><sform:label for="title" class="col-sm-3" path="title">제목</sform:label>
-							<div class="col-xs-9">
-								<sform:input class=" form-control" id="title" placeholder="제목입력란"
-									value="" path="title" />
-							</div></td></tr><tr>
-						<td><sform:label for="goal" class="col-sm-3" path="goal">목표금액</sform:label>
-							<div class="col-xs-9">
+						<td><div class="col-xs-9">
+								<sform:label for="title" class="col-sm-3" path="title">제목</sform:label>
+								<sform:input class=" form-control" id="title"
+									placeholder="제목입력란" value="" path="title" />
+							</div></td>
+					</tr>
+					<tr>
+						<td><div class="col-xs-9">
+								<sform:label for="goal" class="col-sm-3" path="goal">목표금액</sform:label>
 								<sform:input class=" form-control" id="goal" placeholder="목표금액"
 									value="" path="goal" />
 							</div></td>
 					</tr>
 					<tr>
-						<td><sform:label for="receive" class="col-sm-3"
-								path="receive">보상</sform:label>
-							<div class="col-xs-9">
-								<sform:input class=" form-control" id="receive"
-									placeholder="보상" value="" path="receive" />
-							</div>
-							<br></td>
+						<td><div class="col-xs-9">
+								<sform:label for="receive" class="col-sm-3" path="receive">보상</sform:label>
+								<sform:input class=" form-control" id="receive" placeholder="보상"
+									value="" path="receive" />
+							</div> <br></td>
 					</tr>
 					<tr>
-						<td><sform:label for="endDate" class="col-sm-3"
-								path="endDate">끝나는 날짜</sform:label>
-							<div class="col-xs-9">
+						<td><div class="col-xs-9">
+								<sform:label for="endDate" class="col-sm-3" path="endDate">끝나는 날짜</sform:label>
 								<sform:input class=" form-control" id="endDate"
 									placeholder="끝나는 날짜" value="" path="endDate" />
-							</div>
-							<br></td>
+							</div> <br></td>
 					</tr>
 				</table>
 				<br> <br>
 
 				<sform:textarea rows="40" cols="100" placeholder="내용" path="context"
 					value="" />
-			</div>
 
-			<br>
+			</div>
+			<br> <br> <br>
+			<sform:hidden value="33" path="boardCode"/>
 			<sform:hidden value="${FunFunUser.id }" path="userId" />
 			<sform:hidden value="${FunFunUser.nickname }" path="nickName" />
 			<div class="panel-footer">
-				<sform:button class="btn btn-info" >
-				<a href = "<%=request.getContextPath() %>/FundingBoard/WriteSuccess">확인</a></sform:button>
+			<div>
+				<sform:button class="btn btn-info">확인</sform:button>
 				<%-- <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
 				<a href="<%=request.getContextPath()%>/FundingBoard"
 					class="btn btn-info">취소</a>
 			</div>
-
+			</div>
 		</div>
-
-
 	</sform:form>
 </body>
 <script type="text/javascript">
