@@ -46,6 +46,7 @@
 </style>
 </head>
 <body>
+
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
@@ -68,7 +69,7 @@
 
 						<tr>
 							<td align="center" style="font-size: 20pt; width: 750px;">${CBoard_sub.subtitle }</td>
-							<td style="font-size: 13pt; width: 100px;">작성자</td>
+							<td style="font-size: 13pt; width: 100px;">${CBoard.userId }</td>
 							<!-- ??????????????????? -->
 						</tr>
 					</table>
@@ -110,26 +111,27 @@
 
 		</div>
 		<br>
-		<%
-			Object ClistObj = request.getAttribute("CBoard");
-			
-			CBoard cdto = (CBoard) ClistObj;
-			
-		%>
+		
 		<form action="<%=request.getContextPath()%>/ContentBoard/View">
-			<input type="hidden" name="Cno" value="<%=request.getParameter("Cno") %>">
+			<input type="hidden" name="Cno"
+				value="<%=request.getParameter("Cno")%>">
 			<div align="left" style="width: 900px; margin-left: 27%;">
 				<table>
 					<tr>
-					
+
 						<td><select class="form-control" style="width: 100px;"
 							id="num" name="no">
-							<optgroup label="sublabel" >
-							<c:forEach items="${sublist }" var="sub" >
-							<option id="sublabel" value="${sub.no }">${sub.no } 회</option>
-							</c:forEach>
-								</optgroup>
-							
+								
+								
+									<c:forEach items="${sublist }" var="sub">
+
+										<option id="sublabel" value="${sub.no }">${sub.no }
+											회
+										</option>
+
+									</c:forEach>
+								
+								
 						</select></td>
 						<td><input type="submit" value="이동" class="btn btn-default">
 						</td>
@@ -151,8 +153,16 @@
 		<hr>
 
 	</div>
-${sublist }
+	${sublist }
 </body>
 <script>
+	$(function() {
+		console.log("jquery Start");
+		var cboard = $
+		{
+			CBoard
+		};
+		console.log(cboard);
+	});
 </script>
 </html>
