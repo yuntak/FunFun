@@ -63,7 +63,7 @@
 
 						<tr>
 							<td align="center" style="font-size: 20pt; width: 750px;">${CBoard_sub.subtitle }</td>
-							<td style="font-size: 13pt; width: 100px;">${CBoard.userId }</td>
+							<td style="font-size: 13pt; width: 100px;">작성자</td>
 							<!-- ??????????????????? -->
 						</tr>
 					</table>
@@ -133,11 +133,8 @@
 
 
 
-<<<<<<< HEAD
-=======
 		<hr>
 		
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
 	</div>
 
 </body>
