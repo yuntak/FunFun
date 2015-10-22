@@ -9,11 +9,11 @@
 
 <script>
 $(document).ready(function() {
- 	alert("validator : "+$('#fregisterform').validate);
-	 /* $.validator.addMethod("numcheck", function(value, element) {
+ 	
+	  $.validator.addMethod("numcheck", function(value, element) {
 		return this.optional(element)
 				|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
-	});  */
+	});  
 	$('#fregisterform').validate({
 		// 테스트를 위하여 유효성 검사가 완료되어 submit을 처리하지 않음.(값이 true일경우)
 		debug : true,
@@ -57,9 +57,7 @@ $(document).ready(function() {
 			loca_addr:{
 				required : true
 			},
-			plus1:{
-				required : true	
-			}
+			
 
 		},
 		// 검사를 충족하지 못할 경우 표시될 메시지의 나열
@@ -96,9 +94,7 @@ $(document).ready(function() {
 			loca_addr:{
 				required : "지번 주소를 입력하세요."
 			},
-			plus1:{
-				required : "입력하세요.~!~!~!"
-			}
+			
 		}, submitHandler: function(form) {
 		    form.submit();
 		  }
