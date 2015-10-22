@@ -94,7 +94,8 @@ textarea {
 			<sform:hidden value="${FunFunUser.id }" path="userId" />
 			<sform:hidden value="${FunFunUser.nickname }" path="nickName" />
 			<div class="panel-footer">
-				<sform:button class="btn btn-info">확인</sform:button>
+				<sform:button class="btn btn-info" >
+				<a href = "<%=request.getContextPath() %>/FundingBoard/WriteSuccess">확인</a></sform:button>
 				<%-- <a href="<%=request.getContextPath()%>/main" class="btn btn-info">확인</a> --%>
 				<a href="<%=request.getContextPath()%>/FundingBoard"
 					class="btn btn-info">취소</a>
