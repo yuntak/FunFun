@@ -136,12 +136,12 @@ style>#name:link {
 								<div align="right">
 
 									<div class=form-horizontal>
-										<div class="container" style="width: 100px">
-											<select>
+										<div class="container" style="width: 100px; padding-top: 20">
+											<select id="sub" style="width: 80px">
 												<%
 													for (int j = 1; j <= csdto; j++) {
 												%>
-												<option><%=j%>회
+												<option value="<%=j%>"><%=j%>회
 												</option>
 												<%
 													}
@@ -152,8 +152,12 @@ style>#name:link {
 									</div>
 								</div>
 							</td>
-							<td><button style="width: 80px" type="button"
-									class="btn btn-xs">보기</button></td>
+							
+							<td style="height: 50px">
+								<form action="<%=request.getContextPath()%>/ContentBoard/View?Cno=<%=cdto.getCno() %>&no=${sub.no}">
+									<input type="submit" value="보기">
+								</form>
+							</td>
 						</tr>
 
 						<tr>
@@ -266,7 +270,8 @@ style>#name:link {
 
 
 
-						<li><a href="<%=request.getContextPath()%>/ContentBoard/Write"
+						<li><a
+							href="<%=request.getContextPath()%>/ContentBoard/Write"
 							class="bun btn-default" style="color: black;">글작성</a></li>
 
 					</ul>
