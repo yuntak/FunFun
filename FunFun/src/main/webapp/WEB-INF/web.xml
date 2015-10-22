@@ -92,8 +92,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
                    /ckfinder/core/connector/java/connector.java
           </url-pattern>
 	</filter-mapping>
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>upload.upload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>/upload.do</url-pattern>
+	</servlet-mapping>
 
-	
+
 	<!-- CKFINDER end -->
 
 </web-app>
