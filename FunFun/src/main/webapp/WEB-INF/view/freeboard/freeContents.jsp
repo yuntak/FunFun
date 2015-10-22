@@ -143,7 +143,7 @@ textarea {
         
       </div>
       
-       <%-- <c:if test="${FunFunUser=fdto.getuserId()}">   
+       <%-- <c:if test="${FunFunUser==fdto.getuserId()}">   
       	
       </c:if> --%>
       <div style="width: 900px;" align="right">

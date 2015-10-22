@@ -88,14 +88,15 @@
 	</div>
 	</div>
 	
-	<div style="width: 600px; height:600px; border:1px solid black; 
-	 margin-left: 33%;">
+	<div style="width: 600px; border-top:1px solid black; border-bottom:1px solid black;
+	 margin-left: 33%; overflow: hidden;">
 	
-		웹툰 
-		
+		 
+		<img src="<%=request.getContextPath()%>/img/Koala.jpg">
+		<img src="<%=request.getContextPath()%>/img/tae.jpg">
 	</div>
 	<br>
-	<form action="">
+	<form action="" class="form-inline">
 		<div align="left" style="width: 900px; margin-left: 27%;">
 			<select class="form-control" style="width: 100px;" id="num">
 

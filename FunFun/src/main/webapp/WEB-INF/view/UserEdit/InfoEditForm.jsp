@@ -2,43 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sform" uri="http://www.springframework.org/tags/form"%>
-<!DOCTYPE html >
-<html>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<!-- 부가적인 테마 -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<!-- jQuery.validate 플러그인 삽입 -->
-<script
-	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<!-- jQuery.validate 플러그인 삽입 -->
-<script
-	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
-<title>Insert title here</title>
+
+<script	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.js"></script>
+
 <script>
 $(document).ready(function() {
-	
-	/* $.validator.addMethod("numcheck", function(value, element) {
+ 	
+	 /* $.validator.addMethod("numcheck", function(value, element) {
 		return this.optional(element)
 				|| /^\d{3}-\d{3,4}-\d{4}$/.test(value);
-	}); */
+	});  */
 	$('#fregisterform').validate({
 		// 테스트를 위하여 유효성 검사가 완료되어 submit을 처리하지 않음.(값이 true일경우)
 		debug : true,
@@ -129,6 +104,7 @@ $(document).ready(function() {
 		  }
 
 	});
+	
 });
 
 
@@ -206,9 +182,6 @@ font-size: 35px;
 }
 </style>
 
-
-</head>
-<body>
 <nav>
 
 	<sform:form class="form-horizontal" name="fregisterform" id="fregisterform" onsubmit="return onSubmit(this)"
@@ -358,7 +331,7 @@ font-size: 35px;
 	</sform:form>
 </nav>		
 
-</body>
+
 
 <script type="text/javascript">
 
@@ -405,4 +378,3 @@ window.location.assign("<%=request.getContextPath()%>/main");
 
 	} 
 </script>
-</html>

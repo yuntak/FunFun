@@ -105,7 +105,7 @@
 		</div>
 		<br>
 
-		<form action="">
+		<form action="" class="form-inline">
 		<div align="left" style="width: 900px; margin-left: 27%;">
 			<select class="form-control" style="width: 100px;" id="num">
 
