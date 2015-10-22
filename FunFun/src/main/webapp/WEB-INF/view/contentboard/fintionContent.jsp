@@ -59,15 +59,10 @@
 				style="margin-left: 10%; border-top: 1px solid blue; width: 950px; height: 300px;">
 				<div style="width: 900px; height: 100px; border-bottom:1px solid skyblue; background-color: #EFEFE7">
 					<table style="margin-left: 2%;">
-					<%
-									Object CslistObj = request.getAttribute("CBoard_sub");
-									CBoard_sub csdto = (CBoard_sub) CslistObj;
-									Object ClistObj = request.getAttribute("CBoard");
-									CBoard cdto = (CBoard) ClistObj;
-								%>
+				
 					<tr>
-						<th style="font-size:20pt; width: 90px;"><%=csdto.getSubtitle() %></th>
-						<th style="font-size:13pt; color:#00007D">${FunFunUser.nickname }</th><!-- ??????????????????? -->
+						<td align="center" style="font-size:20pt; width: 600px;">${CBoard_sub.subtitle }</td>
+						<td style="font-size:13pt; /* color:#00007D */">${FunFun.nickname }</td><!-- ??????????????????? -->
 					</tr>
 					</table>
 				</div>
@@ -88,7 +83,7 @@
 						</div>
 						<div id="menu1" class="tab-pane fade">
 
-							<p><%=cdto.getContent() %></p>
+							<p>내용</p>
 						</div>
 
 					</div>
@@ -102,7 +97,7 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"
 					style="width: 850px; height: 800px; background-color: #E2FFD3; margin-left: 11mm;">
-					<%=csdto.getContext() %></div>
+					${CBoard_sub.context }</div>
 
 			</div>
 
