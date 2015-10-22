@@ -86,16 +86,12 @@ style>#name:link {
       <br> <br>     
       <form action="">
       <div class="form-inline" style="margin-left: 60%;">
-<<<<<<< HEAD
-      <select class="form-control" name="name">
-      
-      		  <option value="nickname">닉네임</option>
-              <option value="title">제목</option>
-=======
-      <select class="form-control" name="name"><option value="nickname">닉네임</option>
 
+    
+
+      <select class="form-control" name="name">
+      		<option value="nickname">닉네임</option>
               <option value="subject">제목</option>
->>>>>>> branch 'master' of https://github.com/yuntak/FunFun.git
               <option value="content">내용</option></select>
               
             
@@ -200,9 +196,9 @@ style>#name:link {
          <!-- <th> -->
          <!-- <ul class="pager"> -->
             <li ><a
-               href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=1">◀◀</a></li>
+               href="<%=request.getContextPath()%>/FreeBoard/List?name=${param.name }&keyword=<%=request.getParameter("keyword") %>&page=1">◀◀</a></li>
             <li ><a
-               href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=startPage - 1%>">◀</a></li>
+               href="<%=request.getContextPath()%>/FreeBoard/List?name=${param.name }&keyword=<%=request.getParameter("keyword") %>&page=<%=startPage - 1%>">◀</a></li>
          <!-- </ul> -->
          <%
             }
@@ -215,14 +211,14 @@ style>#name:link {
          %>
          <!-- <ul class="pagination "> -->
             <li class="active"><a
-               href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=i%>"><%=i%></a></li>
+               href="<%=request.getContextPath()%>/FreeBoard/List?name=${param.name }&keyword=<%=request.getParameter("keyword") %>&page=<%=i%>"><%=i%></a></li>
          <!-- </ul> -->
          <%
             } else {
          %>
          <!-- <ul class="pagination"> -->
             <li><a
-               href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=i%>"><%=i%></a></li>
+               href="<%=request.getContextPath()%>/FreeBoard/List?name=${param.name }&keyword=<%=request.getParameter("keyword") %>&page=<%=i%>"><%=i%></a></li>
          <!-- </ul> -->
          <%
             }
@@ -236,8 +232,8 @@ style>#name:link {
             <%
                if (endPage < allPage) {
             %>
-            <li> <a href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=endPage + 1%>">▶</a></li>
-            <li> <a href="<%=request.getContextPath()%>/FreeBoard/List?name=<%=request.getParameter("name") %>&keyword=<%=request.getAttribute("keyword") %>&page=<%=allPage%>">▶▶</a></li>
+            <li> <a href="<%=request.getContextPath()%>/FreeBoard/List?name=${param.name }&keyword=<%=request.getParameter("keyword") %>&page=<%=endPage + 1%>">▶</a></li>
+            <li> <a href="<%=request.getContextPath()%>/FreeBoard/List?name=${param.name }&keyword=<%=request.getParameter("keyword") %>&page=<%=allPage%>">▶▶</a></li>
             
             <%
             }

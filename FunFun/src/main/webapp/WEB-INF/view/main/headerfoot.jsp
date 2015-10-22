@@ -107,8 +107,8 @@ margin-bottom: 10px;
 	
 			<div align="right" class="userlogin" >
 				<div id="login-after-msg"><span id="myNickName"> ${FunFunUser.nickname }</span>님 반갑습니다.</div>
-			    <a class="btn btn-success login-after-btn" href="../Logout">로그아웃</a>
-			    <a class="btn btn-info login-after-btn" href="../myinfo/info">회원정보</a>
+			    <a class="btn btn-success login-after-btn" href="<%=request.getContextPath() %>/Logout">로그아웃</a>
+			    <a class="btn btn-info login-after-btn" href="<%=request.getContextPath() %>/myinfo/info">회원정보</a>
 			</div>	
 			
 		
