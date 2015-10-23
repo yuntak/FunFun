@@ -148,7 +148,7 @@ style>#name:link {
 
 							<td rowspan="2"><%=cdto.getCategory()%></td>
 							<td colspan="2" rowspan="2">작품소개 : <%=cdto.getContent()%></td>
-							<td>
+							<td colspan="2">
 								<form action="<%=request.getContextPath()%>/ContentBoard/View"
 									method="get">
 									<input type="hidden" value="<%=cdto.getCno()%>" name="Cno">
@@ -178,16 +178,7 @@ style>#name:link {
 								</form>
 							</td>
 
-							<td style="height: 50px">
-								<%-- 	<%
-								CBoard_sub sub = null;
-								for (k = 0; k < sublist.size(); k++) {
-									sub = (CBoard_sub) sublist.get(k);
-						%>
-							<%
-								}
-							%> --%> <!-- <input type="submit" value="보기"> -->
-							</td>
+							
 
 						</tr>
 
