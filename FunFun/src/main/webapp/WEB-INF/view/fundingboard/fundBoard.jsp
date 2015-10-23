@@ -42,12 +42,13 @@
 
 	<div class="panel panel-danger">
 		<div class="row">
-			<div class="col-lg-8">
+		<div class="col-lg-1"></div>
+			<div class="col-lg-7">
 				<div class="jumbotron" align="center">
 					<div class="container">
 						<table class="table">
 
-							<tr>
+							<tr style="width: 600px">
 								<%
 									Object FlistObj = request.getAttribute("FundingBoard");
 									Funding fdto = (Funding) FlistObj;
@@ -62,7 +63,7 @@
 									date1 = fdto.getEndDate().getTime() - date2.getTime();
 									date3 = date1 / (24 * 60 * 60 * 1000);
 								%>
-								<td><%=fdto.getContext()%></td>
+								<td style="width: 600px"><%=fdto.getContext()%></td>
 							</tr>
 							<tr>
 								<td></td>
@@ -131,17 +132,18 @@
 									프로젝트 후원<span class="glyphicon glyphicon-heart-empty"
 										style="font-size: 30px;"></span>
 								</button>
-
-
+								
 								<div class="modal fade" id="myModal" role="dialog">
 									<div class="modal-dialog">
 
 										<!-- Modal content-->
 										<div class="modal-content">
+
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
 												<h2 class="modal-title" align="center">후원하기</h2>
 											</div>
+
 											<div class="modal-body" align="center">
 												<table>
 													<tr>
@@ -149,8 +151,8 @@
 
 
 															<h4>금액별 상품</h4>
-															<li><h5><%=fdto.getReceive() %></h5></li>
-															
+															<li><h5><%=fdto.getReceive()%></h5></li>
+
 														</td>
 													</tr>
 													<tr>

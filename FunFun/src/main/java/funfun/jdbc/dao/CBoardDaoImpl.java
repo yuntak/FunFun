@@ -23,8 +23,8 @@ public class CBoardDaoImpl implements CBoardDao {
 	NamedParameterJdbcTemplate namedjt;
 	@Override
 	public int insertCBoard(CBoard cboard) {
-		String sql = "insert into content_board(cno,title,content,cview,good,category,board_no,board_code,user_id,imgdata) values(seq_content_board.nextval,?,?,?,?,?,seq_board.currval,22,?,?)";
-		int result = jt.update(sql,cboard.getTitle(),cboard.getContent(),cboard.getCview(),cboard.getGood(),cboard.getCategory(),cboard.getUserId(),cboard.getImgData());
+		String sql = "insert into content_board(cno,title,content,cview,good,category,board_no,board_code,user_id,imgdata,nickname) values(seq_content_board.nextval,?,?,?,?,?,seq_board.currval,22,?,?)";
+		int result = jt.update(sql,cboard.getTitle(),cboard.getContent(),cboard.getCview(),cboard.getGood(),cboard.getCategory(),cboard.getUserId(),cboard.getImgData(),cboard.getNickname());
 		return result;
 	}
 	@Override
@@ -150,6 +150,13 @@ public class CBoardDaoImpl implements CBoardDao {
 	public List<CBoard> selectCBoardBySelectTitlePage(String title, String code, int page_no) {
 		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board where title like '%'||?||'%' and board_code=? order by cno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		List<CBoard> result = jt.query(sql, new BeanPropertyRowMapper<CBoard>(CBoard.class), title, code,
+				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
+		return result;
+	}
+	@Override
+	public List<CBoard> selectCBoardBySelectNicknamePage(String nickname, String code, int page_no) {
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board where nickname like '%'||?||'%' and board_code=? order by cno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		List<CBoard> result = jt.query(sql, new BeanPropertyRowMapper<CBoard>(CBoard.class), nickname, code,
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE);
 		return result;
 	}

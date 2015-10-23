@@ -1,7 +1,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.ArrayList"%>
 
 <%@page import="funfun.jdbc.dto.FBoard"%>
@@ -65,18 +65,21 @@ style>#name:link {
 
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
-				<ul class="nav nav-pills nav-stacked">
-					<li class="active"><a href="#"></a></li>
-					<li><a href="#">만화</a></li>
-					<li><a href="#">소설</a></li>
-					<li><a href="#">영화</a></li>
-					<li><a href="#">연극</a></li>
-					<li><a href="#">드라마</a></li>
-					<li><a href="#">게임</a></li>
-				</ul>
-			</div>
 
+			<form action="<%=request.getContextPath()%>/ContentBoard/List">
+				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#"></a></li>
+						<li><a 
+							href="<%=request.getContextPath()%>/ContentBoard/List?category=webtoon&page=1">만화</a></li>
+						<li><a href="<%=request.getContextPath()%>/ContentBoard/List?category=novel&page=1">소설</a></li>
+						<li><a href="<%=request.getContextPath()%>/ContentBoard/List?category=movie&page=1">영화</a></li>
+						<li><a href="<%=request.getContextPath()%>/ContentBoard/List?category=play&page=1">연극</a></li>
+						<li><a href="<%=request.getContextPath()%>/ContentBoard/List?category=drama&page=1">드라마</a></li>
+						<li><a href="<%=request.getContextPath()%>/ContentBoard/List?category=game&page=1">게임</a></li>
+					</ul>
+				</div>
+			</form>
 
 
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
@@ -85,42 +88,41 @@ style>#name:link {
 
 
 				<table class="table table-bordered">
-					<%List<CBoard_sub> mysublist = null;
-						Object ClistObj = request.getAttribute("CBoardList");
-						List<CBoard> list = null;
-						if (ClistObj != null && ClistObj instanceof List) {
-							list = (List<CBoard>) ClistObj;
-						}
-					%>
 
-					<%
-						CBoard cdto = null;
-						int csdto = 0;
-						int j;
-						int k;
-						int cslist = 0;
-						List<CBoard_sub> cslist2=null;
-						//List<CBoard_sub> sublist = null;
-						for (int i = 0; i < list.size(); i++) {
-							cdto = (CBoard) list.get(i);
-							cslist2 = cdto.getCboard_sub();
-							Object CslistObj = request.getAttribute("CsBoardCount" + i);
-							//Object CsListObj = request.getAttribute("sublist"+i);
-							
-							
-							if (CslistObj != null && CslistObj instanceof Integer) {
-								cslist = (int) CslistObj;
-							}
-							/* if(CsListObj !=null && CsListObj instanceof List){
-								sublist=(List<CBoard_sub>) CsListObj;
-							} */
-							csdto = cslist;
-							 mysublist = cdto.getCboard_sub();
-					%>
-					
 					<tbody align="center">
 						<tr>
+							<%
+								List<CBoard_sub> mysublist = null;
+								Object ClistObj = request.getAttribute("CBoardList");
+								List<CBoard> list = null;
+								if (ClistObj != null && ClistObj instanceof List) {
+									list = (List<CBoard>) ClistObj;
+								}
+							%>
 
+							<%
+								CBoard cdto = null;
+								int csdto = 0;
+								int j;
+								int k;
+								int cslist = 0;
+								List<CBoard_sub> cslist2 = null;
+								//List<CBoard_sub> sublist = null;
+								for (int i = 0; i < list.size(); i++) {
+									cdto = (CBoard) list.get(i);
+									cslist2 = cdto.getCboard_sub();
+									Object CslistObj = request.getAttribute("CsBoardCount" + i);
+									//Object CsListObj = request.getAttribute("sublist"+i);
+
+									if (CslistObj != null && CslistObj instanceof Integer) {
+										cslist = (int) CslistObj;
+									}
+									/* if(CsListObj !=null && CsListObj instanceof List){
+										sublist=(List<CBoard_sub>) CsListObj;
+									} */
+									csdto = cslist;
+									mysublist = cdto.getCboard_sub();
+							%>
 							<td style="width: 200px; margin-left: auto; margin-right: auto;"
 								rowspan="3"><a
 								href="<%=request.getContextPath()%>/ContentBoard/MainView?Cno=<%=cdto.getCno()%>">
@@ -141,48 +143,43 @@ style>#name:link {
 							<td style="width: 100px" colspan="2">작성자 : <%=cdto.getUserId()%></td>
 						</tr>
 
-						
+
 						<tr>
-						
+
 							<td rowspan="2"><%=cdto.getCategory()%></td>
 							<td colspan="2" rowspan="2">작품소개 : <%=cdto.getContent()%></td>
-							<td>
-							<form action="<%=request.getContextPath()%>/ContentBoard/View" method="get"  >
-							<input type="hidden" value="<%=cdto.getCno() %>" name="Cno">
+							<td colspan="2">
+								<form action="<%=request.getContextPath()%>/ContentBoard/View"
+									method="get">
+									<input type="hidden" value="<%=cdto.getCno()%>" name="Cno">
 
-								<div align="right">
+									<div align="right">
 
-									<div class=form-horizontal>
-										<div class="container" style="width: 100px; padding-top: 20">
-											<select id="sub" name="no" style="width: 80px">
-										
-												<%  for(j=0;j<cslist2.size();j++){ 
-													CBoard_sub sub = cslist2.get(j);
-												%>
-												<option value="<%=sub.getNo() %>"> <%=sub.getNo() %>회
-												</option>
-												<% } %>
+										<div class=form-horizontal>
+											<div class="container" style="width: 100px; padding-top: 20">
+												<select id="sub" name="no" style="width: 80px">
 
-											</select>
+													<%
+														for (j = 0; j < cslist2.size(); j++) {
+																CBoard_sub sub = cslist2.get(j);
+													%>
+													<option value="<%=sub.getNo()%>">
+														<%=sub.getNo()%>회
+													</option>
+													<%
+														}
+													%>
+
+												</select>
+											</div>
 										</div>
 									</div>
-								</div>
-								<input type="submit" value="보기">
+									<input type="submit" value="보기">
 								</form>
 							</td>
 
-							<td style="height: 50px">
-						<%-- 	<%
-								CBoard_sub sub = null;
-								for (k = 0; k < sublist.size(); k++) {
-									sub = (CBoard_sub) sublist.get(k);
-						%>
-							<%
-								}
-							%> --%>
-									<!-- <input type="submit" value="보기"> -->
-							</td>
-						
+							
+
 						</tr>
 
 						<tr>
@@ -312,6 +309,6 @@ style>#name:link {
 
 </body>
 <script type="text/javascript">
-
+	
 </script>
 </html>

@@ -22,11 +22,11 @@ import funfun.jdbc.service.CBoard_subService;
 
 @Controller
 public class ContentBoardController {
-	private static Logger logger = LoggerFactory.getLogger(ContentBoardController.class);
-	@Autowired
-	CBoardService ContentBoardSvc;
-	@Autowired
-	CBoard_subService ContentSubBoardSvc;
+   private static Logger logger = LoggerFactory.getLogger(ContentBoardController.class);
+   @Autowired
+   CBoardService ContentBoardSvc;
+   @Autowired
+   CBoard_subService ContentSubBoardSvc;
 
 	@RequestMapping(value="/ContentBoard")
 	public String contentBoardMain(Model model){
@@ -125,7 +125,7 @@ public class ContentBoardController {
 	public String contentBoardSubWrite(Model model , HttpSession session){
 		Users user=(Users)session.getAttribute("FunFunUser");
 		String nickname= user.getNickname();
-		
+		page
 		
 		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
 		model.addAttribute("view", viewlocation);
@@ -141,3 +141,6 @@ public class ContentBoardController {
 	
 	
 }
+
+   
+

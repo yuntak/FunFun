@@ -100,7 +100,8 @@ public class ServiceTest {
 	
 	@Test
 	public void TestFullCBoard(){
-		cservice.selectFullCBoard(3);
+		CBoard cboard = cservice.selectFullCBoard(3);
+		logger.trace("{}:",cboard);
 	}
 	
 	@Test
