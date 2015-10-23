@@ -95,18 +95,7 @@ textarea {
 					<tr>
 						<td>
 							<div class="container">
-								<textarea name="FContent" id="FContent" rows="22"
-									style="width: 645px;"><?=$row['FContent']?></textarea>
-								<script type="text/javascript">
-									var oEditors = [];
-									nhn.husky.EZCreator
-											.createInIFrame({
-												oAppRef : oEditors,
-												elPlaceHolder : "FContent",
-												sSkinURI : "../smarteditor/SmartEditor2Skin.html",
-												fCreator : "createSEditor2"
-											});
-								</script>
+								<sform:hidden value="/img/tae.jpg" path="FContent" />
 							</div>
 
 						</td>
