@@ -70,7 +70,7 @@ public class CBoardDaoImpl implements CBoardDao {
 	}
 	@Override
 	public List<CBoard> selectCBoardByPage(String code, int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board order by cdate) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board order by cno desc) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
 		List<CBoard> result = jt.query(sql, new BeanPropertyRowMapper<CBoard>(CBoard.class),
 				(page_no - 1) * FBoardDao.BOARD_PER_PAGE + 1, page_no * FBoardDao.BOARD_PER_PAGE,code);
 		return result;
@@ -93,7 +93,7 @@ public class CBoardDaoImpl implements CBoardDao {
 	}
 	@Override
 	public List<CBoard> selectCBoardByCategoryPage(String category, String code, int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board where category=? order by cdate) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from content_board where category=? order cno desc) sub) WHERE RNUM >= ? AND RNUM <= ? and board_code=?";
 		List<CBoard> result = jt.query(sql, new BeanPropertyRowMapper<CBoard>(CBoard.class),
 				category,(page_no - 1) * CBoardDao.BOARD_PER_PAGE + 1, page_no * CBoardDao.BOARD_PER_PAGE,code);
 		return result;
