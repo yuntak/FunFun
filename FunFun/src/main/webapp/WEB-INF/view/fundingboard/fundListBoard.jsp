@@ -91,8 +91,8 @@
 								</div>
 								<table>
 									<tr>
-										<td class="col-lg-1"></td>
-										<td class="col-lg-7">
+										<td class="col-lg-2"></td>
+										<td class="col-lg-8">
 											<h6 align="left">
 												<strong> <%=date3%>
 												</strong>일 남음
