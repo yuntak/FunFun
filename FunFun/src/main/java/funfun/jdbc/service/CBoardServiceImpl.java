@@ -151,4 +151,11 @@ public class CBoardServiceImpl implements CBoardService {
 		logger.trace("select over : {}", selectresult);
 		return selectresult;
 	}
+
+	@Override
+	public List<CBoard> selectCBoardBySelectNicknamePage(String nickname, String code, int page_no) {
+		List<CBoard> selectresult = cdao.selectCBoardBySelectNicknamePage(nickname, code, page_no);
+		logger.trace("select over : {}", selectresult);
+		return selectresult;
+	}
 }

@@ -18,7 +18,16 @@ public class CBoard {
 	private String board_code;
 	private String userId;
 	private String imgData;
+	private String nickname;
 	
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
 	private List<CBoard_sub> cboard_sub;
 	
 	public List<CBoard_sub> getCboard_sub() {
@@ -139,8 +148,8 @@ public class CBoard {
 	public String toString() {
 		return "CBoard [cno=" + cno + ", title=" + title + ", content=" + content + ", cdate=" + cdate + ", subdate="
 				+ subdate + ", cview=" + cview + ", good=" + good + ", category=" + category + ", board_no=" + board_no
-				+ ", board_code=" + board_code + ", userId=" + userId + ", imgData=" + imgData + ", cboard_sub="
-				+ cboard_sub + ", replys=" + replys + "]";
+				+ ", board_code=" + board_code + ", userId=" + userId + ", imgData=" + imgData + ", nickname="
+				+ nickname + ", cboard_sub=" + cboard_sub + ", replys=" + replys + "]";
 	}
 
 }

@@ -78,7 +78,7 @@ public class FundingDaoImpl implements FundingDao {
 
 	@Override
 	public List<Funding> selectFundingByPage(int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from funding where ok=11 order by fno) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from funding where ok=11 order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		List<Funding> result = jt.query(sql, new BeanPropertyRowMapper<Funding>(Funding.class),
 				(page_no - 1) * FundingDao.BOARD_PER_PAGE + 1, page_no * FundingDao.BOARD_PER_PAGE);
 		return result;
@@ -86,7 +86,7 @@ public class FundingDaoImpl implements FundingDao {
 
 	@Override
 	public List<Funding> selectFundingTitleByPage(String title, int page_no) {
-		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from funding where title like '%'||?||'%' and ok=11 order by fno) sub) WHERE RNUM >= ? AND RNUM <= ?";
+		String sql = "SELECT * FROM (SELECT sub.*, ROWNUM AS RNUM FROM ( select * from funding where title like '%'||?||'%' and ok=11 order by fno desc) sub) WHERE RNUM >= ? AND RNUM <= ?";
 		List<Funding> result = jt.query(sql, new BeanPropertyRowMapper<Funding>(Funding.class), title,
 				(page_no - 1) * FundingDao.BOARD_PER_PAGE + 1, page_no * FundingDao.BOARD_PER_PAGE);
 		return result;
