@@ -133,14 +133,14 @@
 										style="font-size: 30px;"></span>
 								</button>
 								
-								<div class="modal fade" id="myModal" role="dialog">
+								<div class="modal fade" id="myModal" >
 									<div class="modal-dialog">
 
 										<!-- Modal content-->
 										<div class="modal-content">
 
 											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<button type="button" class="close" data-dismiss="modal"aria-label="Close"><span aria-lable="true">&times;</</span></button>
 												<h2 class="modal-title" align="center">후원하기</h2>
 											</div>
 

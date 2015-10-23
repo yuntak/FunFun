@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="java.util.ArrayList"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,30 +16,30 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <style>
-	.panel-body{
-		margin-bottom: 5%;
-	}
+.panel-body {
+	margin-bottom: 5%;
+}
+
 #name:visited {
-   color: #B4FF6A;
-   font-size: 10pt;
-   text-decoration: none;
+	color: #B4FF6A;
+	font-size: 10pt;
+	text-decoration: none;
 }
 
 #name:active {
-   color: #A8A88E;
-   font-size: 10pt;
-   text-decoration: none;
+	color: #A8A88E;
+	font-size: 10pt;
+	text-decoration: none;
 }
 
 #name:hover {
-   color: #A8A88E;
-   font-size: 10pt;
-   text-decoration: underline;
+	color: #A8A88E;
+	font-size: 10pt;
+	text-decoration: underline;
 }
 </style>
 </head>
 <body>
-	<jsp:include page="/WEB-INF/view/main/headerfoot.jsp"></jsp:include>
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" align="center">
@@ -54,47 +55,59 @@
 			</div>
 
 			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9"
-				style=" margin-left: 10%; border-top: 1px solid blue; width: 950px; height: 300px;">
-			<div style="width: 900px; height: 100px; border-bottom:1px solid skyblue; background-color: #EFEFE7">
+				style="margin-left: 10%; border-top: 1px solid blue; width: 950px; height: 300px;">
+				<div
+					style="width: 900px; height: 100px; border-bottom: 1px solid skyblue; background-color: #EFEFE7">
 					<table style="margin-left: 2%;">
-					<tr>
-						<th style="font-size:20pt; width: 90px;">${CBoard_sub.subtitle }/</th>
-						<th style="font-size:13pt; color:#00007D">${CBoard.userId }</th>
-					</tr>
+						<tr>
+							<th style="font-size: 20pt; width: 90px;">${CBoard_sub.subtitle }/</th>
+							<th style="font-size: 13pt; color: #00007D">${CBoard.userId }</th>
+						</tr>
 					</table>
-				</div>	
+				</div>
 
 
-	</div>
-	</div>
-	
-	<div style="width: 750px; border-top:1px solid black; border-bottom:1px solid black;
-	 margin-left: 33%; margin-top:-250px; overflow: hidden;">
-	${CBoard_sub.context }
-		 
-		
-	</div>
-	<br>
-	<form action="" class="form-inline">
-		<div align="left" style="width: 900px; margin-left: 27%;">
-			<select class="form-control" style="width: 100px;" id="num">
-
-				<option>회차</option>
-				<option value="">1회</option>
-			</select>
-		 <input type="submit" value="이동" class="btn btn-default">
+			</div>
 		</div>
-		
+
+		<div
+			style="width: 750px; border-top: 1px solid black; border-bottom: 1px solid black; margin-left: 33%; margin-top: -250px; overflow: hidden;">
+			${CBoard_sub.context }</div>
+		<br>
+		<form action="<%=request.getContextPath()%>/ContentBoard/View">
+			<input type="hidden" name="Cno"
+				value="<%=request.getParameter("Cno")%>">
+			<div align="left" style="width: 900px; margin-left: 27%;">
+				<table>
+					<tr>
+
+						<td><select class="form-control" style="width: 100px;"
+							id="num" name="no">
+
+
+								<c:forEach items="${sublist }" var="sub">
+
+									<option id="sublabel" value="${sub.no }">${sub.no }회</option>
+
+								</c:forEach>
+
+
+						</select></td>
+						<td><input type="submit" value="이동" class="btn btn-default">
+						</td>
+					</tr>
+				</table>
+			</div>
+
 		</form>
 
 		<div style="width: 900px; margin-left: 28%;" align="center">
 			<button type="button" class="btn-lg btn-info" style="width: 80px;">목록</button>
 		</div>
-	
-	<hr>
-     
-      </div>
-	
-	<jsp:include page="/WEB-INF/view/main/footer.jsp"></jsp:include>
+
+		<hr>
+
+	</div>
+
 </body>
 </html>
