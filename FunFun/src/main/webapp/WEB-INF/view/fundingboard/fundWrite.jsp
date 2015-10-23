@@ -45,7 +45,7 @@ textarea {
 		CKEDITOR.replace('context');
 	};
 </script>
-<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js"
+<script type="text/javascript" src="../smarteditor/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 
 </head>
@@ -103,7 +103,7 @@ textarea {
 											.createInIFrame({
 												oAppRef : oEditors,
 												elPlaceHolder : "FContent",
-												sSkinURI : "/smarteditor/SmartEditor2Skin.html",
+												sSkinURI : "../smarteditor/SmartEditor2Skin.html",
 												fCreator : "createSEditor2"
 											});
 								</script>
@@ -145,7 +145,6 @@ textarea {
 		var goal = document.getElementById("goal").value;
 		var receive = document.getElementById("receive").value;
 		var FContext = document.getElementById("FContext").value;
-		var FContent = document.getElementById("FContent").value;
 		console.log(title);
 		console.log(context);
 		if (title == "") {
@@ -170,11 +169,6 @@ textarea {
 		}
 		if (FContext == "") {
 			alert("끝나는 날짜를 입력하세요.");
-
-			return false;
-		}
-		if (FContent == "") {
-			alert("메인 그림을 입력하세요.");
 
 			return false;
 		}
