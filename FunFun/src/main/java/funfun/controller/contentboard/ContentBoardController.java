@@ -2,6 +2,8 @@ package funfun.controller.contentboard;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import funfun.jdbc.dto.CBoard;
 import funfun.jdbc.dto.CBoard_sub;
 import funfun.jdbc.dto.FBoard;
+import funfun.jdbc.dto.Users;
 import funfun.jdbc.service.CBoardService;
 import funfun.jdbc.service.CBoard_subService;
 
@@ -106,15 +109,35 @@ public class ContentBoardController {
 		return "main/Template";
 	}
 	
-	@RequestMapping(value="/ContentBoard/SubView",method=RequestMethod.GET)
-	public String contentBoardSubView(@RequestParam int Cno, @RequestParam int no, Model model){
-		logger.trace("Content Board SubView");
-		CBoard cboard = ContentBoardSvc.selectFullCBoard(Cno);
-		CBoard_sub sub = ContentSubBoardSvc.selectCBoardBycno(no, Cno);
-		model.addAttribute("CBoard_sub", sub);
-		model.addAttribute("CBoard", cboard);
+	
+	@RequestMapping(value="/ContentBoard/Write")
+	public String contentBoardWriteMain(Model model){
+	
+		
+		
+		
 		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
+	
+	@RequestMapping(value="/ContentBoard/SubWrite")
+	public String contentBoardSubWrite(Model model , HttpSession session){
+		Users user=(Users)session.getAttribute("FunFunUser");
+		String nickname= user.getNickname();
+		
+		
+		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+	}
+	@RequestMapping(value="/ContenrBoard/NewWrite")
+	public String contentBoardNewWrite(Model model){
+		
+		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+	}
+	
+	
 }
