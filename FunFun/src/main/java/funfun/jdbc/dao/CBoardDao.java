@@ -16,6 +16,7 @@ public interface CBoardDao {
 	public List<CBoard> selectCBoardByCategoryPage(String category,String code,int page_no);
 	public List<CBoard> selectCBoardBySelectTitlePage(String title,String code, int page_no);
 	public List<CBoard> selectCBoardBySelectNicknamePage(String nickname, String code, int page_no);
+	public List<CBoard> selectCBoardBySelectNickname(String nickname, String code);
 	public CBoard selectFullCBoard(int cno);
 	public int selectCountAllPage();
 	public int selectCBoardByContextAllPage(String context, String code);

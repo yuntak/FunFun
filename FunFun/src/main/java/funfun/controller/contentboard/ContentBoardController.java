@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import funfun.controller.interceptors.LoginCheck;
 import funfun.jdbc.dto.CBoard;
 import funfun.jdbc.dto.CBoard_sub;
 import funfun.jdbc.dto.FBoard;
@@ -51,6 +52,7 @@ public class ContentBoardController {
 		return "main/Template";
 	}
 	
+	
 	@RequestMapping(value="/ContentBoard/List",method=RequestMethod.GET)
 	public String contentBoardList(@RequestParam String name,@RequestParam String keyword, @RequestParam int page,Model model){
 		List<CBoard> CBoardList=null;
@@ -83,7 +85,7 @@ public class ContentBoardController {
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
-	
+	@LoginCheck
 	@RequestMapping(value="/ContentBoard/View",method=RequestMethod.GET)
 	public String contentBoardView(@RequestParam int no,@RequestParam int Cno,Model model){
 		logger.trace("컨텐츠 보드 뷰");
@@ -109,28 +111,29 @@ public class ContentBoardController {
 		return "main/Template";
 	}
 	
-	
+	@LoginCheck
 	@RequestMapping(value="/ContentBoard/Write")
-	public String contentBoardWriteMain(Model model){
-	
-		
-		
-		
-		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
-		model.addAttribute("view", viewlocation);
-		return "main/Template";
-	}
-	
-	@RequestMapping(value="/ContentBoard/SubWrite")
-	public String contentBoardSubWrite(Model model , HttpSession session){
+	public String contentBoardWriteMain(Model model,HttpSession session){
 		Users user=(Users)session.getAttribute("FunFunUser");
 		String nickname= user.getNickname();
-		page
+		List<CBoard> list =ContentBoardSvc.selectCBoardBySelectNicknameWriteList(nickname, ContentBoardSvc.CONENT_CODE);
+		model.addAttribute("list", list);
+		
+		
 		
 		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
 		model.addAttribute("view", viewlocation);
 		return "main/Template";
 	}
+	@LoginCheck
+	@RequestMapping(value="/ContentBoard/SubWrite")
+	public String contentBoardSubWrite(Model model , HttpSession session){
+		
+		String viewlocation = "/WEB-INF/view/contentboard/fintionContent.jsp";
+		model.addAttribute("view", viewlocation);
+		return "main/Template";
+	}
+	@LoginCheck
 	@RequestMapping(value="/ContenrBoard/NewWrite")
 	public String contentBoardNewWrite(Model model){
 		

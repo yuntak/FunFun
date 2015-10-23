@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import funfun.controller.interceptors.LoginCheck;
 import funfun.jdbc.dto.FBoard;
 import funfun.jdbc.dto.Funding;
 import funfun.jdbc.dto.Funding_form;
@@ -49,6 +50,7 @@ public class FundingBoardController {
 		return "main/Template";
 		
 	}
+	@LoginCheck
 	@RequestMapping(value="/FundingBoard/Write")
 	public String FundingWrite(Model model){
 		Funding funding= new Funding();
@@ -63,7 +65,7 @@ public class FundingBoardController {
 		return "main/Template";
 		
 	}
-	
+	@LoginCheck
 	@RequestMapping(value="/FundingBoard/WriteStart")
 	public String FundingWriteStart(Model model){
 		Funding funding= new Funding();
@@ -73,13 +75,14 @@ public class FundingBoardController {
 		return "main/Template";
 		
 	}
-	
+	@LoginCheck
 	@RequestMapping(value="/FundingBoard/WriteSuccess",method=RequestMethod.POST)
 	public String FundingWriteSuccess(Model model,Funding funding){
 		FundingSvc.insertFunding(funding);
 		model.addAttribute("Funding",funding);
 		return "redirect:";
 	}
+	@LoginCheck
 	@RequestMapping("/FundingBoard/view")
 	public String fundingboard(@RequestParam int FundingNo,Model model) {
 		Funding funding = FundingSvc.selectFunding(FundingNo);

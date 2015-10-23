@@ -25,12 +25,12 @@
 	<mvc:resources location="/webapp/editorFiles2/" mapping="/editorFiles2/**" />
 
 	<mvc:resources location="/WEB-INF/upload" mapping="/upload/**"></mvc:resources>
-	<!-- <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**/" />
 			<bean class="funfun.controller.interceptors.LoginCheckInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 
 	<context:component-scan base-package="funfun.controller"></context:component-scan>
 	<bean

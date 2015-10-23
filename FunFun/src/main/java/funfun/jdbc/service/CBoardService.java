@@ -5,6 +5,7 @@ import java.util.List;
 import funfun.jdbc.dto.CBoard;
 
 public interface CBoardService {
+	final static String CONENT_CODE="22";
 	void insertCBoard(CBoard cboard);
 	void deleteCBoard(int cno);
 	void updateCBoard(CBoard cboard);
@@ -20,4 +21,5 @@ public interface CBoardService {
 	int selectCBoardByNicknameAllPage(String nickname,String code);
 	int selectCBoardByTitleAllPage(String title,String code);
 	int selectCBoardByCategoryAllPage(String context, String code);
+	 List<CBoard> selectCBoardBySelectNicknameWriteList(String nickname, String code);
 }

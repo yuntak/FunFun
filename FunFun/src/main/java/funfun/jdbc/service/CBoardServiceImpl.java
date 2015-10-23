@@ -158,4 +158,15 @@ public class CBoardServiceImpl implements CBoardService {
 		logger.trace("select over : {}", selectresult);
 		return selectresult;
 	}
+
+	@Override
+	public List<CBoard> selectCBoardBySelectNicknameWriteList(String nickname, String code) {
+		// TODO Auto-generated method stub
+		List<CBoard> select = cdao.selectCBoardBySelectNickname(nickname, code);
+		logger.trace("select over : {}", select);
+		return select;
+	}
+
+
+
 }

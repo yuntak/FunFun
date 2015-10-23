@@ -199,5 +199,11 @@ public class CBoardDaoImpl implements CBoardDao {
 		int result = (int)Math.ceil(countresult/(double)CBoardDao.BOARD_PER_PAGE);
 		return result;
 	}
-	
+	@Override
+	public List<CBoard> selectCBoardBySelectNickname(String nickname, String code) {
+		String sql = "SELECT * FROM content_board where nickname= ? and board_code = ?";
+		List<CBoard> result = jt.query(sql, new BeanPropertyRowMapper<CBoard>(CBoard.class), nickname, code);
+				
+		return result;
+	}
 }
