@@ -42,12 +42,13 @@
 
 	<div class="panel panel-danger">
 		<div class="row">
-			<div class="col-lg-8">
+		<div class="col-lg-1"></div>
+			<div class="col-lg-7">
 				<div class="jumbotron" align="center">
 					<div class="container">
 						<table class="table">
 
-							<tr>
+							<tr style="width: 600px">
 								<%
 									Object FlistObj = request.getAttribute("FundingBoard");
 									Funding fdto = (Funding) FlistObj;
@@ -62,7 +63,7 @@
 									date1 = fdto.getEndDate().getTime() - date2.getTime();
 									date3 = date1 / (24 * 60 * 60 * 1000);
 								%>
-								<td><%=fdto.getContext()%></td>
+								<td style="width: 600px"><%=fdto.getContext()%></td>
 							</tr>
 							<tr>
 								<td></td>
